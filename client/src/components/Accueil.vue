@@ -26,7 +26,6 @@
         </div>
       </template>
     </b-carousel-list>-->
-    <EvenementContainer />
 
     <Footer/>
   </div>
