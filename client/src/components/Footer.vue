@@ -4,7 +4,7 @@
       <div class="container">
         <div class="columns">
           <div class="column is-3 is-offset-2">
-            <h2><strong>TOURISME</strong></h2>
+            <h2><strong>Tourisme</strong></h2>
             <ul>
               <li><a href="#">Centre culturels</a></li>
               <li><a href="#">Centre sportifs</a></li>
@@ -15,12 +15,12 @@
           <div class="column is-3">
             <h2><strong>Services</strong></h2>
             <ul>
-              <li><a href="#">Evenements</a></li>
+              <li><a href="#">Événements</a></li>
               <li><a href="#">Stationement et transport en commun</a></li>
             </ul>
           </div>
           <div class="column is-4">
-            <h2><strong>NEWSLETTER</strong></h2>
+            <h2><strong>Newsletter</strong></h2>
             <ul>
               <li style="color: black">Pour vous inscrire à la newsletter entrez votre email</li>
               <div class="mail-part">

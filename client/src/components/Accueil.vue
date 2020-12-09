@@ -26,7 +26,6 @@
         </div>
       </template>
     </b-carousel-list>-->
-
     <Footer/>
   </div>
 </template>
@@ -36,7 +35,7 @@ import Footer from "@/components/Footer";
 
 export default {
   name: "Accueil",
-  components: { Footer},
+  components: {Footer},
   data() {
     return {
       test: 0,
