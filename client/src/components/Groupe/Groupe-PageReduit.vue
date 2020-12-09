@@ -28,6 +28,7 @@ export default {
     position: relative;
     top: 40px;
     right: 320px;
+  margin-left: 365px;
 }
 
 .scrollbar {

@@ -25,7 +25,7 @@
               <li style="color: black">Pour vous inscrire à la newsletter entrez votre email</li>
               <div class="mail-part">
                 <b-input type="email" maxlength="30" placeholder="Email" icon="email"/>
-                <b-button >Ok</b-button>
+                <b-button>Ok</b-button>
               </div>
             </ul>
           </div>

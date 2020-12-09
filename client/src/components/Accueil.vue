@@ -1,95 +1,35 @@
 <template>
   <div>
-    <!--<b-carousel-list v-model="test" :data="items" :items-to-show="2">
-      <template slot="item" slot-scope="list">
-        <div class="card">
-          <div class="card-image">
-            <figure class="image is-5by4">
-              <a @click="info(list.index)"><img :src="list.image"></a>
-            </figure>
-            <b-tag type="is-danger" rounded style="position: absolute; top: 0;"><b>50%</b></b-tag>
-          </div>
-          <div class="card-content">
-            <div class="content">
-              <p class="title is-6">{{ list.title }}</p>
-              <p class="subtitle is-7">@johnsmith</p>
-              <div class="field is-grouped" >
-                <p class="control" v-if="list.rating">
-                  <b-rate :value="list.rating" show-score disabled/>
-                </p>
-                <p class="control" style="margin-left: auto">
-                  <button class="button is-small is-danger is-outlined"><b-icon size="is-small" icon="heart"/></button>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </template>
-    </b-carousel-list>-->
+    <nav class="Accueil">
+      <div><EvenementContainer /></div>
+      <CentralView />
+      <div> <GroupePageReduit /></div>
+    </nav>
     <Footer/>
   </div>
 </template>
 
 <script>
 import Footer from "@/components/Footer";
+import EvenementContainer from "@/components/Evenements/Evenement-Container";
+import CentralView from "@/components/CentralView";
+import GroupePageReduit from "@/components/Groupe/Groupe-PageReduit";
 
 export default {
   name: "Accueil",
-  components: {Footer},
-  data() {
-    return {
-      test: 0,
-      items: [
-        {
-          title: 'Slide 1',
-          image: 'https://buefy.org/static/img/placeholder-1280x960.png',
-          rating: 4.4
-        },
-        {
-          title: 'Slide 2',
-          image: 'https://buefy.org/static/img/placeholder-1280x960.png',
-          rating: 3.5
-        },
-        {
-          title: 'Slide 3',
-          image: 'https://buefy.org/static/img/placeholder-1280x960.png',
-          rating: 5
-        },
-        {
-          title: 'Slide 4',
-          image: 'https://buefy.org/static/img/placeholder-1280x960.png'
-        },
-        {
-          title: 'Slide 5',
-          image: 'https://buefy.org/static/img/placeholder-1280x960.png',
-          rating: 5
-        },
-        {
-          title: 'Slide 6',
-          image: 'https://buefy.org/static/img/placeholder-1280x960.png',
-          rating: 4
-        },
-        {
-          title: 'Slide 7',
-          image: 'https://buefy.org/static/img/placeholder-1280x960.png',
-          rating: 2.7
-        },
-        {
-          title: 'Slide 8',
-          image: 'https://buefy.org/static/img/placeholder-1280x960.png',
-          rating: 1.5
-        }
-      ]
-    }
-  },
-  methods: {
-    info(value) {
-      this.test = value
-    }
-  }
+  components: {GroupePageReduit, CentralView, EvenementContainer, Footer},
 }
 </script>
 
 <style scoped>
+
+.Accueil {
+  overflow: hidden;
+  position: static;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
 
 </style>

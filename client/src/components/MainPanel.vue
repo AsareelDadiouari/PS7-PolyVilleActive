@@ -1,6 +1,6 @@
 <template>
   <div class="container is-fluid">
-    <Header /> <!--:picture-path="user.picture" :user-name="user.name"-->
+    <Header/> <!--:picture-path="user.picture" :user-name="user.name"-->
     <router-view></router-view>
   </div>
 </template>

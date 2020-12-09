@@ -44,8 +44,8 @@
         </div>
       </b-navbar>
       <div class="user">
-        <img :src="picturePath"  />
-        <p>{{userName}}</p>
+        <img :src="picturePath"/>
+        <p>{{ userName }}</p>
       </div>
     </div>
   </div>
