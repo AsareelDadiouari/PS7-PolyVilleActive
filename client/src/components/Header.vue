@@ -8,10 +8,10 @@
           </b-navbar-item>
           <b-navbar-dropdown class="item" label="Tourisme">
             <b-navbar-item href="#">
-              Centre culturels
+              Patrimoine
             </b-navbar-item>
             <b-navbar-item href="#">
-              Centre sportifs
+              Centres sportifs
             </b-navbar-item>
             <b-navbar-item href="#">
               Commerces

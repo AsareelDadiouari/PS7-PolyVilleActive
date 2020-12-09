@@ -6,8 +6,8 @@
           <div class="column is-3 is-offset-2">
             <h2><strong>Tourisme</strong></h2>
             <ul>
-              <li><a href="#">Centre culturels</a></li>
-              <li><a href="#">Centre sportifs</a></li>
+              <li><a href="#">Patrimoine</a></li>
+              <li><a href="#">Centres sportifs</a></li>
               <li><a href="#">Commerces</a></li>
               <li><a href="#">Présentation et accès</a></li>
             </ul>
