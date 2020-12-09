@@ -2,7 +2,7 @@ import VueRouter from 'vue-router'
 import Vue from 'vue';
 import Profils from "@/components/Profils";
 import MainPanel from "@/components/MainPanel";
-import Accueil from "@/components/Accueil";
+import Accueil from "@/pages/Accueil";
 
 Vue.use(VueRouter)
 

@@ -1,9 +1,13 @@
 <template>
   <div>
     <nav class="Accueil">
-      <div><EvenementContainer /></div>
-      <CentralView />
-      <div> <GroupePageReduit /></div>
+      <div>
+        <EvenementContainer/>
+      </div>
+      <CentralView/>
+      <div>
+        <GroupePageReduit/>
+      </div>
     </nav>
     <Footer/>
   </div>
@@ -11,7 +15,7 @@
 
 <script>
 import Footer from "@/components/Footer";
-import EvenementContainer from "@/components/Evenements/Evenement-Container";
+import EvenementContainer from "@/components/Evenement/Evenement-Container";
 import CentralView from "@/components/CentralView";
 import GroupePageReduit from "@/components/Groupe/Groupe-PageReduit";
 
@@ -29,6 +33,7 @@ export default {
   display: flex;
   width: 100%;
   justify-content: space-between;
+  margin-left: 100px;
 }
 
 
