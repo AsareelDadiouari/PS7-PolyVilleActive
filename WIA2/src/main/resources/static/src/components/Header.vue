@@ -3,25 +3,23 @@
     <div class="level-item has-text-centered container head">
       <b-navbar class=" navbar is-light">
         <template class="items" slot="burger">
-          <router-link to="/u"><b-navbar-item class="item" href="#">
+          <b-navbar-item class="item" href="/u">
             Accueil
-          </b-navbar-item></router-link>
+          </b-navbar-item>
           <b-navbar-dropdown class="item" label="Tourisme">
-            <router-link to="/patrimoine"><b-navbar-item>
+            <b-navbar-item href="/patrimoine">
               Patrimoine
-            </b-navbar-item></router-link>
-            <router-link to="/centres-sportifs"><b-navbar-item href="#">
+            </b-navbar-item>
+            <b-navbar-item href="/centres-sportifs">
               Centres sportifs
-            </b-navbar-item></router-link>
-            <router-link to="/commerces"><b-navbar-item href="#">
+            </b-navbar-item><b-navbar-item href="/commerces">
               Commerces
-            </b-navbar-item></router-link>
+            </b-navbar-item>
             <b-navbar-item href="#">
               Présentation et accès
             </b-navbar-item>
           </b-navbar-dropdown>
-          <b-navbar-dropdown class="item" label="Service">
-            <b-navbar-item href="#">
+          <b-navbar-dropdown class="item" label="Service"><b-navbar-item href="/evenements">
               Événements
             </b-navbar-item>
             <b-navbar-item href="#">

@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="container">
     <h1 class="subtitle is-1">Liste des évènements</h1>
     <div class="columns is-multiline">
@@ -7,15 +8,18 @@
       </div>
     </div>
   </div>
-
+<Footer/>
+</div>
 </template>
 
 <script>
 import EvenementsCardView from "@/components/Evenement/Evenements-CardView";
+import Footer from "@/components/Footer";
+
 
 export default {
   name: "Evenement-Page",
-  components: {EvenementsCardView}
+  components: {EvenementsCardView, Footer}
 }
 </script>
 
