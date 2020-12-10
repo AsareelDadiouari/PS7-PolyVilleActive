@@ -3,26 +3,26 @@
     <div class="level-item has-text-centered container head">
       <b-navbar class=" navbar is-light">
         <template class="items" slot="burger">
-          <b-navbar-item class="item" href="#">
+          <router-link to="/u"><b-navbar-item class="item" href="#">
             Accueil
-          </b-navbar-item>
+          </b-navbar-item></router-link>
           <b-navbar-dropdown class="item" label="Tourisme">
-            <b-navbar-item href="#">
+            <router-link to="/patrimoine"><b-navbar-item>
               Patrimoine
-            </b-navbar-item>
-            <b-navbar-item href="#">
+            </b-navbar-item></router-link>
+            <router-link to="/centres-sportifs"><b-navbar-item href="#">
               Centres sportifs
-            </b-navbar-item>
-            <b-navbar-item href="#">
+            </b-navbar-item></router-link>
+            <router-link to="/commerces"><b-navbar-item href="#">
               Commerces
-            </b-navbar-item>
+            </b-navbar-item></router-link>
             <b-navbar-item href="#">
               Présentation et accès
             </b-navbar-item>
           </b-navbar-dropdown>
           <b-navbar-dropdown class="item" label="Service">
             <b-navbar-item href="#">
-              Evènements
+              Événements
             </b-navbar-item>
             <b-navbar-item href="#">
               Stationement et transport en commun

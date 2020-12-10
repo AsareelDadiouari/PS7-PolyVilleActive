@@ -22,7 +22,7 @@
           <div class="column is-4">
             <h2><strong>Newsletter</strong></h2>
             <ul>
-              <li style="color: black">Pour vous inscrire à la newsletter entrez votre email</li>
+              <li style="color: black">Pour vous inscrire à la newsletter, entrez votre email.</li>
               <div class="mail-part">
                 <b-input type="email" maxlength="30" placeholder="Email" icon="email"/>
                 <b-button>Ok</b-button>
@@ -37,7 +37,7 @@
 
 <script>
 export default {
-  name: "Footer"
+  name: "Footer",
 }
 </script>
 

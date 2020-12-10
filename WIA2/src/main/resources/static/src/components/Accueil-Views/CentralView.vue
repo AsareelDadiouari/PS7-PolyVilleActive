@@ -1,6 +1,6 @@
 <template>
   <div class="carousel">
-    <p class="subtitle is-3">LES ACTUALITÉS</p>
+    <p class="subtitle is-3">Les actualités</p>
 
     <div>
       <b-carousel-list v-model="test" :data="items" :items-to-show="2">
