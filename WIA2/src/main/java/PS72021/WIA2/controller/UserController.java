@@ -1,5 +1,7 @@
-package PS72021.WIA2;
+package PS72021.WIA2.controller;
 
+import PS72021.WIA2.Application;
+import PS72021.WIA2.model.User;
 import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
 import org.springframework.web.bind.annotation.CrossOrigin;
