@@ -15,7 +15,7 @@
 	"image": "https://www.nicetourisme.com/resources/ref/events/13834/agecotel-2021_210.jpg",
 	"latitude":43.7039,
 	"longitude":7.28081,
-	"users":["e:user5"]
+	"users":["u:5"]
 	},
 	{
 	"@id": "e:13148",
@@ -30,7 +30,7 @@
 	"image": "https://www.nicetourisme.com/resources/ref/events/13148/_168.jpg",
 	"latitude":43.6785,
 	"longitude":7.19913,
-	"users":["e:user1", "e:user2"]
+	"users":["u:1", "u:2"]
 	},
 	{
 	"@id": "e:12262",
@@ -45,7 +45,7 @@
 	"image": "https://www.nicetourisme.com/resources/ref/events/12262/alban-ivanov-vedette_168.jpg",
 	"latitude":43.7043,
 	"longitude":7.28061,
-	"users":["e:user2", "e:user4"]
+	"users":["u:2", "u:4"]
 	},
 	{
 	"@id": "e:14178",
@@ -60,7 +60,7 @@
 	"image": "https://www.nicetourisme.com/resources/ref/events/14178/ateliers-d-ecriture-a-distance-noel_210.jpg",
 	"latitude":43.753,
 	"longitude":7.08212,
-	"users":["e:user3"]
+	"users":["u:3"]
 	},
 	{
 	"@id": "e:13820",
@@ -75,7 +75,7 @@
 	"image": "https://www.nicetourisme.com/resources/ref/events/13820/ballet-don-quichotte_168.jpg",
 	"latitude":43.6957,
 	"longitude":7.27224,
-	"users":["e:user3", "e:user4"]
+	"users":["u:3", "u:4"]
 	},
 	{
 	"@id": "e:14168",
@@ -90,7 +90,7 @@
 	"image": "https://www.nicetourisme.com/resources/ref/events/14168/ceci-n-est-pas-une-tragedie_168.jpg",
 	"latitude":43.7018,
 	"longitude":7.26389,
-	"users":["e:user1"]
+	"users":["u:1"]
 	}
   ],
 	"@context": {
