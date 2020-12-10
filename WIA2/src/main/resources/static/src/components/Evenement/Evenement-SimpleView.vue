@@ -5,7 +5,7 @@
         <img :src="require('../../assets/Persona4.png')" alt="Image evenement"/>
       </figure>
       <div class="event-desc">
-        <div class="title is-4"> Nom de l'évenement</div>
+        <div class="title is-5"> Nom de l'événement</div>
         <div class="subtitle is-6"> Description de l'évenement</div>
       </div>
     </div>
@@ -21,8 +21,8 @@ export default {
 <style scoped>
 .evenement {
   display: flex;
-  border-radius: 10px;
-  box-shadow: 3px 3px 2px #9f9e9e;
+  border-bottom: groove;
+  padding: 1px 1px 1px 1px;
   width: 250px;
 }
 

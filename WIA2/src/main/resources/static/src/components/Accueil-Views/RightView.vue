@@ -8,6 +8,12 @@
         </div>
       </div>
     </div>
+    <br>
+    <br>
+    <div class="thebutton">
+    <router-link to="/groupes"><button class="button is-primary">
+      Rejoindre un groupe
+      </button></router-link></div>
   </div>
 
 </template>
@@ -23,11 +29,11 @@ export default {
 
 <style scoped>
 .container {
-  width: 250px;
-  height: 395px;
+  width: auto;
+  height: 425px;
   border-radius: 25px;
   box-shadow: 3px 3px 2px #9f9e9e;
-  padding-top: 7px;
+  padding-top: 10px;
   position: relative;
   top: 40px;
   right: 320px;
@@ -36,7 +42,11 @@ export default {
 
 .scrollbar {
   width: 250px;
-  height: 310px;
+  height: 330px;
   overflow: auto;
+}
+
+.thebutton {
+  margin-left: 80px;
 }
 </style>
