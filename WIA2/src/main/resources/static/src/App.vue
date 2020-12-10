@@ -9,7 +9,7 @@
 
 <script>
 
-import Axios from 'axios'
+import Vue from 'vue'
 
 export default {
   name: 'App',
@@ -17,7 +17,7 @@ export default {
     return { info: null}
   },
   mounted() {
-    Axios.get("http://localhost:8090/user?firstname=Jean&lastname=Bob")
+     Vue.axios.get("http://localhost:8090/user?firstname=Jean&lastname=Bob")
     .then(response => (this.info = response.data))
   },
   components: {},

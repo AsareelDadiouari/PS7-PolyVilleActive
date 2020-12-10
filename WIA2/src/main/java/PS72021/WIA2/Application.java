@@ -23,7 +23,7 @@ public class Application {
 
 		String filePath = "database/utilisateur.jsonld";
 
-		ResultSet results = test.executeQuery(query, filePath);
+		ResultSet results = executeQuery(query, filePath);
 		for ( ; results.hasNext() ; ) {
 			QuerySolution soln = results.nextSolution() ;
 			//System.out.println(soln);
@@ -32,7 +32,7 @@ public class Application {
 		//RDFDataMgr.write(System.out, results.getResourceModel(), Lang.JSONLD) ;
 	}
 
-	public ResultSet executeQuery(String queryString, String filePath) throws Exception {
+	public static ResultSet executeQuery(String queryString, String filePath) throws Exception {
 
         QueryExecution exec = QueryExecutionFactory.create(QueryFactory.create(queryString), new
                 DatasetImpl(RDFDataMgr.loadModel(filePath)));
