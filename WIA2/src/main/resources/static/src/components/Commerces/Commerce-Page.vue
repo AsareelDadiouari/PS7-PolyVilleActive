@@ -1,4 +1,5 @@
-<template><div class="container">
+<template><div>
+  <div class="container">
         <div class="centrage">
         <h1 class="title is-1">Commerces</h1></div>
         <div class="columns is-multiline">
@@ -7,15 +8,17 @@
                 </div>
                 </div>
   </div>
-
+<Footer/>
+</div>
 </template>
 
 <script>
 import CommerceSimpleView from './Commerce-SimpleView.vue';
+import Footer from "@/components/Footer";
 
 export default {
   name: "Commerce-Page",
-  components: {CommerceSimpleView}
+  components: {CommerceSimpleView, Footer}
 }
 </script>
 
