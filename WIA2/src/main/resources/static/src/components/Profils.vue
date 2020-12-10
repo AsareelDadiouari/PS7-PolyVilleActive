@@ -2,21 +2,9 @@
   <div>
     <nav class="level profiles">
       <div class="level-item has-text-centered">
-        <div class="user">
-          <img :src="require('../assets/Persona4.png')" alt="Image Profil"/>
-          <p>Elisa</p>
-        </div>
-        <div class="user">
-          <img :src="require('../assets/Persona4.png')" alt="Image Profil"/>
-          <p>Andréa</p>
-        </div>
-        <div class="user">
-          <img :src="require('../assets/Persona4.png')" alt="Image Profil"/>
-          <p>Vincent</p>
-        </div>
-        <div class="user">
-          <img :src="require('../assets/Persona4.png')" alt="Image Profil"/>
-          <p>Alexis</p>
+        <div class="user" v-for="currentUser in users" :key="currentUser.id">
+          <router-link to="/u"><img :src="require('../assets/Persona4.png')" alt="Image Profil"/></router-link>
+          <p>{{currentUser.firstname}}</p>
         </div>
       </div>
     </nav>
@@ -24,8 +12,17 @@
 </template>
 
 <script>
+
 export default {
-  name: "Profils"
+  name: "Profils",
+  created() {
+    this.$store.dispatch('setUsers')
+  },
+  computed: {
+    users() {
+      return this.$store.getters.getUsers
+    }
+  }
 }
 </script>
 
