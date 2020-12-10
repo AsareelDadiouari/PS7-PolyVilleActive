@@ -31,7 +31,9 @@
 	"opening": "10:00-13:30 16:00-19:30",
 	"address": "5 rue de la Poissonnerie",
 	"categories": ["Produits locaux et souvenirs","Pâtisseries","Toutes les boutiques"],
-	"description": "Fabriction artisanale de Macarons Nissart, frais et glacés. Confiseries locales exclusives: Galets de Nice, Pan Bagnat en chocolat, Sardines de Nice en chocolat. Les Coquettes de Nice: bonbons aux fleurs."
+	"description": "Fabriction artisanale de Macarons Nissart, frais et glacés. Confiseries locales exclusives: Galets de Nice, Pan Bagnat en chocolat, Sardines de Nice en chocolat. Les Coquettes de Nice: bonbons aux fleurs.",
+	"latitude": 0,
+    "longitude": 0
 	},
 	  {
 	"@id": "s:128",

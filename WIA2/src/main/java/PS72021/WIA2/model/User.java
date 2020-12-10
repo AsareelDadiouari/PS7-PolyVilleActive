@@ -1,4 +1,4 @@
-package PS72021.WIA2;
+package PS72021.WIA2.model;
 
 public class User {
 
