@@ -14,7 +14,7 @@ import java.util.*;
 @RestController
 public class UserController {
 
-    @CrossOrigin(origins = "http://localhost:8080")
+    @CrossOrigin(origins = "http://localhost:8081")
     @RequestMapping("/user")
     public User user(@RequestParam Map<String,String> requestParams) {
         return new User(1, requestParams.get("firstname"), requestParams.get("lastname"), "Visiteur", "role");
