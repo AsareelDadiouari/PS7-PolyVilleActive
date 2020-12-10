@@ -3,10 +3,10 @@
         <div class="centrage">
         <h1 class="title is-1">Commerces</h1></div>
         <div class="columns is-multiline">
-              <div class="column is-4" v-for="index in 10" :key="index">
-                <commerce-simple-view/>
-                </div>
-                </div>
+              <div class="column is-4" v-for="currentStore in stores" :key="currentStore.id">
+                <commerce-simple-view :commerce="currentStore"/>
+              </div>
+        </div>
   </div>
 <Footer/>
 </div>
@@ -18,7 +18,15 @@ import Footer from "@/components/Footer";
 
 export default {
   name: "Commerce-Page",
-  components: {CommerceSimpleView, Footer}
+  components: {CommerceSimpleView, Footer},
+  created() {
+    this.$store.dispatch('setStores')
+  },
+  computed: {
+    stores() {
+      return this.$store.getters.getStores
+    }
+  }
 }
 </script>
 

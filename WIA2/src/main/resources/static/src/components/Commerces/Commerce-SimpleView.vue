@@ -9,9 +9,9 @@
       <div class="card-content">
         <div class="media">
           <div class="media-content">
-            <p class="title is-4">Nom du commerce</p> <!-- {{commerce.nom}} -->
+            <p class="title is-4">{{commerce.name_fr}}</p> <!-- {{commerce.nom}} -->
             <p class="subtitle is-5">Type de commerce - Ouvert / Pas ouvert</p> <!-- {{commerce.type}} {{commerce.isavailable}}-->
-            <p class="subtitle is-6">Adresse</p> <!-- {{commerce.addresse}} -->
+            <p class="subtitle is-6">{{commerce.address}}</p> <!-- {{commerce.addresse}} -->
           </div>
         </div>
       </div>
