@@ -2,11 +2,11 @@
   <div>
     <nav class="Accueil">
       <div>
-        <EvenementContainer/>
+        <LeftView/>
       </div>
       <CentralView/>
       <div>
-        <GroupePageReduit/>
+        <RightView/>
       </div>
     </nav>
     <Footer/>
@@ -15,13 +15,13 @@
 
 <script>
 import Footer from "@/components/Footer";
-import EvenementContainer from "@/components/Evenement/Evenement-Container";
-import CentralView from "@/components/CentralView";
-import GroupePageReduit from "@/components/Groupe/Groupe-PageReduit";
+import CentralView from "@/components/Accueil-Views/CentralView";
+import LeftView from "@/components/Accueil-Views/LeftView";
+import RightView from "@/components/Accueil-Views/RightView";
 
 export default {
   name: "Accueil",
-  components: {GroupePageReduit, CentralView, EvenementContainer, Footer},
+  components: {RightView, LeftView, CentralView, Footer},
 }
 </script>
 
@@ -33,7 +33,7 @@ export default {
   display: flex;
   width: 100%;
   justify-content: space-between;
-  margin-left: 100px;
+  margin-left: 150px;
 }
 
 

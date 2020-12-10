@@ -1,0 +1,68 @@
+   {
+  "@id": "http://www.ps7-wia2.com/restaurants",
+  "@type": "Restaurants",
+  "restaurants":[
+  {
+	"@id": "r:72832",
+	"@type": "Restaurant",
+	"name_fr": "A&E RESTAURANT",
+	"address": "22 Promenade de la Plage",
+	"amenities": ["Wifi gratuit","Animaux acceptés","Climatisation","Familles","Chaise haute","Micro-ondes/chauffe biberon"],
+	"services": ["Méditerranéenne","Régionale française"],
+	"latitude":43.6994,
+	"longitude":7.26831
+	},
+	   {
+	"@id": "r:131553",
+	"@type": "Restaurant",
+	"name_fr": "AUBERGE DU MOULIN",
+	"address": "Place Récipon",
+	"amenities": ["Animaux acceptés"],
+	"services": ["Méditerranéenne","Provençale","Régionale française"],
+	"latitude":44.0932,
+	"longitude":7.05138
+	},
+		   {
+	"@id": "r:135229",
+	"@type": "Restaurant",
+	"name_fr": "AUBERGE LA GRUPPIO",
+	"address": "1 place du Planet",
+	"amenities": ["Wifi gratuit","Animaux acceptés","Télévision","Familles","Loisirs","Jeux intérieurs pour enfants","Accessibilité poussette","Chaise haute"],
+	"services": ["Provençale","Pizzas","Réunionnaise","Vente à emporter","Cuisine du monde","Régionale française","Cuisine spécialisée"]
+	},
+		   {
+	"@id": "r:1657",
+	"@type": "Restaurant",
+	"name_fr": "BAR À VIN LA MISE AU VERRE",
+	"address": "17 rue Pastorelli",
+	"services": ["Traditionnelle","Autour de la truffe","Bar à vins","Cuisine spécialisée","Pause gourmande"],
+	"latitude":43.7012,
+	"longitude":7.27251
+	},
+		   {
+	"@id": "r:540",
+	"@type": "Restaurant",
+	"name_fr": "BAR LA HAVANE",
+	"address": "32 rue de France",
+	"amenities": ["Wifi gratuit","Climatisation","Familles"],
+	"services": ["Méditerranéenne","Espagnole","Apéro tapas","Brésilienne","Créole","Mexicaine","Tex Mex","Cuisine du monde","Régionale française","Bar à vins","Pause gourmande"],
+	"latitude":43.6959,
+	"longitude":7.2611
+	}
+  ],
+	"@context": {
+		"Restaurants": "foaf:restaurants#Restaurants",
+		"Restaurant": "foaf:restaurants#Restaurant",
+		"restaurants": "foaf:restaurants#restaurants",
+		"name_fr": "foaf:restaurants#name_fr",
+	  	"address": "foaf:restaurants#address",
+	  	"amenities": "foaf:restaurants#amenities",
+	  	"services": "foaf:restaurants#services",
+	  	"latitude": "foaf:restaurants#latitude",
+	  	"longitude": "foaf:restaurants#longitude",
+	  	"foaf": "http://www.ps7-wia2.com/",
+	  	"r": "http://www.ps7-wia2.com/restaurants/"
+	}
+}
+
+

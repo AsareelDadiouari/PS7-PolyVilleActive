@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import EvenementsCardView from "@/components/Evenements/Evenements-CardView";
+import EvenementsCardView from "@/components/Evenement/Evenements-CardView";
 
 export default {
   name: "Evenement-Page",

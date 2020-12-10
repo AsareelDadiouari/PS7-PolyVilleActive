@@ -33,7 +33,7 @@
       </b-carousel-list>
     </div>
 
-    ferzfrezferzfezrffezr
+    Suite des informations
 
   </div>
 </template>
@@ -98,5 +98,6 @@ export default {
 <style scoped>
 .carousel {
   width: 50%;
+  margin-left: 50px;
 }
 </style>
