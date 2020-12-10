@@ -3,29 +3,29 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-const Utilisateurs = {
+const Users = {
     state: {
-        utilisateurs: []
+        users: []
     },
     mutations: {
-        populateUsers (state, payload){
-            state.utilisateurs = payload
+        setUsers (state, payload) {
+            state.users = payload
         }
     },
     getters: {
         getUsers(state) {
-           return state.utilisateurs
+           return state.users
         },
         getUserById(state, id){
-            return state.utilisateurs + id;
+            return state.users + id;
         }
-
     },
     actions: {
         async setUsers(context) {
             try {
-                const response = await Vue.axios.get('')
-                context.commit('populateUsers', response.data)
+                const response = await Vue.axios.get('http://localhost:8090/users')
+                console.log(response.data)
+                context.commit('setUsers', response.data)
             } catch (err) {
                 console.log(err)
             }
@@ -82,7 +82,7 @@ const Evenements = {
 
 const store = new Vuex.Store({
     modules: {
-        utilisateurs: Utilisateurs,
+        users: Users,
         magasins: Magasins,
         evenements: Evenements,
         restaurants: Restaurants

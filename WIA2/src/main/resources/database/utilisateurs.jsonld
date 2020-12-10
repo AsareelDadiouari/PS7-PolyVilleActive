@@ -8,9 +8,10 @@
 			"firstname": "Elisa",
 			"lastname": "Martin",
 			"type": "Visiteur",
+			"role": "",
 			"interests": ["Musique", "Danse"],
-			"events": [],
-			"groups": []
+			"events": [""],
+			"groups": [""]
 		},
 		{
 			"@id": "u:2",
@@ -20,8 +21,8 @@
 			"type": "Non-habitant",			
 			"role": "Employé",
 			"interests": ["Nature", "Oiseau"],
-			"events": [],
-			"groups": []
+			"events": [""],
+			"groups": [""]
 		},
 		{
 			"@id": "u:3",
@@ -31,8 +32,8 @@
 			"type": "Habitant",
 			"role": "Commerçant",
 			"interests": ["Divers"],
-			"events": [],
-			"groups": []
+			"events": [""],
+			"groups": [""]
 		},
 		{
 			"@id": "u:4",
@@ -40,9 +41,10 @@
 			"firstname": "Vincent",
 			"lastname": "Imes",
 			"type": "Habitant",
+			"role": "",
 			"interests": ["Musique", "Spectacle"],
-			"events": [],
-			"groups": []
+			"events": [""],
+			"groups": [""]
 		},
 		{
 			"@id": "u:5",
@@ -52,8 +54,8 @@
 			"type": "Non-Habitant",
 			"role": "Organisateur",
 			"interests": ["Théâtre"],
-			"events": [],
-			"groups": []
+			"events": [""],
+			"groups": [""]
 		},
 		{
 			"@id": "u:6",
@@ -63,8 +65,8 @@
 			"type": "Habitant",
 			"role": "Admistration",
 			"interests": ["Fêtes et animations"],
-			"events": [],
-			"groups": []
+			"events": [""],
+			"groups": [""]
 		}
 	],
 	"@context": {

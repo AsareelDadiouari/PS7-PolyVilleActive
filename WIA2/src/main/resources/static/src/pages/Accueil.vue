@@ -4,7 +4,7 @@
       <div>
         <LeftView/>
       </div>
-      <CentralView/>
+        <CentralView/>
       <div>
         <RightView/>
       </div>
