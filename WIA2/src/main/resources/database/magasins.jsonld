@@ -1,0 +1,75 @@
+  {
+  "@id": "http://www.ps7-wia2.com/stores",
+  "@type": "Stores",
+  "stores":[
+  {
+	"@id": "s:13834",
+	"@type": "Store",
+	"name_fr": "H&M",
+	"opening": "10:00-19:30 - 11:00-19:00 (dimanche)",
+	"address": "15 av Jean Médecin",
+	"categories": ["Ouverts le dimanche","Mode femme","Toutes les boutiques"],
+	"description": "",
+	"latitude":43.6994,
+	"longitude":7.26831
+	},
+	  {
+	"@id": "s:94037",
+	"@type": "Store",
+	"name_fr": "WONDERLAND TISSUS",
+	"opening": "",
+	"address": "6 rue du Docteur Guidoni",
+	"categories": ["Produits locaux et souvenirs","Toutes les boutiques"],
+	"description": "Plus de 10.000 références en boutique, dont tout le tissu provençal.",
+	"latitude":43.6983,
+	"longitude":7.27173
+	},
+	  {
+	"@id": "s:87442",
+	"@type": "Store",
+	"name_fr": "LES GOURMANDISES D'ANGÉA",
+	"opening": "10:00-13:30 16:00-19:30",
+	"address": "5 rue de la Poissonnerie",
+	"categories": ["Produits locaux et souvenirs","Pâtisseries","Toutes les boutiques"],
+	"description": "Fabriction artisanale de Macarons Nissart, frais et glacés. Confiseries locales exclusives: Galets de Nice, Pan Bagnat en chocolat, Sardines de Nice en chocolat. Les Coquettes de Nice: bonbons aux fleurs."
+	},
+	  {
+	"@id": "s:128",
+	"@type": "Store",
+	"name_fr": "ABYSSE",
+	"opening": "",
+	"address": "17 av Jean Médecin",
+	"categories": ["Bijoux-Montres","Toutes les boutiques"],
+	"description": "Installée sur l’avenue Jean Médecin depuis plusieurs années, Abysse est une petite bijouterie qui change de l’ambiance des grands magasins. Bijoux élégants et originaux.",
+	"latitude":43.6999,
+	"longitude":7.26834
+	},
+	  {
+	"@id": "s:52004",
+	"@type": "Store",
+	"name_fr": "BAX",
+	"opening": "10:00-12:00 14:30-19:00",
+	"address": "66 bd Risso",
+	"categories": ["Mode femme","Mode homme","Toutes les boutiques"],
+	"description": "Prêt à porter hommes et femmes",
+	"latitude":43.7015,
+	"longitude":7.27927
+	}
+  ],
+	"@context": {
+		"Stores": "foaf:stores#Stores",
+		"Store": "foaf:stores#Store",
+		"stores": "foaf:stores#stores",
+		"name_fr": "foaf:stores#name_fr",
+		"opening": "foaf:stores#opening",
+	  	"address": "foaf:stores#address",
+	  	"categories": "foaf:stores#categories",
+	  	"description": "foaf:stores#description",
+	  	"latitude": "foaf:stores#latitude",
+	  	"longitude": "foaf:stores#longitude",
+	  	"foaf": "http://www.ps7-wia2.com/",
+	  	"s": "http://www.ps7-wia2.com/stores/"
+	}
+}
+
+
