@@ -34,18 +34,31 @@ const Users = {
     }
 }
 
-const Magasins = {
+const Stores = {
     state: {
-        magasins: []
+        stores: []
 
     },
     mutations: {
-
+        setStores (state, payload) {
+            state.stores = payload
+        }
     },
     getters: {
-
+        getStores(state) {
+           return state.stores
+        }
     },
     actions: {
+        async setStores(context) {
+            try {
+                const response = await Vue.axios.get('http://localhost:8090/stores')
+                console.log(response.data)
+                context.commit('setStores', response.data)
+            } catch (err) {
+                console.log(err)
+            }
+        }
 
     }
 }
@@ -83,7 +96,7 @@ const Evenements = {
 const store = new Vuex.Store({
     modules: {
         users: Users,
-        magasins: Magasins,
+        stores: Stores,
         evenements: Evenements,
         restaurants: Restaurants
     }
