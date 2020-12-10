@@ -6,7 +6,9 @@ import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.sparql.core.DatasetImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.*;
 
+@RestController
 @SpringBootApplication
 public class Application {
 
@@ -24,18 +26,17 @@ public class Application {
 		ResultSet results = test.executeQuery(query, filePath);
 		for ( ; results.hasNext() ; ) {
 			QuerySolution soln = results.nextSolution() ;
-			System.out.println(soln);
+			//System.out.println(soln);
 		}
 
-		RDFDataMgr.write(System.out, results.getResourceModel(), Lang.JSONLD) ;
+		//RDFDataMgr.write(System.out, results.getResourceModel(), Lang.JSONLD) ;
 	}
 
 	public ResultSet executeQuery(String queryString, String filePath) throws Exception {
 
-		QueryExecution exec =  QueryExecutionFactory.create(QueryFactory.create(queryString), new
-				DatasetImpl(RDFDataMgr.loadModel(filePath)));
-		return exec.execSelect();
+        QueryExecution exec = QueryExecutionFactory.create(QueryFactory.create(queryString), new
+                DatasetImpl(RDFDataMgr.loadModel(filePath)));
+        return exec.execSelect();
 
-	}
-
+    }
 }
