@@ -28,16 +28,18 @@
 	"name_fr": "AUBERGE LA GRUPPIO",
 	"address": "1 place du Planet",
 	"amenities": ["Wifi gratuit","Animaux acceptés","Télévision","Familles","Loisirs","Jeux intérieurs pour enfants","Accessibilité poussette","Chaise haute"],
-	"services": ["Provençale","Pizzas","Réunionnaise","Vente à emporter","Cuisine du monde","Régionale française","Cuisine spécialisée"]
+	"services": ["Provençale","Pizzas","Réunionnaise","Vente à emporter","Cuisine du monde","Régionale française","Cuisine spécialisée"],
+	"latitude": 0.0,
+    "longitude": 0.0
 	},
-		   {
+    {
 	"@id": "r:1657",
 	"@type": "Restaurant",
 	"name_fr": "BAR À VIN LA MISE AU VERRE",
 	"address": "17 rue Pastorelli",
 	"services": ["Traditionnelle","Autour de la truffe","Bar à vins","Cuisine spécialisée","Pause gourmande"],
-	"latitude":43.7012,
-	"longitude":7.27251
+	"latitude": 43.7012,
+	"longitude": 7.27251
 	},
 		   {
 	"@id": "r:540",

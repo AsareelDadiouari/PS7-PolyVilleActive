@@ -14,22 +14,6 @@ public class Application {
 
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(Application.class, args);
-
-		Application test = new Application();
-
-		String query = "SELECT DISTINCT ?s ?p ?o WHERE {\n" +
-				" ?s ?p ?o " +
-				"}";
-
-		String filePath = "database/utilisateur.jsonld";
-
-		ResultSet results = executeQuery(query, filePath);
-		for ( ; results.hasNext() ; ) {
-			QuerySolution soln = results.nextSolution() ;
-			//System.out.println(soln);
-		}
-
-		//RDFDataMgr.write(System.out, results.getResourceModel(), Lang.JSONLD) ;
 	}
 
 	public static ResultSet executeQuery(String queryString, String filePath) throws Exception {
