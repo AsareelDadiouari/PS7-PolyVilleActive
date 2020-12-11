@@ -65,28 +65,30 @@ const Stores = {
 
 const Restaurants = {
     state: {
-        restautants: []
+        restaurants: []
+
     },
     mutations: {
-        setRestaurant(state, payload){
-            state.restautants = payload
+        setRestaurants (state, payload) {
+            state.restaurants = payload
         }
     },
     getters: {
-        getRestaurants(state){
-           return  state.restautants
+        getRestaurants(state) {
+            return state.restaurants
         }
     },
     actions: {
-        async setRestaurant(context){
+        async setRestaurants(context) {
             try {
-                const response = await Vue.axios.get('http://localhost:8090/restaurants')
-                console.log(response.data)
-                context.commit('setEvenement', response.data)
+                const response2 = await Vue.axios.get('http://localhost:8090/restaurants')
+                console.log(response2.data)
+                context.commit('setRestaurants', response2.data)
             } catch (err) {
                 console.log(err)
             }
         }
+
     }
 }
 

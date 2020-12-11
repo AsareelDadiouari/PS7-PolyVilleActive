@@ -6,6 +6,7 @@ import Accueil from "@/pages/Accueil";
 import PatrimoinePage from "@/components/Patrimoine/Patrimoine-Page";
 import CentresSportifsPage from "@/components/Centres-Sportifs/Centres-Sportifs-Page";
 import CommercePage from "@/components/Commerces/Commerce-Page";
+import RestaurantPage from "@/components/Restaurant/Restaurant-Page";
 import EvenementPage from "@/components/Evenement/Evenement-Page";
 import GroupePage from "@/components/Groupe/Groupe-Page";
 import StationementTransport from "@/pages/StationementTransport";
@@ -20,6 +21,7 @@ const routes = [
             {path: '/patrimoine', component: PatrimoinePage, name: "Patrimoine"},
             {path: '/centres-sportifs', component: CentresSportifsPage, name: "Centres Sportifs"},
             {path: '/commerces', component: CommercePage, name: "Commerces"},
+            {path: '/restaurants', component: RestaurantPage, name: "Restaurants"},
             {path: '/evenements', component: EvenementPage, name: "Evénements"},
             {path: '/groupes', component: GroupePage, name: "Groupes"},
             {path: '/stationnement', component: StationementTransport, name: "Stationement"},

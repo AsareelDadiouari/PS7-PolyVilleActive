@@ -15,6 +15,9 @@
             </b-navbar-item><b-navbar-item href="/commerces">
               Commerces
             </b-navbar-item>
+            <b-navbar-item href="/restaurants">
+            Restaurants
+          </b-navbar-item>
             <b-navbar-item href="#">
               Présentation et accès
             </b-navbar-item>
