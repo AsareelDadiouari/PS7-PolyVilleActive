@@ -3,12 +3,12 @@
   <div class="container">
     <h1 class="subtitle is-1">Liste des évènements</h1>
     <div class="columns is-multiline">
-      <div class="column is-one-quarter" v-for="evenement in evenements" :key="evenement">
-        <EvenementsCardView :evenement="evenement"/>
+      <div class="column is-one-quarter" v-for="(evenement) in evenements" :key="evenement">
+            <EvenementsCardView  :evenement="evenement"/>
       </div>
     </div>
   </div>
-<Footer/>
+  <Footer/>
 </div>
 </template>
 
@@ -19,7 +19,7 @@ import Footer from "@/components/Footer";
 
 export default {
   name: "Evenement-Page",
-  components: {EvenementsCardView, Footer},
+  components: { EvenementsCardView, Footer},
   created() {
     this.$store.dispatch('setEvenement')
   },

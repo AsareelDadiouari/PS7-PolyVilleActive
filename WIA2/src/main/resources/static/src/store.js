@@ -24,7 +24,6 @@ const Users = {
         async setUsers(context) {
             try {
                 const response = await Vue.axios.get('http://localhost:8090/users')
-                console.log(response.data)
                 context.commit('setUsers', response.data)
             } catch (err) {
                 console.log(err)
@@ -53,7 +52,6 @@ const Stores = {
         async setStores(context) {
             try {
                 const response = await Vue.axios.get('http://localhost:8090/stores')
-                console.log(response.data)
                 context.commit('setStores', response.data)
             } catch (err) {
                 console.log(err)
@@ -82,7 +80,6 @@ const Restaurants = {
         async setRestaurants(context) {
             try {
                 const response2 = await Vue.axios.get('http://localhost:8090/restaurants')
-                console.log(response2.data)
                 context.commit('setRestaurants', response2.data)
             } catch (err) {
                 console.log(err)
@@ -110,7 +107,6 @@ const Evenements = {
         async setEvenement(context){
             try {
                 const response = await Vue.axios.get('http://localhost:8090/events')
-                console.log(response.data)
                 context.commit('setEvenement', response.data)
             } catch (err) {
                 console.log(err)

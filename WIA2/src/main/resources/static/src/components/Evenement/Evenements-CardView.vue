@@ -2,7 +2,7 @@
   <div>
     <div class="card">
       <div class="card-image">
-        <figure class="image  is-3by2">
+        <figure class="image is-3by2">
           <img :src="evenement.image" alt="Placeholder image"> <!-- {{evenement.picture}} -->
         </figure>
       </div>
@@ -21,19 +21,28 @@
         </div>
 
         <div class="content">
-          {{evenement.decription.substring(0,70)}}... <a><span @click="isImageModalActive = true">Voir plus</span></a>
+          {{evenement.decription.substring(0,70)}}... <a><span @click="isComponentModalActive = true">Voir plus</span></a>
         </div>
       </div>
     </div>
 
-
+    <b-modal :width="550" class="myModal" v-model="isComponentModalActive" :has-modal-card="true"  scroll="keep">
+      <EvenementModal :evenement="evenement"/>
+    </b-modal>
 
   </div>
 </template>
 
 <script>
+import EvenementModal from "@/components/Evenement/Evenement-Modal";
 export default {
   name: "Evenements-CardView",
+  components: {EvenementModal},
+  data() {
+    return {
+      isComponentModalActive: false
+    }
+  },
   props: {
     evenement: Object
   }
@@ -45,8 +54,4 @@ export default {
   height: 500px;
 }
 
-.button {
-  height: 35px;
-  background-color: #cdcccc;
-}
 </style>

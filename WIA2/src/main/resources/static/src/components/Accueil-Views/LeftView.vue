@@ -29,7 +29,6 @@ export default {
       if (index >= 5) {
         document.getElementsByClassName('evennement').style
       }
-      console.log(index)
     }
   }
 }

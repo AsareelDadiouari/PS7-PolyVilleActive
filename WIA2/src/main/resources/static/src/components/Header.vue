@@ -58,6 +58,11 @@ export default {
   props: {
     userName: String,
     picturePath: String
+  },
+  methods: {
+    searchIconClick(){
+
+    }
   }
 }
 </script>
