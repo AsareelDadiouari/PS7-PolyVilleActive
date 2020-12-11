@@ -3,7 +3,7 @@
     <div class="grand">
       <p class="title is-6">Événements recommandés</p>
       <div class="evennement">
-        <div v-bind="applyScroll(index)" v-for="currentEvenementsRecommandations in evenementsRecommandations" :key="currentEvenementsRecommandations.id" class="column is-one-fifth">
+        <div v-for="currentEvenementsRecommandations in evenementsRecommandations" :key="currentEvenementsRecommandations.id" class="column is-one-fifth">
           <EvenementSimpleView :evenementRecommandations="currentEvenementsRecommandations"/>
         </div>
       </div>
@@ -24,13 +24,6 @@ import EvenementSimpleView from "@/components/Evenement/Evenement-SimpleView";
 export default {
   name: "LeftView",
   components: {EvenementSimpleView},
-  methods: {
-    applyScroll(index) {
-      if (index >= 5) {
-        document.getElementsByClassName('evennement').style
-      }
-    }
-  },
   created() {
     this.$store.dispatch('setEvenementsRecommandations')
   },

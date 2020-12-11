@@ -21,7 +21,7 @@ public class UserController {
         return new User(1, requestParams.get("firstname"), requestParams.get("lastname"), "Visiteur", "role");
     }*/
 
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping("/user")
     public static User user(@RequestParam String userId) throws Exception {
         String filePath = "database/utilisateurs.jsonld";

@@ -42,7 +42,8 @@ public class RestaurantController {
 
             ResultSet results2 = Application.executeQuery(query, filePath);
             QuerySolution sol = results2.next();
-            Restaurant restaurant = new Restaurant(i,  sol.get("name_fr").toString(),sol.get("address").toString(),new HashSet<>(),new HashSet<>(),sol.get("longitude").asLiteral().getDouble() ,sol.get("longitude").asLiteral().getDouble());
+            Restaurant restaurant = new Restaurant(i,  sol.get("name_fr").toString(),sol.get("address").toString(),new HashSet<>(),new HashSet<>(),
+                    sol.get("longitude").asLiteral().getDouble() ,sol.get("longitude").asLiteral().getDouble());
             Set<String> amenities = new HashSet<>();
             Set<String> services = new HashSet<>();
             services.add(sol.get("services").toString());

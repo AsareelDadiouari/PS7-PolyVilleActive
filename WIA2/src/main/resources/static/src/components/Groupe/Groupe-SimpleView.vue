@@ -21,5 +21,12 @@ export default {
   display: flex;
   border-bottom: groove;
   padding: 1px 1px 1px 1px;
+  transition: 0.3s;
+}
+
+.groupe:hover {
+  background-color: #dbd9d9;
+  cursor: pointer;
+  color: white;
 }
 </style>

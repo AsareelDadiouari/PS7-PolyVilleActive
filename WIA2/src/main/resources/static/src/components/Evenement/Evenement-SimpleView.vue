@@ -37,7 +37,15 @@ export default {
   border-bottom: groove;
   padding: 1px 1px 1px 1px;
   width: 250px;
+  transition: 0.3s;
 }
+
+.evenement:hover {
+  background-color: #dbd9d9;
+  cursor: pointer;
+  color: white;
+}
+
 
 .event-desc {
 

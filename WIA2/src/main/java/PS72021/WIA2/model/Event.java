@@ -2,7 +2,6 @@ package PS72021.WIA2.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Event {
 
@@ -17,8 +16,9 @@ public class Event {
     private String image;
     private Double latitude;
     private Double longitude;
+    private ArrayList<String> users;
 
-    public Event(int id, String name, LocalDate start, LocalDate end, String address, ArrayList<String> profiles, ArrayList<String> categories, String decription, String image, Double latitude, Double longitude) {
+    public Event(int id, String name, LocalDate start, LocalDate end, String address, ArrayList<String> profiles, ArrayList<String> categories, String decription, String image, Double latitude, Double longitude, ArrayList<String> participants) {
         this.id = id;
         this.name = name;
         this.start = start;
@@ -30,6 +30,7 @@ public class Event {
         this.image = image;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.users = participants;
     }
 
     public Event(String name) {
@@ -79,5 +80,9 @@ public class Event {
 
     public Double getLongitude() {
         return longitude;
+    }
+
+    public ArrayList<String> getUsers() {
+        return users;
     }
 }

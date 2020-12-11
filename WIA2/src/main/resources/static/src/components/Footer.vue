@@ -18,8 +18,7 @@
           <div class="column is-3">
             <h2><strong>Services</strong></h2>
             <ul>
-              <li>
-              <a href="/evenements">Événements</a></li>
+              <li><a href="/evenements">Événements</a></li>
               <li><a href="/stationnement">Stationement et transport en commun</a></li>
             </ul>
           </div>

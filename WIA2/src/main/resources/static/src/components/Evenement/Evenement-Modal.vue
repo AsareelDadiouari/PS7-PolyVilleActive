@@ -9,7 +9,7 @@
         <div class="columns">
           <div class="column">
             <i class="fas fa-user-friends"></i>
-            {{0}} personnes participent
+            {{evenement.users.length}} personnes participent
           </div>
         </div>
 
