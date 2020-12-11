@@ -7,7 +7,7 @@ public class User {
     private String lastname;
     private String type;
     private String role;
-    private String[] interets;
+    private String[] interests = new String[0];
     private String[] events = new String[0];
     private String[] groups = new String[0];
 
@@ -19,10 +19,14 @@ public class User {
         this.role = role;
     }
 
-    public void setInterets(Object[] interets) {
-        this.interets = new String[interets.length];
-        for (int i = 0; i < this.interets.length; i++) {
-            this.interets[i] = interets[i].toString();
+    public User(int id, String name) {
+        this(id, name, "", "", "");
+    }
+
+    public void setInterests(Object[] interests) {
+        this.interests = new String[interests.length];
+        for (int i = 0; i < this.interests.length; i++) {
+            this.interests[i] = interests[i].toString();
         }
     }
 
@@ -54,8 +58,8 @@ public class User {
         return role;
     }
 
-    public String[] getInterets() {
-        return interets;
+    public String[] getInterests() {
+        return interests;
     }
 
     public String[] getEvents() {
