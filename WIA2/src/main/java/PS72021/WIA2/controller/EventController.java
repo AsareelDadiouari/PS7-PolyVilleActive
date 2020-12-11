@@ -12,7 +12,7 @@ import java.util.*;
 
 @RestController
 public class EventController {
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping("/events")
     public ArrayList<Event> getEvents() throws Exception {
         ArrayList<Event> events = new ArrayList<>();

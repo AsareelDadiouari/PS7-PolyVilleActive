@@ -2,34 +2,32 @@
   <div>
     <div class="card">
       <div class="card-image">
-        <figure class="image  is-128x128">
-          <img :src="require('../../assets/Persona4.png')" alt="Placeholder image"> <!-- {{evenement.picture}} -->
+        <figure class="image  is-3by2">
+          <img :src="evenement.image" alt="Placeholder image"> <!-- {{evenement.picture}} -->
         </figure>
       </div>
       <div class="card-content">
         <div class="media">
           <div class="media-left">
             <figure class="image is-48x48">
-              <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-              <!-- {{evenement.picture}} -->
+              <img src="https://static.xx.fbcdn.net/rsrc.php/v3/ys/r/8wTx0Eu2vRq.png" alt="Placeholder image">
             </figure>
           </div>
           <div class="media-content">
-            <p class="title is-4">John Smith </p> <!-- {{evenement.nom}} -->
-            <p class="subtitle is-6">@johnsmith</p>
+            <time style="color: red">{{evenement.start}}-{{evenement.end}}</time>
+            <p class="title is-4">{{evenement.name}}</p> <!--  -->
+            <p class="subtitle is-6">{{evenement.categories[0]}}</p>
           </div>
         </div>
 
         <div class="content">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-          <a href="#">#css</a> <a href="#">#responsive</a>
-          <br>
-          <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-          <!-- {{evenement.description}} -->
+          {{evenement.decription.substring(0,70)}}... <a><span @click="isImageModalActive = true">Voir plus</span></a>
         </div>
       </div>
     </div>
+
+
+
   </div>
 </template>
 
@@ -43,5 +41,12 @@ export default {
 </script>
 
 <style scoped>
+.card {
+  height: 500px;
+}
 
+.button {
+  height: 35px;
+  background-color: #cdcccc;
+}
 </style>

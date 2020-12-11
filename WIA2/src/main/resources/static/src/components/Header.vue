@@ -22,7 +22,7 @@
           <b-navbar-dropdown class="item" label="Service"><b-navbar-item href="/evenements">
               Événements
             </b-navbar-item>
-            <b-navbar-item href="#">
+            <b-navbar-item href="/stationnement">
               Stationement et transport en commun
             </b-navbar-item>
           </b-navbar-dropdown>

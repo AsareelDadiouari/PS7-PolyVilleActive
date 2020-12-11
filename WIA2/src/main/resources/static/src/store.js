@@ -68,13 +68,25 @@ const Restaurants = {
         restautants: []
     },
     mutations: {
-
+        setRestaurant(state, payload){
+            state.restautants = payload
+        }
     },
     getters: {
-
+        getRestaurants(state){
+           return  state.restautants
+        }
     },
     actions: {
-
+        async setRestaurant(context){
+            try {
+                const response = await Vue.axios.get('http://localhost:8090/restaurants')
+                console.log(response.data)
+                context.commit('setEvenement', response.data)
+            } catch (err) {
+                console.log(err)
+            }
+        }
     }
 }
 
@@ -83,13 +95,25 @@ const Evenements = {
         evenements: []
     },
     mutations: {
-
+        setEvenement(state, payload){
+            state.evenements = payload
+        }
     },
     getters: {
-
+        getEvenements(state){
+            return state.evenements
+        }
     },
     actions: {
-
+        async setEvenement(context){
+            try {
+                const response = await Vue.axios.get('http://localhost:8090/events')
+                console.log(response.data)
+                context.commit('setEvenement', response.data)
+            } catch (err) {
+                console.log(err)
+            }
+        }
     }
 }
 
