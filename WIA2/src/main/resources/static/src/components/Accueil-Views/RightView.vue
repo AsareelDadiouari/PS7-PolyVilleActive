@@ -3,8 +3,8 @@
     <div class="container">
       <h1 class="title is-6">Groupes populaires autour de vous</h1>
       <div class="scrollbar">
-        <div class="column" v-for="index in 10" :key="index">
-          <groupe-simple-view-vue/>
+        <div class="column" v-for="currentGroup in groups" :key="currentGroup.id">
+          <groupe-simple-view-vue :group="currentGroup"/>
         </div>
       </div>
     </div>
@@ -23,7 +23,15 @@ import GroupeSimpleViewVue from '../Groupe/Groupe-SimpleView.vue';
 
 export default {
   name: "RightView",
-  components: {GroupeSimpleViewVue}
+  components: {GroupeSimpleViewVue},
+  created() {
+    this.$store.dispatch('setGroups')
+  },
+  computed: {
+    groups() {
+      return this.$store.getters.getGroups
+    }
+  }
 }
 </script>
 

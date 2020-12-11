@@ -30,7 +30,7 @@ public class UserController {
 
         String filePath = "database/utilisateurs.jsonld";
         ResultSet results = Application.executeQuery(query, filePath);
-        for (int i = 1; results.hasNext(); i++) {
+        for (; results.hasNext();) {
             QuerySolution querySolution = results.next();
             query = "SELECT DISTINCT * WHERE {\n" +
                     "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/users#type> ?type." +
@@ -41,14 +41,15 @@ public class UserController {
                     "}";
             ResultSet results2 = Application.executeQuery(query, filePath);
             QuerySolution sol = results2.next();
-            User user = new User (i, sol.get("?firstname").toString(), sol.get("?lastname").toString(), sol.get("?type").toString(), sol.get("role").toString());
-            Set<String> interets = new HashSet<>();
-            interets.add(sol.get("interests").toString());
+            String[] sujet = querySolution.get("o").toString().split("/", -1);
+            User user = new User (Integer.parseInt(sujet[sujet.length - 1]), sol.get("?firstname").toString(), sol.get("?lastname").toString(), sol.get("?type").toString(), sol.get("role").toString());
+            Set<String> interests = new HashSet<>();
+            interests.add(sol.get("interests").toString());
             for (;results2.hasNext();) {
                 sol = results2.next();
-                interets.add(sol.get("interests").toString());
+                interests.add(sol.get("interests").toString());
             }
-            user.setInterets(interets.toArray());
+            user.setInterests(interests.toArray());
             users.add(user);
         }
         return users;

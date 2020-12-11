@@ -119,12 +119,40 @@ const Evenements = {
     }
 }
 
+const Groups = {
+    state: {
+        groups: []
+    },
+    mutations: {
+        setGroups(state, payload){
+            state.groups = payload
+        }
+    },
+    getters: {
+        getGroups(state){
+            return state.groups
+        }
+    },
+    actions: {
+        async setGroups(context){
+            try {
+                const response = await Vue.axios.get('http://localhost:8090/groups')
+                console.log(response.data)
+                context.commit('setGroups', response.data)
+            } catch (err) {
+                console.log(err)
+            }
+        }
+    }
+}
+
 const store = new Vuex.Store({
     modules: {
         users: Users,
         stores: Stores,
         evenements: Evenements,
-        restaurants: Restaurants
+        restaurants: Restaurants,
+        groups: Groups
     }
 })
 

@@ -3,22 +3,28 @@
     <div class="card-content">
       <div class="media">
         <div class="media-content">
-          <a class="image">
+          <div class="title is-4">{{group.name}}</div>
+          <div class="subtitle is-7">{{group.members.length}} membres - 20 publications par jour</div>
+          <div class="content">
+            <p>Intérêts :</p>
+            <ul>
+              <li v-for="interest in group.interests" :key="interest"> {{interest}} </li>
+            </ul>
+            <p>Types :</p>
+            <ul>
+              <li v-for="type in group.types" :key="type"> {{type}} </li>
+            </ul>
+          </div>
+          <br>
+          <div class="substile is-6" maxlength="240">{{group.description}}</div>
+          <br>
+        </div>
+        <a class="image">
             <figure class="image is-2by1">
               <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
             </figure>
-          </a>
-          <div class="title is-4">Nom du groupe</div>
-          <div class="subtitle is-7">125K membres - 20 publications par jour</div>
-          <!--{{groupe.membres}} - {{groupe.publications}}-->
-          <br>
-          <div class="substile is-6" maxlength="240">Description du groupe. Exemple : Toutes vos fêtes de Nice !
-            (Bal, Fêtes, Concert, Feu d'artifice, Soirée Discothèque)
-            Pour publier vos fêtes ou vos événements, envoyez nous votre programmation avec flyer à notre addresse mail
-            !
-          </div>
-        </div>
-        <span class="vertical-line"></span>
+        </a>
+        <!-- <span class="vertical-line"></span> -->
         <button class="button is-primary">Rejoindre</button>
       </div>
     </div>
@@ -29,7 +35,7 @@
 export default {
   name: "Groupe-CardView",
   props: {
-    groupe: Object
+    group: Object
   }
 }
 </script>
@@ -39,7 +45,8 @@ export default {
   height: 200px;
   width: 400px;
   float: left;
-  margin-right: 12px;
+  margin: auto;
+  margin-right: 80px;
 }
 
 .button {
@@ -49,7 +56,7 @@ export default {
 
 .card {
   width: 95%;
-  height: 250px;
+  height: auto;
   border-width: 1.5px;
   border-style: groove;
   margin-left: auto;
