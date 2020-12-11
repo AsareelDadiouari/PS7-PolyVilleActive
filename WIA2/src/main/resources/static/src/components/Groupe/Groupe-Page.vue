@@ -6,8 +6,8 @@
       <h1 class="title is-9">Groupes suggérés</h1></div>
     <br>
     <div class="scrollbar">
-      <div class="column" v-for="index in 10" :key="index">
-        <groupe-card-view-vue/>
+      <div class="column" v-for="currentGroup in groups" :key="currentGroup.id">
+        <groupe-card-view-vue :group="currentGroup"/>
       </div>
     </div>
   </div>
@@ -19,7 +19,15 @@ import GroupeCardViewVue from './Groupe-CardView.vue';
 
 export default {
   name: "Groupe-Page",
-  components: {GroupeCardViewVue}
+  components: {GroupeCardViewVue},
+  created() {
+    this.$store.dispatch('setGroups')
+  },
+  computed: {
+    groups() {
+      return this.$store.getters.getGroups
+    }
+  }
 }
 </script>
 
