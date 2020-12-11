@@ -142,13 +142,42 @@ const Groups = {
     }
 }
 
+const EvenementsRecommandations = {
+    state: {
+        evenementsRecommandations: []
+    },
+    mutations: {
+        setEvenementsRecommandations(state, payload){
+            state.evenementsRecommandations = payload
+        }
+    },
+    getters: {
+        getEvenementsRecommandations(state){
+            return state.evenementsRecommandations
+        }
+    },
+    actions: {
+        async setEvenementsRecommandations(context){
+            try {
+                const currentUser = "1";
+                const url = "http://localhost:8090/eventsRecommandations?userId=" + currentUser
+                const response = await Vue.axios.get(url)
+                context.commit('setEvenementsRecommandations', response.data)
+            } catch (err) {
+                console.log(err)
+            }
+        }
+    }
+}
+
 const store = new Vuex.Store({
     modules: {
         users: Users,
         stores: Stores,
         evenements: Evenements,
         restaurants: Restaurants,
-        groups: Groups
+        groups: Groups,
+        evenementsRecommandations: EvenementsRecommandations,
     }
 })
 
