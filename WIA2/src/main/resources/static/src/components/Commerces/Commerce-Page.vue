@@ -1,13 +1,13 @@
 <template><div>
   <div class="container">
-        <div class="centrage">
-        <h1 class="title is-1">Commerces</h1></div>
-        <div class="columns is-multiline">
-              <div class="column is-4" v-for="currentStore in stores" :key="currentStore.id">
-                <commerce-simple-view :commerce="currentStore"/>
-              </div>
-        </div>
+    <h1 class="title is-1">Commerces</h1>
+    <div class="columns is-multiline">
+      <div class="column is-4" v-for="currentStore in stores" :key="currentStore.id">
+        <Commerce-simple-view :store="currentStore"/>
+      </div>
+    </div>
   </div>
+  <br>
 <Footer/>
 </div>
 </template>
@@ -31,12 +31,6 @@ export default {
 </script>
 
 <style scoped>
-.container {
-    height: auto;
-    padding-top: 7px;
-    border-left: 1px solid;
-    border-right: 1px solid;
-}
 
 .centrage {
   text-align: center;
