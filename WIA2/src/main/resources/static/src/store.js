@@ -147,7 +147,6 @@ const Groups = {
         async setGroups(context){
             try {
                 const response = await Vue.axios.get('http://localhost:8090/groups')
-                console.log(response.data)
                 context.commit('setGroups', response.data)
             } catch (err) {
                 console.log(err)

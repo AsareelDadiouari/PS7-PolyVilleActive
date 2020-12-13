@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-image">
         <figure class="image is-3by2">
-          <img :src="evenement.image" alt="Placeholder image"> <!-- {{evenement.picture}} -->
+          <img :src="evenement.image" alt="Placeholder image">
         </figure>
       </div>
       <div class="card-content">

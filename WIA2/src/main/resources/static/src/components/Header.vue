@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     searchIconClick(){
-
+      console.log("Search Icon is clicked")
     }
   }
 }
