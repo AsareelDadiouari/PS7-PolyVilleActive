@@ -25,7 +25,7 @@
             </figure>
         </a>
         <!-- <span class="vertical-line"></span> -->
-        <button class="button is-primary">Rejoindre</button>
+        <button class="button is-primary" @click="addMember" >Rejoindre</button>
       </div>
     </div>
   </div>
@@ -36,6 +36,11 @@ export default {
   name: "Groupe-CardView",
   props: {
     group: Object
+  },
+  methods: {
+    addMember() {
+      this.$store.dispatch("addMember", {groupId: this.group.id, userId: 1})
+    }
   }
 }
 </script>
