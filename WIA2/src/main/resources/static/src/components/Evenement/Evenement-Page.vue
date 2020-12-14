@@ -3,7 +3,7 @@
   <div class="container">
     <h1 class="subtitle is-1">Liste des évènements</h1>
     <div class="columns is-multiline">
-      <div class="column is-one-quarter" v-for="(evenement) in evenements" :key="evenement">
+      <div class="column is-one-quarter" v-for="(evenement, index) in evenements" :key="index">
             <EvenementsCardView  :evenement="evenement"/>
       </div>
     </div>
