@@ -179,9 +179,9 @@ const EvenementsRecommandations = {
         }
     },
     actions: {
-        async setEvenementsRecommandations(context){
+        async setEvenementsRecommandations(context, payload){
             try {
-                const currentUser = "1";
+                const currentUser = payload.userId;
                 const url = "http://localhost:8090/eventsRecommandations?userId=" + currentUser
                 const response = await Vue.axios.get(url)
                 context.commit('setEvenementsRecommandations', response.data)

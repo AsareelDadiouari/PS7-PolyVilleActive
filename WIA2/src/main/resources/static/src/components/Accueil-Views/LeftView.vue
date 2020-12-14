@@ -25,7 +25,7 @@ export default {
   name: "LeftView",
   components: {EvenementSimpleView},
   created() {
-    this.$store.dispatch('setEvenementsRecommandations')
+    this.$store.dispatch('setEvenementsRecommandations', {userId: this.$route.params.id})
   },
   computed: {
     evenementsRecommandations() {

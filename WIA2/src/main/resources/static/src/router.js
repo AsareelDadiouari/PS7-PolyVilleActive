@@ -16,15 +16,15 @@ Vue.use(VueRouter)
 const routes = [
     {path: '/', component: Profils, name: "Profils"},
     {
-        path: '/u', component: MainPanel, props: true, children: [
-            {path: '/', component: Accueil, name: "Accueil"},
-            {path: '/patrimoine', component: PatrimoinePage, name: "Patrimoine"},
-            {path: '/centres-sportifs', component: CentresSportifsPage, name: "Centres Sportifs"},
-            {path: '/commerces', component: CommercePage, name: "Commerces"},
-            {path: '/restaurants', component: RestaurantPage, name: "Restaurants"},
-            {path: '/evenements', component: EvenementPage, name: "Evénements"},
-            {path: '/groupes', component: GroupePage, name: "Groupes"},
-            {path: '/stationnement', component: StationementTransport, name: "Stationement"},
+        path: '/u/:id', component: MainPanel, props: true, children: [
+            {path: '', component: Accueil, name: "Accueil"},
+            {path: 'patrimoine', component: PatrimoinePage, name: "Patrimoine"},
+            {path: 'centres-sportifs', component: CentresSportifsPage, name: "Centres Sportifs"},
+            {path: 'commerces', component: CommercePage, name: "Commerces"},
+            {path: 'restaurants', component: RestaurantPage, name: "Restaurants"},
+            {path: 'evenements', component: EvenementPage, name: "Evénements"},
+            {path: 'groupes', component: GroupePage, name: "Groupes"},
+            {path: 'stationnement', component: StationementTransport, name: "Stationement"},
         ]
     }
 ]
