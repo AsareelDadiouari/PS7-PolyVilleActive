@@ -3,29 +3,29 @@
     <div class="level-item has-text-centered container head">
       <b-navbar class=" navbar is-light">
         <template class="items" slot="burger">
-          <b-navbar-item class="item" href="/u">
+          <b-navbar-item class="item" :href="'/u/' + $route.params.id">
             Accueil
           </b-navbar-item>
           <b-navbar-dropdown class="item" label="Tourisme">
-            <b-navbar-item href="/patrimoine">
+            <b-navbar-item :href="'/u/' + $route.params.id + '/patrimoine'">
               Patrimoine
             </b-navbar-item>
-            <b-navbar-item href="/centres-sportifs">
+            <b-navbar-item :href="'/u/' + $route.params.id + '/centres-sportifs'">
               Centres sportifs
-            </b-navbar-item><b-navbar-item href="/commerces">
+            </b-navbar-item><b-navbar-item :href="'/u/' + $route.params.id + '/commerces'">
               Commerces
             </b-navbar-item>
-            <b-navbar-item href="/restaurants">
+            <b-navbar-item :href="'/u/' + $route.params.id + '/restaurants'">
             Restaurants
           </b-navbar-item>
             <b-navbar-item href="#">
               Présentation et accès
             </b-navbar-item>
           </b-navbar-dropdown>
-          <b-navbar-dropdown class="item" label="Service"><b-navbar-item href="/evenements">
+          <b-navbar-dropdown class="item" label="Service"><b-navbar-item :href="'/u/' + $route.params.id + '/evenements'">
               Événements
             </b-navbar-item>
-            <b-navbar-item href="/stationnement">
+            <b-navbar-item :href="'/u/' + $route.params.id + '/stationnement'">
               Stationement et transport en commun
             </b-navbar-item>
           </b-navbar-dropdown>
