@@ -28,7 +28,6 @@ public class UserController {
         User user;
         String query = "SELECT DISTINCT * WHERE {\n" +
                 "<http://www.ps7-wia2.com/users/"+userId+"> <http://www.ps7-wia2.com/users#type> ?type." +
-                "<http://www.ps7-wia2.com/users/"+userId+"> <http://www.ps7-wia2.com/users#type> ?type." +
                 "<http://www.ps7-wia2.com/users/"+userId+"> <http://www.ps7-wia2.com/users#firstname> ?firstname." +
                 "<http://www.ps7-wia2.com/users/"+userId+"> <http://www.ps7-wia2.com/users#lastname> ?lastname." +
                 "<http://www.ps7-wia2.com/users/"+userId+"> <http://www.ps7-wia2.com/users#role> ?role." +

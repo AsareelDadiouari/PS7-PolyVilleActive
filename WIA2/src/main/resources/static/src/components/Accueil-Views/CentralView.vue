@@ -1,24 +1,23 @@
 <template>
   <div class="carousel">
-    <p class="subtitle is-3">Les actualités</p>
+    <p class="subtitle is-3">Les dernières publications</p>
 
     <div>
-      <b-carousel-list v-model="test" :data="items" :items-to-show="2">
-        <template slot="item" slot-scope="list">
+      <b-carousel-list :data="publications" :items-to-show="2">
+        <template slot="item" slot-scope="publication">
           <div class="card">
-            <div class="card-image">
-              <figure class="image is-5by4">
-                <a @click="info(list.index)"><img :src="list.image"></a>
-              </figure>
-              <b-tag type="is-danger" rounded style="position: absolute; top: 0;"><b>50%</b></b-tag>
-            </div>
             <div class="card-content">
               <div class="content">
-                <p class="title is-6">{{ list.title }}</p>
-                <p class="subtitle is-7">@johnsmith</p>
+                <p class="title is-6">{{ publication.title }}</p>
+                <p class="subtitle is-7">Par {{publication.authorName}}</p>
+                <p>
+                  {{publication.description}}
+                </p>
                 <div class="field is-grouped">
-                  <p class="control" v-if="list.rating">
-                    <b-rate :value="list.rating" show-score disabled/>
+                  <p class="content">
+                    <a><span>
+                    {{publication.comments.length -1}} commentaires
+                    </span></a>
                   </p>
                   <p class="control" style="margin-left: auto">
                     <button class="button is-small is-danger is-outlined">
@@ -32,9 +31,6 @@
         </template>
       </b-carousel-list>
     </div>
-
-    Suite des informations
-
   </div>
 </template>
 
@@ -43,48 +39,14 @@ export default {
   name: "CentralView",
   data() {
     return {
-      test: 0,
-      items: [
-        {
-          title: 'Slide 1',
-          image: 'https://buefy.org/static/img/placeholder-1280x960.png',
-          rating: 4.4
-        },
-        {
-          title: 'Slide 2',
-          image: 'https://buefy.org/static/img/placeholder-1280x960.png',
-          rating: 3.5
-        },
-        {
-          title: 'Slide 3',
-          image: 'https://buefy.org/static/img/placeholder-1280x960.png',
-          rating: 5
-        },
-        {
-          title: 'Slide 4',
-          image: 'https://buefy.org/static/img/placeholder-1280x960.png'
-        },
-        {
-          title: 'Slide 5',
-          image: 'https://buefy.org/static/img/placeholder-1280x960.png',
-          rating: 5
-        },
-        {
-          title: 'Slide 6',
-          image: 'https://buefy.org/static/img/placeholder-1280x960.png',
-          rating: 4
-        },
-        {
-          title: 'Slide 7',
-          image: 'https://buefy.org/static/img/placeholder-1280x960.png',
-          rating: 2.7
-        },
-        {
-          title: 'Slide 8',
-          image: 'https://buefy.org/static/img/placeholder-1280x960.png',
-          rating: 1.5
-        }
-      ]
+    }
+  },
+  created() {
+    this.$store.dispatch('setPublications')
+  },
+  computed: {
+    publications() {
+      return this.$store.getters.getPublications;
     }
   },
   methods: {

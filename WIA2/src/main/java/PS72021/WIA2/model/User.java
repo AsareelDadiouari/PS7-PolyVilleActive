@@ -62,6 +62,8 @@ public class User {
         return interests;
     }
 
+
+
     public String[] getEvents() {
         return events;
     }
