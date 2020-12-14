@@ -1,0 +1,85 @@
+{
+	"@id": "http://www.ps7-wia2.com/publications/",
+	"@type": "Publications",
+	"publications": [
+		{
+			"@id": "p:1",
+			"@type": "Publication",
+			"title": "La première publication de la ville de Nice !",
+			"author": "u:1",
+			"description": "Nice vous souhaite la bienvenue sur son nouveau site web, vous y retrouverez tous les evenements ainsi que de bonnes adresses.",
+			"interests": ["Divers"],
+            "comment": ["","Vive la ville!!","Trop cool ce site"],
+			"like" : 2
+		},
+		{
+			"@id": "p:2",
+            "@type": "Publication",
+            "title": "Le chant des voitures",
+            "author": "g:1",
+            "description": "Une nouvelle oeuvre de cet artiste nouveau est superbe! ",
+            "interests": ["Musique"],
+            "comment": ["","Quand la musique est bonne"],
+            "like" : 0
+		},
+		{
+			"@id": "p:3",
+            "@type": "Publication",
+            "title": "Je teste les publications",
+            "author": "u:6",
+            "description": "Bonjour tous le monde.",
+            "interests": ["Divers"],
+            "comment": ["","Je teste les commentaires"],
+            "like" : 3
+		},
+		{
+			"@id": "p:4",
+            "@type": "Publication",
+            "title": "Bienvenue sur le nouveau groupe de musique ultra cool!",
+            "author": "g:1",
+            "description": "Rejoingnez votre nouveau groupe de musique! Nous partagerons ici des oeuvres ainsi que des évenements qui auront lieu dans votre ville.",
+            "interests": ["Musique"],
+            "comment": [""],
+            "like" : 0
+		},
+		{
+			"@id": "p:5",
+            "@type": "Publication",
+            "title": "Vive la nature pas les poubelles",
+            "author": "u:3",
+            "description": "Jetez vos poubelles dans les poubelles svp",
+            "interests": ["Nature"],
+            "comment": ["","Je jete même ce commentaire moi"],
+            "like" : 0
+		},
+		{
+			"@id": "p:6",
+            "@type": "Publication",
+            "title": "Nouveaux évenements",
+            "author": "u:1",
+            "description": "De nouveaux évenements sont à venir : regardé dans la liste de vos recommandations!",
+            "interests": ["Divers"],
+            "comment": [""],
+            "like" : 1
+		}
+	],
+	"@context": {
+		"Publications": "foaf:publications#Publications",
+		"Publication": "foaf:publications#Publication",
+		"publications": "foaf:publications#publications",
+		"title": "foaf:publications#title",
+		"author":
+		{
+	      "@id": "foaf:publications#author",
+	      "@type": "@id"
+	    },
+	    "description": "foaf:publications#description",
+	    "like": "foaf:publications#like",
+		"interests": "foaf:publications#interests",
+		"comment": "foaf:publications#comment",
+	  	"foaf": "http://www.ps7-wia2.com/",
+	  	"p": "http://www.ps7-wia2.com/publications/",
+	  	"u": "http://www.ps7-wia2.com/users/",
+	  	"g": "http://www.ps7-wia2.com/groups/"
+	}
+}

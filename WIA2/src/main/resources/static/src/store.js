@@ -192,6 +192,33 @@ const EvenementsRecommandations = {
     }
 }
 
+const Publications = {
+    state: {
+        publications: []
+    },
+    mutations: {
+        setPublications(state, payload){
+            state.publications = payload
+        }
+    },
+    getters: {
+        getPublications(state){
+            return state.publications
+        }
+    },
+    actions: {
+        async setPublications(context){
+            try {
+                const url = "http://localhost:8090/publications"
+                const response = await Vue.axios.get(url)
+                context.commit('setPublications', response.data)
+            } catch (err) {
+                console.log(err)
+            }
+        }
+    }
+}
+
 const store = new Vuex.Store({
     modules: {
         users: Users,
@@ -200,6 +227,7 @@ const store = new Vuex.Store({
         restaurants: Restaurants,
         groups: Groups,
         evenementsRecommandations: EvenementsRecommandations,
+        publication: Publications,
     }
 })
 
