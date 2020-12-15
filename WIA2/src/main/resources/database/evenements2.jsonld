@@ -24,6 +24,7 @@
         "latitude": "43.7039",
         "longitude": "7.28081",
         "note": "0",
+        "users":["u:1"],
         "created": "2020-08-07 17:24:46",
         "updated": "2020-10-19 10:25:47"
       },
@@ -53,6 +54,7 @@
         "latitude": "43.6785",
         "longitude": "7.19913",
         "note": "0",
+        "users":["u:1"],
         "created": "2020-02-21 10:54:17",
         "updated": "2020-10-13 12:06:46"
       },
@@ -77,6 +79,7 @@
         "latitude": "43.7043",
         "longitude": "7.28061",
         "note": "0",
+        "users":["u:1"],
         "created": "2019-10-28 10:26:38",
         "updated": "2020-09-28 15:17:09"
       },
@@ -102,6 +105,7 @@
         "latitude": "43.6785",
         "longitude": "7.19913",
         "note": "0",
+        "users":["u:1"],
         "created": "2020-06-22 15:36:10",
         "updated": "2020-11-30 11:30:22"
       },
@@ -135,6 +139,7 @@
           "ref_entry_id": "58",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2020-01-28 12:10:16",
         "updated": "2020-06-22 15:01:32"
       },
@@ -164,6 +169,7 @@
           "ref_entry_id": "31345",
           "ref_entry_name": "CATHÉDRALE SAINTE-RÉPARATE"
         },
+        "users":["u:1"],
         "created": "2020-01-14 10:20:55",
         "updated": "2020-12-03 11:38:11"
       },
@@ -193,6 +199,7 @@
         "latitude": "43.753",
         "longitude": "7.08212",
         "note": "0",
+        "users":["u:1"],
         "created": "2020-11-24 14:34:10",
         "updated": "2020-11-25 17:58:00"
       },
@@ -226,6 +233,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "THÉÂTRE L'ALPHABET"
         },
+        "users":["u:1"],
         "created": "2020-02-21 10:50:10",
         "updated": "2020-09-11 10:00:03"
       },
@@ -261,6 +269,7 @@
           "ref_entry_id": "1251",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2020-08-07 11:20:41",
         "updated": "2020-12-03 12:32:56"
       },
@@ -286,6 +295,7 @@
         "latitude": "43.7743",
         "longitude": "7.19246",
         "note": "0",
+        "users":["u:1"],
         "created": "2020-08-18 13:52:28",
         "updated": "2020-12-08 12:39:06"
       },
@@ -317,6 +327,7 @@
           "ref_entry_id": "134",
           "ref_entry_name": "OPÉRA NICE COTE D'AZUR"
         },
+        "users":["u:1"],
         "created": "2020-10-26 15:32:58",
         "updated": "2020-12-07 11:40:36"
       },
@@ -347,6 +358,7 @@
           "ref_entry_id": "134",
           "ref_entry_name": "THÉÂTRE NATIONAL DE NICE"
         },
+        "users":["u:1"],
         "created": "2020-11-30 10:46:12",
         "updated": "2020-11-30 10:51:15"
       },
@@ -378,6 +390,7 @@
           "ref_entry_id": "1254",
           "ref_entry_name": "THÉÂTRE NATIONAL DE NICE"
         },
+        "users":["u:1"],
         "created": "2019-05-14 16:02:59",
         "updated": "2020-09-28 15:19:30"
       },
@@ -414,6 +427,7 @@
         "latitude": "43.697",
         "longitude": "7.26989",
         "note": "0",
+        "users":["u:1"],
         "created": "2019-05-21 15:02:01",
         "updated": "2020-12-03 11:11:43"
       },
@@ -445,6 +459,7 @@
           "ref_entry_id": "1254",
           "ref_entry_name": "ACROPOLIS - AUDITORIUM APOLLON"
         },
+        "users":["u:1"],
         "created": "2020-04-28 10:25:12",
         "updated": "2020-09-28 15:17:57"
       },
@@ -476,6 +491,7 @@
           "ref_entry_id": "28810",
           "ref_entry_name": "ACROPOLIS - AUDITORIUM APOLLON"
         },
+        "users":["u:1"],
         "created": "2020-11-05 10:16:22",
         "updated": "2020-11-30 12:29:07"
       },
@@ -506,6 +522,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "THÉÂTRE DE LA CITÉ"
         },
+        "users":["u:1"],
         "created": "2020-02-21 11:13:17",
         "updated": "2020-07-31 14:40:19"
       },
@@ -540,6 +557,7 @@
           "ref_entry_id": "134",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2020-07-28 11:14:48",
         "updated": "2020-12-07 12:54:22"
       },
@@ -564,7 +582,28 @@
             "Musiques autres"
           ]
         ,
-"description": "20:00"
+"description": [
+            {
+              "language": "fr",
+
+              "cdata-section": "PALAIS NIKAIA"
+            },
+            {
+              "language": "en",
+
+              "cdata-section": "PALAIS NIKAIA"
+            },
+            {
+              "language": "fr",
+              "@type": "Horaires",
+              "cdata-section": "20:00"
+            },
+            {
+              "language": "en",
+              "@type": "Horaires",
+              "cdata-section": "20:00"
+            }
+          ]
         ,
         "images": [  "https://www.nicetourisme.com/resources/ref/events/11997/christophe-mae_168.jpg" ],
         "latitude": "43.6785",
@@ -574,6 +613,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "THÉÂTRE NATIONAL DE NICE"
         },
+        "users":["u:1"],
         "created": "2019-09-20 14:42:41",
         "updated": "2020-10-19 10:24:29"
       },
@@ -608,6 +648,7 @@
           "ref_entry_id": "134",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2020-07-28 11:00:58",
         "updated": "2020-11-30 10:34:45"
       },
@@ -639,6 +680,7 @@
           "ref_entry_id": "1251",
           "ref_entry_name": "THÉÂTRE NATIONAL DE NICE"
         },
+        "users":["u:1"],
         "created": "2020-08-07 14:58:21",
         "updated": "2020-12-03 14:30:45"
       },
@@ -670,6 +712,7 @@
           "ref_entry_id": "475",
           "ref_entry_name": "OPÉRA NICE COTE D'AZUR"
         },
+        "users":["u:1"],
         "created": "2020-08-07 14:51:00",
         "updated": "2020-12-03 14:29:00"
       },
@@ -705,6 +748,7 @@
           "ref_entry_id": "128759",
           "ref_entry_name": "FORUM NICE NORD ASSOCIATION"
         },
+        "users":["u:1"],
         "created": "2020-08-07 11:41:00",
         "updated": "2020-12-03 12:36:24"
       },
@@ -736,6 +780,7 @@
           "ref_entry_id": "1251",
           "ref_entry_name": "L'ARTISTIQUE, CENTRE D'ARTS ET DE CULTURE"
         },
+        "users":["u:1"],
         "created": "2020-08-07 14:06:37",
         "updated": "2020-12-03 12:34:46"
       },
@@ -772,6 +817,7 @@
           "ref_entry_id": "1254",
           "ref_entry_name": "OPÉRA NICE COTE D'AZUR"
         },
+        "users":["u:1"],
         "created": "2020-08-07 14:35:50",
         "updated": "2020-12-03 14:26:15"
       },
@@ -805,6 +851,7 @@
           "ref_entry_id": "102743",
           "ref_entry_name": "ACROPOLIS - AUDITORIUM APOLLON"
         },
+        "users":["u:1"],
         "created": "2020-08-07 14:45:15",
         "updated": "2020-12-03 14:27:18"
       },
@@ -836,6 +883,7 @@
           "ref_entry_id": "31345",
           "ref_entry_name": "TOURRETTE-LEVENS"
         },
+        "users":["u:1"],
         "created": "2020-12-03 11:51:57",
         "updated": "2020-12-03 14:20:27"
       },
@@ -866,6 +914,7 @@
           "ref_entry_id": "31345",
           "ref_entry_name": "THÉÂTRE L'ALPHABET"
         },
+        "users":["u:1"],
         "created": "2020-12-03 11:06:21",
         "updated": "2020-12-03 14:18:29"
       },
@@ -895,6 +944,7 @@
           "ref_entry_id": "134",
           "ref_entry_name": "THÉÂTRE L'ALPHABET"
         },
+        "users":["u:1"],
         "created": "2020-10-09 15:33:11",
         "updated": "2020-11-23 12:07:26"
       },
@@ -925,6 +975,7 @@
           "ref_entry_id": "134",
           "ref_entry_name": "THÉÂTRE NATIONAL DE NICE"
         },
+        "users":["u:1"],
         "created": "2020-12-07 11:44:44",
         "updated": "2020-12-07 11:48:49"
       },
@@ -955,6 +1006,7 @@
           "ref_entry_id": "134",
           "ref_entry_name": "THÉÂTRE NATIONAL DE NICE"
         },
+        "users":["u:1"],
         "created": "2020-12-07 11:49:51",
         "updated": "2020-12-07 11:54:05"
       },
@@ -989,6 +1041,7 @@
           "ref_entry_id": "134",
           "ref_entry_name": "THÉÂTRE NATIONAL DE NICE"
         },
+        "users":["u:1"],
         "created": "2020-12-07 11:32:52",
         "updated": "2020-12-07 12:48:58"
       },
@@ -1019,6 +1072,7 @@
           "ref_entry_id": "1309",
           "ref_entry_name": "THÉÂTRE NATIONAL DE NICE"
         },
+        "users":["u:1"],
         "created": "2020-01-28 10:38:51",
         "updated": "2020-12-03 14:15:59"
       },
@@ -1054,6 +1108,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "CUISINE SUR COURS ATELIER GASTRONOMIQUE"
         },
+        "users":["u:1"],
         "created": "2020-03-06 10:20:11",
         "updated": "2020-10-19 10:25:01"
       },
@@ -1089,6 +1144,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2020-02-21 10:45:27",
         "updated": "2020-11-30 11:29:07"
       },
@@ -1121,6 +1177,7 @@
           "ref_entry_id": "64",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2015-03-09 09:44:18",
         "updated": "2020-09-07 15:57:52"
       },
@@ -1155,6 +1212,7 @@
           "ref_entry_id": "28171",
           "ref_entry_name": "LA PROMENADE DES ANGLAIS"
         },
+        "users":["u:1"],
         "created": "2020-02-17 14:11:46",
         "updated": "2020-08-03 15:44:06"
       },
@@ -1186,6 +1244,7 @@
         "latitude": "43.8085",
         "longitude": "7.1689",
         "note": "0",
+        "users":["u:1"],
         "created": "2019-08-05 10:11:03",
         "updated": "2020-10-21 09:34:04"
       },
@@ -1217,6 +1276,7 @@
           "ref_entry_id": "28810",
           "ref_entry_name": "ACROPOLIS EXPOSITIONS"
         },
+        "users":["u:1"],
         "created": "2019-10-01 15:27:31",
         "updated": "2020-11-05 10:13:06"
       },
@@ -1248,6 +1308,7 @@
           "ref_entry_id": "134",
           "ref_entry_name": "THÉÂTRE DE LA CITÉ"
         },
+        "users":["u:1"],
         "created": "2020-07-28 13:49:02",
         "updated": "2020-11-30 12:12:53"
       },
@@ -1279,6 +1340,7 @@
           "ref_entry_id": "28810",
           "ref_entry_name": "THÉÂTRE NATIONAL DE NICE"
         },
+        "users":["u:1"],
         "created": "2019-10-04 11:26:35",
         "updated": "2020-09-17 14:45:45"
       },
@@ -1310,6 +1372,7 @@
           "ref_entry_id": "28810",
           "ref_entry_name": "THÉÂTRE DE LA CITÉ"
         },
+        "users":["u:1"],
         "created": "2020-09-17 14:40:23",
         "updated": "2020-09-17 14:47:09"
       },
@@ -1341,6 +1404,7 @@
           "ref_entry_id": "134",
           "ref_entry_name": "THÉÂTRE DE LA CITÉ"
         },
+        "users":["u:1"],
         "created": "2020-07-28 12:11:54",
         "updated": "2020-11-30 12:06:44"
       },
@@ -1376,6 +1440,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "THÉÂTRE NATIONAL DE NICE"
         },
+        "users":["u:1"],
         "created": "2019-12-20 10:02:57",
         "updated": "2020-10-13 12:05:41"
       },
@@ -1402,6 +1467,7 @@
         "latitude": "43.7743",
         "longitude": "7.19257",
         "note": "0",
+        "users":["u:1"],
         "created": "2020-08-18 12:48:38",
         "updated": "2020-12-08 12:38:26"
       },
@@ -1433,6 +1499,7 @@
         "latitude": "43.7222",
         "longitude": "7.11093",
         "note": "0",
+        "users":["u:1"],
         "created": "2020-05-18 13:23:31",
         "updated": "2020-11-26 12:20:15"
       },
@@ -1468,6 +1535,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2019-10-28 14:12:39",
         "updated": "2020-09-28 14:51:26"
       },
@@ -1495,6 +1563,7 @@
         "latitude": "43.7925",
         "longitude": "7.18691",
         "note": "0",
+        "users":["u:1"],
         "created": "2020-09-04 10:23:26",
         "updated": "2020-12-08 12:41:26"
       },
@@ -1529,6 +1598,7 @@
           "ref_entry_id": "134",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2020-07-28 11:55:40",
         "updated": "2020-11-30 12:01:59"
       },
@@ -1564,6 +1634,7 @@
           "ref_entry_id": "1254",
           "ref_entry_name": "THÉÂTRE NATIONAL DE NICE"
         },
+        "users":["u:1"],
         "created": "2019-06-27 15:54:52",
         "updated": "2020-07-31 11:24:31"
       },
@@ -1595,6 +1666,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "ACROPOLIS - AUDITORIUM APOLLON"
         },
+        "users":["u:1"],
         "created": "2019-12-20 10:29:14",
         "updated": "2020-09-07 14:26:19"
       },
@@ -1626,6 +1698,7 @@
           "ref_entry_id": "1254",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2020-03-05 12:11:57",
         "updated": "2020-07-31 14:07:01"
       },
@@ -1657,6 +1730,7 @@
         "latitude": "43.8085",
         "longitude": "7.1689",
         "note": "0",
+        "users":["u:1"],
         "created": "2019-08-05 09:59:47",
         "updated": "2020-04-01 11:07:06"
       },
@@ -1688,6 +1762,7 @@
           "ref_entry_id": "28810",
           "ref_entry_name": "ACROPOLIS - AUDITORIUM APOLLON"
         },
+        "users":["u:1"],
         "created": "2020-07-27 14:55:02",
         "updated": "2020-11-30 12:25:25"
       },
@@ -1719,6 +1794,7 @@
           "ref_entry_id": "28810",
           "ref_entry_name": "THÉÂTRE DE LA CITÉ"
         },
+        "users":["u:1"],
         "created": "2020-07-27 14:49:35",
         "updated": "2020-11-30 12:23:26"
       },
@@ -1754,6 +1830,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "THÉÂTRE DE LA CITÉ"
         },
+        "users":["u:1"],
         "created": "2019-10-28 14:20:40",
         "updated": "2020-11-12 10:05:15"
       },
@@ -1784,6 +1861,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2019-12-02 15:52:20",
         "updated": "2019-12-05 17:38:52"
       },
@@ -1815,6 +1893,7 @@
         "latitude": "43.7202",
         "longitude": "7.11615",
         "note": "0",
+        "users":["u:1"],
         "created": "2020-11-24 14:58:11",
         "updated": "2020-11-25 17:59:57"
       },
@@ -1841,6 +1920,7 @@
         "latitude": "43.7744",
         "longitude": "7.19255",
         "note": "0",
+        "users":["u:1"],
         "created": "2020-08-18 12:21:42",
         "updated": "2020-12-08 12:38:44"
       },
@@ -1872,6 +1952,7 @@
           "ref_entry_id": "134",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2020-07-28 10:36:38",
         "updated": "2020-11-30 10:25:15"
       },
@@ -1907,6 +1988,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "THÉÂTRE NATIONAL DE NICE"
         },
+        "users":["u:1"],
         "created": "2019-12-02 15:28:21",
         "updated": "2020-06-30 15:08:52"
       },
@@ -1938,6 +2020,7 @@
           "ref_entry_id": "31345",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2020-12-03 10:21:59",
         "updated": "2020-12-03 14:16:58"
       },
@@ -1969,6 +2052,7 @@
           "ref_entry_id": "1254",
           "ref_entry_name": "THÉÂTRE L'ALPHABET"
         },
+        "users":["u:1"],
         "created": "2019-10-28 10:33:54",
         "updated": "2020-11-26 12:18:38"
       },
@@ -2000,6 +2084,7 @@
           "ref_entry_id": "31345",
           "ref_entry_name": "ACROPOLIS - AUDITORIUM APOLLON"
         },
+        "users":["u:1"],
         "created": "2020-12-03 10:57:44",
         "updated": "2020-12-03 14:17:43"
       },
@@ -2029,6 +2114,7 @@
         "latitude": "43.6942",
         "longitude": "7.25848",
         "note": "0",
+        "users":["u:1"],
         "created": "2020-07-30 09:34:58",
         "updated": "2020-07-30 09:45:12"
       },
@@ -2064,6 +2150,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "THÉÂTRE L'ALPHABET"
         },
+        "users":["u:1"],
         "created": "2020-03-06 10:30:09",
         "updated": "2020-07-31 14:37:07"
       },
@@ -2094,6 +2181,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2020-02-21 11:03:20",
         "updated": "2020-09-07 14:29:40"
       },
@@ -2120,6 +2208,7 @@
         "latitude": "43.7925",
         "longitude": "7.18619",
         "note": "0",
+        "users":["u:1"],
         "created": "2020-12-08 11:10:52",
         "updated": "2020-12-08 14:01:52"
       },
@@ -2151,6 +2240,7 @@
           "ref_entry_id": "31345",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2018-09-24 13:38:30",
         "updated": "2020-12-03 10:56:15"
       },
@@ -2180,6 +2270,7 @@
           "ref_entry_id": "120874",
           "ref_entry_name": "THÉÂTRE L'ALPHABET"
         },
+        "users":["u:1"],
         "created": "2020-11-17 11:30:37",
         "updated": "2020-11-25 17:47:28"
       },
@@ -2211,6 +2302,7 @@
           "ref_entry_id": "134",
           "ref_entry_name": "BUREAU D'INFORMATION TOURISTIQUE SAINT-JEAN-CAP-FERRAT"
         },
+        "users":["u:1"],
         "created": "2020-07-28 12:06:26",
         "updated": "2020-11-30 12:04:39"
       },
@@ -2246,6 +2338,7 @@
           "ref_entry_id": "137",
           "ref_entry_name": "THÉÂTRE NATIONAL DE NICE"
         },
+        "users":["u:1"],
         "created": "2020-02-21 14:07:52",
         "updated": "2020-07-02 09:27:47"
       },
@@ -2280,6 +2373,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "THÉÂTRE DE VERDURE"
         },
+        "users":["u:1"],
         "created": "2019-12-02 15:14:38",
         "updated": "2020-11-12 10:12:39"
       },
@@ -2314,6 +2408,7 @@
           "ref_entry_id": "134",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2020-07-28 10:29:41",
         "updated": "2020-12-07 12:52:05"
       },
@@ -2344,6 +2439,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "THÉÂTRE NATIONAL DE NICE"
         },
+        "users":["u:1"],
         "created": "2019-12-02 15:21:25",
         "updated": "2020-09-21 15:34:34"
       },
@@ -2374,6 +2470,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2019-09-20 14:47:04",
         "updated": "2020-06-18 09:20:01"
       },
@@ -2411,6 +2508,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2019-06-04 09:32:24",
         "updated": "2020-11-30 11:14:31"
       },
@@ -2447,6 +2545,7 @@
           "ref_entry_id": "1254",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2019-06-17 11:24:59",
         "updated": "2020-09-28 15:15:22"
       },
@@ -2477,6 +2576,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "ACROPOLIS - AUDITORIUM APOLLON"
         },
+        "users":["u:1"],
         "created": "2020-02-21 10:58:39",
         "updated": "2020-10-26 10:01:46"
       },
@@ -2508,6 +2608,7 @@
           "ref_entry_id": "31345",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2020-01-10 09:55:00",
         "updated": "2020-12-03 12:17:31"
       },
@@ -2539,6 +2640,7 @@
           "ref_entry_id": "31345",
           "ref_entry_name": "THÉÂTRE L'ALPHABET"
         },
+        "users":["u:1"],
         "created": "2020-01-14 09:45:24",
         "updated": "2020-12-03 11:51:41"
       },
@@ -2570,6 +2672,7 @@
           "ref_entry_id": "134",
           "ref_entry_name": "THÉÂTRE L'ALPHABET"
         },
+        "users":["u:1"],
         "created": "2020-07-28 10:55:21",
         "updated": "2020-11-30 12:16:49"
       },
@@ -2601,6 +2704,7 @@
           "ref_entry_id": "206",
           "ref_entry_name": "THÉÂTRE NATIONAL DE NICE"
         },
+        "users":["u:1"],
         "created": "2020-10-13 11:04:02",
         "updated": "2020-12-07 14:43:05"
       },
@@ -2634,6 +2738,7 @@
           "ref_entry_id": "38254",
           "ref_entry_name": "MUSÉE MATISSE"
         },
+        "users":["u:1"],
         "created": "2020-09-16 11:17:38",
         "updated": "2020-12-07 14:34:56"
       },
@@ -2664,6 +2769,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "PROMENADE DU PAILLON"
         },
+        "users":["u:1"],
         "created": "2020-04-14 11:37:51",
         "updated": "2020-10-26 09:57:37"
       },
@@ -2695,6 +2801,7 @@
           "ref_entry_id": "1254",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2020-04-28 10:49:52",
         "updated": "2020-11-12 09:35:00"
       },
@@ -2726,6 +2833,7 @@
           "ref_entry_id": "52183",
           "ref_entry_name": "ACROPOLIS - AUDITORIUM APOLLON"
         },
+        "users":["u:1"],
         "created": "2020-12-03 08:16:48",
         "updated": "2020-12-03 08:26:24"
       },
@@ -2756,6 +2864,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "MUSÉE NATIONAL DU SPORT"
         },
+        "users":["u:1"],
         "created": "2020-03-06 10:24:29",
         "updated": "2020-05-26 10:01:49"
       },
@@ -2787,6 +2896,7 @@
           "ref_entry_id": "31345",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2018-09-24 11:15:32",
         "updated": "2020-12-03 12:05:56"
       },
@@ -2813,6 +2923,7 @@
         "latitude": "43.7742",
         "longitude": "7.19263",
         "note": "0",
+        "users":["u:1"],
         "created": "2020-08-18 12:41:33",
         "updated": "2020-12-08 12:37:58"
       },
@@ -2849,6 +2960,7 @@
           "ref_entry_id": "134",
           "ref_entry_name": "THÉÂTRE L'ALPHABET"
         },
+        "users":["u:1"],
         "created": "2020-07-28 11:09:20",
         "updated": "2020-11-30 12:18:18"
       },
@@ -2879,6 +2991,7 @@
           "ref_entry_id": "126939",
           "ref_entry_name": "THÉÂTRE NATIONAL DE NICE"
         },
+        "users":["u:1"],
         "created": "2020-10-19 09:31:06",
         "updated": "2020-10-28 15:06:07"
       },
@@ -2911,6 +3024,7 @@
           "ref_entry_id": "186",
           "ref_entry_name": "CGR CINEMA"
         },
+        "users":["u:1"],
         "created": "2020-09-15 09:35:15",
         "updated": "2020-12-03 08:28:33"
       },
@@ -2942,6 +3056,7 @@
           "ref_entry_id": "31345",
           "ref_entry_name": "MUSÉE MASSÉNA"
         },
+        "users":["u:1"],
         "created": "2020-12-03 12:06:19",
         "updated": "2020-12-03 14:21:37"
       },
@@ -2970,6 +3085,7 @@
           "ref_entry_id": "130066",
           "ref_entry_name": "THÉÂTRE L'ALPHABET"
         },
+        "users":["u:1"],
         "created": "2020-08-14 10:52:08",
         "updated": "2020-10-06 14:34:22"
       },
@@ -3001,6 +3117,7 @@
         "latitude": "43.7202",
         "longitude": "7.11615",
         "note": "0",
+        "users":["u:1"],
         "created": "2020-11-24 14:22:10",
         "updated": "2020-11-25 17:54:47"
       },
@@ -3035,6 +3152,7 @@
           "ref_entry_id": "40724",
           "ref_entry_name": "COMPLEXE LES ARTS D'AZUR - LE BROC"
         },
+        "users":["u:1"],
         "created": "2015-09-22 12:04:15",
         "updated": "2020-07-27 15:52:34"
       },
@@ -3068,6 +3186,7 @@
           "ref_entry_id": "40724",
           "ref_entry_name": "ALLIANZ RIVIERA"
         },
+        "users":["u:1"],
         "created": "2017-06-16 11:47:02",
         "updated": "2020-12-03 08:33:35"
       },
@@ -3099,6 +3218,7 @@
           "ref_entry_id": "28810",
           "ref_entry_name": "ALLIANZ RIVIERA"
         },
+        "users":["u:1"],
         "created": "2020-07-27 14:33:56",
         "updated": "2020-11-30 12:30:28"
       },
@@ -3134,6 +3254,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "THÉÂTRE DE LA CITÉ"
         },
+        "users":["u:1"],
         "created": "2019-10-03 13:58:56",
         "updated": "2020-10-13 11:58:27"
       },
@@ -3167,6 +3288,7 @@
           "ref_entry_id": "52036",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2020-12-07 09:57:37",
         "updated": "2020-12-07 14:26:42"
       },
@@ -3205,6 +3327,7 @@
           "ref_entry_id": "1254",
           "ref_entry_name": "THÉÂTRE DE LA COMÉDIE DE NICE"
         },
+        "users":["u:1"],
         "created": "2020-01-02 15:43:33",
         "updated": "2020-07-31 14:06:22"
       },
@@ -3241,6 +3364,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "ACROPOLIS - AUDITORIUM APOLLON"
         },
+        "users":["u:1"],
         "created": "2019-12-02 14:35:38",
         "updated": "2020-10-19 10:24:44"
       },
@@ -3275,6 +3399,7 @@
           "ref_entry_id": "52036",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2020-09-14 15:42:09",
         "updated": "2020-12-07 14:32:37"
       },
@@ -3311,6 +3436,7 @@
           "ref_entry_id": "134",
           "ref_entry_name": "THÉÂTRE DE LA COMÉDIE DE NICE"
         },
+        "users":["u:1"],
         "created": "2020-07-28 10:19:40",
         "updated": "2020-11-30 10:29:57"
       },
@@ -3347,6 +3473,7 @@
           "ref_entry_id": "1254",
           "ref_entry_name": "THÉÂTRE NATIONAL DE NICE"
         },
+        "users":["u:1"],
         "created": "2020-04-28 10:31:01",
         "updated": "2020-07-31 13:59:28"
       },
@@ -3377,6 +3504,7 @@
           "ref_entry_id": "134",
           "ref_entry_name": "ACROPOLIS - AUDITORIUM APOLLON"
         },
+        "users":["u:1"],
         "created": "2020-07-28 12:24:32",
         "updated": "2020-11-30 12:09:36"
       },
@@ -3411,6 +3539,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "THÉÂTRE NATIONAL DE NICE"
         },
+        "users":["u:1"],
         "created": "2019-12-02 14:53:01",
         "updated": "2020-09-07 15:13:06"
       },
@@ -3445,6 +3574,7 @@
           "ref_entry_id": "52036",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2020-09-14 14:21:38",
         "updated": "2020-12-07 14:30:41"
       },
@@ -3476,6 +3606,7 @@
           "ref_entry_id": "1254",
           "ref_entry_name": "THÉÂTRE DE LA COMÉDIE DE NICE"
         },
+        "users":["u:1"],
         "created": "2020-03-12 14:55:46",
         "updated": "2020-07-31 12:24:26"
       },
@@ -3508,6 +3639,7 @@
         "latitude": "0",
         "longitude": "0",
         "note": "0",
+        "users":["u:1"],
         "created": "2020-11-23 15:09:03",
         "updated": "2020-11-25 17:52:21"
       },
@@ -3534,6 +3666,7 @@
         "latitude": "43.7742",
         "longitude": "7.19266",
         "note": "0",
+        "users":["u:1"],
         "created": "2020-08-18 14:16:16",
         "updated": "2020-12-08 12:35:54"
       },
@@ -3565,6 +3698,7 @@
           "ref_entry_id": "1254",
           "ref_entry_name": "ACROPOLIS - AUDITORIUM APOLLON"
         },
+        "users":["u:1"],
         "created": "2019-10-28 10:05:59",
         "updated": "2020-11-12 09:27:36"
       },
@@ -3601,6 +3735,7 @@
           "ref_entry_id": "28171",
           "ref_entry_name": "ACROPOLIS - AUDITORIUM APOLLON"
         },
+        "users":["u:1"],
         "created": "2020-03-10 15:18:01",
         "updated": "2020-07-31 14:12:43"
       },
@@ -3632,6 +3767,7 @@
           "ref_entry_id": "1254",
           "ref_entry_name": "ACROPOLIS EXPOSITIONS"
         },
+        "users":["u:1"],
         "created": "2020-05-19 09:42:44",
         "updated": "2020-10-08 11:56:23"
       },
@@ -3661,6 +3797,7 @@
           "ref_entry_id": "1254",
           "ref_entry_name": "ACROPOLIS - AUDITORIUM APOLLON"
         },
+        "users":["u:1"],
         "created": "2019-08-20 10:57:53",
         "updated": "2020-07-31 14:08:55"
       },
@@ -3692,6 +3829,7 @@
           "ref_entry_id": "31345",
           "ref_entry_name": "ACROPOLIS - AUDITORIUM APOLLON"
         },
+        "users":["u:1"],
         "created": "2020-03-06 11:50:07",
         "updated": "2020-12-03 11:44:46"
       },
@@ -3722,6 +3860,7 @@
           "ref_entry_id": "94031",
           "ref_entry_name": "THÉÂTRE L'ALPHABET"
         },
+        "users":["u:1"],
         "created": "2020-01-28 14:51:40",
         "updated": "2020-12-03 09:49:31"
       },
@@ -3748,6 +3887,7 @@
         "latitude": "43.8085",
         "longitude": "7.1689",
         "note": "0",
+        "users":["u:1"],
         "created": "2019-07-30 15:01:28",
         "updated": "2020-08-14 15:07:19"
       },
@@ -3783,6 +3923,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "BUBBLE ART"
         },
+        "users":["u:1"],
         "created": "2019-12-02 15:03:15",
         "updated": "2020-03-12 14:40:06"
       },
@@ -3818,6 +3959,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2018-09-25 10:13:13",
         "updated": "2020-12-03 08:35:41"
       },
@@ -3849,6 +3991,7 @@
           "ref_entry_id": "1254",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2020-04-28 10:38:35",
         "updated": "2020-11-12 09:38:55"
       },
@@ -3880,6 +4023,7 @@
           "ref_entry_id": "28810",
           "ref_entry_name": "ACROPOLIS - AUDITORIUM APOLLON"
         },
+        "users":["u:1"],
         "created": "2020-06-04 09:56:31",
         "updated": "2020-11-30 12:27:13"
       },
@@ -3910,6 +4054,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "THÉÂTRE DE LA CITÉ"
         },
+        "users":["u:1"],
         "created": "2019-12-20 10:18:46",
         "updated": "2020-11-12 09:59:02"
       },
@@ -3941,6 +4086,7 @@
           "ref_entry_id": "134",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2020-07-28 12:16:58",
         "updated": "2020-11-30 12:08:02"
       },
@@ -3972,6 +4118,7 @@
           "ref_entry_id": "31345",
           "ref_entry_name": "THÉÂTRE NATIONAL DE NICE"
         },
+        "users":["u:1"],
         "created": "2020-12-03 11:25:13",
         "updated": "2020-12-03 14:19:29"
       },
@@ -4003,6 +4150,7 @@
           "ref_entry_id": "134",
           "ref_entry_name": "THÉÂTRE L'ALPHABET"
         },
+        "users":["u:1"],
         "created": "2020-07-28 12:28:53",
         "updated": "2020-11-30 12:11:01"
       },
@@ -4034,6 +4182,7 @@
           "ref_entry_id": "1254",
           "ref_entry_name": "THÉÂTRE NATIONAL DE NICE"
         },
+        "users":["u:1"],
         "created": "2020-02-21 11:32:51",
         "updated": "2020-07-31 14:07:46"
       },
@@ -4070,6 +4219,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "ACROPOLIS - AUDITORIUM APOLLON"
         },
+        "users":["u:1"],
         "created": "2019-06-04 09:52:29",
         "updated": "2020-11-30 11:34:01"
       },
@@ -4104,6 +4254,7 @@
           "ref_entry_id": "111",
           "ref_entry_name": "PALAIS NIKAIA"
         },
+        "users":["u:1"],
         "created": "2019-10-03 12:02:24",
         "updated": "2020-07-31 14:34:55"
       }
