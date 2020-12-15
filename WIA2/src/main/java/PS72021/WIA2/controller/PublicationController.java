@@ -63,8 +63,6 @@ public class PublicationController {
                 Group group = GroupController.group(authorSplit[authorSplit.length-1]);
                 publication.setAuthorGroup(group);
             }
-
-            System.out.println(publication.getAuthorName());
         }
         return publications;
     }

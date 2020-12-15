@@ -14,7 +14,7 @@
             </figure>
           </div>
           <div class="media-content">
-            <time style="color: red">{{evenement.start}}-{{evenement.end}}</time>
+            <time style="color: red">Début:{{evenement.start}} Fin:{{evenement.end}}</time>
             <p class="title is-4">{{evenement.name}}</p> <!--  -->
             <p class="subtitle is-6">{{evenement.categories[0]}}</p>
           </div>
