@@ -89,7 +89,7 @@ public class EventController {
 
         String filePath = "database/evenements2.jsonld";
         ResultSet results = Application.executeQuery(query, filePath);
-        for (int i = 1; results.hasNext() && i < 25; i++) {
+        for (int i = 1; results.hasNext() && events.size()<10; i++) {
             QuerySolution querySolution = results.next();
             query = "SELECT * WHERE {\n" +
                     "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/events#name_fr> ?name_fr." +
