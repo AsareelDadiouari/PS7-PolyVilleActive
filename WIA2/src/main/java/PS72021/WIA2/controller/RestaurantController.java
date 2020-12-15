@@ -21,7 +21,7 @@ public class RestaurantController {
     @RequestMapping("/restaurants")
     public List<Restaurant> getRestaurants()throws Exception{
         List<Restaurant> restaurants = new ArrayList<>();
-        String filePath = "database/restaurants.jsonld";
+        String filePath = "database/restaurants2.jsonld";
 
         String query = "SELECT DISTINCT ?s ?p ?o WHERE {\n" +
                 "?s <http://www.ps7-wia2.com/restaurants#restaurants> ?o " +
@@ -29,30 +29,30 @@ public class RestaurantController {
         ResultSet results = Application.executeQuery(query, filePath);
 
 
-        for (int i = 1; results.hasNext(); i++){
+        for (int i = 1; results.hasNext()  && i < 25; i++){
             QuerySolution querySolution = results.next();
             query = "SELECT DISTINCT * WHERE {\n" +
                     "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/restaurants#name_fr> ?name_fr." +
-                    "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/restaurants#address> ?address." +
-                    "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/restaurants#amenities> ?amenities." +
-                    "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/restaurants#services> ?services." +
+                    "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/restaurants#address_line1> ?address_line1." +
+                    "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/restaurants#amenity> ?amenity." +
+                    "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/restaurants#service> ?service." +
                     "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/restaurants#latitude> ?latitude." +
                     "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/restaurants#longitude> ?longitude." +
                     "}";
 
             ResultSet results2 = Application.executeQuery(query, filePath);
             QuerySolution sol = results2.next();
-            Restaurant restaurant = new Restaurant(i,  sol.get("name_fr").toString(),sol.get("address").toString(),new HashSet<>(),new HashSet<>(),
-                    sol.get("longitude").asLiteral().getDouble() ,sol.get("longitude").asLiteral().getDouble());
+            Restaurant restaurant = new Restaurant(i,  sol.get("name_fr").toString(),sol.get("address_line1").toString(),new HashSet<>(),new HashSet<>(),
+                    sol.get("latitude").asLiteral().getDouble() ,sol.get("longitude").asLiteral().getDouble());
             Set<String> amenities = new HashSet<>();
             Set<String> services = new HashSet<>();
-            services.add(sol.get("services").toString());
-            amenities.add(sol.get("amenities").toString());
+            services.add(sol.get("service").toString());
+            amenities.add(sol.get("amenity").toString());
 
             for (;results2.hasNext();) {
                 sol = results2.next();
-                services.add(sol.get("services").toString());
-                amenities.add(sol.get("amenities").toString());
+                services.add(sol.get("service").toString());
+                amenities.add(sol.get("amenity").toString());
             }
             restaurant.setAmenities(amenities);
             restaurant.setServices(services);

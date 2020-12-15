@@ -24,7 +24,7 @@ public class EventController {
 
         String filePath = "database/evenements2.jsonld";
         ResultSet results = Application.executeQuery(query, filePath);
-        for (int i = 1; results.hasNext(); i++) {
+        for (int i = 1; results.hasNext()  && i < 25; i++) {
             QuerySolution querySolution = results.next();
            query = "SELECT * WHERE {\n" +
                     "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/events#name_fr> ?name_fr." +
@@ -45,18 +45,15 @@ public class EventController {
             LocalDate end = LocalDate.parse(sol.get("?end").toString());
 
             ArrayList<String> profiles = new ArrayList<>();
+            ArrayList<String> categories = new ArrayList<>();
             profiles.add(sol.get("profile").toString());
+            categories.add(sol.get("categories").toString());
             for (;results2.hasNext();) {
                 sol = results2.next();
                 profiles.add(sol.get("profile").toString());
-            }
-
-            ArrayList<String> categories = new ArrayList<>();
-           categories.add(sol.get("categories").toString());
-            for (;results2.hasNext();) {
-                sol = results2.next();
                 categories.add(sol.get("categories").toString());
             }
+
             ArrayList<String> users = new ArrayList<>();
            String query2 = "SELECT ?users WHERE {" +
                     "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/events#users> ?users." +
@@ -92,7 +89,7 @@ public class EventController {
 
         String filePath = "database/evenements2.jsonld";
         ResultSet results = Application.executeQuery(query, filePath);
-        for (int i = 1; results.hasNext(); i++) {
+        for (int i = 1; results.hasNext() && i < 25; i++) {
             QuerySolution querySolution = results.next();
             query = "SELECT * WHERE {\n" +
                     "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/events#name_fr> ?name_fr." +
