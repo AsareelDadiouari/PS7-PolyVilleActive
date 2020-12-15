@@ -7,19 +7,19 @@
             <h2><strong>Tourisme</strong></h2>
             <ul>
               <li>
-              <a :href="'/u/' + $route.params.id + '/patrimoine'">Patrimoine</a></li>
+              <a :href="'/polyville/' + $route.params.id + '/patrimoine'">Patrimoine</a></li>
               <li>
-              <a :href="'/u/' + $route.params.id + '/centres-sportifs'">Centres sportifs</a></li>
+              <a :href="'/polyville/' + $route.params.id + '/centres-sportifs'">Centres sportifs</a></li>
               <li>
-              <a :href="'/u/' + $route.params.id + '/commerces'">Commerces</a></li>
+              <a :href="'/polyville/' + $route.params.id + '/commerces'">Commerces</a></li>
               <li><a href="#">Présentation et accès</a></li>
             </ul>
           </div>
           <div class="column is-3">
             <h2><strong>Services</strong></h2>
             <ul>
-              <li><a :href="'/u/' + $route.params.id + '/evenements'">Événements</a></li>
-              <li><a :href="'/u/' + $route.params.id + '/stationnement'">Stationement et transport en commun</a></li>
+              <li><a :href="'/polyville/' + $route.params.id + '/evenements'">Événements</a></li>
+              <li><a :href="'/polyville/' + $route.params.id + '/stationnement'">Stationement et transport en commun</a></li>
             </ul>
           </div>
           <div class="column is-4">

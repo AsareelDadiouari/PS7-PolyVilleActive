@@ -11,7 +11,7 @@
     <br>
     <br>
     <div class="thebutton">
-    <router-link to="/groupes"><button class="button is-primary">
+    <router-link :to="'/polyville/' + $route.params.id + '/groupes'"><button class="button is-primary">
       Rejoindre un groupe
       </button></router-link></div>
   </div>

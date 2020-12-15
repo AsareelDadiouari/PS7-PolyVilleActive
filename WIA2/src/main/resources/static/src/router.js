@@ -16,7 +16,7 @@ Vue.use(VueRouter)
 const routes = [
     {path: '/', component: Profils, name: "Profils"},
     {
-        path: '/u/:id', component: MainPanel, props: true, children: [
+        path: '/polyville/:id', component: MainPanel, props: true, children: [
             {path: '', component: Accueil, name: "Accueil"},
             {path: 'patrimoine', component: PatrimoinePage, name: "Patrimoine"},
             {path: 'centres-sportifs', component: CentresSportifsPage, name: "Centres Sportifs"},
