@@ -37,11 +37,10 @@ public class EventController {
                     "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/events#images> ?images." +
                     "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/events#latitude> ?latitude." +
                     "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/events#longitude> ?longitude." +
-                   /* "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/events#users> ?users." +*/
+                    "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/events#users> ?users." +
                     "}";
             ResultSet results2 = Application.executeQuery(query, filePath);
             QuerySolution sol = results2.next();
-
             LocalDate start = LocalDate.parse(sol.get("?start").toString());
             LocalDate end = LocalDate.parse(sol.get("?end").toString());
 
@@ -59,7 +58,7 @@ public class EventController {
                 categories.add(sol.get("categories").toString());
             }
             ArrayList<String> users = new ArrayList<>();
-           /*String query2 = "SELECT ?users WHERE {" +
+           String query2 = "SELECT ?users WHERE {" +
                     "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/events#users> ?users." +
                     "}";
             ResultSet resultSet3 = Application.executeQuery(query2, filePath);
@@ -70,7 +69,7 @@ public class EventController {
             for (;resultSet3.hasNext();){
                 String temp = resultSet3.next().get("users").toString();
                 users.add(temp);
-            }*/
+            }
 
             String[] test = querySolution.get("o").toString().split("/", -1);
             Event event = new Event (Integer.parseInt(test[test.length-1]), sol.get("?name_fr").toString(), start, end, sol.get("address").toString(),profiles,categories,
@@ -106,7 +105,7 @@ public class EventController {
                     "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/events#images> ?images." +
                     "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/events#latitude> ?latitude." +
                     "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/events#longitude> ?longitude." +
-                    /*"<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/events#users> ?users." +*/
+                    "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/events#users> ?users." +
                     "}";
             ResultSet results2 = Application.executeQuery(query, filePath);
             QuerySolution sol = results2.next();
@@ -131,11 +130,11 @@ public class EventController {
 
             if(recommanded) {
                 ArrayList<String> usersIndb = new ArrayList<>();
-                /*usersIndb.add(sol.get("users").toString());
+                usersIndb.add(sol.get("users").toString());
                 for (;results2.hasNext();) {
                     sol = results2.next();
                     usersIndb.add(sol.get("users").toString().substring(sol.get("users").toString().length() - 1));
-                }*/
+                }
 
                 LocalDate start = LocalDate.parse(sol.get("?start").toString());
                 LocalDate end = LocalDate.parse(sol.get("?end").toString());

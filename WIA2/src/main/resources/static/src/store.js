@@ -5,16 +5,23 @@ Vue.use(Vuex)
 
 const Users = {
     state: {
-        users: []
+        users: [],
+        user: Object
     },
     mutations: {
         setUsers (state, payload) {
             state.users = payload
+        },
+        setUser(state, payload) {
+            state.user = payload
         }
     },
     getters: {
         getUsers(state) {
            return state.users
+        },
+        getUser(state) {
+            return state.user
         },
         getUserById(state, id){
             return state.users + id;
@@ -25,6 +32,14 @@ const Users = {
             try {
                 const response = await Vue.axios.get('http://localhost:8090/users')
                 context.commit('setUsers', response.data)
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        async setUser(context, payload) {
+            try {
+                const response = await Vue.axios.get('http://localhost:8090/user?userId=' + payload.userId)
+                context.commit('setUser', response.data)
             } catch (err) {
                 console.log(err)
             }

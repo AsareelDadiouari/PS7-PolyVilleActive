@@ -3,19 +3,19 @@
     <div class="level-item has-text-centered container head">
       <b-navbar class=" navbar is-light">
         <template class="items" slot="burger">
-          <b-navbar-item class="item" :href="'/u/' + $route.params.id">
+          <b-navbar-item class="item" :href="'/polyville/' + $route.params.id">
             Accueil
           </b-navbar-item>
           <b-navbar-dropdown class="item" label="Tourisme">
-            <b-navbar-item :href="'/u/' + $route.params.id + '/patrimoine'">
+            <b-navbar-item :href="'/polyville/' + $route.params.id + '/patrimoine'">
               Patrimoine
             </b-navbar-item>
-            <b-navbar-item :href="'/u/' + $route.params.id + '/centres-sportifs'">
+            <b-navbar-item :href="'/polyville/' + $route.params.id + '/centres-sportifs'">
               Centres sportifs
-            </b-navbar-item><b-navbar-item :href="'/u/' + $route.params.id + '/commerces'">
+            </b-navbar-item><b-navbar-item :href="'/polyville/' + $route.params.id + '/commerces'">
               Commerces
             </b-navbar-item>
-            <b-navbar-item :href="'/u/' + $route.params.id + '/restaurants'">
+            <b-navbar-item :href="'/polyville/' + $route.params.id + '/restaurants'">
             Restaurants
           </b-navbar-item>
             <b-navbar-item href="#">
@@ -25,7 +25,7 @@
           <b-navbar-dropdown class="item" label="Service"><b-navbar-item :href="'/u/' + $route.params.id + '/evenements'">
               Événements
             </b-navbar-item>
-            <b-navbar-item :href="'/u/' + $route.params.id + '/stationnement'">
+            <b-navbar-item :href="'/polyville/' + $route.params.id + '/stationnement'">
               Stationement et transport en commun
             </b-navbar-item>
           </b-navbar-dropdown>
@@ -45,8 +45,12 @@
         </div>
       </b-navbar>
       <div class="user">
-        <img :src="picturePath"/>
-        <p>{{ userName }}</p>
+        <div class="image is-32x32">
+          <img :src="require('../assets/Persona4.png')"/>
+        </div>
+        <div class="name">
+        <p>{{user.firstname}}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -62,6 +66,14 @@ export default {
   methods: {
     searchIconClick(){
       console.log("Search Icon is clicked")
+    },
+  },
+  created() {
+    this.$store.dispatch('setUser', {userId: this.$route.params.id})
+  },
+  computed: {
+    user() {
+      return this.$store.getters.getUser
     }
   }
 }
@@ -85,6 +97,11 @@ export default {
   margin-left: 200px;
   display: flex;
   color: black;
+}
+
+.name {
+  padding-left: 8px;
+  margin: auto;
 }
 
 </style>

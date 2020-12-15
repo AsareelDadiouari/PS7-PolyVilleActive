@@ -1,6 +1,6 @@
 <template>
   <div class="user">
-    <router-link :to="'/u/' + user.id"><img :src="require('../assets/Persona4.png')" alt="Image Profil"/></router-link>
+    <router-link :to="'/polyville/' + user.id"><img :src="require('../assets/Persona4.png')" alt="Image Profil"/></router-link>
     <p>{{user.firstname}}</p>
   </div>
 </template>
