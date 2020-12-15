@@ -1,99 +1,90 @@
 {
-	"@id": "http://www.ps7-wia2.com/groups/",
-	"@type": "Groupes",
-	"groups": [
-		{
-			"@id": "g:1",
-			"@type": "Group",
-			"name": "Groupe1",
-			"admin": "u:1",
-			"description": "Vos oeuvres musicales",
-			"members" : [],
-			"interests": ["Musique"],
-			"publications": [],
-			"types": ["Information", "Partage"]
-		},
-		{
-			"@id": "g:2",
-			"@type": "Group",
-			"name": "Groupe2",
-			"admin": "u:1",
-			"description": "L'amour de la salsa",
-			"members" : [],
-			"interests": ["Danse"],
-			"publications": [],
-			"types": ["Partage"]
-		},
-		{
-			"@id": "g:3",
-			"@type": "Group",
-			"name": "Groupe3",
-			"admin": "u:1",
-			"description": "La nature est tout ce qu'il y a de plus splendide",
-			"members" : [],
-			"interests": ["Nature"],
-			"publications": [],
-			"types": ["Information"]
-		},
-		{
-			"@id": "g:4",
-			"@type": "Group",
-			"name": "Groupe4",
-			"admin": "u:1",
-			"description": "Un oiseau par ci ! Un oiseau par là !",
-			"members" : [],
-			"interests": ["Oiseau"],
-			"publications": [],
-			"types": ["Partage", "Information"]
-		},
-		{
-			"@id": "g:5",
-			"@type": "Group",
-			"name": "Groupe5",
-			"admin": "u:1",
-			"description": "Vous avez dit description ?",
-			"members" : [],
-			"interests": ["Divers"],
-			"publications": [],
-			"types": ["Humour"]
-		},
-		{
-			"@id": "g:6",
-			"@type": "Group",
-			"name": "Groupe6",
-			"admin": "u:1",
-			"description": "L'humour est le maître mot de cet endroit",
-			"members" : [],
-			"interests": ["Spectacle", "Théâtre"],
-			"publications": [],
-			"types": ["Humour"]
-		}
-	],
-	"@context": {
-		"Groups": "foaf:groups#Groups",
-		"Group": "foaf:groups#Group",
-		"groups": "foaf:groups#groups",
-		"name": "foaf:groups#name",
-		"admin": 
-		{
-	      "@id": "foaf:groups#admin",
-	      "@type": "@id"
-	    },
-	    "description": "foaf:groups#description",
-	    "members":
-	    {
-	      "@id": "foaf:groups#members",
-	      "@type": "@id"
-	    },
-		"interests": "foaf:groups#interests",
-		"publications":
-		{
-	      "@id": "foaf:groups#publications",
-	      "@type": "@id"
-	    },
-	  	"types": "foaf:groups#types",
-	  	"foaf": "http://www.ps7-wia2.com/",
-	  	"g": "http://www.ps7-wia2.com/groups/",
-	  	"u": "http://www.ps7-wia2.com/users/"
-	}
+  "@graph" : [ {
+    "@id" : "foaf:groups/",
+    "@type" : "file:///C:/Users/Fred/Desktop/developpement/ps7/PS7-20-21-WIA2/WIA2/database/database/Groupes",
+    "groups" : [ "g:1", "g:2", "g:3", "g:4", "g:5", "g:6" ]
+  }, {
+    "@id" : "g:1",
+    "@type" : "groups#Group",
+    "admin" : "u:1",
+    "description" : "Vos oeuvres musicales",
+    "interests" : "Musique",
+    "members" : [ "http://www.ps7-wia2.com/users/5", "http://www.ps7-wia2.com/users/1" ],
+    "name" : "Groupe1",
+    "types" : [ "Information", "Partage" ]
+  }, {
+    "@id" : "g:2",
+    "@type" : "groups#Group",
+    "admin" : "u:1",
+    "description" : "L'amour de la salsa",
+    "interests" : "Danse",
+    "members" : [ "http://www.ps7-wia2.com/users/5", "http://www.ps7-wia2.com/users/1" ],
+    "name" : "Groupe2",
+    "types" : "Partage"
+  }, {
+    "@id" : "g:3",
+    "@type" : "groups#Group",
+    "admin" : "u:1",
+    "description" : "La nature est tout ce qu'il y a de plus splendide",
+    "interests" : "Nature",
+    "members" : [ "http://www.ps7-wia2.com/users/5", "http://www.ps7-wia2.com/users/1" ],
+    "name" : "Groupe3",
+    "types" : "Information"
+  }, {
+    "@id" : "g:4",
+    "@type" : "groups#Group",
+    "admin" : "u:1",
+    "description" : "Un oiseau par ci ! Un oiseau par là !",
+    "interests" : "Oiseau",
+    "members" : [ "http://www.ps7-wia2.com/users/1", "http://www.ps7-wia2.com/users/5" ],
+    "name" : "Groupe4",
+    "types" : [ "Partage", "Information" ]
+  }, {
+    "@id" : "g:5",
+    "@type" : "groups#Group",
+    "admin" : "u:1",
+    "description" : "Vous avez dit description ?",
+    "interests" : "Divers",
+    "members" : [ "http://www.ps7-wia2.com/users/1", "http://www.ps7-wia2.com/users/5" ],
+    "name" : "Groupe5",
+    "types" : "Humour"
+  }, {
+    "@id" : "g:6",
+    "@type" : "groups#Group",
+    "admin" : "u:1",
+    "description" : "L'humour est le maître mot de cet endroit",
+    "interests" : [ "Spectacle", "Théâtre" ],
+    "members" : [ "http://www.ps7-wia2.com/users/1", "http://www.ps7-wia2.com/users/5" ],
+    "name" : "Groupe6",
+    "types" : "Humour"
+  } ],
+  "@context" : {
+    "types" : {
+      "@id" : "http://www.ps7-wia2.com/groups#types"
+    },
+    "name" : {
+      "@id" : "http://www.ps7-wia2.com/groups#name"
+    },
+    "members" : {
+      "@id" : "http://www.ps7-wia2.com/groups#members"
+    },
+    "interests" : {
+      "@id" : "http://www.ps7-wia2.com/groups#interests"
+    },
+    "description" : {
+      "@id" : "http://www.ps7-wia2.com/groups#description"
+    },
+    "admin" : {
+      "@id" : "http://www.ps7-wia2.com/groups#admin",
+      "@type" : "@id"
+    },
+    "groups" : {
+      "@id" : "http://www.ps7-wia2.com/groups#groups",
+      "@type" : "@id"
+    },
+    "@vocab" : "http://www.ps7-wia2.com/",
+    "u" : "http://www.ps7-wia2.com/users/",
+    "g" : "http://www.ps7-wia2.com/groups/",
+    "foaf" : "http://www.ps7-wia2.com/"
+  }
 }
