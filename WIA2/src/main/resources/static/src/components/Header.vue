@@ -22,7 +22,7 @@
               Présentation et accès
             </b-navbar-item>
           </b-navbar-dropdown>
-          <b-navbar-dropdown class="item" label="Service"><b-navbar-item :href="'/u/' + $route.params.id + '/evenements'">
+          <b-navbar-dropdown class="item" label="Service"><b-navbar-item :href="'/polyville/' + $route.params.id + '/evenements'">
               Événements
             </b-navbar-item>
             <b-navbar-item :href="'/polyville/' + $route.params.id + '/stationnement'">
@@ -41,17 +41,33 @@
                      icon-clickable
                      @icon-click="searchIconClick">
             </b-input>
-          </b-field>
+          </b-field>          
         </div>
       </b-navbar>
       <div class="user">
-        <div class="image is-32x32">
+        <nav class="navbar is-light" role="navigation" aria-label="dropdown navigation">
+            <div class="image2">
+              <div class="image is-32x32">
           <img :src="require('../assets/Persona4.png')"/>
         </div>
-        <div class="name">
-        <p>{{user.firstname}}</p>
         </div>
-      </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless">
+              {{user.firstname}}
+            </a>
+
+    <div class="navbar-dropdown">
+      <a class="navbar-item" href="#">
+        Mes contacts
+      </a>
+      <hr class="navbar-divider">
+      <a class="navbar-item" href="/">
+        Déconnexion
+      </a>
+  </div>
+  </div>
+</nav>
+</div>
     </div>
   </div>
 </template>
@@ -94,14 +110,13 @@ export default {
 }
 
 .user {
-  margin-left: 200px;
+  margin-left: 275px;
   display: flex;
   color: black;
 }
 
-.name {
-  padding-left: 8px;
-  margin: auto;
+.image2 {
+  margin-top: 8px;
 }
 
 </style>
