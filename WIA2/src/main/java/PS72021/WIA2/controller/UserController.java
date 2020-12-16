@@ -19,12 +19,6 @@ public class UserController {
 
     private static final String DATABASE = "http://localhost:3030/bdd";
 
-    /*@CrossOrigin(origins = "http://localhost:8081")
-    @RequestMapping("/user")
-    public User user(@RequestParam Map<String,String> requestParams) {
-        return new User(1, requestParams.get("firstname"), requestParams.get("lastname"), "Visiteur", "role");
-    }*/
-
     @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping("/user")
     public static User user(@RequestParam String userId) {
@@ -50,6 +44,9 @@ public class UserController {
                 interests.add(sol.get("interests").toString());
             }
             user.setInterests(interests.toArray());
+
+            qExec.close();
+            conn.close();
         return user;
     }
 
@@ -88,6 +85,7 @@ public class UserController {
             sol = results.next();
         }
 
+        qExec.close();
         conn.close();
         return users;
     }
