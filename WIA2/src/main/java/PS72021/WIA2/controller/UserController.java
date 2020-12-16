@@ -55,13 +55,13 @@ public class UserController {
     public List<User> getUsers() {
         List<User> users = new ArrayList<>();
         String query = "SELECT DISTINCT * WHERE {\n" +
-                "                      ?s <http://www.ps7-wia2.com/users#users> ?o." +
-                "                      ?o <http://www.ps7-wia2.com/users#type> ?type." +
-                "                      ?o <http://www.ps7-wia2.com/users#firstname> ?firstname." +
-                "                      ?o <http://www.ps7-wia2.com/users#lastname> ?lastname." +
-                "                      ?o <http://www.ps7-wia2.com/users#role> ?role." +
-                "                      ?o <http://www.ps7-wia2.com/users#interests> ?interests." +
-                "                  }";
+                    " ?s <http://www.ps7-wia2.com/users#users> ?o." +
+                    " ?o <http://www.ps7-wia2.com/users#type> ?type." +
+                    " ?o <http://www.ps7-wia2.com/users#firstname> ?firstname." +
+                    " ?o <http://www.ps7-wia2.com/users#lastname> ?lastname." +
+                    " ?o <http://www.ps7-wia2.com/users#role> ?role." +
+                    " ?o <http://www.ps7-wia2.com/users#interests> ?interests." +
+                "}";
 
         RDFConnection conn = RDFConnectionFactory.connect(DATABASE);
         QueryExecution qExec = conn.query(query) ;
@@ -79,12 +79,20 @@ public class UserController {
                 user.setInterests(interests.toArray());
                 users.add(user);
                 user = new User (Integer.parseInt(sujet[sujet.length - 1]), sol.get("?firstname").toString(), sol.get("?lastname").toString(), sol.get("?type").toString(), sol.get("role").toString());
-                interests = new HashSet<>();
+                interests.clear();
             }
             interests.add(sol.get("interests").toString());
             sol = results.next();
+            System.out.println(user.getFirstname());
         }
-
+        user.setInterests(interests.toArray());
+        users.add(user);
+        sujet = sol.get("o").toString().split("/", -1);
+        user = new User (Integer.parseInt(sujet[sujet.length - 1]), sol.get("?firstname").toString(), sol.get("?lastname").toString(), sol.get("?type").toString(), sol.get("role").toString());
+        interests.clear();
+        interests.add(sol.get("interests").toString());
+        user.setInterests(interests.toArray());
+        users.add(user);
         qExec.close();
         conn.close();
         return users;

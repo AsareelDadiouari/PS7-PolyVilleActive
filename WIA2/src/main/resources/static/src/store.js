@@ -31,6 +31,7 @@ const Users = {
         async setUsers(context) {
             try {
                 const response = await Vue.axios.get('http://localhost:8090/users')
+                console.log(response.data)
                 context.commit('setUsers', response.data)
             } catch (err) {
                 console.log(err)
@@ -137,20 +138,6 @@ const Groups = {
     mutations: {
         setGroups(state, payload) {
             state.groups = payload
-        },
-        addMember(state, payload) {
-            state.groups.forEach(element => {
-                if (element.id == payload.groupId) {
-                    var alreadyAdd = false;
-                    element.members.forEach(member => {
-                        if (member.id == payload.user.id) {
-                            alreadyAdd = true;
-                        }
-                    })
-                    if (!alreadyAdd)
-                        element.members.push(payload.user)
-                }
-            });
         }
     },
     getters: {
@@ -169,9 +156,10 @@ const Groups = {
         },
         async addMember(context, payload) {
             try {
-                const response = await Vue.axios.get('http://localhost:8090/user?userId=' + payload.userId)
-                console.log(response.data)
-                context.commit('addMember', {groupId: payload.groupId, user: response.data})
+                await Vue.axios.post('http://localhost:8090/groups?groupId=' + payload.groupId + '&userId=' + payload.userId)
+                const response = await Vue.axios.get('http://localhost:8090/groups')
+                context.commit('setGroups', response.data)
+
             } catch (err) {
                 console.log(err)
             }

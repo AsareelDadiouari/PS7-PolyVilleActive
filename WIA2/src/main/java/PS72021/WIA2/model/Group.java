@@ -6,7 +6,7 @@ public class Group {
     private String name;
     private User admin;
     private String description;
-    private User[] members = new User[0];
+    private String[] members = new String[0];
     private String[] interests;
     private String[] types;
 
@@ -17,8 +17,11 @@ public class Group {
         this.description = description;
     }
 
-    public void setMembers(User[] members) {
-        this.members = members;
+    public void setMembers(Object[] members) {
+        this.members = new String[members.length];
+        for (int i = 0; i < this.members.length; i++) {
+            this.members[i] = members[i].toString();
+        }
     }
 
     public void setInterests(Object[] interests) {
@@ -47,7 +50,7 @@ public class Group {
         return admin;
     }
 
-    public User[] getMembers() {
+    public String[] getMembers() {
         return members;
     }
 

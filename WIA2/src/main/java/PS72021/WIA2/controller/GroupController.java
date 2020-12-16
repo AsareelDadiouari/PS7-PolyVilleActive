@@ -3,25 +3,25 @@ package PS72021.WIA2.controller;
 import PS72021.WIA2.Application;
 import PS72021.WIA2.model.Group;
 import PS72021.WIA2.model.User;
+import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.apache.jena.rdf.model.RDFNode;
+import org.apache.jena.rdfconnection.RDFConnection;
+import org.apache.jena.rdfconnection.RDFConnectionFactory;
+import org.apache.jena.system.Txn;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @RestController
 public class GroupController {
 
-    @CrossOrigin(origins = "http://localhost:8081")
+    private static final String DATABASE = "http://localhost:3030/bdd";
+
+    @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping("/group")
-    public static Group group(@RequestParam String groupeId) throws Exception {
-        String filePath = "database/groupes.jsonld";
+    public static Group group(@RequestParam String groupeId){
         Group group;
         String query = "SELECT DISTINCT * WHERE {\n" +
                 "<http://www.ps7-wia2.com/groups/"+groupeId+"> <http://www.ps7-wia2.com/groups#name> ?name." +
@@ -29,60 +29,104 @@ public class GroupController {
                 "<http://www.ps7-wia2.com/groups/"+groupeId+"> <http://www.ps7-wia2.com/groups#interests> ?interests." +
                 "<http://www.ps7-wia2.com/groups/"+groupeId+"> <http://www.ps7-wia2.com/groups#types> ?types." +
                 "<http://www.ps7-wia2.com/groups/"+groupeId+"> <http://www.ps7-wia2.com/groups#description> ?description." +
+                "OPTIONAL { ?o <http://www.ps7-wia2.com/groups#members> ?members }" +
                 "}";
-        ResultSet results2 = Application.executeQuery(query, filePath);
-        QuerySolution sol = results2.next();
+        RDFConnection conn = RDFConnectionFactory.connect(DATABASE);
+        QueryExecution qExec = conn.query(query) ;
+        ResultSet results = qExec.execSelect() ;
+
+        QuerySolution sol = results.next();
         group = new Group (Integer.parseInt(groupeId), sol.get("?name").toString(), new User(1, sol.get("?admin").toString()), sol.get("?description").toString());
         Set<String> interests = new HashSet<>();
         Set<String> types = new HashSet<>();
+        Set<String> members = new HashSet<>();
         interests.add(sol.get("interests").toString());
         types.add(sol.get("types").toString());
-        for (;results2.hasNext();) {
-            sol = results2.next();
+        RDFNode rdfNode = sol.get("members");
+        if (rdfNode != null)
+            members.add(rdfNode.toString());
+        for (;results.hasNext();) {
+            sol = results.next();
             interests.add(sol.get("interests").toString());
             types.add(sol.get("types").toString());
+            rdfNode = sol.get("members");
+            if (rdfNode != null)
+                members.add(rdfNode.toString());
         }
         group.setInterests(interests.toArray());
         group.setTypes(types.toArray());
+        group.setMembers(members.toArray());
+        qExec.close();
+        conn.close();
         return group;
     }
 
     @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping("/groups")
-    public List<Group> getGroups() throws Exception {
+    public List<Group> getGroups() {
         List<Group> groups = new ArrayList<>();
-        String query = "SELECT DISTINCT ?s ?p ?o WHERE {\n" +
-                "?s <http://www.ps7-wia2.com/groups#groups> ?o " +
+        String query = "SELECT DISTINCT * WHERE {\n" +
+                    "?s <http://www.ps7-wia2.com/groups#groups> ?o." +
+                    "?o <http://www.ps7-wia2.com/groups#name> ?name." +
+                    "?o <http://www.ps7-wia2.com/groups#admin> ?admin." +
+                    "?o <http://www.ps7-wia2.com/groups#interests> ?interests." +
+                    "?o <http://www.ps7-wia2.com/groups#types> ?types." +
+                    "?o <http://www.ps7-wia2.com/groups#description> ?description." +
+                    "OPTIONAL { ?o <http://www.ps7-wia2.com/groups#members> ?members }" +
                 "}";
 
-        String filePath = "database/groupes.jsonld";
-        ResultSet results = Application.executeQuery(query, filePath);
-        for (int i = 1; results.hasNext(); i++) {
-            QuerySolution querySolution = results.next();
-            query = "SELECT DISTINCT * WHERE {\n" +
-                    "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/groups#name> ?name." +
-                    "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/groups#admin> ?admin." +
-                    "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/groups#interests> ?interests." +
-                    "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/groups#types> ?types." +
-                    "<" + querySolution.get("o") + "> <http://www.ps7-wia2.com/groups#description> ?description." +
-                    "}";
-            ResultSet results2 = Application.executeQuery(query, filePath);
-            QuerySolution sol = results2.next();
-            String[] sujet = querySolution.get("o").toString().split("/", -1);
-            Group group = new Group (Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name").toString(), new User(1, sol.get("?admin").toString()), sol.get("?description").toString());
-            Set<String> interests = new HashSet<>();
-            Set<String> types = new HashSet<>();
+        RDFConnection conn = RDFConnectionFactory.connect(DATABASE);
+        QueryExecution qExec = conn.query(query) ;
+        ResultSet results = qExec.execSelect() ;
+
+        QuerySolution sol = results.next();
+        String[] sujet = sol.get("o").toString().split("/", -1);
+
+        Group group = new Group (Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name").toString(), new User(1, sol.get("?admin").toString()), sol.get("?description").toString());
+        Set<String> interests = new HashSet<>();
+        Set<String> types = new HashSet<>();
+        Set<String> members = new HashSet<>();
+        RDFNode rdfNode;
+
+        for (; results.hasNext();) {
+            sujet = sol.get("o").toString().split("/", -1);
+            if (Integer.parseInt(sujet[sujet.length - 1]) != group.getId()) {
+                group.setInterests(interests.toArray());
+                group.setTypes(types.toArray());
+                group.setMembers(members.toArray());
+                groups.add(group);
+                group = new Group (Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name").toString(), new User(1, sol.get("?admin").toString()), sol.get("?description").toString());
+                interests.clear();
+                types.clear();
+                members.clear();
+            }
             interests.add(sol.get("interests").toString());
             types.add(sol.get("types").toString());
-            for (;results2.hasNext();) {
-                sol = results2.next();
-                interests.add(sol.get("interests").toString());
-                types.add(sol.get("types").toString());
-            }
-            group.setInterests(interests.toArray());
-            group.setTypes(types.toArray());
-            groups.add(group);
+            rdfNode = sol.get("members");
+            if (rdfNode != null)
+                members.add(rdfNode.toString());
+            sol = results.next();
         }
+        group.setInterests(interests.toArray());
+        group.setTypes(types.toArray());
+        group.setMembers(members.toArray());
+        groups.add(group);
+        qExec.close();
+        conn.close();
         return groups;
+    }
+
+    @CrossOrigin(origins = "http://localhost:8080")
+    @RequestMapping(value = "/groups", method = RequestMethod.POST)
+    public void addMember(@RequestParam String groupId, @RequestParam String userId) {
+        String prefixes =
+                "PREFIX u: <http://www.ps7-wia2.com/users/> " +
+                "PREFIX g: <http://www.ps7-wia2.com/groups/> " +
+                "PREFIX gm: <http://www.ps7-wia2.com/groups#> ";
+        String query = prefixes + " INSERT DATA { g:" + groupId + " gm:members u:" + userId + " }";
+
+        RDFConnection conn = RDFConnectionFactory.connect("http://localhost:3030/bdd/update");
+        Txn.executeWrite(conn, () -> conn.update(query));
+        conn.close();
     }
 }
