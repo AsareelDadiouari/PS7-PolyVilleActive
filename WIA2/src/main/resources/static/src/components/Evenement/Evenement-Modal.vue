@@ -47,7 +47,8 @@
           </div>
         </div>
 
-        <b-button class="is-white">Participer</b-button>
+        <b-button :disabled="dis" id="btn" v-if="!etat" @click="addParticipant()" class="is-white">Participer</b-button>
+        <b-button disabled v-else class="is-white">Vous particpez déja à ce évenement</b-button>
 
       </article>
     </div>
@@ -60,6 +61,28 @@ export default {
   name: "Evenement-Modal",
   props: {
     evenement: Object
+  },
+  data() {
+    return {
+      etat: this.$store.getters.getParticipe,
+      dis: false
+    }
+  },
+  created() {
+    this.$store.dispatch('checkParticipation', {
+      eventId: this.evenement.id,
+      userId: this.$route.params.id
+    })
+  },
+  methods: {
+    addParticipant(){
+      this.$store.dispatch('joinEvenement', {
+        eventId: this.evenement.id,
+        userId: this.$route.params.id
+      })
+      document.getElementById('btn').innerText = 'Vous particpez à ce évenement'
+      this.dis = true
+    },
   }
 }
 </script>
