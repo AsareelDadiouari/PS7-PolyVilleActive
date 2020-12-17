@@ -17,7 +17,7 @@ import java.util.*;
 @RestController
 public class UserController {
 
-    private static final String DATABASE = "http://localhost:3030/bdd";
+    private static final String DATABASE = "http://localhost:3030/data_polyville";
 
     @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping("/user")
