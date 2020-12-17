@@ -47,7 +47,6 @@ public class StoreController {
         Set<String> categories = new HashSet<>();
         categories.add(sol.get("category").toString());
         store.setCategories(categories.toArray());
-
         for (;results.hasNext();) {
             sujet = sol.get("o").toString().split("/", -1);
             if (Integer.parseInt(sujet[sujet.length - 1]) != store.getId()) {
@@ -60,6 +59,7 @@ public class StoreController {
             categories.add(sol.get("category").toString());
             sol = results.next();
         }
+        stores.add(store);
         qExec.close();
         conn.close();
         return stores;
