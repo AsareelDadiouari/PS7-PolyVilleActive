@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     addMember() {
-      this.$store.dispatch("addMember", {groupId: this.group.id, userId: 1})
+      this.$store.dispatch("addMember", {groupId: this.group.id, userId: this.$route.params.id})
     }
   }
 }
