@@ -6,11 +6,14 @@ import PS72021.WIA2.model.User;
 import org.apache.jena.query.*;
 import org.apache.jena.rdfconnection.RDFConnection;
 import org.apache.jena.rdfconnection.RDFConnectionFactory;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.apache.jena.system.Txn;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -198,5 +201,56 @@ public class EventController {
 
         return events;
 
+    }
+
+    @CrossOrigin(origins = "http://localhost:8080")
+    @PostMapping(value = "/events/{eventId}", produces= MediaType.APPLICATION_JSON_VALUE)
+    public String joinEvent(HttpServletRequest req, HttpServletResponse res, @PathVariable("eventId") String eventId) throws IOException {
+        BufferedReader bufferedReader = req.getReader();
+        String userId = bufferedReader.readLine();
+
+        String query = "PREFIX event: <http://www.ps7-wia2.com/events/> " +
+                "PREFIX el: <http://www.ps7-wia2.com/events#> " +
+                "PREFIX u: <http://www.ps7-wia2.com/users/> " +
+                "INSERT DATA { event:" + eventId + " el:users u:" + userId + " }";
+
+        RDFConnection conn = RDFConnectionFactory.connect("http://localhost:3030/data_polyville");
+        Txn.executeWrite(conn, () -> conn.update(query));
+        conn.close();
+
+        res.setStatus(201);
+        return "Vous participez à ce evenement";
+    }
+
+    @CrossOrigin(origins = "http://localhost:8080")
+    @GetMapping(value = "/events/{eventId}/user/{userId}", produces= MediaType.APPLICATION_JSON_VALUE)
+    public boolean checkParticipant(HttpServletResponse res, @PathVariable("eventId") String eventId,
+                                    @PathVariable("userId") String userId) {
+
+        String query = "PREFIX event: <http://www.ps7-wia2.com/events/>\n" +
+                "PREFIX el: <http://www.ps7-wia2.com/events#>\n" +
+                "PREFIX root: <http://www.ps7-wia2.com/events#events>\n" +
+                "PREFIX u: <http://www.ps7-wia2.com/users/>\n" +
+                " SELECT ?user \n" +
+                "WHERE {\n" +
+                "  \tevent:" + eventId + " el:users ?user\n" +
+                "  \tFILTER ( ?user = u:" + userId + " )}\n" +
+                "\n";
+
+        RDFConnection conn = RDFConnectionFactory.connect("http://localhost:3030/data_polyville");
+        QueryExecution qExec = conn.query(query) ;
+        ResultSet results = qExec.execSelect();
+
+        if (results.hasNext()){
+            res.setStatus(200);
+            qExec.close();
+            conn.close();
+            return true;
+        }
+
+        res.setStatus(404);
+        qExec.close();
+        conn.close();
+        return false;
     }
 }
