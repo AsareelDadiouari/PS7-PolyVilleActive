@@ -133,16 +133,23 @@ const Evenements = {
 
 const Groups = {
     state: {
-        groups: []
+        groups: [],
+        recommendedGroups: []
     },
     mutations: {
         setGroups(state, payload) {
             state.groups = payload
+        },
+        setRecommendedGroups(state, payload) {
+            state.recommendedGroups = payload
         }
     },
     getters: {
         getGroups(state){
             return state.groups
+        },
+        getRecommendedGroups(state){
+            return state.recommendedGroups
         }
     },
     actions: {
@@ -150,6 +157,15 @@ const Groups = {
             try {
                 const response = await Vue.axios.get('http://localhost:8090/groups')
                 context.commit('setGroups', response.data)
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        async setRecommendedGroups(context, payload){
+            try {
+                const response = await Vue.axios.get('http://localhost:8090/recommendedGroups?userId=' + payload.userId)
+                console.log(response.data)
+                context.commit('setRecommendedGroups', response.data)
             } catch (err) {
                 console.log(err)
             }

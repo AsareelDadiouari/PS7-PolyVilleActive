@@ -25,11 +25,11 @@ export default {
   name: "RightView",
   components: {GroupeSimpleViewVue},
   created() {
-    this.$store.dispatch('setGroups')
+    this.$store.dispatch('setRecommendedGroups', {userId: this.$route.params.id})
   },
   computed: {
     groups() {
-      return this.$store.getters.getGroups
+      return this.$store.getters.getRecommendedGroups
     }
   }
 }

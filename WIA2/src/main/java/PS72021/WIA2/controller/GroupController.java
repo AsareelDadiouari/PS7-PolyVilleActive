@@ -1,6 +1,5 @@
 package PS72021.WIA2.controller;
 
-import PS72021.WIA2.Application;
 import PS72021.WIA2.model.Group;
 import PS72021.WIA2.model.User;
 import org.apache.jena.query.QueryExecution;
@@ -128,5 +127,69 @@ public class GroupController {
         RDFConnection conn = RDFConnectionFactory.connect("http://localhost:3030/bdd/update");
         Txn.executeWrite(conn, () -> conn.update(query));
         conn.close();
+    }
+
+    @CrossOrigin(origins = "http://localhost:8080")
+    @RequestMapping(value = "/recommendedGroups", method = RequestMethod.GET)
+    public List<Group> recommendedGroup(@RequestParam String userId) {
+        String prefixes =
+                "PREFIX u: <http://www.ps7-wia2.com/users/> " +
+                "PREFIX um: <http://www.ps7-wia2.com/users#> " +
+                "PREFIX g: <http://www.ps7-wia2.com/groups/> " +
+                "PREFIX gm: <http://www.ps7-wia2.com/groups#> ";
+        String query = prefixes + " SELECT DISTINCT * WHERE {" +
+            "?s gm:groups ?o." +
+            "?o gm:interests ?interests." +
+            "?o gm:name ?name." +
+            "?o gm:admin ?admin." +
+            "?o gm:types ?types." +
+            "?o gm:description ?description." +
+            "u:" + userId + " um:interests ?userInterests." +
+            "OPTIONAL {  ?o gm:members ?members. }" +
+                "FILTER ( u:" + userId + " NOT IN (?members) || !BOUND(?members) )" +
+                "FILTER ( ?userInterests IN (?interests) )" +
+            "}";
+
+        RDFConnection conn = RDFConnectionFactory.connect(DATABASE);
+        QueryExecution qExec = conn.query(query) ;
+        ResultSet results = qExec.execSelect() ;
+
+        QuerySolution sol = results.next();
+
+        List<Group> groups = new ArrayList<>();
+        String[] sujet = sol.get("o").toString().split("/", -1);
+
+        Group group = new Group (Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name").toString(), new User(1, sol.get("?admin").toString()), sol.get("?description").toString());
+        Set<String> interests = new HashSet<>();
+        Set<String> types = new HashSet<>();
+        Set<String> members = new HashSet<>();
+        RDFNode rdfNode;
+
+        for (;results.hasNext();) {
+            sujet = sol.get("o").toString().split("/", -1);
+            if (Integer.parseInt(sujet[sujet.length - 1]) != group.getId()) {
+                group.setInterests(interests.toArray());
+                group.setTypes(types.toArray());
+                group.setMembers(members.toArray());
+                groups.add(group);
+                group = new Group (Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name").toString(), new User(1, sol.get("?admin").toString()), sol.get("?description").toString());
+                interests.clear();
+                types.clear();
+                members.clear();
+            }
+            interests.add(sol.get("interests").toString());
+            types.add(sol.get("types").toString());
+            rdfNode = sol.get("members");
+            if (rdfNode != null)
+                members.add(rdfNode.toString());
+            sol = results.next();
+        }
+        group.setInterests(interests.toArray());
+        group.setTypes(types.toArray());
+        group.setMembers(members.toArray());
+        groups.add(group);
+        qExec.close();
+        conn.close();
+        return groups;
     }
 }
