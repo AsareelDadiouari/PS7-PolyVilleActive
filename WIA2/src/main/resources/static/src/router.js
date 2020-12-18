@@ -10,6 +10,7 @@ import RestaurantPage from "@/components/Restaurant/Restaurant-Page";
 import EvenementPage from "@/components/Evenement/Evenement-Page";
 import GroupePage from "@/components/Groupe/Groupe-Page";
 import StationementTransport from "@/pages/StationementTransport";
+import ContactPage from "@/components/Contacts/Contact-Page";
 
 Vue.use(VueRouter)
 
@@ -25,6 +26,7 @@ const routes = [
             {path: 'evenements', component: EvenementPage, name: "Evénements"},
             {path: 'groupes', component: GroupePage, name: "Groupes"},
             {path: 'stationnement', component: StationementTransport, name: "Stationement"},
+            {path: 'mescontacts', component: ContactPage, name: "Mes contacts"},
         ]
     }
 ]

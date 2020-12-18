@@ -57,8 +57,11 @@
             </a>
 
     <div class="navbar-dropdown">
-      <a class="navbar-item" href="#">
+      <a class="navbar-item" :href="'/polyville/' + $route.params.id + '/mescontacts'">
         Mes contacts
+      </a>
+      <a class="navbar-item" href="#">
+        Mes groupes
       </a>
       <hr class="navbar-divider">
       <a class="navbar-item" href="/">

@@ -107,16 +107,24 @@ const Restaurants = {
 
 const Evenements = {
     state: {
-        evenements: []
+        evenements: [],
+        participe: false
     },
     mutations: {
         setEvenement(state, payload){
             state.evenements = payload
+        },
+        setParticipe(state, payload){
+            console.log(payload)
+            state.participe = payload
         }
     },
     getters: {
         getEvenements(state){
             return state.evenements
+        },
+        getParticipe(state){
+            return state.participe
         }
     },
     actions: {
@@ -126,6 +134,23 @@ const Evenements = {
                 context.commit('setEvenement', response.data)
             } catch (err) {
                 console.log(err)
+            }
+        },
+
+        async joinEvenement(context, payload){
+            try {
+                const response = await Vue.axios.post('http://localhost:8090/events/' + payload.eventId, payload.userId)
+                context.commit('setParticipe', response.data)
+            } catch (e){
+                context.commit('setParticipe',e)
+            }
+        },
+        async checkParticipation(context, payload){
+            try {
+                const response = await Vue.axios.get('http://localhost:8090/events/' + payload.eventId + '/user/' + payload.userId)
+                context.commit('setParticipe', response.data)
+            } catch (e){
+                context.commit('setParticipe', e)
             }
         }
     }
