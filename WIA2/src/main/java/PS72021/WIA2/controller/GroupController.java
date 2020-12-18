@@ -124,7 +124,7 @@ public class GroupController {
                 "PREFIX gm: <http://www.ps7-wia2.com/groups#> ";
         String query = prefixes + " INSERT DATA { g:" + groupId + " gm:members u:" + userId + " }";
 
-        RDFConnection conn = RDFConnectionFactory.connect("http://localhost:3030/bdd/update");
+        RDFConnection conn = RDFConnectionFactory.connect(DATABASE + "/update");
         Txn.executeWrite(conn, () -> conn.update(query));
         conn.close();
     }
