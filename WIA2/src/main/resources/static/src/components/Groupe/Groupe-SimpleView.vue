@@ -2,7 +2,7 @@
   <div class="groupe">
     <div class="groupe-desc">
       <div class="title is-6">{{group.name}}</div>
-      <div class="subtitle is-7"> {{group.members.lenght || 0 }} membres - publications</div>
+      <div class="subtitle is-7"> {{group.members.length || 0}} membres</div>
     </div>
   </div>
 </template>

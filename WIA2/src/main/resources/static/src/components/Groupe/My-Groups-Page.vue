@@ -3,16 +3,16 @@
         <div class="container">
             <br>
             <div class="">
-                <h1 class="title is-9"> Listes des Groupes</h1>
+                <h1 class="title is-9"> Mes Groupes</h1>
             </div>
             <br>
-            <div v-if="groups.length > 0" class="columns is-multiline">
-                <div class="column is-one-quarter" v-for="currentGroup in groups" :key="currentGroup.id">
-                    <GroupeCardViewVue :group="currentGroup" :join="false"/>
+            <div v-if="mygroups.length > 0" class="columns is-multiline">
+                <div class="column is-one-quarter" v-for="currentGroup in mygroups" :key="currentGroup.id">
+                    <GroupeCardViewVue :group="currentGroup" :join="true"/>
                 </div>
             </div>
             <div v-else>
-                <h3>Vous avez rejoint tous les groupes !</h3>
+                <h3>Vous n'avez pas rejoint de groupes !</h3>
             </div>
             <br>
         </div>
@@ -26,14 +26,14 @@ import GroupeCardViewVue from './Groupe-CardView.vue';
 import Footer from "@/components/Footer";
 
 export default {
-  name: "Groupe-Page",
+  name: "My-Groups-Page",
   components: {GroupeCardViewVue, Footer},
   created() {
-    this.$store.dispatch('setGroups', {userId: this.$route.params.id})
+    this.$store.dispatch('setMyGroups', {userId: this.$route.params.id})
   },
   computed: {
-    groups() {
-      return this.$store.getters.getGroups
+    mygroups() {
+      return this.$store.getters.getMyGroups
     }
   }
 }

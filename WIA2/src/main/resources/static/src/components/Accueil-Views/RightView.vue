@@ -2,16 +2,25 @@
   <div>
     <div class="container">
       <h1 class="title is-6">Groupes populaires autour de vous</h1>
-      <div class="scrollbar">
+      <div v-if="recommendedGroups.length > 0" class="scrollbar">
+        <div class="column" v-for="currentGroup in recommendedGroups" :key="currentGroup.id">
+          <groupe-simple-view-vue :group="currentGroup"/>
+        </div>
+      </div>
+      <div v-else-if="groups.length > 0" class="scrollbar">
+        <span>Vous n'avez plus de groupes recommandés !</span>
         <div class="column" v-for="currentGroup in groups" :key="currentGroup.id">
           <groupe-simple-view-vue :group="currentGroup"/>
         </div>
+      </div>
+      <div v-else>
+        <span>Vous avez rejoint tous les groupes !</span>
       </div>
     </div>
     <br>
     <br>
     <div class="thebutton">
-    <router-link :to="'/polyville/' + $route.params.id + '/groupes'"><button class="button is-primary">
+    <router-link :to="'/polyville/' + $route.params.id + '/recommended/groupes'"><button class="button is-primary">
       Rejoindre un groupe
       </button></router-link></div>
   </div>
@@ -26,18 +35,22 @@ export default {
   components: {GroupeSimpleViewVue},
   created() {
     this.$store.dispatch('setRecommendedGroups', {userId: this.$route.params.id})
+    this.$store.dispatch('setGroups', {userId: this.$route.params.id})
   },
   computed: {
-    groups() {
+    recommendedGroups() {
       return this.$store.getters.getRecommendedGroups
-    }
+    },
+    groups() {
+      return this.$store.getters.getGroups
+    },
   }
 }
 </script>
 
 <style scoped>
 .container {
-  width: auto;
+  width: 300px;
   height: 425px;
   border-radius: 25px;
   box-shadow: 3px 3px 2px #9f9e9e;
@@ -55,6 +68,6 @@ export default {
 }
 
 .thebutton {
-  margin-left: 80px;
+  margin-left: 110px;
 }
 </style>
