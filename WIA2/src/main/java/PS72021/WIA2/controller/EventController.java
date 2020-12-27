@@ -109,7 +109,7 @@ public class EventController {
 
     @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping("/eventsRecommandations")
-    public ArrayList<Event> getEventsPersonnalises(@RequestParam String userId) throws Exception {
+    public ArrayList<Event> getEventsPersonnalises(@RequestParam String userId) {
         User user = UserController.user(userId);
         String[] interests = user.getInterests();
         ArrayList<Event> events = new ArrayList<>();

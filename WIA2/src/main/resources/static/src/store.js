@@ -289,11 +289,69 @@ const Publications = {
     }
 }
 
+const Bus = {
+    state: {
+        bus: []
+    },
+    mutations: {
+        setBus(state, payload){
+            state.bus = payload
+        }
+    },
+    getters: {
+        getBus(state){
+            return state.bus
+        }
+    },
+    actions: {
+        async setBus(context){
+            try {
+                const url = "http://localhost:8090/bus"
+                const response = await Vue.axios.get(url)
+                context.commit('setBus', response.data)
+            } catch (err) {
+                console.log(err)
+            }
+        }
+    }
+}
+
+const BusRecommandations = {
+    state: {
+        busRecommandations: []
+    },
+    mutations: {
+        setBusRecommandations(state, payload){
+            state.busRecommandations = payload
+        }
+    },
+    getters: {
+        getBusRecommandations(state){
+            return state.busRecommandations
+        }
+    },
+    actions: {
+        async setBusRecommandations(context, payload){
+            try {
+                const latitude = payload.evenement.latitude;
+                const longitude = payload.evenement.longitude;
+                const url = "http://localhost:8090/busRecommandations?latitude=" + latitude + "&longitude=" + longitude
+                const response = await Vue.axios.get(url)
+                context.commit('setBusRecommandations', response.data)
+            } catch (err) {
+                console.log(err)
+            }
+        }
+    }
+}
+
 const store = new Vuex.Store({
     modules: {
         users: Users,
         stores: Stores,
         evenements: Evenements,
+        bus: Bus,
+        busRecommandations: BusRecommandations,
         restaurants: Restaurants,
         groups: Groups,
         evenementsRecommandations: EvenementsRecommandations,

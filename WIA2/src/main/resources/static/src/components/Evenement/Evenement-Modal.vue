@@ -46,10 +46,14 @@
             {{evenement.decription}}
           </div>
         </div>
-
         <b-button :disabled="dis" id="btn" v-if="!etat" @click="addParticipant()" class="is-white">Participer</b-button>
         <b-button disabled v-else class="is-white">Vous particpez déja à ce évenement</b-button>
-
+        <LMap :zoom="zoom" :center="center">
+          <LTileLayer :url="url"></LTileLayer>
+          <div v-for="stopBus in bus" :key="stopBus.id">
+          <LMarker :lat-lng="[stopBus.latitude,stopBus.longitude]"></LMarker>
+          </div>
+        </LMap>
       </article>
     </div>
   </div>
@@ -57,22 +61,38 @@
 </template>
 
 <script>
+import { LMap, LTileLayer, LMarker } from "vue2-leaflet";
 export default {
   name: "Evenement-Modal",
+  components: {
+    LMap,
+    LTileLayer,
+    LMarker
+  },
   props: {
     evenement: Object
   },
   data() {
     return {
       etat: this.$store.getters.getParticipe,
-      dis: false
+      dis: false,
+      url: "https://{s}.tile.osm.org/{z}/{x}/{y}.png",
+      zoom: 15,
+      center: [this.evenement.latitude,this.evenement.longitude],
+      bounds: null
     }
   },
   created() {
+    this.$store.dispatch('setBusRecommandations', {evenement: this.evenement})
     this.$store.dispatch('checkParticipation', {
       eventId: this.evenement.id,
       userId: this.$route.params.id
     })
+  },
+  computed: {
+    bus() {
+      return this.$store.getters.getBusRecommandations
+    }
   },
   methods: {
     addParticipant(){
