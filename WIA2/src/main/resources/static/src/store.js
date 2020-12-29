@@ -159,7 +159,8 @@ const Evenements = {
 const Groups = {
     state: {
         groups: [],
-        recommendedGroups: []
+        recommendedGroups: [],
+        mygroups: []
     },
     mutations: {
         setGroups(state, payload) {
@@ -167,7 +168,10 @@ const Groups = {
         },
         setRecommendedGroups(state, payload) {
             state.recommendedGroups = payload
-        }
+        },
+        setMyGroups(state, payload) {
+            state.mygroups = payload
+        },
     },
     getters: {
         getGroups(state){
@@ -175,12 +179,16 @@ const Groups = {
         },
         getRecommendedGroups(state){
             return state.recommendedGroups
+        },
+        getMyGroups(state){
+            return state.mygroups
         }
     },
     actions: {
-        async setGroups(context){
+        async setGroups(context, payload){
             try {
-                const response = await Vue.axios.get('http://localhost:8090/groups')
+                const response = await Vue.axios.get('http://localhost:8090/groups?userId=' + payload.userId)
+                console.log(response)
                 context.commit('setGroups', response.data)
             } catch (err) {
                 console.log(err)
@@ -195,12 +203,30 @@ const Groups = {
                 console.log(err)
             }
         },
+        async setMyGroups(context, payload){
+            try {
+                const response = await Vue.axios.get('http://localhost:8090/mygroups?userId=' + payload.userId)
+                console.log(response.data)
+                context.commit('setMyGroups', response.data)
+            } catch (err) {
+                console.log(err)
+            }
+        },
         async addMember(context, payload) {
             try {
-                await Vue.axios.post('http://localhost:8090/groups?groupId=' + payload.groupId + '&userId=' + payload.userId)
-                const response = await Vue.axios.get('http://localhost:8090/groups')
-                context.commit('setGroups', response.data)
-
+                await Vue.axios.post('http://localhost:8090/addmember?groupId=' + payload.groupId + '&userId=' + payload.userId)
+                const path = "set" + payload.to;
+                context.dispatch(path, payload)
+                context.dispatch(payload.request, payload)
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        async removeMember(context, payload) {
+            try {
+                await Vue.axios.post('http://localhost:8090/removemember?groupId=' + payload.groupId + '&userId=' + payload.userId)
+                context.dispatch("setMyGroups", payload)
+                context.dispatch(payload.request, payload)
             } catch (err) {
                 console.log(err)
             }
@@ -263,11 +289,69 @@ const Publications = {
     }
 }
 
+const Bus = {
+    state: {
+        bus: []
+    },
+    mutations: {
+        setBus(state, payload){
+            state.bus = payload
+        }
+    },
+    getters: {
+        getBus(state){
+            return state.bus
+        }
+    },
+    actions: {
+        async setBus(context){
+            try {
+                const url = "http://localhost:8090/bus"
+                const response = await Vue.axios.get(url)
+                context.commit('setBus', response.data)
+            } catch (err) {
+                console.log(err)
+            }
+        }
+    }
+}
+
+const BusRecommandations = {
+    state: {
+        busRecommandations: []
+    },
+    mutations: {
+        setBusRecommandations(state, payload){
+            state.busRecommandations = payload
+        }
+    },
+    getters: {
+        getBusRecommandations(state){
+            return state.busRecommandations
+        }
+    },
+    actions: {
+        async setBusRecommandations(context, payload){
+            try {
+                const latitude = payload.evenement.latitude;
+                const longitude = payload.evenement.longitude;
+                const url = "http://localhost:8090/busRecommandations?latitude=" + latitude + "&longitude=" + longitude
+                const response = await Vue.axios.get(url)
+                context.commit('setBusRecommandations', response.data)
+            } catch (err) {
+                console.log(err)
+            }
+        }
+    }
+}
+
 const store = new Vuex.Store({
     modules: {
         users: Users,
         stores: Stores,
         evenements: Evenements,
+        bus: Bus,
+        busRecommandations: BusRecommandations,
         restaurants: Restaurants,
         groups: Groups,
         evenementsRecommandations: EvenementsRecommandations,

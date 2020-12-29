@@ -62,67 +62,134 @@ public class GroupController {
 
     @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping("/groups")
-    public List<Group> getGroups() {
+    public List<Group> getGroups(@RequestParam String userId) {
         List<Group> groups = new ArrayList<>();
-        String query = "SELECT DISTINCT * WHERE {\n" +
-                    "?s <http://www.ps7-wia2.com/groups#groups> ?o." +
-                    "?o <http://www.ps7-wia2.com/groups#name> ?name." +
-                    "?o <http://www.ps7-wia2.com/groups#admin> ?admin." +
-                    "?o <http://www.ps7-wia2.com/groups#interests> ?interests." +
-                    "?o <http://www.ps7-wia2.com/groups#types> ?types." +
-                    "?o <http://www.ps7-wia2.com/groups#description> ?description." +
-                    "OPTIONAL { ?o <http://www.ps7-wia2.com/groups#members> ?members }" +
-                "}";
+        String prefixes =
+                "PREFIX u: <http://www.ps7-wia2.com/users/> " +
+                "PREFIX g: <http://www.ps7-wia2.com/groups/> " +
+                "PREFIX gm: <http://www.ps7-wia2.com/groups#> ";
 
+        String query = prefixes + "SELECT DISTINCT * WHERE {\n" +
+                    "?s gm:groups ?o." +
+                    "?o gm:interests ?interests." +
+                    "?o gm:name ?name." +
+                    "?o gm:admin ?admin." +
+                    "?o gm:types ?types." +
+                    "?o gm:description ?description." +
+                    "?o gm:members ?members." +
+                    "FILTER NOT EXISTS {" +
+                        "OPTIONAL { ?o gm:members ?othersMembers. }" +
+                        "FILTER( u:" + userId + " IN( ?othersMembers) )" +
+                    "}" +
+                "} ORDER BY ?s";
+
+        return executeGetGroupsQuery(groups, query);
+    }
+
+    @CrossOrigin(origins = "http://localhost:8080")
+    @RequestMapping("/mygroups")
+    public List<Group> getMyGroups(@RequestParam String userId) {
+        List<Group> groups = new ArrayList<>();
+
+        String prefixes =
+                "PREFIX u: <http://www.ps7-wia2.com/users/> " +
+                        "PREFIX g: <http://www.ps7-wia2.com/groups/> " +
+                        "PREFIX gm: <http://www.ps7-wia2.com/groups#> ";
+
+        String query = prefixes + " SELECT DISTINCT * WHERE {\n" +
+                "?s gm:groups ?o." +
+                "?o gm:interests ?interests." +
+                "?o gm:name ?name." +
+                "?o gm:admin ?admin." +
+                "?o gm:types ?types." +
+                "?o gm:description ?description." +
+                "?o gm:members ?members." +
+                "FILTER EXISTS {" +
+                "OPTIONAL { ?o gm:members ?othersMembers. }" +
+                "FILTER( u:" + userId + " IN( ?othersMembers) )" +
+                "}" +
+                "} ORDER BY ?s";
+
+        return executeGetGroupsQuery(groups, query);
+    }
+
+    private List<Group> executeGetGroupsQuery(List<Group> groups, String query) {
         RDFConnection conn = RDFConnectionFactory.connect(DATABASE);
-        QueryExecution qExec = conn.query(query) ;
-        ResultSet results = qExec.execSelect() ;
+        QueryExecution qExec = conn.query(query);
+        ResultSet results = qExec.execSelect();
 
-        QuerySolution sol = results.next();
-        String[] sujet = sol.get("o").toString().split("/", -1);
+        if (results.hasNext()) {
+            QuerySolution sol = results.next();
+            String[] sujet = sol.get("o").toString().split("/", -1);
 
-        Group group = new Group (Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name").toString(), new User(1, sol.get("?admin").toString()), sol.get("?description").toString());
-        Set<String> interests = new HashSet<>();
-        Set<String> types = new HashSet<>();
-        Set<String> members = new HashSet<>();
-        RDFNode rdfNode;
+            Group group = new Group(Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name").toString(), new User(1, sol.get("?admin").toString()), sol.get("?description").toString());
+            Set<String> interests = new HashSet<>();
+            Set<String> types = new HashSet<>();
+            Set<String> members = new HashSet<>();
+            RDFNode rdfNode;
 
-        for (; results.hasNext();) {
-            sujet = sol.get("o").toString().split("/", -1);
-            if (Integer.parseInt(sujet[sujet.length - 1]) != group.getId()) {
-                group.setInterests(interests.toArray());
-                group.setTypes(types.toArray());
-                group.setMembers(members.toArray());
-                groups.add(group);
-                group = new Group (Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name").toString(), new User(1, sol.get("?admin").toString()), sol.get("?description").toString());
-                interests.clear();
-                types.clear();
-                members.clear();
+            for (; results.hasNext(); ) {
+                sujet = sol.get("o").toString().split("/", -1);
+                if (Integer.parseInt(sujet[sujet.length - 1]) != group.getId()) {
+                    group.setInterests(interests.toArray());
+                    group.setTypes(types.toArray());
+                    group.setMembers(members.toArray());
+                    groups.add(group);
+                    group = new Group(Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name").toString(), new User(1, sol.get("?admin").toString()), sol.get("?description").toString());
+                    interests.clear();
+                    types.clear();
+                    members.clear();
+                }
+                interests.add(sol.get("interests").toString());
+                types.add(sol.get("types").toString());
+                rdfNode = sol.get("members");
+                if (rdfNode != null)
+                    members.add(rdfNode.toString());
+                sol = results.next();
             }
-            interests.add(sol.get("interests").toString());
-            types.add(sol.get("types").toString());
-            rdfNode = sol.get("members");
-            if (rdfNode != null)
-                members.add(rdfNode.toString());
-            sol = results.next();
+            group.setInterests(interests.toArray());
+            group.setTypes(types.toArray());
+            group.setMembers(members.toArray());
+            groups.add(group);
         }
-        group.setInterests(interests.toArray());
-        group.setTypes(types.toArray());
-        group.setMembers(members.toArray());
-        groups.add(group);
+
         qExec.close();
         conn.close();
         return groups;
     }
 
     @CrossOrigin(origins = "http://localhost:8080")
-    @RequestMapping(value = "/groups", method = RequestMethod.POST)
+    @RequestMapping(value = "/addmember", method = RequestMethod.POST)
     public void addMember(@RequestParam String groupId, @RequestParam String userId) {
         String prefixes =
                 "PREFIX u: <http://www.ps7-wia2.com/users/> " +
+                "PREFIX um: <http://www.ps7-wia2.com/users#> " +
                 "PREFIX g: <http://www.ps7-wia2.com/groups/> " +
                 "PREFIX gm: <http://www.ps7-wia2.com/groups#> ";
-        String query = prefixes + " INSERT DATA { g:" + groupId + " gm:members u:" + userId + " }";
+
+        String query = prefixes + " INSERT DATA { " +
+                    "g:" + groupId + " gm:members u:" + userId + "." +
+                    "u:" + userId + " um:groups g:" + groupId + ". " +
+                "}";
+
+        RDFConnection conn = RDFConnectionFactory.connect(DATABASE + "/update");
+        Txn.executeWrite(conn, () -> conn.update(query));
+        conn.close();
+    }
+
+    @CrossOrigin(origins = "http://localhost:8080")
+    @RequestMapping(value = "/removemember", method = RequestMethod.POST)
+    public void removeMember(@RequestParam String groupId, @RequestParam String userId) {
+        String prefixes =
+                "PREFIX u: <http://www.ps7-wia2.com/users/> " +
+                "PREFIX um: <http://www.ps7-wia2.com/users#> " +
+                "PREFIX g: <http://www.ps7-wia2.com/groups/> " +
+                "PREFIX gm: <http://www.ps7-wia2.com/groups#> ";
+
+        String query = prefixes + " DELETE DATA { " +
+                    "g:" + groupId + " gm:members u:" + userId + ". " +
+                    "u:" + userId + " um:groups g:" + groupId + ". " +
+                "}";
 
         RDFConnection conn = RDFConnectionFactory.connect(DATABASE + "/update");
         Txn.executeWrite(conn, () -> conn.update(query));
@@ -137,57 +204,64 @@ public class GroupController {
                 "PREFIX um: <http://www.ps7-wia2.com/users#> " +
                 "PREFIX g: <http://www.ps7-wia2.com/groups/> " +
                 "PREFIX gm: <http://www.ps7-wia2.com/groups#> ";
-        String query = prefixes + " SELECT DISTINCT * WHERE {" +
-            "?s gm:groups ?o." +
-            "?o gm:interests ?interests." +
-            "?o gm:name ?name." +
-            "?o gm:admin ?admin." +
-            "?o gm:types ?types." +
-            "?o gm:description ?description." +
-            "u:" + userId + " um:interests ?userInterests." +
-            "OPTIONAL {  ?o gm:members ?members. }" +
-                "FILTER ( u:" + userId + " NOT IN (?members) || !BOUND(?members) )" +
+
+        String query = prefixes + " SELECT DISTINCT * WHERE {\n" +
+                "?s gm:groups ?o." +
+                "?o gm:interests ?interests." +
+                "?o gm:name ?name." +
+                "?o gm:admin ?admin." +
+                "?o gm:types ?types." +
+                "?o gm:description ?description." +
+                "?o gm:members ?members." +
+                "u:" + userId + " um:interests ?userInterests." +
                 "FILTER ( ?userInterests IN (?interests) )" +
-            "}";
+                "FILTER NOT EXISTS {" +
+                    "OPTIONAL { ?o gm:members ?othersMembers. }" +
+                    "FILTER( u:" + userId + " IN( ?othersMembers) )" +
+                "}" +
+                "} ORDER BY ?s";
 
         RDFConnection conn = RDFConnectionFactory.connect(DATABASE);
         QueryExecution qExec = conn.query(query) ;
         ResultSet results = qExec.execSelect() ;
 
-        QuerySolution sol = results.next();
-
         List<Group> groups = new ArrayList<>();
-        String[] sujet = sol.get("o").toString().split("/", -1);
 
-        Group group = new Group (Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name").toString(), new User(1, sol.get("?admin").toString()), sol.get("?description").toString());
-        Set<String> interests = new HashSet<>();
-        Set<String> types = new HashSet<>();
-        Set<String> members = new HashSet<>();
-        RDFNode rdfNode;
+        if (results.hasNext()) {
 
-        for (;results.hasNext();) {
-            sujet = sol.get("o").toString().split("/", -1);
-            if (Integer.parseInt(sujet[sujet.length - 1]) != group.getId()) {
-                group.setInterests(interests.toArray());
-                group.setTypes(types.toArray());
-                group.setMembers(members.toArray());
-                groups.add(group);
-                group = new Group (Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name").toString(), new User(1, sol.get("?admin").toString()), sol.get("?description").toString());
-                interests.clear();
-                types.clear();
-                members.clear();
+            QuerySolution sol = results.next();
+            String[] sujet = sol.get("o").toString().split("/", -1);
+
+            Group group = new Group(Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name").toString(), new User(1, sol.get("?admin").toString()), sol.get("?description").toString());
+            Set<String> interests = new HashSet<>();
+            Set<String> types = new HashSet<>();
+            Set<String> members = new HashSet<>();
+            RDFNode rdfNode;
+
+            for (; results.hasNext(); ) {
+                sujet = sol.get("o").toString().split("/", -1);
+                if (Integer.parseInt(sujet[sujet.length - 1]) != group.getId()) {
+                    group.setInterests(interests.toArray());
+                    group.setTypes(types.toArray());
+                    group.setMembers(members.toArray());
+                    groups.add(group);
+                    group = new Group(Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name").toString(), new User(1, sol.get("?admin").toString()), sol.get("?description").toString());
+                    interests.clear();
+                    types.clear();
+                    members.clear();
+                }
+                interests.add(sol.get("interests").toString());
+                types.add(sol.get("types").toString());
+                rdfNode = sol.get("members");
+                if (rdfNode != null)
+                    members.add(rdfNode.toString());
+                sol = results.next();
             }
-            interests.add(sol.get("interests").toString());
-            types.add(sol.get("types").toString());
-            rdfNode = sol.get("members");
-            if (rdfNode != null)
-                members.add(rdfNode.toString());
-            sol = results.next();
+            group.setInterests(interests.toArray());
+            group.setTypes(types.toArray());
+            group.setMembers(members.toArray());
+            groups.add(group);
         }
-        group.setInterests(interests.toArray());
-        group.setTypes(types.toArray());
-        group.setMembers(members.toArray());
-        groups.add(group);
         qExec.close();
         conn.close();
         return groups;

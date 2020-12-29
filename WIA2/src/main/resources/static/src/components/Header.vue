@@ -32,6 +32,9 @@
           <b-navbar-item class="item" href="#">
             Contact
           </b-navbar-item>
+          <b-navbar-item class="item" :href="'/polyville/' + $route.params.id + '/groupes'">
+            Groupes
+          </b-navbar-item>
         </template>
         <div class="search-bar" slot="end">
           <b-field>
@@ -60,7 +63,7 @@
       <a class="navbar-item" :href="'/polyville/' + $route.params.id + '/mescontacts'">
         Mes contacts
       </a>
-      <a class="navbar-item" href="#">
+      <a class="navbar-item" :href="'/polyville/' + $route.params.id + '/mesgroupes'">
         Mes groupes
       </a>
       <hr class="navbar-divider">
