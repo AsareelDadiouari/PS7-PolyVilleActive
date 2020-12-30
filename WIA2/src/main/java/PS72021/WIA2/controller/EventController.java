@@ -56,25 +56,10 @@ public class EventController {
         String address = null;
         while (results.hasNext()) {
             String[] sujet = sol.get("o").toString().split("/", -1);
-            String queryUsers = "PREFIX event: <http://www.ps7-wia2.com/events/>\n" +
-                    "PREFIX el: <http://www.ps7-wia2.com/events#>\n" +
-                    "SELECT DISTINCT * WHERE {\n" +
-                    "event:" + sujet[sujet.length-1] + " el:users + ?users }";
-
-
-            RDFConnection conn1 = RDFConnectionFactory.connect(DATABASE);
-            QueryExecution qExec1 = conn1.query(queryUsers) ;
-            ResultSet results1 = qExec1.execSelect() ;
-
-            while (results1.hasNext()){
-                users.add(results1.next().get("users").toString());
-            }
-
-            qExec1.close();
-            conn1.close();
 
             if(event != null ) {
                 if (Integer.parseInt(sujet[sujet.length - 1]) != event.getId()) {
+
                     events.add(event);
                     profiles = new ArrayList<>();
                     categories = new ArrayList<>();
@@ -115,9 +100,22 @@ public class EventController {
                         sol.get("longitude").asLiteral().getDouble(), users);
             }
 
-                sol = results.next();
+            String queryUsers = "PREFIX event: <http://www.ps7-wia2.com/events/>\n" +
+                    "PREFIX el: <http://www.ps7-wia2.com/events#>\n" +
+                    "SELECT DISTINCT * WHERE {\n" +
+                    "event:" + sujet[sujet.length-1] + " el:users + ?users }";
 
-            users.clear();
+            RDFConnection conn1 = RDFConnectionFactory.connect(DATABASE);
+            QueryExecution qExec1 = conn1.query(queryUsers) ;
+            ResultSet results1 = qExec1.execSelect() ;
+
+            while (results1.hasNext()){
+                users.add(results1.next().get("users").toString());
+            }
+
+            qExec1.close();
+            conn1.close();
+                sol = results.next();
         }
         qExec.close();
         conn.close();
@@ -160,23 +158,6 @@ public class EventController {
         boolean recommanded = false;
         while (results.hasNext()) {
             String[] sujet = sol.get("o").toString().split("/", -1);
-            String queryUsers = "PREFIX event: <http://www.ps7-wia2.com/events/>\n" +
-                    "PREFIX el: <http://www.ps7-wia2.com/events#>\n" +
-                    "SELECT DISTINCT * WHERE {\n" +
-                    "event:" + sujet[sujet.length-1] + " el:users + ?users }";
-
-
-            RDFConnection conn1 = RDFConnectionFactory.connect(DATABASE);
-            QueryExecution qExec1 = conn1.query(queryUsers) ;
-            ResultSet results1 = qExec1.execSelect() ;
-
-            while (results1.hasNext()){
-                users.add(results1.next().get("users").toString());
-            }
-
-            qExec1.close();
-            conn1.close();
-
             if(event != null ) {
                 if (Integer.parseInt(sujet[sujet.length - 1]) != event.getId()) {
                     for(int j = 0; j < interests.length ; j++ ){
@@ -199,6 +180,22 @@ public class EventController {
                             sol.get("description").toString(),sol.get("images").toString(),sol.get("latitude").asLiteral().getDouble(),
                             sol.get("longitude").asLiteral().getDouble(), users);
                     recommanded = false;
+
+                    String queryUsers = "PREFIX event: <http://www.ps7-wia2.com/events/>\n" +
+                            "PREFIX el: <http://www.ps7-wia2.com/events#>\n" +
+                            "SELECT DISTINCT * WHERE {\n" +
+                            "event:" + sujet[sujet.length-1] + " el:users + ?users }";
+
+
+                    RDFConnection conn1 = RDFConnectionFactory.connect(DATABASE);
+                    QueryExecution qExec1 = conn1.query(queryUsers) ;
+                    ResultSet results1 = qExec1.execSelect() ;
+
+                    while (results1.hasNext()){
+                        users.add(results1.next().get("users").toString());
+                    }
+                    qExec1.close();
+                    conn1.close();
 
                 }else {
                     LocalDate start = LocalDate.parse(sol.get("?start").toString());
@@ -227,9 +224,22 @@ public class EventController {
                         sol.get("longitude").asLiteral().getDouble(), users);
             }
 
+            String queryUsers = "PREFIX event: <http://www.ps7-wia2.com/events/>\n" +
+                    "PREFIX el: <http://www.ps7-wia2.com/events#>\n" +
+                    "SELECT DISTINCT * WHERE {\n" +
+                    "event:" + sujet[sujet.length-1] + " el:users + ?users }";
+
+            RDFConnection conn1 = RDFConnectionFactory.connect(DATABASE);
+            QueryExecution qExec1 = conn1.query(queryUsers) ;
+            ResultSet results1 = qExec1.execSelect() ;
+
+            while (results1.hasNext()){
+                users.add(results1.next().get("users").toString());
+            }
+
+            qExec1.close();
+            conn1.close();
             sol = results.next();
-
-
         }
         qExec.close();
         conn.close();
