@@ -46,7 +46,7 @@
             {{evenement.decription}}
           </div>
         </div>
-        <b-button :disabled="dis" id="btn" v-if="!etat" @click="addParticipant()" class="is-white">Participer</b-button>
+        <b-button :disabled="dis" id="btn" v-if="!this.$store.getters.getParticipe" @click="addParticipant()" class="is-white">Participer</b-button>
         <b-button disabled v-else class="is-white">Vous particpez déja à ce évenement</b-button>
         <LMap :zoom="zoom" :center="center">
           <LTileLayer :url="url"></LTileLayer>
@@ -74,7 +74,6 @@ export default {
   },
   data() {
     return {
-      etat: this.$store.getters.getParticipe,
       dis: false,
       url: "https://{s}.tile.osm.org/{z}/{x}/{y}.png",
       zoom: 15,
@@ -83,7 +82,7 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch('setBusRecommandations', {evenement: this.evenement})
+    //this.$store.dispatch('setBusRecommandations', {evenement: this.evenement})
     this.$store.dispatch('checkParticipation', {
       eventId: this.evenement.id,
       userId: this.$route.params.id

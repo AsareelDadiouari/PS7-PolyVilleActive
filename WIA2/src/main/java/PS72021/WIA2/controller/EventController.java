@@ -3,6 +3,7 @@ package PS72021.WIA2.controller;
 import PS72021.WIA2.Application;
 import PS72021.WIA2.model.Event;
 import PS72021.WIA2.model.User;
+import org.apache.jena.base.Sys;
 import org.apache.jena.query.*;
 import org.apache.jena.rdfconnection.RDFConnection;
 import org.apache.jena.rdfconnection.RDFConnectionFactory;
@@ -27,7 +28,7 @@ public class EventController {
     public ArrayList<Event> getEvents(){
 
         ArrayList<Event> events = new ArrayList<>();
-        String query = "SELECT * WHERE {\n" +
+        String query = "SELECT DISTINCT * WHERE {\n" +
                 "?s <http://www.ps7-wia2.com/events#events> ?o. " +
                     "?o <http://www.ps7-wia2.com/events#name_fr> ?name_fr." +
                     "?o <http://www.ps7-wia2.com/events#start> ?start." +
@@ -51,16 +52,33 @@ public class EventController {
         Event event = null;
         ArrayList<String> profiles = new ArrayList<>();
         ArrayList<String> categories = new ArrayList<>();
-        ArrayList<String> users = new ArrayList<>();
+        Set<String> users = new HashSet<>();
         String address = null;
         while (results.hasNext()) {
             String[] sujet = sol.get("o").toString().split("/", -1);
+            String queryUsers = "PREFIX event: <http://www.ps7-wia2.com/events/>\n" +
+                    "PREFIX el: <http://www.ps7-wia2.com/events#>\n" +
+                    "SELECT DISTINCT * WHERE {\n" +
+                    "event:" + sujet[sujet.length-1] + " el:users + ?users }";
+
+
+            RDFConnection conn1 = RDFConnectionFactory.connect(DATABASE);
+            QueryExecution qExec1 = conn1.query(queryUsers) ;
+            ResultSet results1 = qExec1.execSelect() ;
+
+            while (results1.hasNext()){
+                users.add(results1.next().get("users").toString());
+            }
+
+            qExec1.close();
+            conn1.close();
+
             if(event != null ) {
                 if (Integer.parseInt(sujet[sujet.length - 1]) != event.getId()) {
                     events.add(event);
                     profiles = new ArrayList<>();
                     categories = new ArrayList<>();
-                    users = new ArrayList<>();
+                    users = new HashSet<>();
                     LocalDate start = LocalDate.parse(sol.get("?start").toString());
                     LocalDate end = LocalDate.parse(sol.get("?end").toString());
                     profiles.add(sol.get("profile").toString());
@@ -99,7 +117,7 @@ public class EventController {
 
                 sol = results.next();
 
-
+            users.clear();
         }
         qExec.close();
         conn.close();
@@ -137,11 +155,28 @@ public class EventController {
         Event event = null;
         ArrayList<String> profiles = new ArrayList<>();
         ArrayList<String> categories = new ArrayList<>();
-        ArrayList<String> users = new ArrayList<>();
+        Set<String> users = new HashSet<>();
         String address = null;
         boolean recommanded = false;
         while (results.hasNext()) {
             String[] sujet = sol.get("o").toString().split("/", -1);
+            String queryUsers = "PREFIX event: <http://www.ps7-wia2.com/events/>\n" +
+                    "PREFIX el: <http://www.ps7-wia2.com/events#>\n" +
+                    "SELECT DISTINCT * WHERE {\n" +
+                    "event:" + sujet[sujet.length-1] + " el:users + ?users }";
+
+
+            RDFConnection conn1 = RDFConnectionFactory.connect(DATABASE);
+            QueryExecution qExec1 = conn1.query(queryUsers) ;
+            ResultSet results1 = qExec1.execSelect() ;
+
+            while (results1.hasNext()){
+                users.add(results1.next().get("users").toString());
+            }
+
+            qExec1.close();
+            conn1.close();
+
             if(event != null ) {
                 if (Integer.parseInt(sujet[sujet.length - 1]) != event.getId()) {
                     for(int j = 0; j < interests.length ; j++ ){
@@ -154,7 +189,7 @@ public class EventController {
                     }
                     profiles = new ArrayList<>();
                     categories = new ArrayList<>();
-                    users = new ArrayList<>();
+                    users = new HashSet<>();
                     LocalDate start = LocalDate.parse(sol.get("?start").toString());
                     LocalDate end = LocalDate.parse(sol.get("?end").toString());
                     profiles.add(sol.get("profile").toString());
@@ -223,7 +258,7 @@ public class EventController {
     }
 
     @CrossOrigin(origins = "http://localhost:8080")
-    @GetMapping(value = "/events/{eventId}/user/{userId}", produces= MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/events/{eventId}/user/{userId}", produces= MediaType.ALL_VALUE)
     public boolean checkParticipant(HttpServletResponse res, @PathVariable("eventId") String eventId,
                                     @PathVariable("userId") String userId) {
 
@@ -248,7 +283,7 @@ public class EventController {
             return true;
         }
 
-        res.setStatus(404);
+        res.setStatus(200);
         qExec.close();
         conn.close();
         return false;

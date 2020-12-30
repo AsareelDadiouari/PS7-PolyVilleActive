@@ -115,7 +115,6 @@ const Evenements = {
             state.evenements = payload
         },
         setParticipe(state, payload){
-            console.log(payload)
             state.participe = payload
         }
     },
