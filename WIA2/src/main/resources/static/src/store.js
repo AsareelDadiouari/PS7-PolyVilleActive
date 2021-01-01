@@ -284,6 +284,15 @@ const Publications = {
             } catch (err) {
                 console.log(err)
             }
+        },
+        async likePublication(context, payload){
+            try {
+                await Vue.axios.post("http://localhost:8090/publications/" + payload.id + "/like")
+                console.log(context)
+                console.log('bro')
+            } catch (err){
+                console.log(err)
+            }
         }
     }
 }

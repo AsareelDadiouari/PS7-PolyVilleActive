@@ -20,7 +20,8 @@
                     </span></a>
                   </p>
                   <p class="control" style="margin-left: auto">
-                    <button class="button is-small is-danger is-outlined">
+                    {{publication.like}}
+                    <button @click="like(publication.id)" class="button is-small is-danger is-outlined">
                       <b-icon size="is-small" icon="heart"/>
                     </button>
                   </p>
@@ -52,6 +53,11 @@ export default {
   methods: {
     info(value) {
       this.test = value
+    },
+    like(publicatonId) {
+      this.$store.dispatch('likePublication', {
+        id : publicatonId
+      })
     }
   }
 }

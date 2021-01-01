@@ -8,10 +8,15 @@ import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
 import org.apache.jena.rdfconnection.RDFConnection;
 import org.apache.jena.rdfconnection.RDFConnectionFactory;
+import org.apache.jena.sparql.util.Utils;
+import org.apache.jena.system.Txn;
+import org.apache.jena.update.UpdateExecutionFactory;
+import org.apache.jena.update.UpdateFactory;
+import org.apache.jena.update.UpdateProcessor;
+import org.apache.jena.update.UpdateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -102,5 +107,38 @@ public class PublicationController {
         qExec.close();
         conn.close();
         return publications;
+    }
+
+    @CrossOrigin(origins = "http://localhost:8080")
+    @PostMapping(value = "/publications/{publicationId}/like", produces = MediaType.ALL_VALUE)
+    public boolean addLike(@PathVariable("publicationId") String id){
+        String query = "PREFIX publ: <http://www.ps7-wia2.com/publications/>\n" +
+                "PREFIX pub: <http://www.ps7-wia2.com/publications#>" +
+                "SELECT DISTINCT * WHERE {" +
+                "publ:" + id + " pub:like ?o .\n" +
+                "}\n";
+
+        RDFConnection conn = RDFConnectionFactory.connect(DATABASE);
+        QueryExecution qExec = conn.query(query) ;
+        ResultSet results = qExec.execSelect();
+
+        int nbLikes = Integer.parseInt(results.next().toString().replaceAll("[^0-9]", ""));
+        nbLikes++;
+
+        conn.close();
+        qExec.close();
+
+        System.out.println(nbLikes);
+
+        String query2 = "PREFIX publ: <http://www.ps7-wia2.com/publications/>\n" +
+                "PREFIX pub: <http://www.ps7-wia2.com/publications#>" +
+                "DELETE { publ: " + id + " pub:like ?o }\n" +
+                "INSERT { publ: " + id + " pub:like " + nbLikes + " }\n" +
+                "WHERE {publ:" + id + " pub:like ?o .}\n";
+
+        UpdateRequest update = UpdateFactory.create(query);
+
+
+        return true;
     }
 }
