@@ -68,19 +68,20 @@ public class BusController {
     @RequestMapping("/busRecommandations")
     public List<Bus> getBusEvenement(@RequestParam double latitude, @RequestParam double longitude)  {
         List<Bus> listBus = new ArrayList<>();
-        String query = "SELECT DISTINCT * WHERE {\n" +
-                "?s <http://www.ps7-wia2.com/arrets#arrets> ?o. " +
-                "?o <http://www.ps7-wia2.com/arrets#nom_arret> ?nom_arret." +
-                "?o <http://www.ps7-wia2.com/arrets#latitude> ?latitude." +
-                "?o <http://www.ps7-wia2.com/arrets#longitude> ?longitude." +
-                "}";
+        int distance = 200;
+        while(listBus.size() < 1 && distance<500) {
+            String query = "SELECT DISTINCT * WHERE {\n" +
+                    "?s <http://www.ps7-wia2.com/arrets#arrets> ?o. " +
+                    "?o <http://www.ps7-wia2.com/arrets#nom_arret> ?nom_arret." +
+                    "?o <http://www.ps7-wia2.com/arrets#latitude> ?latitude." +
+                    "?o <http://www.ps7-wia2.com/arrets#longitude> ?longitude." +
+                    "}";
 
-        RDFConnection conn = RDFConnectionFactory.connect(DATABASE);
-        QueryExecution qExec = conn.query(query) ;
-        ResultSet results = qExec.execSelect() ;
+            RDFConnection conn = RDFConnectionFactory.connect(DATABASE);
+            QueryExecution qExec = conn.query(query);
+            ResultSet results = qExec.execSelect();
 
-        QuerySolution sol = results.next();
-
+            QuerySolution sol = results.next();
 
 
             String[] sujet = sol.get("o").toString().split("/", -1);
@@ -90,7 +91,7 @@ public class BusController {
             for (; results.hasNext(); ) {
                 sujet = sol.get("o").toString().split("/", -1);
                 if (Integer.parseInt(sujet[sujet.length - 1]) != bus.getId()) {
-                    if(gps2m(bus.getLatitude(), bus.getLongitude(),latitude,longitude) < 250) {
+                    if (gps2m(bus.getLatitude(), bus.getLongitude(), latitude, longitude) < 250) {
                         listBus.add(bus);
                     }
                     bus = new Bus(Integer.parseInt(sujet[sujet.length - 1]), sol.get("nom_arret").toString(), sol.get("latitude").asLiteral().getDouble(), sol.get("longitude").asLiteral().getDouble());
@@ -98,11 +99,13 @@ public class BusController {
                 }
                 sol = results.next();
             }
-        if(gps2m(bus.getLatitude(), bus.getLongitude(),latitude,longitude) < 250) {
-            listBus.add(bus);
+            if (gps2m(bus.getLatitude(), bus.getLongitude(), latitude, longitude) < distance) {
+                listBus.add(bus);
+            }
+            distance = distance + 50;
+            qExec.close();
+            conn.close();
         }
-        qExec.close();
-        conn.close();
         return listBus;
     }
 
