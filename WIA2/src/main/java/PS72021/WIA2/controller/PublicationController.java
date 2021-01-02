@@ -4,6 +4,7 @@ import PS72021.WIA2.model.Group;
 import PS72021.WIA2.model.Publication;
 import PS72021.WIA2.model.User;
 import org.apache.jena.query.QueryExecution;
+import org.apache.jena.query.QueryExecutionFactory;
 import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
 import org.apache.jena.rdfconnection.RDFConnection;
@@ -18,6 +19,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -136,9 +141,31 @@ public class PublicationController {
                 "INSERT { publ: " + id + " pub:like " + nbLikes + " }\n" +
                 "WHERE {publ:" + id + " pub:like ?o .}\n";
 
-        UpdateRequest update = UpdateFactory.create(query);
+        QueryExecutionFactory.sparqlService("http://localhost:3030/data_polyville/update", query2);
 
 
         return true;
     }
+
+    @CrossOrigin(origins = "http://localhost:8080")
+    @PostMapping(value = "/publications/{publicationId}/comment", produces = MediaType.ALL_VALUE)
+    public boolean addComment(HttpServletRequest req, HttpServletResponse res, @PathVariable("publicationId")String id) throws IOException {
+        BufferedReader bufferedReader = req.getReader();
+        String body = bufferedReader.readLine();
+        System.out.println(body);
+        System.out.println(id);
+
+        String query = "PREFIX publ: <http://www.ps7-wia2.com/publications/>\n" +
+                "PREFIX pub: <http://www.ps7-wia2.com/publications#>\n" +
+                "\n" +
+                "INSERT DATA { publ:" + id + " pub:comment '" + body + "' }";
+
+        RDFConnection conn = RDFConnectionFactory.connect("http://localhost:3030/data_polyville");
+        Txn.executeWrite(conn, () -> conn.update(query));
+        conn.close();
+
+        res.setStatus(200);
+        return true;
+    }
+
 }

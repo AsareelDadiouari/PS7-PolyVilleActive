@@ -1,7 +1,6 @@
 <template>
   <div class="carousel">
     <p class="subtitle is-3">Les dernières publications</p>
-
     <div>
       <b-carousel-list :data="publications" :items-to-show="2">
         <template slot="item" slot-scope="publication">
@@ -15,7 +14,7 @@
                 </p>
                 <div class="field is-grouped">
                   <p class="content">
-                    <a><span>
+                    <a @click="sendClickedPublicationIndex(publication)"><span>
                     {{publication.comments.length -1}} commentaires
                     </span></a>
                   </p>
@@ -25,6 +24,7 @@
                       <b-icon size="is-small" icon="heart"/>
                     </button>
                   </p>
+
                 </div>
               </div>
             </div>
@@ -32,14 +32,21 @@
         </template>
       </b-carousel-list>
     </div>
+    <b-modal :width="550" class="myModal" v-model="isComponentModalActive" :has-modal-card="true"   scroll="keep">
+      <PublicationDetails :publication="selectedPublication"/>
+    </b-modal>
   </div>
 </template>
 
 <script>
+import PublicationDetails from "@/components/Publication/Publication-details";
 export default {
   name: "CentralView",
+  components: {PublicationDetails},
   data() {
     return {
+      isComponentModalActive: false,
+      selectedPublication: Object
     }
   },
   created() {
@@ -58,6 +65,10 @@ export default {
       this.$store.dispatch('likePublication', {
         id : publicatonId
       })
+    },
+    sendClickedPublicationIndex(id){
+      this.isComponentModalActive = true
+      this.selectedPublication = id
     }
   }
 }

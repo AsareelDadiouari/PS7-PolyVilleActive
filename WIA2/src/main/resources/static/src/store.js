@@ -293,6 +293,15 @@ const Publications = {
             } catch (err){
                 console.log(err)
             }
+        },
+        async commenterPublication(context, payload){
+            try {
+                await Vue.axios.post("http://localhost:8090/publications/" + payload.id + "/comment", payload.comment)
+                console.log(payload.comment)
+                console.log(context)
+            }catch (err) {
+                console.log(err)
+            }
         }
     }
 }
