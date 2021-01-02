@@ -1,13 +1,12 @@
 <template>
   <div class="container">
     <div class="carte has-text-centered">
-      <h1 class="title is-1">Stationement et transport en commun</h1>
+      <h1 class="title is-1">Transports en commun</h1>
       <LMap :zoom="zoom" :center="center">
         <LTileLayer :url="url"></LTileLayer>
-        <LMarker :lat-lng="[43.6994,7.26831]"></LMarker>
-        <LMarker :lat-lng="[43.7015,7.27927]"></LMarker>
-        <LMarker :lat-lng="[43.6983,7.27173]"></LMarker>
-        <LMarker :lat-lng="[43.6999,7.27927]"></LMarker>
+        <div v-for="stopBus in bus" :key="stopBus.id">
+          <LMarker :lat-lng="[stopBus.latitude,stopBus.longitude]"></LMarker>
+        </div>
       </LMap>
     </div>
   </div>
@@ -29,6 +28,15 @@ export default {
       center: [43.6999,7.27927],
       bounds: null
     };
+  },
+  created()
+  {
+    this.$store.dispatch('setBus')
+  },
+  computed: {
+    bus() {
+      return this.$store.getters.getBus
+    }
   }
 };
 </script>

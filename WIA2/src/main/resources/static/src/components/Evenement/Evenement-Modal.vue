@@ -82,7 +82,7 @@ export default {
     }
   },
   created() {
-    //this.$store.dispatch('setBusRecommandations', {evenement: this.evenement})
+    this.$store.dispatch('setBusRecommandations', {evenement: this.evenement})
     console.log(this.evenement.id)
     this.$store.dispatch('checkParticipation', {
       eventId: this.evenement.id,
