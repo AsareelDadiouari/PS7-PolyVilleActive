@@ -4,7 +4,6 @@ import Profils from "@/components/Profils";
 import MainPanel from "@/components/MainPanel";
 import Accueil from "@/pages/Accueil";
 import PatrimoinePage from "@/components/Patrimoine/Patrimoine-Page";
-import CentresSportifsPage from "@/components/Centres-Sportifs/Centres-Sportifs-Page";
 import CommercePage from "@/components/Commerces/Commerce-Page";
 import RestaurantPage from "@/components/Restaurant/Restaurant-Page";
 import EvenementPage from "@/components/Evenement/Evenement-Page";
@@ -22,7 +21,6 @@ const routes = [
         path: '/polyville/:id', component: MainPanel, props: true, children: [
             {path: '', component: Accueil, name: "Accueil"},
             {path: 'patrimoine', component: PatrimoinePage, name: "Patrimoine"},
-            {path: 'centres-sportifs', component: CentresSportifsPage, name: "Centres Sportifs"},
             {path: 'commerces', component: CommercePage, name: "Commerces"},
             {path: 'restaurants', component: RestaurantPage, name: "Restaurants"},
             {path: 'evenements', component: EvenementPage, name: "Evénements"},

@@ -129,121 +129,120 @@ public class EventController {
         User user = UserController.user(userId);
         String[] interests = user.getInterests();
         ArrayList<Event> events = new ArrayList<>();
-        String query = "SELECT * WHERE {\n" +
-                "?s <http://www.ps7-wia2.com/events#events> ?o. " +
-                "?o <http://www.ps7-wia2.com/events#name_fr> ?name_fr." +
-                "?o <http://www.ps7-wia2.com/events#start> ?start." +
-                "?o <http://www.ps7-wia2.com/events#end> ?end." +
-                "?o <http://www.ps7-wia2.com/events#address> ?address." +
-                "?o <http://www.ps7-wia2.com/events#profile> ?profile." +
-                "?o <http://www.ps7-wia2.com/events#categories> ?categories." +
-                "?o <http://www.ps7-wia2.com/events#description> ?description." +
-                "?o <http://www.ps7-wia2.com/events#images> ?images." +
-                "?o <http://www.ps7-wia2.com/events#latitude> ?latitude." +
-                "?o <http://www.ps7-wia2.com/events#longitude> ?longitude." +
-                "?o <http://www.ps7-wia2.com/events#users> ?users." +
-                "}";
+        for (int i = 0 ; i < interests.length && events.size() < 10 ; i++) {
+            String query = "SELECT * WHERE {\n" +
+                    "?s <http://www.ps7-wia2.com/events#events> ?o. " +
+                    "?o <http://www.ps7-wia2.com/events#name_fr> ?name_fr." +
+                    "?o <http://www.ps7-wia2.com/events#start> ?start." +
+                    "?o <http://www.ps7-wia2.com/events#end> ?end." +
+                    "?o <http://www.ps7-wia2.com/events#address> ?address." +
+                    "?o <http://www.ps7-wia2.com/events#profile> ?profile." +
+                    "?o <http://www.ps7-wia2.com/events#categories> ?\"" + interests[i] +"\"." +
+                    "?o <http://www.ps7-wia2.com/events#categories> ?categories."+
+                    "?o <http://www.ps7-wia2.com/events#description> ?description." +
+                    "?o <http://www.ps7-wia2.com/events#images> ?images." +
+                    "?o <http://www.ps7-wia2.com/events#latitude> ?latitude." +
+                    "?o <http://www.ps7-wia2.com/events#longitude> ?longitude." +
+                    "?o <http://www.ps7-wia2.com/events#users> ?users." +
+                    "}";
 
-        RDFConnection conn = RDFConnectionFactory.connect(DATABASE);
-        QueryExecution qExec = conn.query(query) ;
-        ResultSet results = qExec.execSelect() ;
+            RDFConnection conn = RDFConnectionFactory.connect(DATABASE);
+            QueryExecution qExec = conn.query(query);
+            ResultSet results = qExec.execSelect();
 
-        QuerySolution sol = results.next();
+            if(results.hasNext()){
+            QuerySolution sol = results.next();
 
-        Event event = null;
-        ArrayList<String> profiles = new ArrayList<>();
-        ArrayList<String> categories = new ArrayList<>();
-        Set<String> users = new HashSet<>();
-        String address = null;
-        boolean recommanded = false;
-        while (results.hasNext()) {
-            String[] sujet = sol.get("o").toString().split("/", -1);
-            if(event != null ) {
-                if (Integer.parseInt(sujet[sujet.length - 1]) != event.getId()) {
-                    for(int j = 0; j < interests.length ; j++ ){
-                        if(categories.contains(interests[j])){
-                            recommanded = true;
+            Event event = null;
+            ArrayList<String> profiles = new ArrayList<>();
+            ArrayList<String> categories = new ArrayList<>();
+            Set<String> users = new HashSet<>();
+            String address = null;
+            while (results.hasNext()) {
+                String[] sujet = sol.get("o").toString().split("/", -1);
+                if (event != null) {
+                    if (Integer.parseInt(sujet[sujet.length - 1]) != event.getId()) {
+                        if(!events.contains(event)) {
+                            events.add(event);
                         }
+                        profiles = new ArrayList<>();
+                        categories = new ArrayList<>();
+                        users = new HashSet<>();
+                        LocalDate start = LocalDate.parse(sol.get("?start").toString());
+                        LocalDate end = LocalDate.parse(sol.get("?end").toString());
+                        profiles.add(sol.get("profile").toString());
+                        categories.add(sol.get("categories").toString());
+                        address = sol.get("address").toString();
+                        event = new Event(Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name_fr").toString(), start, end, address, profiles, categories,
+                                sol.get("description").toString(), sol.get("images").toString(), sol.get("latitude").asLiteral().getDouble(),
+                                sol.get("longitude").asLiteral().getDouble(), users);
+
+                        String queryUsers = "PREFIX event: <http://www.ps7-wia2.com/events/>\n" +
+                                "PREFIX el: <http://www.ps7-wia2.com/events#>\n" +
+                                "SELECT DISTINCT * WHERE {\n" +
+                                "event:" + sujet[sujet.length - 1] + " el:users + ?users }";
+
+
+                        RDFConnection conn1 = RDFConnectionFactory.connect(DATABASE);
+                        QueryExecution qExec1 = conn1.query(queryUsers);
+                        ResultSet results1 = qExec1.execSelect();
+
+                        while (results1.hasNext()) {
+                            users.add(results1.next().get("users").toString());
+                        }
+                        qExec1.close();
+                        conn1.close();
+
+                    } else {
+                        LocalDate start = LocalDate.parse(sol.get("?start").toString());
+                        LocalDate end = LocalDate.parse(sol.get("?end").toString());
+                        if (!profiles.contains(sol.get("profile").toString())) {
+                            profiles.add(sol.get("profile").toString());
+                        }
+                        if (!categories.contains(sol.get("categories").toString())) {
+                            categories.add(sol.get("categories").toString());
+                        }
+                        if (!address.contains(sol.get("address").toString())) {
+                            address = address + " " + sol.get("address").toString();
+                        }
+                        event = new Event(Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name_fr").toString(), start, end, address, profiles, categories,
+                                sol.get("description").toString(), sol.get("images").toString(), sol.get("latitude").asLiteral().getDouble(),
+                                sol.get("longitude").asLiteral().getDouble(), users);
                     }
-                    if(recommanded) {
-                        events.add(event);
-                    }
-                    profiles = new ArrayList<>();
-                    categories = new ArrayList<>();
-                    users = new HashSet<>();
+                } else {
                     LocalDate start = LocalDate.parse(sol.get("?start").toString());
                     LocalDate end = LocalDate.parse(sol.get("?end").toString());
                     profiles.add(sol.get("profile").toString());
                     categories.add(sol.get("categories").toString());
                     address = sol.get("address").toString();
-                    event = new Event (Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name_fr").toString(), start, end, address,profiles,categories,
-                            sol.get("description").toString(),sol.get("images").toString(),sol.get("latitude").asLiteral().getDouble(),
-                            sol.get("longitude").asLiteral().getDouble(), users);
-                    recommanded = false;
-
-                    String queryUsers = "PREFIX event: <http://www.ps7-wia2.com/events/>\n" +
-                            "PREFIX el: <http://www.ps7-wia2.com/events#>\n" +
-                            "SELECT DISTINCT * WHERE {\n" +
-                            "event:" + sujet[sujet.length-1] + " el:users + ?users }";
-
-
-                    RDFConnection conn1 = RDFConnectionFactory.connect(DATABASE);
-                    QueryExecution qExec1 = conn1.query(queryUsers) ;
-                    ResultSet results1 = qExec1.execSelect() ;
-
-                    while (results1.hasNext()){
-                        users.add(results1.next().get("users").toString());
-                    }
-                    qExec1.close();
-                    conn1.close();
-
-                }else {
-                    LocalDate start = LocalDate.parse(sol.get("?start").toString());
-                    LocalDate end = LocalDate.parse(sol.get("?end").toString());
-                    if(!profiles.contains(sol.get("profile").toString())){
-                        profiles.add(sol.get("profile").toString());
-                    }
-                    if (!categories.contains(sol.get("categories").toString())){
-                        categories.add(sol.get("categories").toString());
-                    }
-                    if(!address.contains(sol.get("address").toString())) {
-                        address = address + " " + sol.get("address").toString();
-                    }
-                    event = new Event (Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name_fr").toString(), start, end, address,profiles,categories,
-                            sol.get("description").toString(),sol.get("images").toString(),sol.get("latitude").asLiteral().getDouble(),
+                    event = new Event(Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name_fr").toString(), start, end, address, profiles, categories,
+                            sol.get("description").toString(), sol.get("images").toString(), sol.get("latitude").asLiteral().getDouble(),
                             sol.get("longitude").asLiteral().getDouble(), users);
                 }
-            }else{
-                LocalDate start = LocalDate.parse(sol.get("?start").toString());
-                LocalDate end = LocalDate.parse(sol.get("?end").toString());
-                profiles.add(sol.get("profile").toString());
-                categories.add(sol.get("categories").toString());
-                address = sol.get("address").toString();
-                event = new Event (Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name_fr").toString(), start, end, address,profiles,categories,
-                        sol.get("description").toString(),sol.get("images").toString(),sol.get("latitude").asLiteral().getDouble(),
-                        sol.get("longitude").asLiteral().getDouble(), users);
+
+                String queryUsers = "PREFIX event: <http://www.ps7-wia2.com/events/>\n" +
+                        "PREFIX el: <http://www.ps7-wia2.com/events#>\n" +
+                        "SELECT DISTINCT * WHERE {\n" +
+                        "event:" + sujet[sujet.length - 1] + " el:users + ?users }";
+
+                RDFConnection conn1 = RDFConnectionFactory.connect(DATABASE);
+                QueryExecution qExec1 = conn1.query(queryUsers);
+                ResultSet results1 = qExec1.execSelect();
+
+                while (results1.hasNext()) {
+                    users.add(results1.next().get("users").toString());
+                }
+
+                qExec1.close();
+                conn1.close();
+                sol = results.next();
             }
-
-            String queryUsers = "PREFIX event: <http://www.ps7-wia2.com/events/>\n" +
-                    "PREFIX el: <http://www.ps7-wia2.com/events#>\n" +
-                    "SELECT DISTINCT * WHERE {\n" +
-                    "event:" + sujet[sujet.length-1] + " el:users + ?users }";
-
-            RDFConnection conn1 = RDFConnectionFactory.connect(DATABASE);
-            QueryExecution qExec1 = conn1.query(queryUsers) ;
-            ResultSet results1 = qExec1.execSelect() ;
-
-            while (results1.hasNext()){
-                users.add(results1.next().get("users").toString());
-            }
-
-            qExec1.close();
-            conn1.close();
-            sol = results.next();
+            qExec.close();
+            conn.close();
+        }}
+        if(events.size() == 0){
+            events = getEvents();
         }
-        qExec.close();
-        conn.close();
-
         return events;
 
     }
