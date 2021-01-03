@@ -1,13 +1,14 @@
-<template><div>
-<div class="container">
+<template>
+  <div>
+    <div class="container">
         <div class="centrage">
-        <h1 class="title is-1">Patrimoine</h1></div>
+          <h1 class="title is-1">Patrimoine </h1></div>
         <div class="columns is-multiline">
-              <div class="column is-4" v-for="index in 10" :key="index">
-                <patrimoine-simple-view/>
-                </div>
-                </div>
+          <div class="column is-one-quarter" v-for="currentPatrimoine in patrimoines" :key="currentPatrimoine.id">
+            <patrimoine-simple-view :patrimoine="currentPatrimoine"/>
+          </div>
   </div>
+        </div>
   <Footer/>
   </div>
 </template>
@@ -18,7 +19,16 @@ import Footer from "@/components/Footer";
 
 export default {
   name: "Patrimoine-Page",
-  components: {PatrimoineSimpleView, Footer}
+  components: {PatrimoineSimpleView, Footer},
+  created() {
+    this.$store.dispatch('setPatrimoines')
+
+  },
+  computed: {
+    patrimoines() {
+      return this.$store.getters.getPatrimoines
+    }
+  }
 }
 </script>
 

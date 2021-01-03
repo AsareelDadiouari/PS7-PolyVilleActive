@@ -362,6 +362,34 @@ const BusRecommandations = {
     }
 }
 
+const Patrimoines = {
+    state: {
+        patrimoines: []
+
+    },
+    mutations: {
+        setPatrimoines (state, payload) {
+            state.patrimoines = payload
+        }
+    },
+    getters: {
+        getPatrimoines(state) {
+            return state.patrimoines
+        }
+    },
+    actions: {
+        async setPatrimoines(context) {
+            try {
+                const response = await Vue.axios.get('http://localhost:8090/patrimoines')
+                context.commit('setPatrimoines', response.data)
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+    }
+}
+
 const store = new Vuex.Store({
     modules: {
         users: Users,
@@ -373,6 +401,7 @@ const store = new Vuex.Store({
         groups: Groups,
         evenementsRecommandations: EvenementsRecommandations,
         publication: Publications,
+        patrimoines: Patrimoines,
     }
 })
 
