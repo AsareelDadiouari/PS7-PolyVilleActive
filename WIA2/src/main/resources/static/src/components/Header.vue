@@ -10,17 +10,12 @@
             <b-navbar-item :href="'/polyville/' + $route.params.id + '/patrimoine'">
               Patrimoine
             </b-navbar-item>
-            <b-navbar-item :href="'/polyville/' + $route.params.id + '/centres-sportifs'">
-              Centres sportifs
-            </b-navbar-item><b-navbar-item :href="'/polyville/' + $route.params.id + '/commerces'">
+           <b-navbar-item :href="'/polyville/' + $route.params.id + '/commerces'">
               Commerces
             </b-navbar-item>
             <b-navbar-item :href="'/polyville/' + $route.params.id + '/restaurants'">
             Restaurants
           </b-navbar-item>
-            <b-navbar-item href="#">
-              Présentation et accès
-            </b-navbar-item>
           </b-navbar-dropdown>
           <b-navbar-dropdown class="item" label="Service"><b-navbar-item :href="'/polyville/' + $route.params.id + '/evenements'">
               Événements
