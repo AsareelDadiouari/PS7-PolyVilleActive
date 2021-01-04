@@ -1,4 +1,4 @@
-<template>
+<template >
   <div class="carousel">
     <p class="subtitle is-3">Les dernières publications</p>
     <div>
@@ -19,8 +19,8 @@
                     </span></a>
                   </p>
                   <p class="control" style="margin-left: auto">
-                    {{publication.like}}
-                    <button @click="like(publication.id)" class="button is-small is-danger is-outlined">
+                    <span :key="publication.like" id="nblikes">{{publication.like}}</span>
+                    <button @click="like(publication)" class="button is-small is-danger is-outlined">
                       <b-icon size="is-small" icon="heart"/>
                     </button>
                   </p>
@@ -46,7 +46,7 @@ export default {
   data() {
     return {
       isComponentModalActive: false,
-      selectedPublication: Object
+      selectedPublication: Object,
     }
   },
   created() {
@@ -61,10 +61,14 @@ export default {
     info(value) {
       this.test = value
     },
-    like(publicatonId) {
+    like(publicaton) {
       this.$store.dispatch('likePublication', {
-        id : publicatonId
+        id : publicaton.id
       })
+      /*let val = parseInt(document.getElementById('nblikes').innerText)
+      val++;
+      document.getElementById('nblikes').innerText = val.toString()*/
+
     },
     sendClickedPublicationIndex(id){
       this.isComponentModalActive = true

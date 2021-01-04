@@ -9,10 +9,10 @@
               <li>
               <a :href="'/polyville/' + $route.params.id + '/patrimoine'">Patrimoine</a></li>
               <li>
-              <a :href="'/polyville/' + $route.params.id + '/centres-sportifs'">Centres sportifs</a></li>
-              <li>
               <a :href="'/polyville/' + $route.params.id + '/commerces'">Commerces</a></li>
-              <li><a href="#">Présentation et accès</a></li>
+              <li>
+                <a :href="'/polyville/' + $route.params.id + '/restaurants'">Restaurants</a></li>
+
             </ul>
           </div>
           <div class="column is-3">

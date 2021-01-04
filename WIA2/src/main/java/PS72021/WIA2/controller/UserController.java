@@ -83,7 +83,6 @@ public class UserController {
             }
             interests.add(sol.get("interests").toString());
             sol = results.next();
-            System.out.println(user.getFirstname());
         }
         user.setInterests(interests.toArray());
         users.add(user);

@@ -133,18 +133,15 @@ public class PublicationController {
         conn.close();
         qExec.close();
 
-        System.out.println(nbLikes);
-
         String query2 = "PREFIX publ: <http://www.ps7-wia2.com/publications/>\n" +
-                "PREFIX pub: <http://www.ps7-wia2.com/publications#>" +
-                "DELETE DATA { publ: " + id + " pub:like ?o }\n" +
-                "INSERT DATA { publ: " + id + " pub:like '" + nbLikes + "' }\n" +
+                "PREFIX pub: <http://www.ps7-wia2.com/publications#>\n" +
+                "DELETE { publ:" + id + " pub:like ?o }\n" +
+                "INSERT { publ:" + id + " pub:like " + nbLikes + " }\n" +
                 "WHERE {publ:" + id + " pub:like ?o .}\n";
 
         RDFConnection conn2 = RDFConnectionFactory.connect(DATABASE);
         Txn.executeWrite(conn2, () -> conn2.update(query2));
-        conn2.close();;
-
+        conn2.close();
 
         return true;
     }
@@ -154,8 +151,6 @@ public class PublicationController {
     public boolean addComment(HttpServletRequest req, HttpServletResponse res, @PathVariable("publicationId")String id) throws IOException {
         BufferedReader bufferedReader = req.getReader();
         String body = bufferedReader.readLine();
-        System.out.println(body);
-        System.out.println(id);
 
         String query = "PREFIX publ: <http://www.ps7-wia2.com/publications/>\n" +
                 "PREFIX pub: <http://www.ps7-wia2.com/publications#>\n" +
