@@ -169,7 +169,7 @@ public class GroupController {
 
         String query = prefixes + " INSERT DATA { " +
                     "g:" + groupId + " gm:members u:" + userId + "." +
-                    "u:" + userId + " um:groups g:" + groupId + ". " +
+                    //"u:" + userId + " um:groups g:" + groupId + ". " +
                 "}";
 
         RDFConnection conn = RDFConnectionFactory.connect(DATABASE + "/update");
@@ -188,7 +188,7 @@ public class GroupController {
 
         String query = prefixes + " DELETE DATA { " +
                     "g:" + groupId + " gm:members u:" + userId + ". " +
-                    "u:" + userId + " um:groups g:" + groupId + ". " +
+                    //"u:" + userId + " um:groups g:" + groupId + ". " +
                 "}";
 
         RDFConnection conn = RDFConnectionFactory.connect(DATABASE + "/update");

@@ -160,7 +160,7 @@ public class PublicationController {
         String query = "PREFIX publ: <http://www.ps7-wia2.com/publications/>\n" +
                 "PREFIX pub: <http://www.ps7-wia2.com/publications#>\n" +
                 "\n" +
-                "INSERT DATA { publ:" + id + " pub:comment '" + body + "' }";
+                "INSERT DATA { publ:" + id + " pub:comment \"" + body + "\" }";
 
         RDFConnection conn = RDFConnectionFactory.connect("http://localhost:3030/data_polyville");
         Txn.executeWrite(conn, () -> conn.update(query));
