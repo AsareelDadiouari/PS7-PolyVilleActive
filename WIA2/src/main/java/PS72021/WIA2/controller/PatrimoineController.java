@@ -53,6 +53,8 @@ public class PatrimoineController {
             sol = results.next();
         }
         patrimoines.add(patrimoine);
+        qExec.close();
+        conn.close();
         return patrimoines;
     }
 }
