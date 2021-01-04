@@ -288,8 +288,7 @@ const Publications = {
         async likePublication(context, payload){
             try {
                 await Vue.axios.post("http://localhost:8090/publications/" + payload.id + "/like")
-                console.log(context)
-                console.log('bro')
+                context.dispatch("setPublications")
             } catch (err){
                 console.log(err)
             }
@@ -297,8 +296,7 @@ const Publications = {
         async commenterPublication(context, payload){
             try {
                 await Vue.axios.post("http://localhost:8090/publications/" + payload.id + "/comment", payload.comment)
-                console.log(payload.comment)
-                console.log(context)
+                context.dispatch("setPublications")
             }catch (err) {
                 console.log(err)
             }
