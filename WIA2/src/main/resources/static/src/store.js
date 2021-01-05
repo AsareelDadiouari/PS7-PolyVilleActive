@@ -280,6 +280,7 @@ const Publications = {
             try {
                 const url = "http://localhost:8090/publications"
                 const response = await Vue.axios.get(url)
+                console.log(response.data)
                 context.commit('setPublications', response.data)
             } catch (err) {
                 console.log(err)
@@ -287,7 +288,15 @@ const Publications = {
         },
         async likePublication(context, payload){
             try {
-                await Vue.axios.post("http://localhost:8090/publications/" + payload.id + "/like")
+                await Vue.axios.post("http://localhost:8090/publications/" + payload.id + "/like/" + payload.userId)
+                context.dispatch("setPublications")
+            } catch (err){
+                console.log(err)
+            }
+        },
+        async unlikePublication(context, payload){
+            try {
+                await Vue.axios.post("http://localhost:8090/publications/" + payload.id + "/unlike/" + payload.userId)
                 context.dispatch("setPublications")
             } catch (err){
                 console.log(err)

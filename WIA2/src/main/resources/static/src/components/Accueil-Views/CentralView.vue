@@ -1,38 +1,14 @@
 <template >
   <div class="carousel">
-    <p class="subtitle is-3">Les dernières publications</p>
+    <p class="subtitle is-3">Les derniĂ¨res publications</p>
     <div>
       <b-carousel-list :data="publications" :items-to-show="2">
         <template slot="item" slot-scope="publication">
-          <div class="card">
-            <div class="card-content">
-              <div class="content">
-                <p class="title is-6">{{ publication.title }}</p>
-                <p class="subtitle is-7">Par {{publication.authorName}}</p>
-                <p>
-                  {{publication.description}}
-                </p>
-                <div class="field is-grouped">
-                  <p class="content">
-                    <a @click="sendClickedPublicationIndex(publication)"><span>
-                    {{publication.comments.length -1}} commentaires
-                    </span></a>
-                  </p>
-                  <p class="control" style="margin-left: auto">
-                    <span :key="publication.like" id="nblikes">{{publication.like}}</span>
-                    <button @click="like(publication)" class="button is-small is-danger is-outlined">
-                      <b-icon size="is-small" icon="heart"/>
-                    </button>
-                  </p>
-
-                </div>
-              </div>
-            </div>
-          </div>
+          <Publication v-on:selected="sendClickedPublicationIndex($event)" :publication="publication"/>
         </template>
       </b-carousel-list>
     </div>
-    <b-modal :width="550" class="myModal" v-model="isComponentModalActive" :has-modal-card="true"   scroll="keep">
+    <b-modal :width="550" class="myModal"  v-model="isComponentModalActive" :has-modal-card="true"   scroll="keep">
       <PublicationDetails :publication="selectedPublication"/>
     </b-modal>
   </div>
@@ -40,9 +16,11 @@
 
 <script>
 import PublicationDetails from "@/components/Publication/Publication-details";
+import Publication from "@/components/Publication/Publication";
+
 export default {
   name: "CentralView",
-  components: {PublicationDetails},
+  components: {PublicationDetails, Publication},
   data() {
     return {
       isComponentModalActive: false,
@@ -61,18 +39,9 @@ export default {
     info(value) {
       this.test = value
     },
-    like(publicaton) {
-      this.$store.dispatch('likePublication', {
-        id : publicaton.id
-      })
-      /*let val = parseInt(document.getElementById('nblikes').innerText)
-      val++;
-      document.getElementById('nblikes').innerText = val.toString()*/
-
-    },
-    sendClickedPublicationIndex(id){
+    sendClickedPublicationIndex(publication){
       this.isComponentModalActive = true
-      this.selectedPublication = id
+      this.selectedPublication = publication
     }
   }
 }
@@ -82,5 +51,13 @@ export default {
 .carousel {
   width: 50%;
   margin-left: 50px;
+}
+
+.red {
+  background-color: red;
+}
+
+.white {
+  color: white;
 }
 </style>
