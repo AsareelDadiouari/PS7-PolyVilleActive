@@ -7,37 +7,34 @@ public class Publication {
     private String authorName;
     private Group authorGroup;
     private String description;
-    private int like;
+    private String[] likes = new String[0];
     private String[] interests;
     private String[] comments;
 
-    public Publication(int id, String title, User author, String description, int like, String[] interests, String[] comments) {
+    public Publication(int id, String title, User author, String description, String[] interests, String[] comments) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.description = description;
-        this.like = like;
         this.interests = interests;
         this.comments = comments;
         this.authorName = "";
     }
 
-    public Publication(int id, String title, Group authorGroup, String description, int like, String[] interests, String[] comments) {
+    public Publication(int id, String title, Group authorGroup, String description, String[] interests, String[] comments) {
         this.id = id;
         this.title = title;
         this.authorGroup = authorGroup;
         this.description = description;
-        this.like = like;
         this.interests = interests;
         this.comments = comments;
         this.authorName = "";
     }
 
-    public Publication(int id, String title, String description, int like) {
+    public Publication(int id, String title, String description) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.like = like;
         this.authorName = "";
     }
 
@@ -76,8 +73,8 @@ public class Publication {
         return description;
     }
 
-    public int getLike() {
-        return like;
+    public String[] getLikes() {
+        return likes;
     }
 
     public String[] getInterests() {
@@ -100,5 +97,12 @@ public class Publication {
     public void setAuthorGroup(Group authorGroup) {
         this.authorGroup = authorGroup;
         this.authorName = authorGroup.getName();
+    }
+
+    public void setLikes(Object[] likes) {
+        this.likes = new String[likes.length];
+        for (int i = 0; i < this.likes.length; i++) {
+            this.likes[i] = likes[i].toString();
+        }
     }
 }

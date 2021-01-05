@@ -38,14 +38,14 @@ public class PublicationController {
     public List<Publication> getPublications() throws Exception {
         List<Publication> publications = new ArrayList<>();
         String query = "SELECT DISTINCT * WHERE {\n" +
-                    "?s <http://www.ps7-wia2.com/publications#publications> ?o. " +
-                    "?o <http://www.ps7-wia2.com/publications#title> ?title." +
-                    "?o <http://www.ps7-wia2.com/publications#author> ?author." +
-                    "?o <http://www.ps7-wia2.com/publications#interests> ?interests." +
-                    "?o <http://www.ps7-wia2.com/publications#like> ?like." +
-                    "?o <http://www.ps7-wia2.com/publications#comment> ?comment." +
-                    "?o <http://www.ps7-wia2.com/publications#description> ?description." +
-                    "}";
+                "?s <http://www.ps7-wia2.com/publications#publications> ?o. " +
+                "?o <http://www.ps7-wia2.com/publications#title> ?title." +
+                "?o <http://www.ps7-wia2.com/publications#author> ?author." +
+                "?o <http://www.ps7-wia2.com/publications#interests> ?interests." +
+                "?o <http://www.ps7-wia2.com/publications#comment> ?comment." +
+                "?o <http://www.ps7-wia2.com/publications#description> ?description." +
+                "OPTIONAL { ?o <http://www.ps7-wia2.com/publications#likes> ?likes. }" +
+                "}";
         RDFConnection conn = RDFConnectionFactory.connect(DATABASE);
         QueryExecution qExec = conn.query(query) ;
         ResultSet results = qExec.execSelect() ;
@@ -54,9 +54,10 @@ public class PublicationController {
 
         String[] sujet = sol.get("o").toString().split("/", -1);
 
-        Publication publication = new Publication(Integer.parseInt(sujet[sujet.length - 1]), sol.get("?title").toString(), sol.get("?description").toString(), sol.get("?like").asLiteral().getInt());
-            Set<String> interests = new HashSet<>();
-            Set<String> types = new HashSet<>();
+        Publication publication = new Publication(Integer.parseInt(sujet[sujet.length - 1]), sol.get("?title").toString(), sol.get("?description").toString());
+        Set<String> interests = new HashSet<>();
+        Set<String> types = new HashSet<>();
+        Set<String> likes = new HashSet<>();
         String[] authorSplit = sol.get("?author").toString().split("/",-1);
         String authorType = authorSplit[authorSplit.length-2];
         while (results.hasNext()) {
@@ -64,6 +65,7 @@ public class PublicationController {
             if (Integer.parseInt(sujet[sujet.length - 1]) != publication.getId()) {
                 publication.setInterests(interests.toArray());
                 publication.setComments(types.toArray());
+                publication.setLikes(likes.toArray());
                 if(authorType.equals("users")){
                     User user = UserController.user(authorSplit[authorSplit.length-1]);
                     publication.setAuthor(user);
@@ -72,18 +74,22 @@ public class PublicationController {
                     publication.setAuthorGroup(group);
                 }
                 publications.add(publication);
-                publication = new Publication(Integer.parseInt(sujet[sujet.length - 1]), sol.get("?title").toString(), sol.get("?description").toString(), sol.get("?like").asLiteral().getInt());
+                publication = new Publication(Integer.parseInt(sujet[sujet.length - 1]), sol.get("?title").toString(), sol.get("?description").toString());
                 interests = new HashSet<>();
                 types = new HashSet<>();
+                likes = new HashSet<>();
             }
             interests.add(sol.get("interests").toString());
             types.add(sol.get("comment").toString());
+            if (sol.get("likes") != null)
+                likes.add(sol.get("likes").toString());
             authorSplit = sol.get("?author").toString().split("/",-1);
             authorType = authorSplit[authorSplit.length-2];
             sol = results.next();
         }
         publication.setInterests(interests.toArray());
         publication.setComments(types.toArray());
+        publication.setLikes(likes.toArray());
         if(authorType.equals("users")){
             User user = UserController.user(authorSplit[authorSplit.length-1]);
             publication.setAuthor(user);
@@ -92,15 +98,20 @@ public class PublicationController {
             publication.setAuthorGroup(group);
         }
         publications.add(publication);
-        publication = new Publication(Integer.parseInt(sujet[sujet.length - 1]), sol.get("?title").toString(), sol.get("?description").toString(), sol.get("?like").asLiteral().getInt());
+        sujet = sol.get("o").toString().split("/", -1);
+        publication = new Publication(Integer.parseInt(sujet[sujet.length - 1]), sol.get("?title").toString(), sol.get("?description").toString());
         interests = new HashSet<>();
         types = new HashSet<>();
+        likes = new HashSet<>();
         interests.add(sol.get("interests").toString());
         types.add(sol.get("comment").toString());
+        if (sol.get("likes") != null)
+            likes.add(sol.get("likes").toString());
         authorSplit = sol.get("?author").toString().split("/",-1);
         authorType = authorSplit[authorSplit.length-2];
         publication.setInterests(interests.toArray());
         publication.setComments(types.toArray());
+        publication.setLikes(likes.toArray());
         if(authorType.equals("users")){
             User user = UserController.user(authorSplit[authorSplit.length-1]);
             publication.setAuthor(user);
@@ -115,32 +126,30 @@ public class PublicationController {
     }
 
     @CrossOrigin(origins = "http://localhost:8080")
-    @PostMapping(value = "/publications/{publicationId}/like", produces = MediaType.ALL_VALUE)
-    public boolean addLike(@PathVariable("publicationId") String id){
-        String query = "PREFIX publ: <http://www.ps7-wia2.com/publications/>\n" +
+    @PostMapping(value = "/publications/{publicationId}/like/{userId}", produces = MediaType.ALL_VALUE)
+    public boolean addLike(@PathVariable("publicationId") String id, @PathVariable("userId") String userId){
+        String query = "PREFIX publ: <http://www.ps7-wia2.com/publications/>" +
                 "PREFIX pub: <http://www.ps7-wia2.com/publications#>" +
-                "SELECT DISTINCT * WHERE {" +
-                "publ:" + id + " pub:like ?o .\n" +
-                "}\n";
-
-        RDFConnection conn = RDFConnectionFactory.connect(DATABASE);
-        QueryExecution qExec = conn.query(query) ;
-        ResultSet results = qExec.execSelect();
-
-        int nbLikes = Integer.parseInt(results.next().toString().replaceAll("[^0-9]", ""));
-        nbLikes++;
-
-        conn.close();
-        qExec.close();
-
-        String query2 = "PREFIX publ: <http://www.ps7-wia2.com/publications/>\n" +
-                "PREFIX pub: <http://www.ps7-wia2.com/publications#>\n" +
-                "DELETE { publ:" + id + " pub:like ?o }\n" +
-                "INSERT { publ:" + id + " pub:like " + nbLikes + " }\n" +
-                "WHERE {publ:" + id + " pub:like ?o .}\n";
+                "PREFIX u: <http://www.ps7-wia2.com/users/> " +
+                "INSERT DATA { publ:" + id + " pub:likes u:" + userId + " }";
 
         RDFConnection conn2 = RDFConnectionFactory.connect(DATABASE);
-        Txn.executeWrite(conn2, () -> conn2.update(query2));
+        Txn.executeWrite(conn2, () -> conn2.update(query));
+        conn2.close();
+
+        return true;
+    }
+
+    @CrossOrigin(origins = "http://localhost:8080")
+    @PostMapping(value = "/publications/{publicationId}/unlike/{userId}", produces = MediaType.ALL_VALUE)
+    public boolean unLike(@PathVariable("publicationId") String id, @PathVariable("userId") String userId){
+        String query = "PREFIX publ: <http://www.ps7-wia2.com/publications/>" +
+                "PREFIX pub: <http://www.ps7-wia2.com/publications#>" +
+                "PREFIX u: <http://www.ps7-wia2.com/users/> " +
+                "DELETE DATA { publ:" + id + " pub:likes u:" + userId + " }";
+
+        RDFConnection conn2 = RDFConnectionFactory.connect(DATABASE);
+        Txn.executeWrite(conn2, () -> conn2.update(query));
         conn2.close();
 
         return true;
