@@ -131,6 +131,7 @@ const Evenements = {
             try {
                 const response = await Vue.axios.get('http://localhost:8090/events')
                 context.commit('setEvenement', response.data)
+
             } catch (err) {
                 console.log(err)
             }
