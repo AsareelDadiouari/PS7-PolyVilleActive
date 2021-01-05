@@ -172,7 +172,6 @@ public class EventController {
         }
         qExec.close();
         conn.close();
-
         return events;
     }
 
