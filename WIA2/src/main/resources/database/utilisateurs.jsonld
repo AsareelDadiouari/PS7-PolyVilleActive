@@ -67,7 +67,18 @@
 			"interests": ["Fêtes et animations"],
 			"events": [""],
 			"groups": [""]
-		}
+		},
+         		{
+         			"@id": "u:7",
+         			"@type": "User",
+         			"firstname": "Marion",
+         			"lastname": "Dupont",
+         			"type": "Habitant",
+         			"role": "",
+         			"interests": ["Football"],
+         			"events": [""],
+         			"groups": [""]
+         		}
 	],
 	"@context": {
 		"Users": "foaf:users#Users",

@@ -12,6 +12,7 @@
     <b-modal :width="550" class="myModal" v-model="isComponentModalActive" :has-modal-card="true"  scroll="keep">
       <EvenementModal :evenement="evenementRecommandations"/>
     </b-modal>
+
   </div>
 </template>
 

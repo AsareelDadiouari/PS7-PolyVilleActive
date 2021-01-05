@@ -1,10 +1,8 @@
 package PS72021.WIA2.controller;
 
-import PS72021.WIA2.Application;
 import PS72021.WIA2.model.Categorie;
 import PS72021.WIA2.model.Event;
 import PS72021.WIA2.model.User;
-import org.apache.jena.base.Sys;
 import org.apache.jena.query.*;
 import org.apache.jena.rdfconnection.RDFConnection;
 import org.apache.jena.rdfconnection.RDFConnectionFactory;
@@ -197,12 +195,58 @@ public class EventController {
             while (results3.hasNext()) {
                 String[] genreSplit = results3.next().get("?obj").toString().split("/", -1);
                 interests.add("c:"+genreSplit[genreSplit.length - 1]);
-
             }
             qExec3.close();
             conn3.close();
         }
+        eventsWithInterests(interests,events);
+        if(events.size() == 0){
+            ArrayList<String> genres = new ArrayList<>();
+            for(int i = 0 ; i < interests.size() ; i++) {
+                String query = "SELECT * WHERE {\n" +
+                        "?s <http://www.ps7-wia2.com/genres#genres> ?o. " +
+                        "?o <http://www.ps7-wia2.com/genres#categories> ?\"" + interests.get(i) + "\"." +
+                        "?o <http://www.ps7-wia2.com/genres#name> ?name." +
+                        "}";
+                RDFConnection conn = RDFConnectionFactory.connect(DATABASE);
+                QueryExecution qExec = conn.query(query);
+                ResultSet results = qExec.execSelect();
+                QuerySolution sol = results.next();
+                if(!genres.contains(sol.get("name").toString())) {
+                    genres.add(sol.get("name").toString());
+                }
+                qExec.close();
+                conn.close();
+            }
+            for(int i = 0 ; i < genres.size() ; i++) {
+                String query = "SELECT * WHERE {\n" +
+                        "?s <http://www.ps7-wia2.com/genres#genres> ?o. " +
+                        "?o <http://www.ps7-wia2.com/genres#name> ?\"" + genres.get(i) + "\"." +
+                        "?o <http://www.ps7-wia2.com/genres#categories> ?categories." +
+                        "}";
+                RDFConnection conn = RDFConnectionFactory.connect(DATABASE);
+                QueryExecution qExec = conn.query(query);
+                ResultSet results = qExec.execSelect();
+                while (results.hasNext()) {
+                    QuerySolution sol = results.next();
+                    if (!interests.contains(sol.get("categories").toString())) {
+                        interests.add(sol.get("categories").toString());
+                    }
+                }
 
+                qExec.close();
+                conn.close();
+            }
+            eventsWithInterests(interests,events);
+        }
+        if(events.size() == 0) {
+            events = getEvents();
+        }
+        return events;
+
+    }
+
+    public void eventsWithInterests(ArrayList<String> interests, ArrayList<Event> events){
         for (int i = 0 ; i < interests.size()  ; i++) {
             String query = "SELECT * WHERE {\n" +
                     "?s <http://www.ps7-wia2.com/events#events> ?o. " +
@@ -314,12 +358,8 @@ public class EventController {
                 qExec.close();
                 conn.close();
             }}
-        if(events.size() == 0){
-            events = getEvents();
-        }
-        return events;
-
     }
+
 
     @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping(value = "/events/{eventId}", produces= MediaType.APPLICATION_JSON_VALUE)
@@ -337,7 +377,7 @@ public class EventController {
         conn.close();
 
         res.setStatus(201);
-        return "Vous participez à ce evenement";
+        return "Vous participez à cet evenement";
     }
 
     @CrossOrigin(origins = "http://localhost:8080")
