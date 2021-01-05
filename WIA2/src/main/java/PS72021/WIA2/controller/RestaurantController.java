@@ -23,7 +23,7 @@ public class RestaurantController {
      */
     @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping("/restaurants")
-    public List<Restaurant> getRestaurants()throws Exception{
+    public List<Restaurant> getRestaurants(){
         List<Restaurant> restaurants = new ArrayList<>();
         String query = "SELECT DISTINCT * WHERE {\n" +
                     "?s <http://www.ps7-wia2.com/restaurants#restaurants> ?o. " +

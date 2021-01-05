@@ -21,7 +21,7 @@ public class StoreController {
 
     @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping("/stores")
-    public List<Store> getUsers()  {
+    public List<Store> getStores()  {
         List<Store> stores = new ArrayList<>();
             String query = "SELECT DISTINCT * WHERE {\n" +
                     "?s <http://www.ps7-wia2.com/stores#stores> ?o. " +
