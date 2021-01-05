@@ -1,0 +1,88 @@
+ {
+	"@id": "http://www.ps7-wia2.com/Categories",
+	"@type": "Categories",
+	"categories": [
+		{
+			"@id": "c:1",
+			"@type": "Categorie",
+			"name": "Salon professionnel"
+		},{
+			"@id": "c:2",
+			"@type": "Categorie",
+			"name": "Musique"
+		},
+		{
+			"@id": "c:3",
+			"@type": "Categorie",
+			"name": "Musiques autres"
+		},
+		{
+			"@id": "c:4",
+			"@type": "Categorie",
+			"name": "Spectacle"
+		},
+		{
+			"@id": "c:5",
+			"@type": "Categorie",
+			"name": "Musique classique"
+		},
+		{
+			"@id": "c:6",
+			"@type": "Categorie",
+			"name": "Théâtre"
+		},
+		{
+			"@id": "c:7",
+			"@type": "Categorie",
+			"name": "Divers"
+		},
+		{
+			"@id": "c:8",
+			"@type": "Categorie",
+			"name": "Fêtes et animations"
+		},
+		{
+			"@id": "c:9",
+			"@type": "Categorie",
+			"name": "Danse"
+		},
+		{
+			"@id": "c:10",
+			"@type": "Categorie",
+			"name": "Carnaval"
+		},
+		{
+			"@id": "c:11",
+			"@type": "Categorie",
+			"name": "Conférence"
+		},
+		{
+			"@id": "c:12",
+			"@type": "Categorie",
+			"name": "Sport"
+		},
+		{
+			"@id": "c:13",
+			"@type": "Categorie",
+			"name": "Salon"
+		},
+		{
+			"@id": "c:14",
+			"@type": "Categorie",
+			"name": "Exposition"
+		},
+		{
+			"@id": "c:15",
+			"@type": "Categorie",
+			"name": "Cinéma"
+		}
+	],
+	"@context": {
+		"Categories": "foaf:categories#Categories",
+		"Categorie": "foaf:categories#Categorie",
+		"categories": "foaf:categories#categories",
+		"name": "foaf:categories#name",
+		"foaf": "http://www.ps7-wia2.com/",
+		"c": "http://www.ps7-wia2.com/categories/"
+	}
+}

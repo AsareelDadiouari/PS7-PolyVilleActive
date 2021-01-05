@@ -1,0 +1,46 @@
+ {
+	"@id": "http://www.ps7-wia2.com/Genres",
+	"@type": "Genres",
+	"genres": [
+		{
+			"@id": "ge:1",
+			"@type": "Genre",
+			"name": "Professionnel",
+			"categories": ["c:1","c:11"]
+		},{
+			"@id": "ge:2",
+			"@type": "Genre",
+			"name": "Musical",
+			"categories": ["c:2","c:3","c:5"]
+		},
+		{
+			"@id": "ge:3",
+			"@type": "Genre",
+			"name": "Art",
+			"categories": ["c:4","c:6","c:9","c:14","c:15"]
+		},
+		{
+			"@id": "ge:4",
+			"@type": "Genre",
+			"name": "Animations",
+			"categories": ["c:7","c:8","c:10","c:13","c:15"]
+		}
+		,
+		{
+			"@id": "ge:5",
+			"@type": "Genre",
+			"name": "Sports",
+			"categories": ["c:9","c:12"]
+		}
+	],
+	"@context": {
+		"Genres": "foaf:genres#Genres",
+		"Genre": "foaf:genres#Genre",
+		"genres": "foaf:genres#genres",
+		"name": "foaf:genres#name",
+		"categories": "foaf:genres#categories",
+		"foaf": "http://www.ps7-wia2.com/",
+		"ge": "http://www.ps7-wia2.com/genres/",
+		"c": "http://www.ps7-wia2.com/categories/"
+	}
+}
