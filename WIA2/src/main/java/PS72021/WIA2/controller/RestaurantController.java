@@ -64,6 +64,8 @@ public class RestaurantController {
             sol = results.next();
         }
         restaurants.add(restaurant);
+        qExec.close();
+        conn.close();
         return restaurants;
     }
 }
