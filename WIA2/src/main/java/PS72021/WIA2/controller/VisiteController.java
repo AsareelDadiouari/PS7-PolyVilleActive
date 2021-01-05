@@ -11,10 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @RestController
 public class VisiteController {
@@ -24,10 +21,11 @@ public class VisiteController {
     @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping("/visites")
     public Visite getVisite(){
-        return new Visite(getEvents(), getPatrimoines(), getStores());
+        return new Visite(getEvents("2021-01-06"), getPatrimoines(), getStores());
     }
 
-    public ArrayList<Event> getEvents(){
+    public ArrayList<Event> getEvents(String date){
+        LocalDate dateUser = LocalDate.parse(date);
         ArrayList<Event> events = new ArrayList<>();
         String query = "SELECT DISTINCT * WHERE {\n" +
                 "?s <http://www.ps7-wia2.com/events#events> ?o. " +
@@ -54,17 +52,25 @@ public class VisiteController {
         ArrayList<String> profiles = new ArrayList<>();
         Set<String> users = new HashSet<>();
         String address = null;
+        boolean dateOk = false;
         while (results.hasNext() && events.size() <5) {
             String[] sujet = sol.get("o").toString().split("/", -1);
-
             if(event != null ) {
                 if (Integer.parseInt(sujet[sujet.length - 1]) != event.getId()) {
-
-                    events.add(event);
+                    if(dateOk) {
+                        events.add(event);
+                    }
+                    dateOk = false;
                     profiles = new ArrayList<>();
                     users = new HashSet<>();
                     LocalDate start = LocalDate.parse(sol.get("?start").toString());
                     LocalDate end = LocalDate.parse(sol.get("?end").toString());
+                    if(start.isBefore(dateUser) && end.isAfter(dateUser)){
+                        dateOk = true;
+                    }
+                    if(start.equals(dateUser) || end.equals(dateUser)){
+                        dateOk = true;
+                    }
                     profiles.add(sol.get("profile").toString());
                     ArrayList<String> categories = new ArrayList<>();
                     String queryUsers = "PREFIX events: <http://www.ps7-wia2.com/events/>\n" +
@@ -93,6 +99,12 @@ public class VisiteController {
                 }else {
                     LocalDate start = LocalDate.parse(sol.get("?start").toString());
                     LocalDate end = LocalDate.parse(sol.get("?end").toString());
+                    if(start.isBefore(dateUser) && end.isAfter(dateUser)){
+                        dateOk = true;
+                    }
+                    if(start.equals(dateUser) || end.equals(dateUser)){
+                        dateOk = true;
+                    }
                     if(!profiles.contains(sol.get("profile").toString())){
                         profiles.add(sol.get("profile").toString());
                     }
@@ -127,6 +139,12 @@ public class VisiteController {
             }else{
                 LocalDate start = LocalDate.parse(sol.get("?start").toString());
                 LocalDate end = LocalDate.parse(sol.get("?end").toString());
+                if(start.isBefore(dateUser) && end.isAfter(dateUser)){
+                    dateOk = true;
+                }
+                if(start.equals(dateUser) || end.equals(dateUser)){
+                    dateOk = true;
+                }
                 profiles.add(sol.get("profile").toString());
                 ArrayList<String> categories = new ArrayList<>();
                 String queryUsers = "PREFIX events: <http://www.ps7-wia2.com/events/>\n" +
