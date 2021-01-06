@@ -2,10 +2,10 @@
   <div>
     <div class="container">
       <div class="has-text-centered">
-        <img width="100" src="../assets/polytrip.png" alt="photo">
+        <img alt="photo" src="../assets/polytrip.png" width="75">
         <h1 class="title">PolyTrip</h1>
       </div>
-      <div class="columns">
+      <div v-if="!this.visitStarted" ref="visiteTemplate" class="columns">
         <div id="left">
           <div class="card" style="margin-top: 100px">
             <div class="card-content">
@@ -29,34 +29,34 @@
           <b-datepicker
               v-if="dateIsClicked"
               v-model="selected"
-              :show-week-number="showWeekNumber"
               :locale="locale"
-              placeholder="Click to select..."
+              :show-week-number="showWeekNumber"
               icon="calendar-today"
+              placeholder="Click to select..."
               trap-focus>
           </b-datepicker>
         </div>
 
-        <div class="right has-text-centered" style="margin-left: auto;">
-          <div class="card"  >
+        <div  class="right has-text-centered" style="margin-left: auto;">
+          <div class="card">
             <div class="card-content">
               <p class="title">
                 Visite proposée
               </p>
-              <div class="content" style="overflow: scroll; height: 600px">
+              <div  class="content" style="overflow: scroll; height: 600px">
                 <b-notification ref="element" :closable="false">
-                  <div  v-for="(lieu, index) in listeLieux" :key="index">
+                  <div v-for="(lieu, index) in listeLieux" :key="index">
                     <div v-for="(item, indx) in lieu" :key="indx">
                       <div v-if="index < 2">
-                        <b-collapse class="card" animation="slide" aria-id="contentIdForA11y3" :open="false">
+                        <b-collapse :open="false" animation="slide" aria-id="contentIdForA11y3" class="card">
                           <div
                               slot="trigger"
                               slot-scope="props"
+                              aria-controls="contentIdForA11y3"
                               class="card-header"
-                              role="button"
-                              aria-controls="contentIdForA11y3">
+                              role="button">
                             <p class="card-header-title ">
-                              {{item.name}}
+                              {{ item.name }}
                             </p>
                             <a class="card-header-icon">
                               <b-icon
@@ -65,11 +65,14 @@
                             </a>
                           </div>
                           <div class="card-content">
-                            <div style="height: 400px; width: 500px" class="card-content">
-                                <l-map :zoom="zoom" :center="[item.latitude, item.longitude]">
-                                  <LTileLayer :url="url"></LTileLayer>
-                                  <LMarker :lat-lng="[item.latitude,item.longitude]"></LMarker>
-                                </l-map>
+                            <div class="card-content">
+                              <img width="300" :src="item.image" alt="img" >
+                              <!--<l-map :center="[item.latitude, item.longitude]" :zoom="zoom">
+                                <LTileLayer :url="url"></LTileLayer>
+                                <LMarker :lat-lng="[item.latitude,item.longitude]">
+                                  <LPopup :content="item.address"></LPopup>
+                                </LMarker>
+                              </l-map>-->
                             </div>
                           </div>
                           <footer class="card-footer">
@@ -78,15 +81,15 @@
                         </b-collapse>
                       </div>
                       <div v-else>
-                        <b-collapse class="card" animation="slide" aria-id="contentIdForA11y3" :open="false">
+                        <b-collapse :open="false" animation="slide" aria-id="contentIdForA11y3" class="card">
                           <div
                               slot="trigger"
                               slot-scope="props"
+                              aria-controls="contentIdForA11y3"
                               class="card-header"
-                              role="button"
-                              aria-controls="contentIdForA11y3">
+                              role="button">
                             <p class="card-header-title">
-                              {{item.name_fr}}
+                              {{ item.name_fr }}
                             </p>
                             <a class="card-header-icon">
                               <b-icon
@@ -95,11 +98,14 @@
                             </a>
                           </div>
                           <div class="card-content">
-                            <div style="height: 400px; width: 500px"  class="content">
-                              <l-map :zoom="zoom" :center="[item.latitude, item.longitude]">
+                            <div class="content" >
+                              {{item.address}}
+                              <!--<l-map :center="[item.latitude, item.longitude]" :zoom="zoom">
                                 <LTileLayer :url="url"></LTileLayer>
-                                <LMarker :lat-lng="[item.latitude,item.longitude]"></LMarker>
-                              </l-map>
+                                <LMarker :lat-lng="[item.latitude,item.longitude]">
+                                  <LPopup :content="item.address">{{ item.image }}</LPopup>
+                                </LMarker>
+                              </l-map>-->
                             </div>
                           </div>
                           <footer class="card-footer">
@@ -110,7 +116,7 @@
                     </div>
                   </div>
                 </b-notification>
-                <b-button id="commencer" style="width: 100%; margin-bottom: 25px">Commencer la visite</b-button>
+                <b-button id="commencer" @click.native="startVisite" style="width: 100%; margin-bottom: 25px">Commencer la visite</b-button>
               </div>
             </div>
           </div>
@@ -118,21 +124,24 @@
         </div>
       </div>
 
-
     </div>
-    <Footer />
+    <div class="container is-fluid" style="margin-right: 500px" v-if="this.visitStarted">
+      <PolyTripStart @onRetourFromVisite="getRetourVal($event)" :tout-leslieux="this.lieux" />
+    </div>
+    <Footer/>
   </div>
 </template>
 
 <script>
 import Footer from "@/components/Footer";
-import { LMap, LTileLayer, LMarker } from "vue2-leaflet";
+import PolyTripStart from "@/pages/PolyTrip-start";
 
 export default {
   name: "PolyTrip",
-  components: {Footer,LMap,
-    LTileLayer,
-    LMarker},
+  components: {
+    PolyTripStart,
+    Footer
+  },
   data() {
     return {
       selected: new Date(),
@@ -143,38 +152,52 @@ export default {
       url: "https://{s}.tile.osm.org/{z}/{x}/{y}.png",
       zoom: 16,
       //center: [43.6999,7.27927],
-      bounds: null
+      bounds: null,
+      visitStarted: false
     }
   },
-  beforeMount() {
-    let start_time = new Date().getTime();
-
-    this.$http.get('http://localhost:8090/visites').then( (res) => {
-      this.lieux = res.data
-
-      const loadingComponent = this.$buefy.loading.open({
-        container: this.$refs.element.$el
-      })
-
-      setTimeout( () => {
-        loadingComponent.close()
-      }, new Date().getTime() - start_time)
-
-    })
-
-  },
   created() {
-
+    this.$http.get('http://localhost:8090/visites').then((res) => {
+      this.lieux = res.data
+    })
   },
   computed: {
-    listeLieux(){
+    listeLieux() {
       const liste = [];
+
       liste.push(this.lieux['listEvents'])
       liste.push(this.lieux['listPatrimoines'])
       liste.push(this.lieux['listStore'])
 
       return liste
     }
+  },
+  methods: {
+    startVisite(){
+      this.$store.dispatch('sendClickedDate', {selectedDate: this.selected})
+      this.visitStarted = !this.visitStarted
+    },
+    getRetourVal(val){
+      this.visitStarted = val
+    }
+  },
+  watch: {
+    lieux: {
+      handler() {
+        if (this.dateIsClicked) {
+          console.log(this.selected)
+          this.lieux['listEvents'] = this.lieux['listEvents'].sort((a, b) => {
+            const date1 = Date.parse(a.start)
+            const date2 = Date.parse(b.start)
+            return date1 < this.selected && date2 > this.selected
+          })
+          return this.lieux['listEvents']
+        }
+        return this.lieux['listEvents']
+      },
+      deep: true
+    }
+
   }
 }
 </script>

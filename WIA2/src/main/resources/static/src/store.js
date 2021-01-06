@@ -398,6 +398,40 @@ const Patrimoines = {
     }
 }
 
+const Visites = {
+    state: {
+        selectedDate: Date
+    },
+    getters: {
+        getSelectedDate(state){
+            return state.selectedDate
+        }
+    },
+    mutations: {
+        setSelectedDate(state, payload){
+            state.selectedDate = payload
+        }
+    },
+    actions: {
+        async getSelectedDate(context){
+            try {
+                const response = await Vue.axios.get('http://localhost:8090/visites/selectedDate')
+                context.commit('setSelectedDate', response.data)
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        async sendClickedDate(context, payload) {
+            try {
+                await Vue.axios.post('http://localhost:8090/visites/', payload.selectedDate)
+                console.log(context)
+            } catch (err) {
+                console.log(err)
+            }
+        }
+    }
+}
+
 const store = new Vuex.Store({
     modules: {
         users: Users,
@@ -410,6 +444,7 @@ const store = new Vuex.Store({
         evenementsRecommandations: EvenementsRecommandations,
         publication: Publications,
         patrimoines: Patrimoines,
+        visites: Visites
     }
 })
 
