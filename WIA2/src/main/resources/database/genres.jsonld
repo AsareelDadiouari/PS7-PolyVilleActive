@@ -30,7 +30,7 @@
 			"@id": "ge:5",
 			"@type": "Genre",
 			"name": "Sports",
-			"categories": ["c:9","c:12"]
+			"categories": ["c:9","c:12","c:16"]
 		}
 	],
 	"@context": {

@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div class="card">
       <!-- <a><div class="card-image">
         <figure class="image  is-3by2">
@@ -34,8 +33,10 @@
           </p>
         </div>
       </div>
+      <button @click="like(publication)" class="button is-small is-danger is-outlined">
+        <b-icon size="is-small" icon="heart"/>
+      </button>
     </div>
-  </div>
 </template>
 
 <script>

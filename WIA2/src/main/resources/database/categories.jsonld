@@ -75,7 +75,12 @@
 			"@id": "c:15",
 			"@type": "Categorie",
 			"name": "Cinéma"
-		}
+		},
+         		{
+         			"@id": "c:16",
+         			"@type": "Categorie",
+         			"name": "Football"
+         		}
 	],
 	"@context": {
 		"Categories": "foaf:categories#Categories",

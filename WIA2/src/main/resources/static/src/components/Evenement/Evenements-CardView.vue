@@ -1,6 +1,9 @@
 <template>
   <div>
     <div class="card">
+      <button @click="like(publication)" class="button is-small is-danger is-outlined">
+        <b-icon size="is-small" icon="heart"/>
+      </button>
       <div class="card-image">
         <figure class="image is-3by2">
           <img :src="evenement.image" alt="Placeholder image">

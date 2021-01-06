@@ -34,6 +34,9 @@
           </p>
         </div>
       </div>
+      <button @click="like(publication)" class="button is-small is-danger is-outlined">
+        <b-icon size="is-small" icon="heart"/>
+      </button>
     </div>
   </div>
 </template>
