@@ -21,7 +21,7 @@
               Événements
             </b-navbar-item>
             <b-navbar-item :href="'/polyville/' + $route.params.id + '/stationnement'">
-              Stationement et transport en commun
+              Stationnement et transports en commun
             </b-navbar-item>
           </b-navbar-dropdown>
           <b-navbar-item class="item" href="#">
