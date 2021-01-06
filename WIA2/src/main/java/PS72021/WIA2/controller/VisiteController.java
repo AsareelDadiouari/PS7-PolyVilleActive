@@ -139,6 +139,7 @@ public class VisiteController {
         Event event = null;
         ArrayList<String> profiles = new ArrayList<>();
         Set<String> users = new HashSet<>();
+        Set<String> likes = new HashSet<>();
         String address = null;
         boolean dateOk = false;
         while (results.hasNext()) {
@@ -151,6 +152,7 @@ public class VisiteController {
                     dateOk = false;
                     profiles = new ArrayList<>();
                     users = new HashSet<>();
+                    likes = new HashSet<>();
                     LocalDate start = LocalDate.parse(sol.get("?start").toString());
                     LocalDate end = LocalDate.parse(sol.get("?end").toString());
                     if(start.isBefore(dateUser) && end.isAfter(dateUser)){
@@ -180,9 +182,11 @@ public class VisiteController {
                     qExec1.close();
                     conn1.close();
                     address = sol.get("address").toString();
+                    if (sol.get("likes") != null)
+                        likes.add(sol.get("likes").toString());
                     event = new Event (Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name_fr").toString(), start, end, address,profiles,categories,
                             sol.get("description").toString(),sol.get("images").toString(),sol.get("latitude").asLiteral().getDouble(),
-                            sol.get("longitude").asLiteral().getDouble(), users);
+                            sol.get("longitude").asLiteral().getDouble(), users, likes);
 
                 }else {
                     LocalDate start = LocalDate.parse(sol.get("?start").toString());
@@ -220,9 +224,11 @@ public class VisiteController {
                     if(!address.contains(sol.get("address").toString())) {
                         address = address + " " + sol.get("address").toString();
                     }
+                    if (sol.get("likes") != null)
+                        likes.add(sol.get("likes").toString());
                     event = new Event (Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name_fr").toString(), start, end, address,profiles,categories,
                             sol.get("description").toString(),sol.get("images").toString(),sol.get("latitude").asLiteral().getDouble(),
-                            sol.get("longitude").asLiteral().getDouble(), users);
+                            sol.get("longitude").asLiteral().getDouble(), users, likes);
                 }
             }else{
                 LocalDate start = LocalDate.parse(sol.get("?start").toString());
@@ -254,9 +260,11 @@ public class VisiteController {
                 qExec1.close();
                 conn1.close();
                 address = sol.get("address").toString();
+                if (sol.get("likes") != null)
+                    likes.add(sol.get("likes").toString());
                 event = new Event (Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name_fr").toString(), start, end, address,profiles,categories,
                         sol.get("description").toString(),sol.get("images").toString(),sol.get("latitude").asLiteral().getDouble(),
-                        sol.get("longitude").asLiteral().getDouble(), users);
+                        sol.get("longitude").asLiteral().getDouble(), users, likes);
             }
 
             String queryUsers = "PREFIX event: <http://www.ps7-wia2.com/events/>\n" +
@@ -327,6 +335,7 @@ public class VisiteController {
                 "?o <http://www.ps7-wia2.com/stores#description> ?description." +
                 "?o <http://www.ps7-wia2.com/stores#latitude> ?latitude." +
                 "?o <http://www.ps7-wia2.com/stores#longitude> ?longitude." +
+                "OPTIONAL { ?o <http://www.ps7-wia2.com/stores#likes> ?likes. }" +
                 "}";
 
         RDFConnection conn = RDFConnectionFactory.connect(DATABASE);
@@ -340,20 +349,30 @@ public class VisiteController {
                 sol.get("description").toString(), sol.get("latitude").asLiteral().getDouble(), sol.get("longitude").asLiteral().getDouble());
 
         Set<String> categories = new HashSet<>();
+        Set<String> likes = new HashSet<>();
         categories.add(sol.get("category").toString());
-        store.setCategories(categories.toArray());
-        while (results.hasNext()) {
+        if (sol.get("likes") != null)
+            likes.add(sol.get("likes").toString());
+        store.setCategories(categories);
+        store.setLikes(likes);
+        for (;results.hasNext();) {
             sujet = sol.get("o").toString().split("/", -1);
             if (Integer.parseInt(sujet[sujet.length - 1]) != store.getId()) {
-                store.setCategories(categories.toArray());
+                store.setCategories(categories);
+                store.setLikes(likes);
                 stores.add(store);
                 store = new Store(Integer.parseInt(sujet[sujet.length - 1]), sol.get("name_fr").toString(), sol.get("opening").toString(), sol.get("address_line1").toString(),
                         sol.get("description").toString(), sol.get("latitude").asLiteral().getDouble(), sol.get("longitude").asLiteral().getDouble());
                 categories = new HashSet<>();
+                likes = new HashSet<>();
             }
             categories.add(sol.get("category").toString());
+            if (sol.get("likes") != null)
+                likes.add(sol.get("likes").toString());
             sol = results.next();
         }
+        store.setCategories(categories);
+        store.setLikes(likes);
         stores.add(store);
         qExec.close();
         conn.close();

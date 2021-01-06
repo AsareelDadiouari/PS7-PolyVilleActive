@@ -10,11 +10,12 @@ public class Event extends Lieu{
     private final String address;
     private final ArrayList<String> profiles;
     private final ArrayList<String> categories;
+    private Set<String> likes;
     private final String decription;
     private final String image;
     private final Set<String> users;
 
-    public Event(int id, String name, LocalDate start, LocalDate end, String address, ArrayList<String> profiles, ArrayList<String> categories, String decription, String image, Double latitude, Double longitude, Set<String> participants) {
+    public Event(int id, String name, LocalDate start, LocalDate end, String address, ArrayList<String> profiles, ArrayList<String> categories, String decription, String image, Double latitude, Double longitude, Set<String> participants, Set<String> likes) {
         super(id, name, latitude, longitude);
         this.start = start;
         this.end = end;
@@ -24,6 +25,7 @@ public class Event extends Lieu{
         this.decription = decription;
         this.image = image;
         this.users = participants;
+        this.likes = likes;
     }
 
 
@@ -58,5 +60,9 @@ public class Event extends Lieu{
 
     public Set<String> getUsers() {
         return users;
+    }
+
+    public Set<String> getLikes() {
+        return likes;
     }
 }

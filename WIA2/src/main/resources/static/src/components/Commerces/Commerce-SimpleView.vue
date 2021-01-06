@@ -22,11 +22,17 @@
             <li v-for="categorie in store.categories" :key="categorie">{{categorie}}</li>
           </ul>
           <br>
+          <p class="control" style="margin-left: auto">
+            <span style="margin-right: 5px">{{store.likes.length}}</span>
+            <button v-if="!alreadyLike" @click="like()" class="button is-small is-danger is-outlined">
+                <b-icon size="is-small" icon="heart"/>
+            </button>
+            <button v-else @click="unlike()" class="button is-small is-danger">
+                <b-icon size="is-small" icon="heart"/>
+            </button>
+          </p>
         </div>
       </div>
-      <button @click="like(publication)" class="button is-small is-danger is-outlined">
-        <b-icon size="is-small" icon="heart"/>
-      </button>
     </div>
 </template>
 
@@ -35,6 +41,35 @@ export default {
   name: "Commerce-SimpleView",
   props: {
       store: Object,
+  },
+  computed: {
+      alreadyLike() {
+          var response = false;
+          this.store.likes.forEach(element => {
+              var id = element.split("/")
+              if (id[id.length - 1] == this.$route.params.id) {
+              response = true;
+              return;
+              }
+          });
+          return response;
+      }
+  },
+  methods: {
+    like() {
+        this.$store.dispatch('likeStore', {
+            id : this.store.id,
+            userId: this.$route.params.id
+        })
+        this.store.likes.push("http://www.ps7-wia2.com/users/" + this.$route.params.id + "")
+    },
+    unlike() {
+        this.$store.dispatch('unlikeStore', {
+            id : this.store.id,
+            userId: this.$route.params.id
+        })
+        this.store.likes.pop("http://www.ps7-wia2.com/users/" + this.$route.params.id + "")
+    }
   }
 }
 </script>

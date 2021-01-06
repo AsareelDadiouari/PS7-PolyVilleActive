@@ -72,8 +72,21 @@ const Stores = {
             } catch (err) {
                 console.log(err)
             }
+        },
+        async likeStore(context, payload) {
+            try {
+                await Vue.axios.post("http://localhost:8090/stores/" + payload.id + "/like/" + payload.userId)
+            } catch (err){
+                console.log(err)
+            }
+        },
+        async unlikeStore(context, payload) {
+            try {
+                await Vue.axios.post("http://localhost:8090/stores/" + payload.id + "/unlike/" + payload.userId)
+            } catch (err){
+                console.log(err)
+            }
         }
-
     }
 }
 
@@ -95,13 +108,26 @@ const Restaurants = {
     actions: {
         async setRestaurants(context) {
             try {
-                const response2 = await Vue.axios.get('http://localhost:8090/restaurants')
-                context.commit('setRestaurants', response2.data)
+                const response = await Vue.axios.get('http://localhost:8090/restaurants')
+                context.commit('setRestaurants', response.data)
             } catch (err) {
                 console.log(err)
             }
+        },
+        async likeRestaurant(context, payload) {
+            try {
+                await Vue.axios.post("http://localhost:8090/restaurants/" + payload.id + "/like/" + payload.userId)
+            } catch (err){
+                console.log(err)
+            }
+        },
+        async unlikeRestaurant(context, payload) {
+            try {
+                await Vue.axios.post("http://localhost:8090/restaurants/" + payload.id + "/unlike/" + payload.userId)
+            } catch (err){
+                console.log(err)
+            }
         }
-
     }
 }
 
@@ -136,7 +162,6 @@ const Evenements = {
                 console.log(err)
             }
         },
-
         async joinEvenement(context, payload){
             try {
                 const response = await Vue.axios.post('http://localhost:8090/events/' + payload.eventId, payload.userId)
@@ -151,6 +176,20 @@ const Evenements = {
                 context.commit('setParticipe', response.data)
             } catch (e){
                 context.commit('setParticipe', e)
+            }
+        },
+        async likeEvenement(context, payload) {
+            try {
+                await Vue.axios.post("http://localhost:8090/events/" + payload.id + "/like/" + payload.userId)
+            } catch (err){
+                console.log(err)
+            }
+        },
+        async unlikeEvenement(context, payload) {
+            try {
+                await Vue.axios.post("http://localhost:8090/events/" + payload.id + "/unlike/" + payload.userId)
+            } catch (err){
+                console.log(err)
             }
         }
     }
@@ -290,7 +329,6 @@ const Publications = {
         async likePublication(context, payload){
             try {
                 await Vue.axios.post("http://localhost:8090/publications/" + payload.id + "/like/" + payload.userId)
-                context.dispatch("setPublications")
             } catch (err){
                 console.log(err)
             }
@@ -298,7 +336,6 @@ const Publications = {
         async unlikePublication(context, payload){
             try {
                 await Vue.axios.post("http://localhost:8090/publications/" + payload.id + "/unlike/" + payload.userId)
-                context.dispatch("setPublications")
             } catch (err){
                 console.log(err)
             }
@@ -393,8 +430,21 @@ const Patrimoines = {
             } catch (err) {
                 console.log(err)
             }
+        },
+        async likePatrimoine(context, payload) {
+            try {
+                await Vue.axios.post("http://localhost:8090/patrimoines/" + payload.id + "/like/" + payload.userId)
+            } catch (err){
+                console.log(err)
+            }
+        },
+        async unlikePatrimoine(context, payload) {
+            try {
+                await Vue.axios.post("http://localhost:8090/patrimoines/" + payload.id + "/unlike/" + payload.userId)
+            } catch (err){
+                console.log(err)
+            }
         }
-
     }
 }
 

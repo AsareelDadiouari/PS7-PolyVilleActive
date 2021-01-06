@@ -1,6 +1,6 @@
 <template >
   <div class="carousel">
-    <p class="subtitle is-3">Les derniĂ¨res publications</p>
+    <p class="subtitle is-3">Les dernières publications</p>
     <div>
       <b-carousel-list :data="publications" :items-to-show="2">
         <template slot="item" slot-scope="publication">

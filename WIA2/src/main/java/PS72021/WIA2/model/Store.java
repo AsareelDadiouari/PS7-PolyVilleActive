@@ -1,11 +1,15 @@
 package PS72021.WIA2.model;
 
+import java.util.Set;
+
 public class Store extends Lieu{
+
 
     private final String opening;
     private final String address;
-    private String[] categories = new String[0];
     private final String description;
+    private Set<String> categories;
+    private Set<String> likes;
 
     public Store(int id, String name, String opening, String address, String description, double latitude, double longitude) {
         super(id, name, latitude, longitude);
@@ -14,13 +18,13 @@ public class Store extends Lieu{
         this.description = description;
     }
 
-    public void setCategories(Object[] categories) {
-        this.categories = new String[categories.length];
-        for (int i = 0; i < this.categories.length; i++) {
-            this.categories[i] = categories[i].toString();
-        }
+    public void setCategories(Set<String> categories) {
+        this.categories = categories;
     }
 
+    public void setLikes(Set<String> likes) {
+        this.likes = likes;
+    }
 
     public String getOpening() {
         return opening;
@@ -30,9 +34,11 @@ public class Store extends Lieu{
         return address;
     }
 
-    public String[] getCategories() {
+    public Set<String> getCategories() {
         return categories;
     }
+
+    public Set<String> getLikes() { return likes; }
 
     public String getDescription() {
         return description;
