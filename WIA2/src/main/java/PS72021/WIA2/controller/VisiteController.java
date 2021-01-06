@@ -25,12 +25,12 @@ public class VisiteController {
 
     @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping("/visites")
-    @PostMapping(value ="/visites", produces = MediaType.ALL_VALUE)
+   // @PostMapping(value ="/visites", produces = MediaType.ALL_VALUE)
     public Visite getVisite(HttpServletRequest req, HttpServletResponse res) throws IOException {
-        BufferedReader bufferedReader = req.getReader();
-        String date = bufferedReader.readLine();
-        res.setStatus(200);
-        ArrayList<Event> events = getEvents(date);
+       // BufferedReader bufferedReader = req.getReader();
+        //String date = bufferedReader.readLine();
+
+        ArrayList<Event> events = getEvents("2021-02-09");
         ArrayList<Patrimoine> patrimoines = getPatrimoines();
         ArrayList<Store> stores = getStores();
         ArrayList<Lieu> lieux = new ArrayList<>();
