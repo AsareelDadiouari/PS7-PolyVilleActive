@@ -46,9 +46,4 @@ export default {
   cursor: pointer;
   color: white;
 }
-
-
-.event-desc {
-
-}
 </style>

@@ -53,12 +53,14 @@ export default {
                 id : this.publication.id,
                 userId: this.$route.params.id
             })
+            this.publication.likes.push("http://www.ps7-wia2.com/users/" + this.$route.params.id + "")
         },
         unlike() {
             this.$store.dispatch('unlikePublication', {
                 id : this.publication.id,
                 userId: this.$route.params.id
             })
+            this.publication.likes.pop("http://www.ps7-wia2.com/users/" + this.$route.params.id + "")
         },
         sendClickedPublicationIndex(){
             this.$emit("selected", this.publication);

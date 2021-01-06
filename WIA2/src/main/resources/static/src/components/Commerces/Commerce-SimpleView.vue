@@ -33,9 +33,6 @@
           </p>
         </div>
       </div>
-      <button @click="like(publication)" class="button is-small is-danger is-outlined">
-        <b-icon size="is-small" icon="heart"/>
-      </button>
     </div>
 </template>
 
@@ -64,12 +61,14 @@ export default {
             id : this.store.id,
             userId: this.$route.params.id
         })
+        this.store.likes.push("http://www.ps7-wia2.com/users/" + this.$route.params.id + "")
     },
     unlike() {
         this.$store.dispatch('unlikeStore', {
             id : this.store.id,
             userId: this.$route.params.id
         })
+        this.store.likes.pop("http://www.ps7-wia2.com/users/" + this.$route.params.id + "")
     }
   }
 }

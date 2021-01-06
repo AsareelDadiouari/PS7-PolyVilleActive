@@ -13,13 +13,16 @@ public class Event {
     private String address;
     private ArrayList<String> profiles;
     private ArrayList<String> categories;
+    private Set<String> likes;
     private String decription;
     private String image;
     private Double latitude;
     private Double longitude;
     private Set<String> users;
 
-    public Event(int id, String name, LocalDate start, LocalDate end, String address, ArrayList<String> profiles, ArrayList<String> categories, String decription, String image, Double latitude, Double longitude, Set<String> participants) {
+    public Event(int id, String name, LocalDate start, LocalDate end, String address, ArrayList<String> profiles,
+                 ArrayList<String> categories, String decription, String image, Double latitude, Double longitude,
+                 Set<String> participants, Set<String> likes) {
         this.id = id;
         this.name = name;
         this.start = start;
@@ -32,6 +35,7 @@ public class Event {
         this.latitude = latitude;
         this.longitude = longitude;
         this.users = participants;
+        this.likes = likes;
     }
 
     public Event(String name) {
@@ -85,5 +89,9 @@ public class Event {
 
     public Set<String> getUsers() {
         return users;
+    }
+
+    public Set<String> getLikes() {
+        return likes;
     }
 }

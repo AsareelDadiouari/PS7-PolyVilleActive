@@ -40,6 +40,7 @@ public class EventController {
                 "?o <http://www.ps7-wia2.com/events#latitude> ?latitude." +
                 "?o <http://www.ps7-wia2.com/events#longitude> ?longitude." +
                 "?o <http://www.ps7-wia2.com/events#users> ?users." +
+                "OPTIONAL { ?o <http://www.ps7-wia2.com/events#likes> ?likes. }" +
                 "}";
 
         RDFConnection conn = RDFConnectionFactory.connect(DATABASE);
@@ -51,6 +52,7 @@ public class EventController {
         Event event = null;
         ArrayList<String> profiles = new ArrayList<>();
         Set<String> users = new HashSet<>();
+        Set<String> likes = new HashSet<>();
         String address = null;
         while (results.hasNext()) {
             String[] sujet = sol.get("o").toString().split("/", -1);
@@ -61,6 +63,7 @@ public class EventController {
                     events.add(event);
                     profiles = new ArrayList<>();
                     users = new HashSet<>();
+                    likes = new HashSet<>();
                     LocalDate start = LocalDate.parse(sol.get("?start").toString());
                     LocalDate end = LocalDate.parse(sol.get("?end").toString());
                     profiles.add(sol.get("profile").toString());
@@ -84,9 +87,11 @@ public class EventController {
                     qExec1.close();
                     conn1.close();
                     address = sol.get("address").toString();
+                    if (sol.get("likes") != null)
+                        likes.add(sol.get("likes").toString());
                     event = new Event (Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name_fr").toString(), start, end, address,profiles,categories,
                             sol.get("description").toString(),sol.get("images").toString(),sol.get("latitude").asLiteral().getDouble(),
-                            sol.get("longitude").asLiteral().getDouble(), users);
+                            sol.get("longitude").asLiteral().getDouble(), users, likes);
 
                 }else {
                     LocalDate start = LocalDate.parse(sol.get("?start").toString());
@@ -118,9 +123,11 @@ public class EventController {
                     if(!address.contains(sol.get("address").toString())) {
                         address = address + " " + sol.get("address").toString();
                     }
+                    if (sol.get("likes") != null)
+                        likes.add(sol.get("likes").toString());
                     event = new Event (Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name_fr").toString(), start, end, address,profiles,categories,
                             sol.get("description").toString(),sol.get("images").toString(),sol.get("latitude").asLiteral().getDouble(),
-                            sol.get("longitude").asLiteral().getDouble(), users);
+                            sol.get("longitude").asLiteral().getDouble(), users, likes);
                 }
             }else{
                 LocalDate start = LocalDate.parse(sol.get("?start").toString());
@@ -146,9 +153,11 @@ public class EventController {
                 qExec1.close();
                 conn1.close();
                 address = sol.get("address").toString();
+                if (sol.get("likes") != null)
+                    likes.add(sol.get("likes").toString());
                 event = new Event (Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name_fr").toString(), start, end, address,profiles,categories,
                         sol.get("description").toString(),sol.get("images").toString(),sol.get("latitude").asLiteral().getDouble(),
-                        sol.get("longitude").asLiteral().getDouble(), users);
+                        sol.get("longitude").asLiteral().getDouble(), users, likes);
             }
 
             String queryUsers = "PREFIX event: <http://www.ps7-wia2.com/events/>\n" +
@@ -262,6 +271,7 @@ public class EventController {
                     "?o <http://www.ps7-wia2.com/events#latitude> ?latitude." +
                     "?o <http://www.ps7-wia2.com/events#longitude> ?longitude." +
                     "?o <http://www.ps7-wia2.com/events#users> ?users." +
+                    "OPTIONAL { ?o <http://www.ps7-wia2.com/events#likes> ?likes. }" +
                     "}";
 
             RDFConnection conn = RDFConnectionFactory.connect(DATABASE);
@@ -275,6 +285,7 @@ public class EventController {
                 ArrayList<String> profiles = new ArrayList<>();
                 ArrayList<String> categories = new ArrayList<>();
                 Set<String> users = new HashSet<>();
+                Set<String> likes = new HashSet<>();
                 String address = null;
                 while (results.hasNext()) {
                     String[] sujet = sol.get("o").toString().split("/", -1);
@@ -286,14 +297,17 @@ public class EventController {
                             profiles = new ArrayList<>();
                             categories = new ArrayList<>();
                             users = new HashSet<>();
+                            likes = new HashSet<>();
                             LocalDate start = LocalDate.parse(sol.get("?start").toString());
                             LocalDate end = LocalDate.parse(sol.get("?end").toString());
                             profiles.add(sol.get("profile").toString());
                             categories.add(sol.get("categories").toString());
                             address = sol.get("address").toString();
+                            if (sol.get("likes") != null)
+                                likes.add(sol.get("likes").toString());
                             event = new Event(Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name_fr").toString(), start, end, address, profiles, categories,
                                     sol.get("description").toString(), sol.get("images").toString(), sol.get("latitude").asLiteral().getDouble(),
-                                    sol.get("longitude").asLiteral().getDouble(), users);
+                                    sol.get("longitude").asLiteral().getDouble(), users, likes);
 
                             String queryUsers = "PREFIX event: <http://www.ps7-wia2.com/events/>\n" +
                                     "PREFIX el: <http://www.ps7-wia2.com/events#>\n" +
@@ -323,9 +337,11 @@ public class EventController {
                             if (!address.contains(sol.get("address").toString())) {
                                 address = address + " " + sol.get("address").toString();
                             }
+                            if (sol.get("likes") != null)
+                                likes.add(sol.get("likes").toString());
                             event = new Event(Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name_fr").toString(), start, end, address, profiles, categories,
                                     sol.get("description").toString(), sol.get("images").toString(), sol.get("latitude").asLiteral().getDouble(),
-                                    sol.get("longitude").asLiteral().getDouble(), users);
+                                    sol.get("longitude").asLiteral().getDouble(), users, likes);
                         }
                     } else {
                         LocalDate start = LocalDate.parse(sol.get("?start").toString());
@@ -333,9 +349,11 @@ public class EventController {
                         profiles.add(sol.get("profile").toString());
                         categories.add(sol.get("categories").toString());
                         address = sol.get("address").toString();
+                        if (sol.get("likes") != null)
+                            likes.add(sol.get("likes").toString());
                         event = new Event(Integer.parseInt(sujet[sujet.length - 1]), sol.get("?name_fr").toString(), start, end, address, profiles, categories,
                                 sol.get("description").toString(), sol.get("images").toString(), sol.get("latitude").asLiteral().getDouble(),
-                                sol.get("longitude").asLiteral().getDouble(), users);
+                                sol.get("longitude").asLiteral().getDouble(), users, likes);
                     }
 
                     String queryUsers = "PREFIX event: <http://www.ps7-wia2.com/events/>\n" +
@@ -411,4 +429,35 @@ public class EventController {
         conn.close();
         return false;
     }
+
+    @CrossOrigin(origins = "http://localhost:8080")
+    @PostMapping(value = "/events/{eventId}/like/{userId}", produces = MediaType.ALL_VALUE)
+    public boolean addLike(@PathVariable("eventId") String id, @PathVariable("userId") String userId){
+        String query = "PREFIX even: <http://www.ps7-wia2.com/events/>" +
+                "PREFIX eve: <http://www.ps7-wia2.com/events#>" +
+                "PREFIX u: <http://www.ps7-wia2.com/users/> " +
+                "INSERT DATA { even:" + id + " eve:likes u:" + userId + " }";
+
+        RDFConnection conn2 = RDFConnectionFactory.connect(DATABASE);
+        Txn.executeWrite(conn2, () -> conn2.update(query));
+        conn2.close();
+
+        return true;
+    }
+
+    @CrossOrigin(origins = "http://localhost:8080")
+    @PostMapping(value = "/events/{eventId}/unlike/{userId}", produces = MediaType.ALL_VALUE)
+    public boolean unLike(@PathVariable("eventId") String id, @PathVariable("userId") String userId){
+        String query = "PREFIX even: <http://www.ps7-wia2.com/events/>" +
+                "PREFIX eve: <http://www.ps7-wia2.com/events#>" +
+                "PREFIX u: <http://www.ps7-wia2.com/users/> " +
+                "DELETE DATA { even:" + id + " eve:likes u:" + userId + " }";
+
+        RDFConnection conn2 = RDFConnectionFactory.connect(DATABASE);
+        Txn.executeWrite(conn2, () -> conn2.update(query));
+        conn2.close();
+
+        return true;
+    }
+
 }

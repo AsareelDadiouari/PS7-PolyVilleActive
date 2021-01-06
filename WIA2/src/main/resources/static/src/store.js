@@ -76,7 +76,6 @@ const Stores = {
         async likeStore(context, payload) {
             try {
                 await Vue.axios.post("http://localhost:8090/stores/" + payload.id + "/like/" + payload.userId)
-                context.dispatch("setStores")
             } catch (err){
                 console.log(err)
             }
@@ -84,7 +83,6 @@ const Stores = {
         async unlikeStore(context, payload) {
             try {
                 await Vue.axios.post("http://localhost:8090/stores/" + payload.id + "/unlike/" + payload.userId)
-                context.dispatch("setStores")
             } catch (err){
                 console.log(err)
             }
@@ -119,7 +117,6 @@ const Restaurants = {
         async likeRestaurant(context, payload) {
             try {
                 await Vue.axios.post("http://localhost:8090/restaurants/" + payload.id + "/like/" + payload.userId)
-                context.dispatch("setRestaurants")
             } catch (err){
                 console.log(err)
             }
@@ -127,7 +124,6 @@ const Restaurants = {
         async unlikeRestaurant(context, payload) {
             try {
                 await Vue.axios.post("http://localhost:8090/restaurants/" + payload.id + "/unlike/" + payload.userId)
-                context.dispatch("setRestaurants")
             } catch (err){
                 console.log(err)
             }
@@ -165,7 +161,6 @@ const Evenements = {
                 console.log(err)
             }
         },
-
         async joinEvenement(context, payload){
             try {
                 const response = await Vue.axios.post('http://localhost:8090/events/' + payload.eventId, payload.userId)
@@ -180,6 +175,20 @@ const Evenements = {
                 context.commit('setParticipe', response.data)
             } catch (e){
                 context.commit('setParticipe', e)
+            }
+        },
+        async likeEvenement(context, payload) {
+            try {
+                await Vue.axios.post("http://localhost:8090/events/" + payload.id + "/like/" + payload.userId)
+            } catch (err){
+                console.log(err)
+            }
+        },
+        async unlikeEvenement(context, payload) {
+            try {
+                await Vue.axios.post("http://localhost:8090/events/" + payload.id + "/unlike/" + payload.userId)
+            } catch (err){
+                console.log(err)
             }
         }
     }
@@ -319,7 +328,6 @@ const Publications = {
         async likePublication(context, payload){
             try {
                 await Vue.axios.post("http://localhost:8090/publications/" + payload.id + "/like/" + payload.userId)
-                context.dispatch("setPublications")
             } catch (err){
                 console.log(err)
             }
@@ -327,7 +335,6 @@ const Publications = {
         async unlikePublication(context, payload){
             try {
                 await Vue.axios.post("http://localhost:8090/publications/" + payload.id + "/unlike/" + payload.userId)
-                context.dispatch("setPublications")
             } catch (err){
                 console.log(err)
             }
@@ -426,7 +433,6 @@ const Patrimoines = {
         async likePatrimoine(context, payload) {
             try {
                 await Vue.axios.post("http://localhost:8090/patrimoines/" + payload.id + "/like/" + payload.userId)
-                context.dispatch("setPatrimoines")
             } catch (err){
                 console.log(err)
             }
@@ -434,7 +440,6 @@ const Patrimoines = {
         async unlikePatrimoine(context, payload) {
             try {
                 await Vue.axios.post("http://localhost:8090/patrimoines/" + payload.id + "/unlike/" + payload.userId)
-                context.dispatch("setPatrimoines")
             } catch (err){
                 console.log(err)
             }

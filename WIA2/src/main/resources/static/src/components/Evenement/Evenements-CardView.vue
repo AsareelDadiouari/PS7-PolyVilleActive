@@ -1,9 +1,6 @@
 <template>
   <div>
     <div class="card">
-      <button @click="like(publication)" class="button is-small is-danger is-outlined">
-        <b-icon size="is-small" icon="heart"/>
-      </button>
       <div class="card-image">
         <figure class="image is-3by2">
           <img :src="evenement.image" alt="Placeholder image">
@@ -26,6 +23,15 @@
         <div class="content">
           {{evenement.decription.substring(0,70)}}... <a><span @click="isComponentModalActive = true">Voir plus</span></a>
         </div>
+        <p class="control" style="margin-left: auto">
+          <span style="margin-right: 5px">{{evenement.likes.length}}</span>
+          <button v-if="!alreadyLike" @click="like()" class="button is-small is-danger is-outlined">
+              <b-icon size="is-small" icon="heart"/>
+          </button>
+          <button v-else @click="unlike()" class="button is-small is-danger">
+              <b-icon size="is-small" icon="heart"/>
+          </button>
+        </p>
       </div>
     </div>
 
@@ -48,13 +54,42 @@ export default {
   },
   props: {
     evenement: Object
+  },
+  computed: {
+      alreadyLike() {
+          var response = false;
+          this.evenement.likes.forEach(element => {
+              var id = element.split("/")
+              if (id[id.length - 1] == this.$route.params.id) {
+              response = true;
+              return;
+              }
+          });
+          return response;
+      }
+  },
+  methods: {
+      like() {
+          this.$store.dispatch('likeEvenement', {
+              id : this.evenement.id,
+              userId: this.$route.params.id
+          })
+          this.evenement.likes.push("http://www.ps7-wia2.com/users/" + this.$route.params.id + "")
+      },
+      unlike() {
+          this.$store.dispatch('unlikeEvenement', {
+              id : this.evenement.id,
+              userId: this.$route.params.id
+          })
+          this.evenement.likes.pop("http://www.ps7-wia2.com/users/" + this.$route.params.id + "")
+      }
   }
 }
 </script>
 
 <style scoped>
 .card {
-  height: 500px;
+  height: auto;
 }
 
 </style>

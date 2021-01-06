@@ -51,12 +51,14 @@ export default {
             id : this.patrimoine.id,
             userId: this.$route.params.id
         })
+        this.patrimoine.likes.push("http://www.ps7-wia2.com/users/" + this.$route.params.id + "")
     },
     unlike() {
         this.$store.dispatch('unlikePatrimoine', {
             id : this.patrimoine.id,
             userId: this.$route.params.id
         })
+        this.patrimoine.likes.pop("http://www.ps7-wia2.com/users/" + this.$route.params.id + "")
     }
   }
 }
