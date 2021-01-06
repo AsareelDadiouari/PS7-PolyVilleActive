@@ -13,7 +13,7 @@
               <div v-for="(lieu, index) in toutLeslieux" :key="index">
                 <div v-for="(item, indx) in lieu" :key="indx">
                   <div v-if="index < 2">
-                    <b-collapse :open="indx === 0 && index === 0" animation="slide" aria-id="contentIdForA11y3" class="card">
+                    <b-collapse ref="collapse" :open="indx === 0 && index === 0" animation="slide" aria-id="contentIdForA11y3" class="card">
                       <div
                           slot="trigger"
                           slot-scope="props"
@@ -35,12 +35,12 @@
                         </div>
                       </div>
                       <footer class="card-footer">
-                        <b-button id="passer" class="card-footer-item">Passer au lieu suivant</b-button>
+                        <b-button @click.native="passerSuivant" id="passer" class="card-footer-item">Passer au lieu suivant</b-button>
                       </footer>
                     </b-collapse>
                   </div>
                   <div v-else>
-                    <b-collapse :open="false" animation="slide" aria-id="contentIdForA11y3" class="card">
+                    <b-collapse ref="collapse" :open="indx === 0 && index === 0" animation="slide" aria-id="contentIdForA11y3" class="card">
                       <div
                           slot="trigger"
                           slot-scope="props"
@@ -71,7 +71,7 @@
             </div>
           </div>
         </div>
-        <b-button @click="retour" class="is-primary is-fullwidth">Terminer la visite</b-button>
+        <b-button id="terminer" ref="terminer" @click="retour" class="is-primary is-fullwidth">Terminer la visite</b-button>
       </div>
 
     </div>
@@ -80,23 +80,7 @@
 
         <LTileLayer :url="url"></LTileLayer>
 
-        <div v-for="(lieu, index) in toutLeslieux" :key="index">
-          <div v-for="(item, idx) in lieu" :key="idx">
-            <div v-if="idx < 2">
-              <LMarker :lat-lng="[item.latitude, item.longitude]">
-                <LPopup >{{item.name}}</LPopup>
-                <!--<l-polyline :lat-lngs="center" color="blue"></l-polyline>-->
-              </LMarker>
-            </div>
-            <div v-if="idx >= 2">
-              <LMarker :lat-lng="[item.latitude, item.longitude]">
-                <LPopup >{{item.name}}</LPopup>
-                <!--<l-polyline :lat-lngs="center" color="blue"></l-polyline>-->
-              </LMarker>
-            </div>
-          </div>
-
-        </div>
+        <LRoutingMachine  :waypoints="waypoints"/>
 
       </LMap>
     </div>
@@ -104,11 +88,12 @@
 </template>
 
 <script>
-import { LMap, LTileLayer, LMarker, LPopup,   } from 'vue2-leaflet';
+import { LMap, LTileLayer  } from 'vue2-leaflet';
+import LRoutingMachine from "@/components/LRoutingMachine";
 
 export default {
   name: "PolyTrip-start",
-  components: {LPopup, LMap, LMarker, LTileLayer, },
+  components: {LRoutingMachine, LMap, LTileLayer, },
   props: {
     toutLeslieux: Object
   },
@@ -118,10 +103,20 @@ export default {
       zoom: 16,
       center: [43.6999,7.27927],
       bounds: null,
-      indexLieu: 0
+      indexLieu: 0,
+      waypoints: []
     }
   },
   created() {
+    this.toutLeslieux['listLieux'].forEach( (val) => {
+      this.waypoints.push({
+        "lat": val.latitude,
+        "lng": val.longitude
+      })
+    })
+  },
+  mounted() {
+    this.$refs.collapse[0].isOpen = true
 
   },
   methods: {
@@ -129,14 +124,23 @@ export default {
       this.$emit('onRetourFromVisite', false)
     },
     passerSuivant(){
+      this.$refs.collapse[this.indexLieu].isOpen = false
 
-    }
+      if (this.indexLieu < this.$refs.collapse.length - 1){
+        this.indexLieu++;
+        this.$refs.collapse[this.indexLieu].isOpen = true
+      }
+
+      if (this.indexLieu + 1 === this.$refs.collapse.length)
+        document.getElementById('terminer').style.backgroundColor = '#31b84f'
+    },
+
   }
 }
 </script>
 
 <style scoped>
-.start-visit {
-
+#terminer {
+  background-color: grey;
 }
 </style>
