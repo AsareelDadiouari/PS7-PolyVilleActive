@@ -72,8 +72,23 @@ const Stores = {
             } catch (err) {
                 console.log(err)
             }
+        },
+        async likeStore(context, payload) {
+            try {
+                await Vue.axios.post("http://localhost:8090/stores/" + payload.id + "/like/" + payload.userId)
+                context.dispatch("setStores")
+            } catch (err){
+                console.log(err)
+            }
+        },
+        async unlikeStore(context, payload) {
+            try {
+                await Vue.axios.post("http://localhost:8090/stores/" + payload.id + "/unlike/" + payload.userId)
+                context.dispatch("setStores")
+            } catch (err){
+                console.log(err)
+            }
         }
-
     }
 }
 
@@ -95,13 +110,28 @@ const Restaurants = {
     actions: {
         async setRestaurants(context) {
             try {
-                const response2 = await Vue.axios.get('http://localhost:8090/restaurants')
-                context.commit('setRestaurants', response2.data)
+                const response = await Vue.axios.get('http://localhost:8090/restaurants')
+                context.commit('setRestaurants', response.data)
             } catch (err) {
                 console.log(err)
             }
+        },
+        async likeRestaurant(context, payload) {
+            try {
+                await Vue.axios.post("http://localhost:8090/restaurants/" + payload.id + "/like/" + payload.userId)
+                context.dispatch("setRestaurants")
+            } catch (err){
+                console.log(err)
+            }
+        },
+        async unlikeRestaurant(context, payload) {
+            try {
+                await Vue.axios.post("http://localhost:8090/restaurants/" + payload.id + "/unlike/" + payload.userId)
+                context.dispatch("setRestaurants")
+            } catch (err){
+                console.log(err)
+            }
         }
-
     }
 }
 
@@ -392,8 +422,23 @@ const Patrimoines = {
             } catch (err) {
                 console.log(err)
             }
+        },
+        async likePatrimoine(context, payload) {
+            try {
+                await Vue.axios.post("http://localhost:8090/patrimoines/" + payload.id + "/like/" + payload.userId)
+                context.dispatch("setPatrimoines")
+            } catch (err){
+                console.log(err)
+            }
+        },
+        async unlikePatrimoine(context, payload) {
+            try {
+                await Vue.axios.post("http://localhost:8090/patrimoines/" + payload.id + "/unlike/" + payload.userId)
+                context.dispatch("setPatrimoines")
+            } catch (err){
+                console.log(err)
+            }
         }
-
     }
 }
 

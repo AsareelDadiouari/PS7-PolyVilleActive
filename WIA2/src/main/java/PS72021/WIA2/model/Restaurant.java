@@ -9,6 +9,7 @@ public class Restaurant {
     private  String adress;
     private  Set<String> amenities;
     private  Set<String> services;
+    private Set<String> likes;
     private  double longitude;
     private  double latitude;
 
@@ -54,6 +55,8 @@ public class Restaurant {
         return longitude;
     }
 
+    public Set<String> getLikes() { return likes; }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -80,5 +83,9 @@ public class Restaurant {
 
     public void setServices(Set<String> services) {
         this.services = services;
+    }
+
+    public void setLikes(Set<String> likes) {
+        this.likes = likes;
     }
 }
