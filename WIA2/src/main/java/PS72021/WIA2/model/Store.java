@@ -1,24 +1,17 @@
 package PS72021.WIA2.model;
 
-public class Store {
+public class Store extends Lieu{
 
-    private int id;
-    private String name_fr;
-    private String opening;
-    private String address;
+    private final String opening;
+    private final String address;
     private String[] categories = new String[0];
-    private String description;
-    private double latitude;
-    private double longitude;
+    private final String description;
 
-    public Store(int id, String name_fr, String opening, String address, String description, double latitude, double longitude) {
-        this.id = id;
-        this.name_fr = name_fr;
+    public Store(int id, String name, String opening, String address, String description, double latitude, double longitude) {
+        super(id, name, latitude, longitude);
         this.opening = opening;
         this.address = address;
         this.description = description;
-        this.latitude = latitude;
-        this.longitude = longitude;
     }
 
     public void setCategories(Object[] categories) {
@@ -28,13 +21,6 @@ public class Store {
         }
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public String getName_fr() {
-        return name_fr;
-    }
 
     public String getOpening() {
         return opening;
@@ -52,11 +38,4 @@ public class Store {
         return description;
     }
 
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
 }

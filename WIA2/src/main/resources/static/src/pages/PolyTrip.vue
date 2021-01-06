@@ -35,6 +35,7 @@
               placeholder="Click to select..."
               trap-focus>
           </b-datepicker>
+          <b-button id="selectDate" @click.native="selectDate" style="width: 100%; margin-bottom: 25px">Générer une visite</b-button>
         </div>
 
         <div  class="right has-text-centered" style="margin-left: auto;">
@@ -89,7 +90,7 @@
                               class="card-header"
                               role="button">
                             <p class="card-header-title">
-                              {{ item.name_fr }}
+                              {{ item.name }}
                             </p>
                             <a class="card-header-icon">
                               <b-icon
@@ -126,7 +127,7 @@
 
     </div>
     <div class="container is-fluid" style="margin-right: 500px" v-if="this.visitStarted">
-      <PolyTripStart @onRetourFromVisite="getRetourVal($event)" :tout-leslieux="this.lieux" />
+      <PolyTripStart @onRetourFromVisite="getRetourVal($event)" :tout-leslieux=listeLieux />
     </div>
     <Footer/>
   </div>
@@ -157,24 +158,18 @@ export default {
     }
   },
   created() {
-    this.$http.get('http://localhost:8090/visites').then((res) => {
-      this.lieux = res.data
-    })
+    this.$store.dispatch('setLieux')
   },
   computed: {
     listeLieux() {
-      const liste = [];
-
-      liste.push(this.lieux['listEvents'])
-      liste.push(this.lieux['listPatrimoines'])
-      liste.push(this.lieux['listStore'])
-
-      return liste
+      return this.$store.getters.getLieux
     }
   },
   methods: {
+    selectDate(){
+      //return this.$store.dispatch('sendClickedDate', {selectedDate: this.selected})
+    },
     startVisite(){
-      this.$store.dispatch('sendClickedDate', {selectedDate: this.selected})
       this.visitStarted = !this.visitStarted
     },
     getRetourVal(val){

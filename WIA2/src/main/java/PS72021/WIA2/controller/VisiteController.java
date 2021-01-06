@@ -6,10 +6,14 @@ import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
 import org.apache.jena.rdfconnection.RDFConnection;
 import org.apache.jena.rdfconnection.RDFConnectionFactory;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.apache.jena.system.Txn;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -18,10 +22,94 @@ public class VisiteController {
 
     private static final String DATABASE = "http://localhost:3030/data_polyville";
 
+
     @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping("/visites")
-    public Visite getVisite(){
-        return new Visite(getEvents("2021-01-06"), getPatrimoines(), getStores());
+    @PostMapping(value ="/visites", produces = MediaType.ALL_VALUE)
+    public Visite getVisite(HttpServletRequest req, HttpServletResponse res) throws IOException {
+        BufferedReader bufferedReader = req.getReader();
+        String date = bufferedReader.readLine();
+        res.setStatus(200);
+        ArrayList<Event> events = getEvents(date);
+        ArrayList<Patrimoine> patrimoines = getPatrimoines();
+        ArrayList<Store> stores = getStores();
+        ArrayList<Lieu> lieux = new ArrayList<>();
+        int nbEvents = 0;
+        int nbPatrimoines = 0;
+        int nbStores = 0;
+
+        Double localisationLatitude;
+        Double localisationLongitude;
+        int i = 0;
+        int j = 0;
+        int k = 0;
+        if(events.size() != 0) {
+            localisationLatitude = events.get(i).getLatitude();
+            localisationLongitude = events.get(i).getLongitude();
+            lieux.add(events.get(i));
+            i ++;
+            nbEvents ++;
+        }else{
+            localisationLatitude = patrimoines.get(j).getLatitude();
+            localisationLongitude = patrimoines.get(j).getLongitude();
+            lieux.add(patrimoines.get(j));
+            j ++;
+            nbPatrimoines ++;
+        }
+
+        Lieu lieuPlusProche = patrimoines.get(i);
+        double distanceLieuPlusProche;
+
+        while( i < events.size()-1 || j < patrimoines.size()-1 || k < stores.size()-1){
+            distanceLieuPlusProche = -1.0;
+            for(int l = i ; l < events.size()-1 ; l++){
+
+                double distanceEvent = BusController.gps2m(localisationLatitude,localisationLongitude,events.get(l).getLatitude(),events.get(l).getLongitude());
+                if(distanceEvent < distanceLieuPlusProche || distanceLieuPlusProche == -1.0){
+                    distanceLieuPlusProche = distanceEvent;
+                    lieuPlusProche = events.get(l);
+                }
+            }
+            for(int m = j ; m < patrimoines.size()-1 ; m++){
+                double distancePatrimoine = BusController.gps2m(localisationLatitude,localisationLongitude,patrimoines.get(m).getLatitude(),patrimoines.get(m).getLongitude());
+                if(distancePatrimoine < distanceLieuPlusProche || distanceLieuPlusProche == -1.0){
+                    distanceLieuPlusProche = distancePatrimoine;
+                    lieuPlusProche = patrimoines.get(m);
+                }
+            }
+            for(int n = k ; n < stores.size()-1 ; n++){
+                double distanceStore = BusController.gps2m(localisationLatitude,localisationLongitude,stores.get(n).getLatitude(),stores.get(n).getLongitude());
+                if(distanceStore < distanceLieuPlusProche || distanceLieuPlusProche == -1.0){
+                    distanceLieuPlusProche = distanceStore;
+                    lieuPlusProche = stores.get(n);
+                }
+            }
+            lieux.add(lieuPlusProche);
+            localisationLatitude = lieuPlusProche.getLatitude();
+            localisationLongitude = lieuPlusProche.getLongitude();
+            if(lieuPlusProche.getClass() == Event.class ){
+                nbEvents ++;
+                events.remove(lieuPlusProche);
+                if(nbEvents == 4){
+                    i = events.size()-1;
+                }
+            }else if(lieuPlusProche.getClass() == Patrimoine.class ){
+                nbPatrimoines ++;
+                patrimoines.remove(lieuPlusProche);
+                if(nbPatrimoines > 3){
+                    j = patrimoines.size()-1;
+                }
+            }else if(lieuPlusProche.getClass() == Store.class ){
+                nbStores ++;
+                stores.remove(lieuPlusProche);
+                if(nbStores == 2){
+                    k = stores.size()-1;
+                }
+            }
+
+        }
+
+        return new Visite(lieux);
     }
 
     public ArrayList<Event> getEvents(String date){
@@ -53,7 +141,7 @@ public class VisiteController {
         Set<String> users = new HashSet<>();
         String address = null;
         boolean dateOk = false;
-        while (results.hasNext() && events.size() <5) {
+        while (results.hasNext()) {
             String[] sujet = sol.get("o").toString().split("/", -1);
             if(event != null ) {
                 if (Integer.parseInt(sujet[sujet.length - 1]) != event.getId()) {
@@ -213,7 +301,7 @@ public class VisiteController {
         String[] sujet = sol.get("o").toString().split("/", -1);
         patrimoine = new Patrimoine(Integer.parseInt(sujet[sujet.length - 1]),  sol.get("name").toString(),sol.get("latitude").asLiteral().getDouble() ,sol.get("longitude").asLiteral().getDouble(), sol.get("image").toString());
 
-        while (results.hasNext() && patrimoines.size() < 4) {
+        while (results.hasNext()) {
             sujet = sol.get("o").toString().split("/", -1);
             if (Integer.parseInt(sujet[sujet.length - 1]) != patrimoine.getId()) {
                 patrimoines.add(patrimoine);
@@ -254,7 +342,7 @@ public class VisiteController {
         Set<String> categories = new HashSet<>();
         categories.add(sol.get("category").toString());
         store.setCategories(categories.toArray());
-        while (results.hasNext() && stores.size()<1) {
+        while (results.hasNext()) {
             sujet = sol.get("o").toString().split("/", -1);
             if (Integer.parseInt(sujet[sujet.length - 1]) != store.getId()) {
                 store.setCategories(categories.toArray());

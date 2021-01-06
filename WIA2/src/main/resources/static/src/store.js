@@ -400,23 +400,23 @@ const Patrimoines = {
 
 const Visites = {
     state: {
-        selectedDate: Date
-    },
-    getters: {
-        getSelectedDate(state){
-            return state.selectedDate
-        }
+        lieux: Date
     },
     mutations: {
-        setSelectedDate(state, payload){
-            state.selectedDate = payload
+        setLieux(state, payload){
+            state.lieux = payload
+        }
+    },
+    getters: {
+        getLieux(state){
+            return state.lieux
         }
     },
     actions: {
-        async getSelectedDate(context){
+        async setLieux(context){
             try {
-                const response = await Vue.axios.get('http://localhost:8090/visites/selectedDate')
-                context.commit('setSelectedDate', response.data)
+                const response = await Vue.axios.get('http://localhost:8090/visites')
+                context.commit('setLieux', response.data)
             } catch (err) {
                 console.log(err)
             }
