@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div v-else>
-                <h3>Vous n'avez pas rejoint de groupes !</h3>
+                <h3>Vous n'avez pas rejoint de groupe !</h3>
             </div>
             <br>
         </div>

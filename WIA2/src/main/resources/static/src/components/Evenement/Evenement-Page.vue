@@ -20,7 +20,6 @@ import EvenementsCardView from "@/components/Evenement/Evenements-CardView";
 import Footer from "@/components/Footer";
 import SearchBar from "@/components/SearchBar";
 
-
 export default {
   name: "Evenement-Page",
   components: {SearchBar, EvenementsCardView, Footer},
@@ -31,6 +30,7 @@ export default {
   },
   created() {
     this.$store.dispatch('setEvenement')
+
   },
   computed: {
     evenements() {

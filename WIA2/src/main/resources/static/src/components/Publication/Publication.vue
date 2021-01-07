@@ -14,7 +14,7 @@
                 </span></a>
                 </p>
                 <p class="control" style="margin-left: auto">
-                <span>{{publication.likes.length}}</span>
+                <span style="margin-right: 5px">{{publication.likes.length}}</span>
                 <button v-if="!alreadyLike" @click="like()" class="button is-small is-danger is-outlined">
                     <b-icon size="is-small" icon="heart"/>
                 </button>
@@ -53,15 +53,14 @@ export default {
                 id : this.publication.id,
                 userId: this.$route.params.id
             })
-            /*let val = parseInt(document.getElementById('nblikes').innerText)
-            val++;
-            document.getElementById('nblikes').innerText = val.toString()*/
+            this.publication.likes.push("http://www.ps7-wia2.com/users/" + this.$route.params.id + "")
         },
         unlike() {
             this.$store.dispatch('unlikePublication', {
                 id : this.publication.id,
                 userId: this.$route.params.id
             })
+            this.publication.likes.pop("http://www.ps7-wia2.com/users/" + this.$route.params.id + "")
         },
         sendClickedPublicationIndex(){
             this.$emit("selected", this.publication);

@@ -67,7 +67,106 @@
 			"interests": ["Fêtes et animations"],
 			"events": [""],
 			"groups": [""]
-		}
+		},
+		{
+		    "@id": "u:7",
+		    "@type": "User",
+		    "firstname": "Quentin",
+		    "lastname": "Letroadec",
+		    "type": "Habitant",
+		    "role": "",
+		    "interests": ["Sport", "Musique", "Cinéma"],
+		    "events": [""],
+		    "groups": [""]
+		},
+		{
+            "@id": "u:8",
+            "@type": "User",
+            "firstname": "Noëlie",
+            "lastname": "Lafargue",
+            "type": "Visiteur",
+            "role": "",
+            "interests": ["Théâtre", "Musique", "Musique classique"],
+            "events": [""],
+            "groups": [""]
+        },
+        {
+        	"@id": "u:9",
+        	"@type": "User",
+        	"firstname": "Chloé",
+        	"lastname": "Jean",
+            "type": "Habitant",
+            "role": "",
+            "interests": ["Exposition", "Conférence", "Divers"],
+            "events": [""],
+            "groups": [""]
+        },
+        {
+             "@id": "u:10",
+             "@type": "User",
+             "firstname": "Daniel",
+             "lastname": "Zanhd",
+             "type": "Habitant",
+             "role": "Administration",
+             "interests": ["Salon professionel", "Salon"],
+             "events": [""],
+             "groups": [""]
+         },
+         {
+             "@id": "u:11",
+             "@type": "User",
+             "firstname": "Paul",
+             "lastname": "Boyer",
+             "type": "Visiteur",
+             "role": "",
+             "interests": ["Spectacle", "Carnaval", "Sport"],
+             "events": [""],
+             "groups": [""]
+          },
+          {
+             "@id": "u:12",
+             "@type": "User",
+             "firstname": "Rose",
+             "lastname": "Dupont",
+             "type": "Habitant",
+             "role": "Commerçant",
+             "interests": ["Fêtes et animation", "Danse", "Exposition"],
+             "events": [""],
+             "groups": [""]
+          },
+          {
+             "@id": "u:13",
+             "@type": "User",
+             "firstname": "Didier",
+             "lastname": "Guibaut",
+             "type": "Habitant",
+             "role": "Commerçant",
+             "interests": ["Musiques autres", "Théâtre"],
+             "events": [""],
+             "groups": [""]
+           },
+           {
+              "@id": "u:14",
+              "@type": "User",
+              "firstname": "Flore",
+              "lastname": "Deschamps",
+              "type": "Visiteur",
+              "role": "",
+              "interests": ["Carnaval", "Divers"],
+              "events": [""],
+              "groups": [""]
+            },
+            {
+               "@id": "u:15",
+               "@type": "User",
+               "firstname": "Jean-François",
+               "lastname": "Deypair",
+               "type": "Non-habitant",
+               "role": "",
+               "interests": ["Sport", "Salon professionnel"],
+               "events": [""],
+               "groups": [""]
+             }
 	],
 	"@context": {
 		"Users": "foaf:users#Users",

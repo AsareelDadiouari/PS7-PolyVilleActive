@@ -21,7 +21,7 @@
               Événements
             </b-navbar-item>
             <b-navbar-item :href="'/polyville/' + $route.params.id + '/stationnement'">
-              Stationement et transport en commun
+              Stationnement et transports en commun
             </b-navbar-item>
           </b-navbar-dropdown>
           <b-navbar-item class="item" href="#">
@@ -29,6 +29,9 @@
           </b-navbar-item>
           <b-navbar-item class="item" :href="'/polyville/' + $route.params.id + '/groupes'">
             Groupes
+          </b-navbar-item>
+          <b-navbar-item id="polytrip" :transparent="true" class="item" :href="'/polyville/' + $route.params.id + '/polyTrip'">
+            PolyTrip
           </b-navbar-item>
         </template>
       </b-navbar>
@@ -106,6 +109,16 @@ export default {
 
 .image2 {
   margin-top: 8px;
+}
+
+#polytrip:hover {
+  background-color: #2e5ffd;
+  color: white;
+}
+
+#polytrip {
+  transition: all .2s ease-in-out;
+  color: #429ccd;
 }
 
 </style>
