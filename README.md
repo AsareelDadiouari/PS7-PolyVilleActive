@@ -9,6 +9,7 @@ PolyVilleActive est à destination de la ville, de ses habitants et commerçants
 - [Installation](#Installation)
 - [Documentation](#Documentation)
 - [Utilisation](#Utilisation)
+- [Déploiement](#Déploiement)
 - [Equipe](#Equipe)
 
 # Installation
@@ -36,11 +37,13 @@ npm run serve
 ```
 
 # Documentation
-SPARQL : https://www.w3.org/TR/rdf-sparql-query/
+SPARQL      : https://www.w3.org/TR/rdf-sparql-query/
 
 JENA FUSEKI : https://jena.apache.org
 
-SPRING BOOT :https://spring.io/projects/spring-boot
+SPRING BOOT : https://spring.io/projects/spring-boot
+
+VUEJS       : https://vuejs.org/v2/guide/
 
 # Utilisation
 Accéder/modifier/supprimer la base de donnée via l'interface du serveur JENA
@@ -53,6 +56,24 @@ Pour lancer le front
 http://localhost:8080/
 ```
 
+# Déploiement
+Pour deployer le seveur Jena Fuseki sur docker
+- Créer un fichier nommé <strong>Dockerfile</strong>
+  ```Dockerfile
+  FROM  openjdk:11-jre-slim-buster
+  WORKDIR ${YOUR_DIRECTORY}PS7-20-21-WIA2/fuseki
+  COPY . .
+  EXPOSE 5000
+  CMD ./fuseki-server --loc dataset /data_polyville
+  ```
+- Créer l'image docker
+  ```sh
+  docker build --force-rm --build-arg JENA_VERSION=3.16.0 -t fuseki .
+  ```
+- Lancer 
+  ```bash
+  docker run -i --rm -p "3030:3030" --name MyServer -t fuseki --mem /ds
+  ```
 
 # Equipe
 - [Elise Chamberlin](https://github.com/Elise-Chamberlin)
