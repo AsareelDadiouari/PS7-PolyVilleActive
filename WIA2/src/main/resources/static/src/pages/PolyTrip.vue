@@ -5,7 +5,7 @@
         <img alt="photo" src="../assets/polytrip.png" width="75">
         <h1 class="title">PolyTrip</h1>
       </div>
-      <div v-if="!this.visitStarted" ref="visiteTemplate" class="columns">
+      <div v-if="!this.visitStarted" ref="visiteTemplate" class="columns is-centered">
         <div id="left">
           <div class="card" style="margin-top: 100px">
             <div class="card-content">

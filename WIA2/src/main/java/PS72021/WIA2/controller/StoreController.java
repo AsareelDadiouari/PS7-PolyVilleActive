@@ -77,7 +77,7 @@ public class StoreController {
     }
 
     @CrossOrigin(origins = "http://localhost:8080")
-    @PostMapping(value = "/stores/{storeId}/like/{userId}", produces = MediaType.ALL_VALUE)
+    @PostMapping(value = "/stores/{storeId}/like/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean addLike(@PathVariable("storeId") String id, @PathVariable("userId") String userId){
         String query = "PREFIX stor: <http://www.ps7-wia2.com/stores/>" +
                 "PREFIX sto: <http://www.ps7-wia2.com/stores#>" +
@@ -92,7 +92,7 @@ public class StoreController {
     }
 
     @CrossOrigin(origins = "http://localhost:8080")
-    @PostMapping(value = "/stores/{storeId}/unlike/{userId}", produces = MediaType.ALL_VALUE)
+    @PostMapping(value = "/stores/{storeId}/unlike/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean unLike(@PathVariable("storeId") String id, @PathVariable("userId") String userId){
         String query = "PREFIX stor: <http://www.ps7-wia2.com/stores/>" +
                 "PREFIX sto: <http://www.ps7-wia2.com/stores#>" +

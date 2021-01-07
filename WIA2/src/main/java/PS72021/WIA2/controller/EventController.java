@@ -399,7 +399,7 @@ public class EventController {
     }
 
     @CrossOrigin(origins = "http://localhost:8080")
-    @GetMapping(value = "/events/{eventId}/user/{userId}", produces= MediaType.ALL_VALUE)
+    @GetMapping(value = "/events/{eventId}/user/{userId}", produces= MediaType.APPLICATION_JSON_VALUE)
     public boolean checkParticipant(HttpServletResponse res, @PathVariable("eventId") String eventId,
                                     @PathVariable("userId") String userId) {
 
@@ -431,7 +431,7 @@ public class EventController {
     }
 
     @CrossOrigin(origins = "http://localhost:8080")
-    @PostMapping(value = "/events/{eventId}/like/{userId}", produces = MediaType.ALL_VALUE)
+    @PostMapping(value = "/events/{eventId}/like/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean addLike(@PathVariable("eventId") String id, @PathVariable("userId") String userId){
         String query = "PREFIX even: <http://www.ps7-wia2.com/events/>" +
                 "PREFIX eve: <http://www.ps7-wia2.com/events#>" +
@@ -448,7 +448,7 @@ public class EventController {
     }
 
     @CrossOrigin(origins = "http://localhost:8080")
-    @PostMapping(value = "/events/{eventId}/unlike/{userId}", produces = MediaType.ALL_VALUE)
+    @PostMapping(value = "/events/{eventId}/unlike/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean unLike(@PathVariable("eventId") String id, @PathVariable("userId") String userId){
         String query = "PREFIX even: <http://www.ps7-wia2.com/events/>" +
                 "PREFIX eve: <http://www.ps7-wia2.com/events#>" +

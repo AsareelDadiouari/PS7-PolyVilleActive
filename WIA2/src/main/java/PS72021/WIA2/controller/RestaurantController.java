@@ -77,7 +77,7 @@ public class RestaurantController {
     }
 
     @CrossOrigin(origins = "http://localhost:8080")
-    @PostMapping(value = "/restaurants/{restaurantId}/like/{userId}", produces = MediaType.ALL_VALUE)
+    @PostMapping(value = "/restaurants/{restaurantId}/like/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean addLike(@PathVariable("restaurantId") String id, @PathVariable("userId") String userId){
         String query = "PREFIX rest: <http://www.ps7-wia2.com/restaurants/>" +
                 "PREFIX res: <http://www.ps7-wia2.com/restaurants#>" +
@@ -92,7 +92,7 @@ public class RestaurantController {
     }
 
     @CrossOrigin(origins = "http://localhost:8080")
-    @PostMapping(value = "/restaurants/{restaurantId}/unlike/{userId}", produces = MediaType.ALL_VALUE)
+    @PostMapping(value = "/restaurants/{restaurantId}/unlike/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean unLike(@PathVariable("restaurantId") String id, @PathVariable("userId") String userId){
         String query = "PREFIX rest: <http://www.ps7-wia2.com/restaurants/>" +
                 "PREFIX res: <http://www.ps7-wia2.com/restaurants#>" +

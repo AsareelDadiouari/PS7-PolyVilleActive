@@ -66,7 +66,7 @@ public class PatrimoineController {
     }
 
     @CrossOrigin(origins = "http://localhost:8080")
-    @PostMapping(value = "/patrimoines/{patrimoineId}/like/{userId}", produces = MediaType.ALL_VALUE)
+    @PostMapping(value = "/patrimoines/{patrimoineId}/like/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean addLike(@PathVariable("patrimoineId") String id, @PathVariable("userId") String userId){
         String query = "PREFIX patr: <http://www.ps7-wia2.com/patrimoines/>" +
                 "PREFIX pat: <http://www.ps7-wia2.com/patrimoines#>" +
@@ -81,7 +81,7 @@ public class PatrimoineController {
     }
 
     @CrossOrigin(origins = "http://localhost:8080")
-    @PostMapping(value = "/patrimoines/{patrimoineId}/unlike/{userId}", produces = MediaType.ALL_VALUE)
+    @PostMapping(value = "/patrimoines/{patrimoineId}/unlike/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean unLike(@PathVariable("patrimoineId") String id, @PathVariable("userId") String userId){
         String query = "PREFIX patr: <http://www.ps7-wia2.com/patrimoines/>" +
                 "PREFIX pat: <http://www.ps7-wia2.com/patrimoines#>" +

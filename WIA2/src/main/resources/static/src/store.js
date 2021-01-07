@@ -174,6 +174,7 @@ const Evenements = {
             try {
                 const response = await Vue.axios.get('http://localhost:8090/events/' + payload.eventId + '/user/' + payload.userId)
                 context.commit('setParticipe', response.data)
+                console.log(response)
             } catch (e){
                 context.commit('setParticipe', e)
             }
@@ -558,4 +559,3 @@ const store = new Vuex.Store({
 })
 
 export default store
-

@@ -126,7 +126,7 @@ public class PublicationController {
     }
 
     @CrossOrigin(origins = "http://localhost:8080")
-    @PostMapping(value = "/publications/{publicationId}/like/{userId}", produces = MediaType.ALL_VALUE)
+    @PostMapping(value = "/publications/{publicationId}/like/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean addLike(@PathVariable("publicationId") String id, @PathVariable("userId") String userId){
         String query = "PREFIX publ: <http://www.ps7-wia2.com/publications/>" +
                 "PREFIX pub: <http://www.ps7-wia2.com/publications#>" +
@@ -143,7 +143,7 @@ public class PublicationController {
     }
 
     @CrossOrigin(origins = "http://localhost:8080")
-    @PostMapping(value = "/publications/{publicationId}/unlike/{userId}", produces = MediaType.ALL_VALUE)
+    @PostMapping(value = "/publications/{publicationId}/unlike/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean unLike(@PathVariable("publicationId") String id, @PathVariable("userId") String userId){
         String query = "PREFIX publ: <http://www.ps7-wia2.com/publications/>" +
                 "PREFIX pub: <http://www.ps7-wia2.com/publications#>" +
@@ -160,7 +160,7 @@ public class PublicationController {
     }
 
     @CrossOrigin(origins = "http://localhost:8080")
-    @PostMapping(value = "/publications/{publicationId}/comment", produces = MediaType.ALL_VALUE)
+    @PostMapping(value = "/publications/{publicationId}/comment", produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean addComment(HttpServletRequest req, HttpServletResponse res, @PathVariable("publicationId")String id) throws IOException {
         BufferedReader bufferedReader = req.getReader();
         String body = bufferedReader.readLine();
