@@ -17,8 +17,8 @@
       <div class="grand">
         <p class="title is-6">Contacts recommandés</p>
         <div class="contact">
-          <div v-for="index in 10" :key="index" class="column">
-            <contact-simple-view/>
+          <div v-for="currentContact in contactsRecommended" :key="currentContact.id" class="column">
+            <Contact-simple-view :contact="currentContact"/>
             </div>
           </div>
       </div>
@@ -37,10 +37,14 @@ export default {
   components: {EvenementSimpleView, ContactSimpleView},
   created() {
     this.$store.dispatch('setEvenementsRecommandations', {userId: this.$route.params.id})
+    this.$store.dispatch('setContactsRecommended', {userId: this.$route.params.id})
   },
   computed: {
     evenementsRecommandations() {
       return this.$store.getters.getEvenementsRecommandations
+    },
+    contactsRecommended() {
+      return this.$store.getters.getContactsRecommended
     }
   }
 }

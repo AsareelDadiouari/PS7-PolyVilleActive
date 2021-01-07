@@ -24,8 +24,8 @@
               Stationement et transport en commun
             </b-navbar-item>
           </b-navbar-dropdown>
-          <b-navbar-item class="item" href="#">
-            Contact
+          <b-navbar-item class="item" :href="'/polyville/' + $route.params.id + '/contacts'">
+            Contacts
           </b-navbar-item>
           <b-navbar-item class="item" :href="'/polyville/' + $route.params.id + '/groupes'">
             Groupes
