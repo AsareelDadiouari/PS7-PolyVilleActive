@@ -11,7 +11,7 @@
             <i class="fas fa-store"></i>
           </div>
           <div class="media-content">
-            <p class="title is-4">{{store.name_fr}}</p>
+            <p class="title is-4">{{store.name}}</p>
             <p class="subtitle is-6">{{store.address}}</p>
             <p class="subtitle is-6" v-if="store.opening != ''">Ouvertures : {{store.opening}}</p>
           </div>

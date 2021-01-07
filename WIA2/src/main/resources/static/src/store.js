@@ -157,6 +157,7 @@ const Evenements = {
             try {
                 const response = await Vue.axios.get('http://localhost:8090/events')
                 context.commit('setEvenement', response.data)
+
             } catch (err) {
                 console.log(err)
             }
@@ -503,6 +504,40 @@ const ContactsRecommended = {
     }
 }
 
+const Visites = {
+    state: {
+        lieux: Date
+    },
+    mutations: {
+        setLieux(state, payload){
+            state.lieux = payload
+        }
+    },
+    getters: {
+        getLieux(state){
+            return state.lieux
+        }
+    },
+    actions: {
+        async setLieux(context){
+            try {
+                const response = await Vue.axios.get('http://localhost:8090/visites')
+                context.commit('setLieux', response.data)
+            } catch (err) {
+                console.log(err)
+            }
+        },
+        async sendClickedDate(context, payload) {
+            try {
+                await Vue.axios.post('http://localhost:8090/visites/', payload.selectedDate)
+                console.log(context)
+            } catch (err) {
+                console.log(err)
+            }
+        }
+    }
+}
+
 const store = new Vuex.Store({
     modules: {
         users: Users,
@@ -517,6 +552,7 @@ const store = new Vuex.Store({
         patrimoines: Patrimoines,
         contacts: Contacts,
         ContactsRecommended: ContactsRecommended,
+        visites: Visites
     }
 })
 

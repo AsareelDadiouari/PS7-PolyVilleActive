@@ -34,7 +34,7 @@ export default {
   computed: {
     stores() {
       return this.$store.getters.getStores.filter( (data) => {
-        return data.name_fr.toLowerCase().includes(this.search.toLowerCase())
+        return data.name.toLowerCase().includes(this.search.toLowerCase())
       })
     }
   },

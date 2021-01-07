@@ -70,7 +70,7 @@
 		},
 		{
 		    "@id": "u:7",
-		    ""@type": "User",
+		    "@type": "User",
 		    "firstname": "Quentin",
 		    "lastname": "Letroadec",
 		    "type": "Habitant",
@@ -81,7 +81,7 @@
 		},
 		{
             "@id": "u:8",
-            ""@type": "User",
+            "@type": "User",
             "firstname": "Noëlie",
             "lastname": "Lafargue",
             "type": "Visiteur",
@@ -166,7 +166,7 @@
                "interests": ["Sport", "Salon professionnel"],
                "events": [""],
                "groups": [""]
-             },
+             }
 	],
 	"@context": {
 		"Users": "foaf:users#Users",

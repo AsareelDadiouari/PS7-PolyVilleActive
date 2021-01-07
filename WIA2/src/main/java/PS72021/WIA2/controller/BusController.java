@@ -13,7 +13,7 @@ import java.util.*;
 public class BusController {
     private static final String DATABASE = "http://localhost:3030/data_polyville";
 
-    private double gps2m(double lat_a, double lng_a, double lat_b, double lng_b) {
+    public static double gps2m(double lat_a, double lng_a, double lat_b, double lng_b) {
         double pk =  (180/3.14169);
 
         double a1 = lat_a / pk;
