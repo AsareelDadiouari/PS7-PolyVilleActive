@@ -519,9 +519,10 @@ const Visites = {
         }
     },
     actions: {
-        async setLieux(context){
+        async setLieux(context, payload){
             try {
-                const response = await Vue.axios.get('http://localhost:8090/visites')
+                const date = payload.date
+                const response = await Vue.axios.get('http://localhost:8090/visites?date='+ date)
                 context.commit('setLieux', response.data)
             } catch (err) {
                 console.log(err)

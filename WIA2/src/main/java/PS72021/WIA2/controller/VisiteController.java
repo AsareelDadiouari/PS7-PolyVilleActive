@@ -22,15 +22,10 @@ public class VisiteController {
 
     private static final String DATABASE = "http://localhost:3030/data_polyville";
 
-
     @CrossOrigin(origins = "http://localhost:8080")
     @RequestMapping("/visites")
-   // @PostMapping(value ="/visites", produces = MediaType.ALL_VALUE)
-    public Visite getVisite(HttpServletRequest req, HttpServletResponse res) throws IOException {
-       // BufferedReader bufferedReader = req.getReader();
-        //String date = bufferedReader.readLine();
-
-        ArrayList<Event> events = getEvents("2021-02-09");
+    public Visite getVisite(@RequestParam String date){
+        ArrayList<Event> events = getEvents(date);
         ArrayList<Patrimoine> patrimoines = getPatrimoines();
         ArrayList<Store> stores = getStores();
         ArrayList<Lieu> lieux = new ArrayList<>();
