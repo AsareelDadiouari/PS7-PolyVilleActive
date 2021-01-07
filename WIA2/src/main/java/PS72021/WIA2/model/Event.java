@@ -16,7 +16,7 @@ public class Event extends Lieu{
     private final Set<String> users;
 
     public Event(int id, String name, LocalDate start, LocalDate end, String address, ArrayList<String> profiles, ArrayList<String> categories, String decription, String image, Double latitude, Double longitude, Set<String> participants, Set<String> likes) {
-        super(id, name, latitude, longitude);
+        super(id, name, latitude, longitude,"Evenement");
         this.start = start;
         this.end = end;
         this.address = address;

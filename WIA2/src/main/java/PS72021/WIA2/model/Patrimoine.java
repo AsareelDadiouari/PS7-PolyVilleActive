@@ -7,7 +7,7 @@ public class Patrimoine extends Lieu{
     private Set<String> likes;
 
     public Patrimoine(int id, String name, double latitude, double longitude, String image) {
-        super(id, name, latitude, longitude);
+        super(id, name, latitude, longitude,"Patrimoine");
         this.image = image;
     }
 

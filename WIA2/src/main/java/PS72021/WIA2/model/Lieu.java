@@ -5,12 +5,14 @@ public class Lieu {
     private final String name;
     private final Double latitude;
     private final Double longitude;
+    private final String type;
 
-    public Lieu(int id, String name, Double latitude, Double longitude) {
+    public Lieu(int id, String name, Double latitude, Double longitude,String type) {
         this.id = id;
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.type = type;
     }
 
     public int getId() {
@@ -27,5 +29,9 @@ public class Lieu {
 
     public Double getLongitude() {
         return longitude;
+    }
+
+    public String getType() {
+        return type;
     }
 }
