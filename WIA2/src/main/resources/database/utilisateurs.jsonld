@@ -9,9 +9,7 @@
 			"lastname": "Martin",
 			"type": "Visiteur",
 			"role": "",
-			"interests": ["Musique", "Danse"],
-			"events": [""],
-			"groups": [""]
+			"interests": ["Musique", "Danse"]
 		},
 		{
 			"@id": "u:2",
@@ -20,9 +18,7 @@
 			"lastname": "Braud",
 			"type": "Non-habitant",			
 			"role": "Employé",
-			"interests": ["Nature", "Oiseau"],
-			"events": [""],
-			"groups": [""]
+			"interests": ["Nature", "Oiseau"]
 		},
 		{
 			"@id": "u:3",
@@ -31,9 +27,7 @@
 			"lastname": "Roux",
 			"type": "Habitant",
 			"role": "Commerçant",
-			"interests": ["Divers"],
-			"events": [""],
-			"groups": [""]
+			"interests": ["Divers"]
 		},
 		{
 			"@id": "u:4",
@@ -42,9 +36,7 @@
 			"lastname": "Imes",
 			"type": "Habitant",
 			"role": "",
-			"interests": ["Musique", "Théâtre"],
-			"events": [""],
-			"groups": [""]
+			"interests": ["Musique", "Théâtre"]
 		},
 		{
 			"@id": "u:5",
@@ -53,9 +45,7 @@
 			"lastname": "Meunier",
 			"type": "Non-Habitant",
 			"role": "Organisateur",
-			"interests": ["Théâtre"],
-			"events": [""],
-			"groups": [""]
+			"interests": ["Théâtre"]
 		},
 		{
 			"@id": "u:6",
@@ -64,9 +54,7 @@
 			"lastname": "Jean",
 			"type": "Habitant",
 			"role": "Admistration",
-			"interests": ["Fêtes et animations"],
-			"events": [""],
-			"groups": [""]
+			"interests": ["Fêtes et animations"]
 		},
 		{
 		    "@id": "u:7",
@@ -75,9 +63,7 @@
 		    "lastname": "Letroadec",
 		    "type": "Habitant",
 		    "role": "",
-		    "interests": ["Sport", "Musique", "Cinéma"],
-		    "events": [""],
-		    "groups": [""]
+		    "interests": ["Sport", "Musique", "Cinéma"]
 		},
 		{
             "@id": "u:8",
@@ -86,9 +72,7 @@
             "lastname": "Lafargue",
             "type": "Visiteur",
             "role": "",
-            "interests": ["Théâtre", "Musique", "Musique classique"],
-            "events": [""],
-            "groups": [""]
+            "interests": ["Théâtre", "Musique", "Musique classique"]
         },
         {
         	"@id": "u:9",
@@ -97,9 +81,7 @@
         	"lastname": "Jean",
             "type": "Habitant",
             "role": "",
-            "interests": ["Exposition", "Conférence", "Divers"],
-            "events": [""],
-            "groups": [""]
+            "interests": ["Exposition", "Conférence", "Divers"]
         },
         {
              "@id": "u:10",
@@ -108,9 +90,7 @@
              "lastname": "Zanhd",
              "type": "Habitant",
              "role": "Administration",
-             "interests": ["Salon professionel", "Salon"],
-             "events": [""],
-             "groups": [""]
+             "interests": ["Salon professionel", "Salon"]
          },
          {
              "@id": "u:11",
@@ -119,9 +99,7 @@
              "lastname": "Boyer",
              "type": "Visiteur",
              "role": "",
-             "interests": ["Spectacle", "Carnaval", "Sport"],
-             "events": [""],
-             "groups": [""]
+             "interests": ["Spectacle", "Carnaval", "Sport"]
           },
           {
              "@id": "u:12",
@@ -130,9 +108,7 @@
              "lastname": "Dupont",
              "type": "Habitant",
              "role": "Commerçant",
-             "interests": ["Fêtes et animation", "Danse", "Exposition"],
-             "events": [""],
-             "groups": [""]
+             "interests": ["Fêtes et animation", "Danse", "Exposition"]
           },
           {
              "@id": "u:13",
@@ -141,9 +117,7 @@
              "lastname": "Guibaut",
              "type": "Habitant",
              "role": "Commerçant",
-             "interests": ["Musiques autres", "Théâtre"],
-             "events": [""],
-             "groups": [""]
+             "interests": ["Musiques autres", "Théâtre"]
            },
            {
               "@id": "u:14",
@@ -152,9 +126,7 @@
               "lastname": "Deschamps",
               "type": "Visiteur",
               "role": "",
-              "interests": ["Carnaval", "Divers"],
-              "events": [""],
-              "groups": [""]
+              "interests": ["Carnaval", "Divers"]
             },
             {
                "@id": "u:15",
@@ -163,9 +135,7 @@
                "lastname": "Deypair",
                "type": "Non-habitant",
                "role": "",
-               "interests": ["Sport", "Salon professionnel"],
-               "events": [""],
-               "groups": [""]
+               "interests": ["Sport", "Salon professionnel"]
              }
 	],
 	"@context": {

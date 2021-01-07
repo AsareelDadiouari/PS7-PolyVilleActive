@@ -17,17 +17,16 @@
 
           <div id="pickers" class="card" style="margin-top: 50px;">
             <div class="card-content">
-              <div class="field">
+              <!--<div class="field">
                 <b-checkbox>Lieux les mieux notés</b-checkbox>
-              </div>
+              </div>-->
               <div class="field">
-                <b-checkbox v-model="dateIsClicked">Lieux par date</b-checkbox>
+                Choisir la date :
               </div>
             </div>
 
           </div>
           <b-datepicker
-              v-if="dateIsClicked"
               v-model="selected"
               :locale="locale"
               :show-week-number="showWeekNumber"
@@ -35,7 +34,7 @@
               placeholder="Click to select..."
               trap-focus>
           </b-datepicker>
-          <b-button id="selectDate" @click.native="selectDate" style="width: 100%; margin-bottom: 25px">Générer une visite</b-button>
+          <b-button id="selectDate" @click.native="genererListe" style="width: 100%; margin-bottom: 25px">Générer une visite</b-button>
         </div>
 
         <div  class="right has-text-centered" style="margin-left: auto;">
@@ -117,6 +116,7 @@
                     </div>
                   </div>
                 </b-notification>
+
                 <b-button id="commencer" @click.native="startVisite" style="width: 100%; margin-bottom: 25px">Commencer la visite</b-button>
               </div>
             </div>
@@ -157,17 +157,27 @@ export default {
       visitStarted: false
     }
   },
-  created() {
-    this.$store.dispatch('setLieux')
-  },
   computed: {
     listeLieux() {
       return this.$store.getters.getLieux
     }
   },
   methods: {
-    selectDate(){
-      //return this.$store.dispatch('sendClickedDate', {selectedDate: this.selected})
+    selectDate() {
+      let month = parseInt(this.selected.getMonth() + 1, 10)
+      let day = parseInt(this.selected.getDate(), 10)
+      if (month < 10) {
+        month = "0" + month
+      }
+      if (day < 10) {
+        day = "0" + day
+      }
+      return this.selected.getFullYear() + "-" + month + "-" + day
+    },
+    genererListe() {
+      this.$store.dispatch('setLieux', {
+        date: this.selectDate()
+      })
     },
     startVisite(){
       this.visitStarted = !this.visitStarted
@@ -175,24 +185,6 @@ export default {
     getRetourVal(val){
       this.visitStarted = val
     }
-  },
-  watch: {
-    lieux: {
-      handler() {
-        if (this.dateIsClicked) {
-          console.log(this.selected)
-          this.lieux['listEvents'] = this.lieux['listEvents'].sort((a, b) => {
-            const date1 = Date.parse(a.start)
-            const date2 = Date.parse(b.start)
-            return date1 < this.selected && date2 > this.selected
-          })
-          return this.lieux['listEvents']
-        }
-        return this.lieux['listEvents']
-      },
-      deep: true
-    }
-
   }
 }
 </script>

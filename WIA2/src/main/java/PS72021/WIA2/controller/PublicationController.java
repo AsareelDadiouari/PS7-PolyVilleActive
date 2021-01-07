@@ -131,7 +131,9 @@ public class PublicationController {
         String query = "PREFIX publ: <http://www.ps7-wia2.com/publications/>" +
                 "PREFIX pub: <http://www.ps7-wia2.com/publications#>" +
                 "PREFIX u: <http://www.ps7-wia2.com/users/> " +
-                "INSERT DATA { publ:" + id + " pub:likes u:" + userId + " }";
+                "PREFIX um: <http://www.ps7-wia2.com/users#> " +
+                "INSERT DATA { publ:" + id + " pub:likes u:" + userId + " };" +
+                "INSERT DATA { u:" + userId + " um:publications publ:" + id + " }";
 
         RDFConnection conn2 = RDFConnectionFactory.connect(DATABASE);
         Txn.executeWrite(conn2, () -> conn2.update(query));
@@ -146,7 +148,9 @@ public class PublicationController {
         String query = "PREFIX publ: <http://www.ps7-wia2.com/publications/>" +
                 "PREFIX pub: <http://www.ps7-wia2.com/publications#>" +
                 "PREFIX u: <http://www.ps7-wia2.com/users/> " +
-                "DELETE DATA { publ:" + id + " pub:likes u:" + userId + " }";
+                "PREFIX um: <http://www.ps7-wia2.com/users#> " +
+                "DELETE DATA { publ:" + id + " pub:likes u:" + userId + " };" +
+                "DELETE DATA { u:" + userId + " um:publications publ:" + id + " }";
 
         RDFConnection conn2 = RDFConnectionFactory.connect(DATABASE);
         Txn.executeWrite(conn2, () -> conn2.update(query));

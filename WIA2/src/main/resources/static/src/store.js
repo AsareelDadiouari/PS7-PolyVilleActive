@@ -257,6 +257,7 @@ const Groups = {
                 const path = "set" + payload.to;
                 context.dispatch(path, payload)
                 context.dispatch(payload.request, payload)
+                context.dispatch("setContactsRecommended", {userId: payload.userId})
             } catch (err) {
                 console.log(err)
             }
@@ -266,6 +267,7 @@ const Groups = {
                 await Vue.axios.post('http://localhost:8090/removemember?groupId=' + payload.groupId + '&userId=' + payload.userId)
                 context.dispatch("setMyGroups", payload)
                 context.dispatch(payload.request, payload)
+                context.dispatch("setContactsRecommended", {userId: payload.userId})
             } catch (err) {
                 console.log(err)
             }
@@ -329,6 +331,7 @@ const Publications = {
         async likePublication(context, payload){
             try {
                 await Vue.axios.post("http://localhost:8090/publications/" + payload.id + "/like/" + payload.userId)
+                context.dispatch("setContactsRecommended", {userId: payload.userId})
             } catch (err){
                 console.log(err)
             }
@@ -336,6 +339,7 @@ const Publications = {
         async unlikePublication(context, payload){
             try {
                 await Vue.axios.post("http://localhost:8090/publications/" + payload.id + "/unlike/" + payload.userId)
+                context.dispatch("setContactsRecommended", {userId: payload.userId})
             } catch (err){
                 console.log(err)
             }
@@ -448,6 +452,58 @@ const Patrimoines = {
     }
 }
 
+const Contacts = {
+    state: {
+        contacts: []
+    },
+    mutations: {
+        setContacts (state, payload) {
+            state.contacts = payload
+        }
+    },
+    getters: {
+        getContacts(state) {
+            return state.contacts
+        }
+    },
+    actions: {
+        async setContacts(context, payload) {
+            try {
+                const response = await Vue.axios.get('http://localhost:8090/contacts/' + payload.userId)
+                context.commit('setContacts', response.data)
+            } catch (err) {
+                console.log(err)
+            }
+        }
+    }
+}
+
+const ContactsRecommended = {
+    state: {
+        contactsRecommended: []
+    },
+    mutations: {
+        setContactsRecommended (state, payload) {
+            state.contactsRecommended = payload
+        }
+    },
+    getters: {
+        getContactsRecommended(state) {
+            return state.contactsRecommended
+        }
+    },
+    actions: {
+        async setContactsRecommended(context, payload) {
+            try {
+                const response = await Vue.axios.get('http://localhost:8090/contactsRecommended/' + payload.userId)
+                context.commit('setContactsRecommended', response.data)
+            } catch (err) {
+                console.log(err)
+            }
+        }
+    }
+}
+
 const Visites = {
     state: {
         lieux: Date
@@ -463,9 +519,10 @@ const Visites = {
         }
     },
     actions: {
-        async setLieux(context){
+        async setLieux(context, payload){
             try {
-                const response = await Vue.axios.get('http://localhost:8090/visites')
+                const date = payload.date
+                const response = await Vue.axios.get('http://localhost:8090/visites?date='+ date)
                 context.commit('setLieux', response.data)
             } catch (err) {
                 console.log(err)
@@ -494,6 +551,8 @@ const store = new Vuex.Store({
         evenementsRecommandations: EvenementsRecommandations,
         publication: Publications,
         patrimoines: Patrimoines,
+        contacts: Contacts,
+        ContactsRecommended: ContactsRecommended,
         visites: Visites
     }
 })

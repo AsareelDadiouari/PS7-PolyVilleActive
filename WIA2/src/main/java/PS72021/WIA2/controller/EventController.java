@@ -436,7 +436,9 @@ public class EventController {
         String query = "PREFIX even: <http://www.ps7-wia2.com/events/>" +
                 "PREFIX eve: <http://www.ps7-wia2.com/events#>" +
                 "PREFIX u: <http://www.ps7-wia2.com/users/> " +
-                "INSERT DATA { even:" + id + " eve:likes u:" + userId + " }";
+                "PREFIX um: <http://www.ps7-wia2.com/users#> " +
+                "INSERT DATA { even:" + id + " eve:likes u:" + userId + " };" +
+                "INSERT DATA { u:" + userId + " um:events even:" + id + " }";
 
         RDFConnection conn2 = RDFConnectionFactory.connect(DATABASE);
         Txn.executeWrite(conn2, () -> conn2.update(query));
@@ -451,7 +453,9 @@ public class EventController {
         String query = "PREFIX even: <http://www.ps7-wia2.com/events/>" +
                 "PREFIX eve: <http://www.ps7-wia2.com/events#>" +
                 "PREFIX u: <http://www.ps7-wia2.com/users/> " +
-                "DELETE DATA { even:" + id + " eve:likes u:" + userId + " }";
+                "PREFIX um: <http://www.ps7-wia2.com/users#> " +
+                "DELETE DATA { even:" + id + " eve:likes u:" + userId + " };" +
+                "DELETE DATA { u:" + userId + " um:events even:" + id + " }";
 
         RDFConnection conn2 = RDFConnectionFactory.connect(DATABASE);
         Txn.executeWrite(conn2, () -> conn2.update(query));

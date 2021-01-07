@@ -27,6 +27,7 @@ const routes = [
             {path: 'evenements', component: EvenementPage, name: "Evénements"},
             {path: 'recommended/groupes', component: RecommendedGroupePage, name: "Recommended Groupes"},
             {path: 'stationnement', component: StationementTransport, name: "Stationement"},
+            {path: 'contacts', component: ContactPage, name:"Contact"},
             {path: 'mescontacts', component: ContactPage, name: "Mes contacts"},
             {path: 'groupes', component: GroupePage, name: "Groupes"},
             {path: 'mesgroupes', component: MyGroupsPage, name: "Mes Groupes"},
