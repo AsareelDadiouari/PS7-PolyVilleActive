@@ -21,7 +21,7 @@
                           class="card-header"
                           role="button">
                         <p class="card-header-title ">
-                          {{ item.name }}
+                          <span style="font-style: italic">{{item.type}}</span><span> : {{ item.name }}</span>
                         </p>
                         <a class="card-header-icon">
                           <b-icon
@@ -48,7 +48,7 @@
                           class="card-header"
                           role="button">
                         <p class="card-header-title">
-                          {{ item.name }}
+                          <span style="font-style: italic">{{item.type}}</span> <span> : {{ item.name }}</span>
                         </p>
                         <a class="card-header-icon">
                           <b-icon

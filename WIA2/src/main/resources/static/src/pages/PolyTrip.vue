@@ -37,7 +37,7 @@
           <b-button id="selectDate" @click.native="genererListe" style="width: 100%; margin-bottom: 25px">Générer une visite</b-button>
         </div>
 
-        <div  class="right has-text-centered" style="margin-left: auto;">
+        <div v-if="visitGeneree" class="right has-text-centered" style="margin-left: auto;">
           <div class="card">
             <div class="card-content">
               <p class="title">
@@ -56,7 +56,7 @@
                               class="card-header"
                               role="button">
                             <p class="card-header-title ">
-                              {{ item.name }}
+                              <span style="font-style: italic">{{item.type}}</span> <span> : {{ item.name }}</span>
                             </p>
                             <a class="card-header-icon">
                               <b-icon
@@ -89,7 +89,7 @@
                               class="card-header"
                               role="button">
                             <p class="card-header-title">
-                              {{ item.name }}
+                              <span style="font-style: italic">{{item.type}}</span> <span> : {{ item.name }}</span>
                             </p>
                             <a class="card-header-icon">
                               <b-icon
@@ -100,6 +100,7 @@
                           <div class="card-content">
                             <div class="content" >
                               {{item.address}}
+
                               <!--<l-map :center="[item.latitude, item.longitude]" :zoom="zoom">
                                 <LTileLayer :url="url"></LTileLayer>
                                 <LMarker :lat-lng="[item.latitude,item.longitude]">
@@ -154,7 +155,8 @@ export default {
       zoom: 16,
       //center: [43.6999,7.27927],
       bounds: null,
-      visitStarted: false
+      visitStarted: false,
+      visitGeneree: false
     }
   },
   computed: {
@@ -175,6 +177,7 @@ export default {
       return this.selected.getFullYear() + "-" + month + "-" + day
     },
     genererListe() {
+      this.visitGeneree = !this.visitGeneree
       this.$store.dispatch('setLieux', {
         date: this.selectDate()
       })

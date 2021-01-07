@@ -12,7 +12,7 @@ public class Store extends Lieu{
     private Set<String> likes;
 
     public Store(int id, String name, String opening, String address, String description, double latitude, double longitude) {
-        super(id, name, latitude, longitude);
+        super(id, name, latitude, longitude, "Boutique");
         this.opening = opening;
         this.address = address;
         this.description = description;
