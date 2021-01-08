@@ -1,0 +1,90 @@
+{
+  "@graph" : [ {
+    "@id" : "foaf:groups/",
+    "@type" : "http://www.ps7-wia2.com/groups#Groups",
+    "groups" : [ "g:1", "g:2", "g:3", "g:4", "g:5", "g:6" ]
+  }, {
+    "@id" : "g:1",
+    "@type" : "groups#Group",
+    "admin" : "u:1",
+    "description" : "Vos oeuvres musicales",
+    "interests" : "Musique",
+    "members" : [ "http://www.ps7-wia2.com/users/5", "http://www.ps7-wia2.com/users/1" ],
+    "name" : "Groupe1",
+    "types" : [ "Information", "Partage" ]
+  }, {
+    "@id" : "g:2",
+    "@type" : "groups#Group",
+    "admin" : "u:1",
+    "description" : "L'amour de la salsa",
+    "interests" : "Danse",
+    "members" : [ "http://www.ps7-wia2.com/users/5", "http://www.ps7-wia2.com/users/1" ],
+    "name" : "Groupe2",
+    "types" : "Partage"
+  }, {
+    "@id" : "g:3",
+    "@type" : "groups#Group",
+    "admin" : "u:1",
+    "description" : "La nature est tout ce qu'il y a de plus splendide",
+    "interests" : "Nature",
+    "members" : [ "http://www.ps7-wia2.com/users/5", "http://www.ps7-wia2.com/users/1" ],
+    "name" : "Groupe3",
+    "types" : "Information"
+  }, {
+    "@id" : "g:4",
+    "@type" : "groups#Group",
+    "admin" : "u:1",
+    "description" : "Un oiseau par ci ! Un oiseau par là !",
+    "interests" : "Oiseau",
+    "members" : [ "http://www.ps7-wia2.com/users/1", "http://www.ps7-wia2.com/users/5" ],
+    "name" : "Groupe4",
+    "types" : [ "Partage", "Information" ]
+  }, {
+    "@id" : "g:5",
+    "@type" : "groups#Group",
+    "admin" : "u:1",
+    "description" : "Vous avez dit description ?",
+    "interests" : "Divers",
+    "members" : [ "http://www.ps7-wia2.com/users/1", "http://www.ps7-wia2.com/users/5" ],
+    "name" : "Groupe5",
+    "types" : "Humour"
+  }, {
+    "@id" : "g:6",
+    "@type" : "groups#Group",
+    "admin" : "u:1",
+    "description" : "L'humour est le maître mot de cet endroit",
+    "interests" : [ "Spectacle", "Théâtre" ],
+    "members" : [ "http://www.ps7-wia2.com/users/1", "http://www.ps7-wia2.com/users/5" ],
+    "name" : "Groupe6",
+    "types" : "Humour"
+  } ],
+  "@context" : {
+    "types" : {
+      "@id" : "http://www.ps7-wia2.com/groups#types"
+    },
+    "name" : {
+      "@id" : "http://www.ps7-wia2.com/groups#name"
+    },
+    "members" : {
+      "@id" : "http://www.ps7-wia2.com/groups#members"
+    },
+    "interests" : {
+      "@id" : "http://www.ps7-wia2.com/groups#interests"
+    },
+    "description" : {
+      "@id" : "http://www.ps7-wia2.com/groups#description"
+    },
+    "admin" : {
+      "@id" : "http://www.ps7-wia2.com/groups#admin",
+      "@type" : "@id"
+    },
+    "groups" : {
+      "@id" : "http://www.ps7-wia2.com/groups#groups",
+      "@type" : "@id"
+    },
+    "@vocab" : "http://www.ps7-wia2.com/",
+    "u" : "http://www.ps7-wia2.com/users/",
+    "g" : "http://www.ps7-wia2.com/groups/",
+    "foaf" : "http://www.ps7-wia2.com/"
+  }
+}
