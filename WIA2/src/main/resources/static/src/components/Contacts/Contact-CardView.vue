@@ -6,8 +6,8 @@
         </figure>
         </div>
     <div class="contact-desc">
-      <div class="title is-5">Nom Prénom</div>
-      <div class="subtitle is-6">Rôle</div>
+      <div class="title is-5">{{contact.firstname}} {{contact.lastname}}</div>
+      <div class="subtitle is-6">{{contact.role}}</div>
     </div>
       <figure class="image is-32x32">
           <div class="addimg">

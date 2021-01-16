@@ -1,0 +1,165 @@
+{
+  "@id": "http://www.ps7-wia2.com/users",
+	"@type": "Users",
+	"users" : [
+		{
+			"@id": "u:1",
+			"@type": "User",
+			"firstname": "Elisa",
+			"lastname": "Martin",
+			"type": "Visiteur",
+			"role": "",
+			"interests": ["Musique", "Danse"]
+		},
+		{
+			"@id": "u:2",
+			"@type": "User",
+			"firstname": "Alexis",
+			"lastname": "Braud",
+			"type": "Non-habitant",			
+			"role": "Employé",
+			"interests": ["Nature", "Oiseau"]
+		},
+		{
+			"@id": "u:3",
+			"@type": "User",
+			"firstname": "Camille",
+			"lastname": "Roux",
+			"type": "Habitant",
+			"role": "Commerçant",
+			"interests": ["Divers"]
+		},
+		{
+			"@id": "u:4",
+			"@type": "User",
+			"firstname": "Vincent",
+			"lastname": "Imes",
+			"type": "Habitant",
+			"role": "",
+			"interests": ["Musique", "Théâtre"]
+		},
+		{
+			"@id": "u:5",
+			"@type": "User",
+			"firstname": "Andrea",
+			"lastname": "Meunier",
+			"type": "Non-Habitant",
+			"role": "Organisateur",
+			"interests": ["Théâtre"]
+		},
+		{
+			"@id": "u:6",
+			"@type": "User",
+			"firstname": "Christophe",
+			"lastname": "Jean",
+			"type": "Habitant",
+			"role": "Admistration",
+			"interests": ["Fêtes et animations"]
+		},
+		{
+		    "@id": "u:7",
+		    "@type": "User",
+		    "firstname": "Quentin",
+		    "lastname": "Letroadec",
+		    "type": "Habitant",
+		    "role": "",
+		    "interests": ["Sport", "Musique", "Cinéma"]
+		},
+		{
+            "@id": "u:8",
+            "@type": "User",
+            "firstname": "Noëlie",
+            "lastname": "Lafargue",
+            "type": "Visiteur",
+            "role": "",
+            "interests": ["Théâtre", "Musique", "Musique classique"]
+        },
+        {
+        	"@id": "u:9",
+        	"@type": "User",
+        	"firstname": "Chloé",
+        	"lastname": "Jean",
+            "type": "Habitant",
+            "role": "",
+            "interests": ["Exposition", "Conférence", "Divers"]
+        },
+        {
+             "@id": "u:10",
+             "@type": "User",
+             "firstname": "Daniel",
+             "lastname": "Zanhd",
+             "type": "Habitant",
+             "role": "Administration",
+             "interests": ["Salon professionel", "Salon"]
+         },
+         {
+             "@id": "u:11",
+             "@type": "User",
+             "firstname": "Paul",
+             "lastname": "Boyer",
+             "type": "Visiteur",
+             "role": "",
+             "interests": ["Spectacle", "Carnaval", "Sport"]
+          },
+          {
+             "@id": "u:12",
+             "@type": "User",
+             "firstname": "Rose",
+             "lastname": "Dupont",
+             "type": "Habitant",
+             "role": "Commerçant",
+             "interests": ["Fêtes et animation", "Danse", "Exposition"]
+          },
+          {
+             "@id": "u:13",
+             "@type": "User",
+             "firstname": "Didier",
+             "lastname": "Guibaut",
+             "type": "Habitant",
+             "role": "Commerçant",
+             "interests": ["Musiques autres", "Théâtre"]
+           },
+           {
+              "@id": "u:14",
+              "@type": "User",
+              "firstname": "Flore",
+              "lastname": "Deschamps",
+              "type": "Visiteur",
+              "role": "",
+              "interests": ["Carnaval", "Divers"]
+            },
+            {
+               "@id": "u:15",
+               "@type": "User",
+               "firstname": "Jean-François",
+               "lastname": "Deypair",
+               "type": "Non-habitant",
+               "role": "",
+               "interests": ["Sport", "Salon professionnel"]
+             }
+	],
+	"@context": {
+		"Users": "foaf:users#Users",
+		"User": "foaf:users#User",
+		"users": "foaf:users#users",
+		"firstname": "foaf:users#firstname",
+		"lastname": "foaf:users#lastname",
+		"type": "foaf:users#type",
+	  	"role": "foaf:users#role",
+	  	"events": 
+	    {
+	      "@id": "foaf:users#events",
+	      "@type": "@id"
+	    },
+	    "groups":
+	    {
+	      "@id": "foaf:users#groups",
+	      "@type": "@id"
+	    },
+	    "interests": "foaf:users#interests",
+	  	"foaf": "http://www.ps7-wia2.com/",
+	  	"e": "http://www.ps7-wia2.com/events/",
+	  	"g": "http://www.ps7-wia2.com/groups/",
+	  	"u": "http://www.ps7-wia2.com/users/"
+	}
+}

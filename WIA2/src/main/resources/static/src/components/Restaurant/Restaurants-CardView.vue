@@ -23,6 +23,15 @@
             <li v-for="amenities in restaurant.amenities" :key="amenities">{{amenities}}</li>
           </ul>
           <br>
+          <p class="control" style="margin-left: auto">
+            <span style="margin-right: 5px">{{restaurant.likes.length}}</span>
+            <button v-if="!alreadyLike" @click="like()" class="button is-small is-danger is-outlined">
+                <b-icon size="is-small" icon="heart"/>
+            </button>
+            <button v-else @click="unlike()" class="button is-small is-danger">
+                <b-icon size="is-small" icon="heart"/>
+            </button>
+          </p>
         </div>
       </div>
     </div>
@@ -34,6 +43,35 @@ export default {
   name: "Restaurants-CardView",
   props: {
     restaurant: Object
+  },
+  computed: {
+      alreadyLike() {
+          var response = false;
+          this.restaurant.likes.forEach(element => {
+              var id = element.split("/")
+              if (id[id.length - 1] == this.$route.params.id) {
+              response = true;
+              return;
+              }
+          });
+          return response;
+      }
+  },
+  methods: {
+      like() {
+          this.$store.dispatch('likeRestaurant', {
+              id : this.restaurant.id,
+              userId: this.$route.params.id
+          })
+          this.restaurant.likes.push("http://www.ps7-wia2.com/users/" + this.$route.params.id + "")
+      },
+      unlike() {
+          this.$store.dispatch('unlikeRestaurant', {
+              id : this.restaurant.id,
+              userId: this.$route.params.id
+          })
+          this.restaurant.likes.pop("http://www.ps7-wia2.com/users/" + this.$route.params.id + "")
+      }
   }
 }
 </script>

@@ -12,6 +12,7 @@ import StationementTransport from "@/pages/StationementTransport";
 import ContactPage from "@/components/Contacts/Contact-Page";
 import RecommendedGroupePage from "@/components/Groupe/Recommended-Groupe-Page";
 import MyGroupsPage from "@/components/Groupe/My-Groups-Page";
+import PolyTrip from "@/pages/PolyTrip";
 
 Vue.use(VueRouter)
 
@@ -26,9 +27,11 @@ const routes = [
             {path: 'evenements', component: EvenementPage, name: "Evénements"},
             {path: 'recommended/groupes', component: RecommendedGroupePage, name: "Recommended Groupes"},
             {path: 'stationnement', component: StationementTransport, name: "Stationement"},
+            {path: 'contacts', component: ContactPage, name:"Contact"},
             {path: 'mescontacts', component: ContactPage, name: "Mes contacts"},
             {path: 'groupes', component: GroupePage, name: "Groupes"},
             {path: 'mesgroupes', component: MyGroupsPage, name: "Mes Groupes"},
+            {path: 'PolyTrip', component: PolyTrip, name: "PolyTrip"},
         ]
     }
 ]

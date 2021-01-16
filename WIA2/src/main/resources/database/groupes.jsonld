@@ -1,7 +1,7 @@
 {
   "@graph" : [ {
     "@id" : "foaf:groups/",
-    "@type" : "file:///C:/Users/Fred/Desktop/developpement/ps7/PS7-20-21-WIA2/WIA2/database/database/Groupes",
+    "@type" : "http://www.ps7-wia2.com/groups#Groups",
     "groups" : [ "g:1", "g:2", "g:3", "g:4", "g:5", "g:6" ]
   }, {
     "@id" : "g:1",

@@ -7,9 +7,9 @@ import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
 import org.apache.jena.rdfconnection.RDFConnection;
 import org.apache.jena.rdfconnection.RDFConnectionFactory;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.apache.jena.system.Txn;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -31,6 +31,7 @@ public class PatrimoineController {
                 "?o <http://www.ps7-wia2.com/patrimoines#latitude> ?latitude." +
                 "?o <http://www.ps7-wia2.com/patrimoines#longitude> ?longitude." +
                 "?o <http://www.ps7-wia2.com/patrimoines#image> ?image." +
+                "OPTIONAL { ?o <http://www.ps7-wia2.com/patrimoines#likes> ?likes. }" +
                 "}";
 
         RDFConnection conn = RDFConnectionFactory.connect(DATABASE);
@@ -39,20 +40,58 @@ public class PatrimoineController {
 
         QuerySolution sol = results.next();
 
-        Patrimoine patrimoine = null;
         String[] sujet = sol.get("o").toString().split("/", -1);
-        patrimoine = new Patrimoine(Integer.parseInt(sujet[sujet.length - 1]),  sol.get("name").toString(),sol.get("latitude").asLiteral().getDouble() ,sol.get("longitude").asLiteral().getDouble(), sol.get("image").toString());
-
+        Patrimoine patrimoine = new Patrimoine(Integer.parseInt(sujet[sujet.length - 1]),  sol.get("name").toString(),sol.get("latitude").asLiteral().getDouble() ,sol.get("longitude").asLiteral().getDouble(), sol.get("image").toString());
+        Set<String> likes = new HashSet<>();
+        patrimoine.setLikes(likes);
+        if (sol.get("likes") != null)
+            likes.add(sol.get("likes").toString());
         while (results.hasNext()) {
             sujet = sol.get("o").toString().split("/", -1);
             if (Integer.parseInt(sujet[sujet.length - 1]) != patrimoine.getId()) {
+                patrimoine.setLikes(likes);
                 patrimoines.add(patrimoine);
                 patrimoine = new Patrimoine(Integer.parseInt(sujet[sujet.length - 1]),  sol.get("name").toString(),sol.get("latitude").asLiteral().getDouble() ,sol.get("longitude").asLiteral().getDouble(), sol.get("image").toString());
-
+                likes = new HashSet<>();
             }
+            if (sol.get("likes") != null)
+                likes.add(sol.get("likes").toString());
             sol = results.next();
         }
+        patrimoine.setLikes(likes);
         patrimoines.add(patrimoine);
+        qExec.close();
+        conn.close();
         return patrimoines;
+    }
+
+    @CrossOrigin(origins = "http://localhost:8080")
+    @PostMapping(value = "/patrimoines/{patrimoineId}/like/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public boolean addLike(@PathVariable("patrimoineId") String id, @PathVariable("userId") String userId){
+        String query = "PREFIX patr: <http://www.ps7-wia2.com/patrimoines/>" +
+                "PREFIX pat: <http://www.ps7-wia2.com/patrimoines#>" +
+                "PREFIX u: <http://www.ps7-wia2.com/users/> " +
+                "INSERT DATA { patr:" + id + " pat:likes u:" + userId + " }";
+
+        RDFConnection conn2 = RDFConnectionFactory.connect(DATABASE);
+        Txn.executeWrite(conn2, () -> conn2.update(query));
+        conn2.close();
+
+        return true;
+    }
+
+    @CrossOrigin(origins = "http://localhost:8080")
+    @PostMapping(value = "/patrimoines/{patrimoineId}/unlike/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public boolean unLike(@PathVariable("patrimoineId") String id, @PathVariable("userId") String userId){
+        String query = "PREFIX patr: <http://www.ps7-wia2.com/patrimoines/>" +
+                "PREFIX pat: <http://www.ps7-wia2.com/patrimoines#>" +
+                "PREFIX u: <http://www.ps7-wia2.com/users/> " +
+                "DELETE DATA { patr:" + id + " pat:likes u:" + userId + " }";
+
+        RDFConnection conn2 = RDFConnectionFactory.connect(DATABASE);
+        Txn.executeWrite(conn2, () -> conn2.update(query));
+        conn2.close();
+
+        return true;
     }
 }

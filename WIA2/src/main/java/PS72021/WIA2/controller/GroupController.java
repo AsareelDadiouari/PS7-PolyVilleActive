@@ -167,10 +167,9 @@ public class GroupController {
                 "PREFIX g: <http://www.ps7-wia2.com/groups/> " +
                 "PREFIX gm: <http://www.ps7-wia2.com/groups#> ";
 
-        String query = prefixes + " INSERT DATA { " +
-                    "g:" + groupId + " gm:members u:" + userId + "." +
-                    //"u:" + userId + " um:groups g:" + groupId + ". " +
-                "}";
+        String query = prefixes +
+                    "INSERT DATA { g:" + groupId + " gm:members u:" + userId + " }; " +
+                    "INSERT DATA { u:" + userId + " um:groups g:" + groupId + " }";
 
         RDFConnection conn = RDFConnectionFactory.connect(DATABASE + "/update");
         Txn.executeWrite(conn, () -> conn.update(query));
@@ -186,10 +185,9 @@ public class GroupController {
                 "PREFIX g: <http://www.ps7-wia2.com/groups/> " +
                 "PREFIX gm: <http://www.ps7-wia2.com/groups#> ";
 
-        String query = prefixes + " DELETE DATA { " +
-                    "g:" + groupId + " gm:members u:" + userId + ". " +
-                    //"u:" + userId + " um:groups g:" + groupId + ". " +
-                "}";
+        String query = prefixes + "" +
+                "DELETE DATA { g:" + groupId + " gm:members u:" + userId + " };" +
+                "DELETE DATA { u:" + userId + " um:groups g:" + groupId + " }";
 
         RDFConnection conn = RDFConnectionFactory.connect(DATABASE + "/update");
         Txn.executeWrite(conn, () -> conn.update(query));
