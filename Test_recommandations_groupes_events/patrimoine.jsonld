@@ -1,0 +1,615 @@
+{
+	"@id": "http://www.ps7-wia2.com/patrimoines",
+	"@type": "Patrimoines",
+	"patrimoines": [
+		{
+			"@id": "p:1",
+			"@type": "Patrimoine",
+			"name": "Abbaye_Roseland",
+			"latitude": "43.689794",
+			"longitude": "7.229538",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/DSC_mdifie-2448_modifi%C3%A9-1-sign%C3%A93.jpg/800px-DSC_mdifie-2448_modifi%C3%A9-1-sign%C3%A93.jpg"
+		},
+		{
+			"@id": "p:2",
+			"@type": "Patrimoine",
+			"name": "Abbaye_Saint-Pons",
+			"latitude": "43.725047",
+			"longitude": "7.283158",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Abbaye_de_Saint_Pons.jpg/800px-Abbaye_de_Saint_Pons.jpg"
+		},
+		{
+			"@id": "p:3",
+			"@type": "Patrimoine",
+			"name": "Arenes_Cimiez",
+			"latitude": "43.719992",
+			"longitude": "7.275319",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Ar%C3%A8nes_romaines_de_Cimiez.jpg"
+		},
+		{
+			"@id": "p:4",
+			"@type": "Patrimoine",
+			"name": "Cascade_Gairaut",
+			"latitude": "43.737828",
+			"longitude": "7.259661",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Cascade_de_Gairaut_vue_de_l%27ouest.jpg/800px-Cascade_de_Gairaut_vue_de_l%27ouest.jpg"
+		},
+		{
+			"@id": "p:5",
+			"@type": "Patrimoine",
+			"name": "Caserne_Lympia",
+			"latitude": "43.696853",
+			"longitude": "7.273499",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Bagne_de_Nice.jpg/800px-Bagne_de_Nice.jpg"
+		},
+		{
+			"@id": "p:6",
+			"@type": "Patrimoine",
+			"name": "Caserne_Rusca",
+			"latitude": "43.696832",
+			"longitude": "7.273641",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Nice-clocher-place-rue-Prefecture.jpg/450px-Nice-clocher-place-rue-Prefecture.jpg"
+		},
+		{
+			"@id": "p:7",
+			"@type": "Patrimoine",
+			"name": "Cathedrale_Saint-Nicolas",
+			"latitude": "43.70377",
+			"longitude": "7.253959",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Nice_Cath%C3%A9drale_Saint-Nicolas.jpg/600px-Nice_Cath%C3%A9drale_Saint-Nicolas.jpg"
+		},
+		{
+			"@id": "p:8",
+			"@type": "Patrimoine",
+			"name": "Cathedrale_Sainte-Reparate",
+			"latitude": "43.6972",
+			"longitude": "7.2758",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Cathedrale_Sainte-Reparate_Nice.jpg/453px-Cathedrale_Sainte-Reparate_Nice.jpg"
+		},
+		{
+			"@id": "p:9",
+			"@type": "Patrimoine",
+			"name": "Chapelle_Misericorde",
+			"latitude": "43.695783",
+			"longitude": "7.275358",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/NIKAIA-saleyaN3_pano.jpg/484px-NIKAIA-saleyaN3_pano.jpg"
+		},
+		{
+			"@id": "p:10",
+			"@type": "Patrimoine",
+			"name": "Chapelle_Sainte-Croix",
+			"latitude": "43.697778",
+			"longitude": "7.277886",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Chapelle_Sainte-Croix_de_Nice.jpg/450px-Chapelle_Sainte-Croix_de_Nice.jpg"
+		},
+		{
+			"@id": "p:11",
+			"@type": "Patrimoine",
+			"name": "Chapelle_Saint-Philippe-Neri",
+			"latitude": "43.70026",
+			"longitude": "7.248654",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Nice_chapelle_saint_philippe_de_Neri_fa%C3%A7ade.jpg/800px-Nice_chapelle_saint_philippe_de_Neri_fa%C3%A7ade.jpg"
+		},
+		{
+			"@id": "p:12",
+			"@type": "Patrimoine",
+			"name": "Chapelle_Saint-Sépulcre",
+			"latitude": "43.700508",
+			"longitude": "7.279899",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Chapelle_du_Saint-S%C3%A9pulcre_Nice.jpg"
+		},
+		{
+			"@id": "p:13",
+			"@type": "Patrimoine",
+			"name": "Chapelle_Visitation",
+			"latitude": "43.69796645",
+			"longitude": "7.27880708",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/NIKAIA-steClairePl200702.jpg/800px-NIKAIA-steClairePl200702.jpg"
+		},
+		{
+			"@id": "p:14",
+			"@type": "Patrimoine",
+			"name": "Chateau_Anglais",
+			"latitude": "43.688099",
+			"longitude": "7.295088",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Le_ch%C3%A2teau_de_l%27anglais_nice.jpg/800px-Le_ch%C3%A2teau_de_l%27anglais_nice.jpg"
+		},
+		{
+			"@id": "p:15",
+			"@type": "Patrimoine",
+			"name": "Chateaux_Valrose",
+			"latitude": "43.71583",
+			"longitude": "7.26583",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Campus_de_Nice.jpg"
+		},
+		{
+			"@id": "p:16",
+			"@type": "Patrimoine",
+			"name": "Colonne_pape",
+			"latitude": "43.696294",
+			"longitude": "7.262658",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Nice-Musiciens-PalaisMarieChristine2.jpg"
+		},
+		{
+			"@id": "p:17",
+			"@type": "Patrimoine",
+			"name": "Couvent_Saint-Francois",
+			"latitude": "43.699519",
+			"longitude": "7.278405",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Nice_tour_Saint-Francois.jpg/398px-Nice_tour_Saint-Francois.jpg"
+		},
+		{
+			"@id": "p:18",
+			"@type": "Patrimoine",
+			"name": "Croix_Marbre",
+			"latitude": "43.696125",
+			"longitude": "7.262731",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Croix_de_marbre.jpg/332px-Croix_de_marbre.jpg"
+		},
+		{
+			"@id": "p:19",
+			"@type": "Patrimoine",
+			"name": "Croix_Seraphique_Cimiez",
+			"latitude": "43.720432",
+			"longitude": "7.278662",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Croix_s%C3%A9raphique_de_Cimiez%2C_Nice%2C_France.jpg/442px-Croix_s%C3%A9raphique_de_Cimiez%2C_Nice%2C_France.jpg"
+		},
+		{
+			"@id": "p:20",
+			"@type": "Patrimoine",
+			"name": "Eglise_Notre-Dame-Auxiliatrice",
+			"latitude": "43.709236",
+			"longitude": "7.281113",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/%C3%89glise_Notre_Dame_Auxiliatrice_Nice.jpg/800px-%C3%89glise_Notre_Dame_Auxiliatrice_Nice.jpg"
+		},
+		{
+			"@id": "p:21",
+			"@type": "Patrimoine",
+			"name": "Eglise_Sainte-Helene",
+			"latitude": "43.685307",
+			"longitude": "7.234953",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Sainte_H%C3%A9l%C3%A8ne_4.jpg/348px-Sainte_H%C3%A9l%C3%A8ne_4.jpg"
+		},
+		{
+			"@id": "p:1",
+			"@type": "Patrimoine",
+			"name": "Eglise_Sainte-Jeanne-d'Arc",
+			"latitude": "43.713333",
+			"longitude": "7.2625",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Lambert-av-saint-eglise-jeanne-d-arc-6-2-images.jpg/543px-Lambert-av-saint-eglise-jeanne-d-arc-6-2-images.jpg"
+		},
+		{
+			"@id": "p:22",
+			"@type": "Patrimoine",
+			"name": "Eglise_Sainte-Rita",
+			"latitude": "43.696186",
+			"longitude": "7.276382",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/NIKAIA-EglSteRita.jpg/355px-NIKAIA-EglSteRita.jpg"
+		},
+		{
+			"@id": "p:23",
+			"@type": "Patrimoine",
+			"name": "Eglise_Saint-Jacques-le-Majeur",
+			"latitude": "43.696764",
+			"longitude": "7.277322",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Nice-VieilleVille-EgliseGesu-facade.jpg"
+		},
+		{
+			"@id": "p:24",
+			"@type": "Patrimoine",
+			"name": "Eglise_Saint-Martin-Saint-Augustin",
+			"latitude": "43.699617",
+			"longitude": "7.279506",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/NIKAIA-StAugustin-2007-03-16_010.jpg/400px-NIKAIA-StAugustin-2007-03-16_010.jpg"
+		},
+		{
+			"@id": "p:25",
+			"@type": "Patrimoine",
+			"name": "Eglise_Saint-Nicolas-et-Sainte-Alexandra",
+			"latitude": "43.699386",
+			"longitude": "7.267608",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Eglise_russe_longchamp_nice.jpg/490px-Eglise_russe_longchamp_nice.jpg"
+		},
+		{
+			"@id": "p:26",
+			"@type": "Patrimoine",
+			"name": "Eglise_Saint-Roch",
+			"latitude": "43.712554",
+			"longitude": "7.291794",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/%C3%89glise_Saint-Roch_Nice_01.jpg/800px-%C3%89glise_Saint-Roch_Nice_01.jpg"
+		},
+		{
+			"@id": "p:27",
+			"@type": "Patrimoine",
+			"name": "Eglise_Saint-Sauveur_Gairaut",
+			"latitude": "43.7373",
+			"longitude": "7.258779",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/%C3%89glise_Saint-Sauveur_de_Gairaut%2C_Nice.jpg/800px-%C3%89glise_Saint-Sauveur_de_Gairaut%2C_Nice.jpg"
+		},
+		{
+			"@id": "p:28",
+			"@type": "Patrimoine",
+			"name": "Excelsior_Régina_Palace",
+			"latitude": "43.720233",
+			"longitude": "7.273072",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Le_Regina_Nice_1.jpg/800px-Le_Regina_Nice_1.jpg"
+		},
+		{
+			"@id": "p:29",
+			"@type": "Patrimoine",
+			"name": "Fontaine_Tritons",
+			"latitude": "43.69565",
+			"longitude": "7.268594",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Fontaine_Nice.jpg/800px-Fontaine_Nice.jpg"
+		},
+		{
+			"@id": "p:30",
+			"@type": "Patrimoine",
+			"name": "Fort_mont_Alban",
+			"latitude": "43.701297",
+			"longitude": "7.300175",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Fort_du_Mont_Alban.JPG/800px-Fort_du_Mont_Alban.JPG"
+		},
+		{
+			"@id": "p:31",
+			"@type": "Patrimoine",
+			"name": "Fortifications_porte_Pairoliere",
+			"latitude": "43.700485",
+			"longitude": "7.278842",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Porte_Pairoli%C3%A8re_01.jpg/800px-Porte_Pairoli%C3%A8re_01.jpg"
+		},
+		{
+			"@id": "p:32",
+			"@type": "Patrimoine",
+			"name": "Gare_Sud",
+			"latitude": "43.709395",
+			"longitude": "7.26159",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/c/c8/NIKAIA-liberationGareDuSud200411.jpg"
+		},
+		{
+			"@id": "p:33",
+			"@type": "Patrimoine",
+			"name": "Gloria_Mansions",
+			"latitude": "43.693644",
+			"longitude": "7.251692",
+			"image": ""
+		},
+		{
+			"@id": "p:34",
+			"@type": "Patrimoine",
+			"name": "Grotte_Lazaret",
+			"latitude": "43.69073",
+			"longitude": "7.294788",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Grotte_du_Lazaret_2010.JPG/450px-Grotte_du_Lazaret_2010.JPG"
+		},
+		{
+			"@id": "p:35",
+			"@type": "Patrimoine",
+			"name": "Grue_Applevage_n°_14",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/La_grue_1938.jpg/443px-La_grue_1938.jpg"
+		},
+		{
+			"@id": "p:36",
+			"@type": "Patrimoine",
+			"name": "Hotel_Alhambra",
+			"latitude": "43.712236",
+			"longitude": "7.27245",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/8/87/H%C3%B4tel_alhambra_fa%C3%A7ades.jpg"
+		},
+		{
+			"@id": "p:37",
+			"@type": "Patrimoine",
+			"name": "Hotel_Negresco",
+			"latitude": "43.694678",
+			"longitude": "7.258025",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Negresco.JPG/800px-Negresco.JPG"
+		},
+		{
+			"@id": "p:38",
+			"@type": "Patrimoine",
+			"name": "Immeuble_Droite_014",
+			"latitude": "43.69778",
+			"longitude": "7.277394",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Immeuble_du_14_rue_Droite%2C_Nice.jpg/800px-Immeuble_du_14_rue_Droite%2C_Nice.jpg"
+		},
+		{
+			"@id": "p:39",
+			"@type": "Patrimoine",
+			"name": "Immeuble_Prefecture_022",
+			"latitude": "43.696248",
+			"longitude": "7.276484",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Immeuble_du_22_rue_de_la_Pr%C3%A9fecture%2C_Nice.jpg/800px-Immeuble_du_22_rue_de_la_Pr%C3%A9fecture%2C_Nice.jpg"
+		},
+		{
+			"@id": "p:40",
+			"@type": "Patrimoine",
+			"name": "Immeuble_Garacci-Bensa",
+			"latitude": "43.699645",
+			"longitude": "7.267268",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Th%C3%A9atre_l%27Id%C3%A9al_01.jpg/800px-Th%C3%A9atre_l%27Id%C3%A9al_01.jpg"
+		},
+		{
+			"@id": "p:41",
+			"@type": "Patrimoine",
+			"name": "Immeuble_Rotonde",
+			"latitude": "43.698464",
+			"longitude": "7.255992",
+			"image": ""
+		},
+		{
+			"@id": "p:42",
+			"@type": "Patrimoine",
+			"name": "Lycée_Masséna",
+			"latitude": "43.699478",
+			"longitude": "7.275392",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Lycee1.jpg/800px-Lycee1.jpg"
+		},
+		{
+			"@id": "p:43",
+			"@type": "Patrimoine",
+			"name": "Maison_Alexandre-Mari_015",
+			"latitude": "43.696207",
+			"longitude": "7.273354",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/b/b5/15_rue_Alexandre-Mari_Nice.jpg"
+		},
+		{
+			"@id": "p:44",
+			"@type": "Patrimoine",
+			"name": "Monastere_Cimiez",
+			"latitude": "43.719906",
+			"longitude": "7.279078",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Monast%C3%A8re_de_Cimiez_%28jardins%29.jpg/800px-Monast%C3%A8re_de_Cimiez_%28jardins%29.jpg"
+		},
+		{
+			"@id": "p:45",
+			"@type": "Patrimoine",
+			"name": "Monument_aux_morts_guerre_1914-1918",
+			"latitude": "43.693728",
+			"longitude": "7.281028",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Monument_aux_morts_P1010207.JPG/800px-Monument_aux_morts_P1010207.JPG"
+		},
+		{
+			"@id": "p:46",
+			"@type": "Patrimoine",
+			"name": "Monument_Centenaire",
+			"latitude": "43.695358",
+			"longitude": "7.267803",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Nike_-_Nice.jpg/450px-Nike_-_Nice.jpg"
+		},
+		{
+			"@id": "p:47",
+			"@type": "Patrimoine",
+			"name": "Monument_Garibaldi",
+			"latitude": "43.700908",
+			"longitude": "7.280164",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Garibaldi_Niza.jpg/423px-Garibaldi_Niza.jpg"
+		},
+		{
+			"@id": "p:48",
+			"@type": "Patrimoine",
+			"name": "Monument_Massena",
+			"latitude": "43.69795",
+			"longitude": "7.273631",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Statue_massena_nice.jpg/450px-Statue_massena_nice.jpg"
+		},
+		{
+			"@id": "p:49",
+			"@type": "Patrimoine",
+			"name": "Musee_Beaux-arts",
+			"latitude": "43.694583",
+			"longitude": "7.248889",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Musee_des_Beaux_Artes_%281%29.JPG/800px-Musee_des_Beaux_Artes_%281%29.JPG"
+		},
+		{
+			"@id": "p:50",
+			"@type": "Patrimoine",
+			"name": "Villa_Massena",
+			"latitude": "43.695219",
+			"longitude": "7.258944",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Nice%2Cmus%C3%A9e_Mass%C3%A9na111.jpg/800px-Nice%2Cmus%C3%A9e_Mass%C3%A9na111.jpg"
+		},
+		{
+			"@id": "p:51",
+			"@type": "Patrimoine",
+			"name": "Observatoire",
+			"latitude": "43.727441",
+			"longitude": "7.299069",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Coupole_Bischoffsheim.jpg/800px-Coupole_Bischoffsheim.jpg"
+		},
+		{
+			"@id": "p:52",
+			"@type": "Patrimoine",
+			"name": "Opera",
+			"latitude": "43.695439",
+			"longitude": "7.272552",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Opera_nice.jpg/800px-Opera_nice.jpg"
+		},
+		{
+			"@id": "p:53",
+			"@type": "Patrimoine",
+			"name": "Palais_Agriculture",
+			"latitude": "43.690831",
+			"longitude": "7.24551",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/PA00080962_Palais_de_l_Agriculture_Nice.jpg/800px-PA00080962_Palais_de_l_Agriculture_Nice.jpg"
+		},
+		{
+			"@id": "p:54",
+			"@type": "Patrimoine",
+			"name": "Palais_Barety",
+			"latitude": "43.698383",
+			"longitude": "7.263808",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Palais_Bar%C3%A9ty_05.jpg/800px-Palais_Bar%C3%A9ty_05.jpg"
+		},
+		{
+			"@id": "p:55",
+			"@type": "Patrimoine",
+			"name": "Palais_Communal",
+			"latitude": "43.699008",
+			"longitude": "7.278419",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Palais_communal_Nice.jpg/800px-Palais_communal_Nice.jpg"
+		},
+		{
+			"@id": "p:56",
+			"@type": "Patrimoine",
+			"name": "Palais_Ducs_Savoie",
+			"latitude": "43.696383",
+			"longitude": "7.275092",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Saleya6.JPG/800px-Saleya6.JPG"
+		},
+		{
+			"@id": "p:57",
+			"@type": "Patrimoine",
+			"name": "Palais_Hongran",
+			"latitude": "43.695594",
+			"longitude": "7.273047",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Palais_Hongran_01.jpg"
+		},
+		{
+			"@id": "p:58",
+			"@type": "Patrimoine",
+			"name": "Palais_Lascaris",
+			"latitude": "43.697672",
+			"longitude": "7.277247",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Lascaris2.JPG"
+		},
+		{
+			"@id": "p:59",
+			"@type": "Patrimoine",
+			"name": "Palais_Marbre",
+			"latitude": "43.687703",
+			"longitude": "7.234733",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Palais_de_marbre_nice.jpg"
+		},
+		{
+			"@id": "p:60",
+			"@type": "Patrimoine",
+			"name": "Palais_Mediterranee",
+			"latitude": "43.695239",
+			"longitude": "7.263131",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/La_Mediterranee.jpg/800px-La_Mediterranee.jpg"
+		},
+		{
+			"@id": "p:61",
+			"@type": "Patrimoine",
+			"name": "Palais_Meyerbeer",
+			"latitude": "43.698201",
+			"longitude": "7.259973",
+			"image": ""
+		},
+		{
+			"@id": "p:62",
+			"@type": "Patrimoine",
+			"name": "Palais_York",
+			"latitude": "43.697033",
+			"longitude": "7.273856",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Palais_d%27York_Nice_02.jpg/800px-Palais_d%27York_Nice_02.jpg"
+		},
+		{
+			"@id": "p:63",
+			"@type": "Patrimoine",
+			"name": "Port_Lympia",
+			"latitude": "43.698395",
+			"longitude": "7.285116",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Eglise_Notre-Dame_du_Port_Nice.jpg/799px-Eglise_Notre-Dame_du_Port_Nice.jpg"
+		},
+		{
+			"@id": "p:64",
+			"@type": "Patrimoine",
+			"name": "Synagogue",
+			"latitude": "43.699811",
+			"longitude": "7.269336",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Synagogue%2C_Nice.jpg/450px-Synagogue%2C_Nice.jpg"
+		},
+		{
+			"@id": "p:65",
+			"@type": "Patrimoine",
+			"name": "Temple",
+			"latitude": "43.6990722",
+			"longitude": "7.2640916666667",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/NIKAIA-maccarani016_EglReformee.jpg/449px-NIKAIA-maccarani016_EglReformee.jpg"
+		},
+		{
+			"@id": "p:66",
+			"@type": "Patrimoine",
+			"name": "Thermes_romains_Cimiez",
+			"latitude": "43.719078",
+			"longitude": "7.276725",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Thermes_romains_de_Cimiez.jpg/800px-Thermes_romains_de_Cimiez.jpg"
+		},
+		{
+			"@id": "p:67",
+			"@type": "Patrimoine",
+			"name": "Vieux_mur_ligure",
+			"latitude": "43.718823",
+			"longitude": "7.278099",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Vieux_mur_ligure.jpg/800px-Vieux_mur_ligure.jpg"
+		},
+		{
+			"@id": "p:68",
+			"@type": "Patrimoine",
+			"name": "Villa_Arson",
+			"latitude": "43.721",
+			"longitude": "7.253",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Villa_Arson_-_ancien_batiment.jpg/800px-Villa_Arson_-_ancien_batiment.jpg"
+		},
+		{
+			"@id": "p:69",
+			"@type": "Patrimoine",
+			"name": "Villa_Beau_Site",
+			"latitude": "43.689631",
+			"longitude": "7.295777",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Villa_beau_site.jpg/800px-Villa_beau_site.jpg"
+		},
+		{
+			"@id": "p:70",
+			"@type": "Patrimoine",
+			"name": "Villa_Chateauneuf",
+			"latitude": "43.7310651",
+			"longitude": "7.2626039",
+			"image": ""
+		},
+		{
+			"@id": "p:71",
+			"@type": "Patrimoine",
+			"name": "Villa_El_Patio",
+			"latitude": "43.703498",
+			"longitude": "7.252972",
+			"image": ""
+		},
+		{
+			"@id": "p:72",
+			"@type": "Patrimoine",
+			"name": "Villa_Furtado-Heine",
+			"latitude": "43.693899",
+			"longitude": "7.252409",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Villa_Furtado-Heine_03.jpg/800px-Villa_Furtado-Heine_03.jpg"
+		},
+		{
+			"@id": "p:73",
+			"@type": "Patrimoine",
+			"name": "Villa_Belle_Epoque",
+			"latitude": "43.697014",
+			"longitude": "7.257805",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Villa_La_Belle_%C3%89poque_02.jpg/800px-Villa_La_Belle_%C3%89poque_02.jpg"
+		},
+		{
+			"@id": "p:74",
+			"@type": "Patrimoine",
+			"name": "Villa_Schmitz",
+			"latitude": "43.7217045",
+			"longitude": "7.29717837",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Villa_Schmitz_Facade.JPG/800px-Villa_Schmitz_Facade.JPG"
+		}
+	],
+	"@context": {
+		"Patrimoines": "foaf:patrimoines#Patrimoines",
+		"Patrimoine": "foaf:patrimoines#Patrimoine",
+		"patrimoines": "foaf:patrimoines#patrimoines",
+		"name": "foaf:patrimoines#name",
+		"latitude": "foaf:patrimoines#latitude",
+		"longitude": "foaf:patrimoines#longitude",
+		"image": "foaf:patrimoines#image",
+		"foaf": "http://www.ps7-wia2.com/",
+		"p": "http://www.ps7-wia2.com/patrimoines/"
+	}
+}
