@@ -1,0 +1,745 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "default": {},
+    "examples": [
+        {
+            "@graph": [
+                {
+                    "@id": "foaf:groups/",
+                    "@type": "http://www.ps7-wia2.com/groups#Groups",
+                    "groups": [
+                        "g:1",
+                        "g:2",
+                        "g:3",
+                        "g:4",
+                        "g:5",
+                        "g:6"
+                    ]
+                },
+                {
+                    "@id": "g:1",
+                    "@type": "groups#Group",
+                    "admin": "u:1",
+                    "description": "Vos oeuvres musicales",
+                    "interests": "Musique",
+                    "members": [
+                        "http://www.ps7-wia2.com/users/5",
+                        "http://www.ps7-wia2.com/users/1"
+                    ],
+                    "name": "Groupe1",
+                    "types": [
+                        "Information",
+                        "Partage"
+                    ]
+                },
+                {
+                    "@id": "g:2",
+                    "@type": "groups#Group",
+                    "admin": "u:1",
+                    "description": "L'amour de la salsa",
+                    "interests": "Danse",
+                    "members": [
+                        "http://www.ps7-wia2.com/users/5",
+                        "http://www.ps7-wia2.com/users/1"
+                    ],
+                    "name": "Groupe2",
+                    "types": "Partage"
+                },
+                {
+                    "@id": "g:3",
+                    "@type": "groups#Group",
+                    "admin": "u:1",
+                    "description": "La nature est tout ce qu'il y a de plus splendide",
+                    "interests": "Nature",
+                    "members": [
+                        "http://www.ps7-wia2.com/users/5",
+                        "http://www.ps7-wia2.com/users/1"
+                    ],
+                    "name": "Groupe3",
+                    "types": "Information"
+                },
+                {
+                    "@id": "g:4",
+                    "@type": "groups#Group",
+                    "admin": "u:1",
+                    "description": "Un oiseau par ci ! Un oiseau par là !",
+                    "interests": "Oiseau",
+                    "members": [
+                        "http://www.ps7-wia2.com/users/1",
+                        "http://www.ps7-wia2.com/users/5"
+                    ],
+                    "name": "Groupe4",
+                    "types": [
+                        "Partage",
+                        "Information"
+                    ]
+                },
+                {
+                    "@id": "g:5",
+                    "@type": "groups#Group",
+                    "admin": "u:1",
+                    "description": "Vous avez dit description ?",
+                    "interests": "Divers",
+                    "members": [
+                        "http://www.ps7-wia2.com/users/1",
+                        "http://www.ps7-wia2.com/users/5"
+                    ],
+                    "name": "Groupe5",
+                    "types": "Humour"
+                },
+                {
+                    "@id": "g:6",
+                    "@type": "groups#Group",
+                    "admin": "u:1",
+                    "description": "L'humour est le maître mot de cet endroit",
+                    "interests": [
+                        "Spectacle",
+                        "Théâtre"
+                    ],
+                    "members": [
+                        "http://www.ps7-wia2.com/users/1",
+                        "http://www.ps7-wia2.com/users/5"
+                    ],
+                    "name": "Groupe6",
+                    "types": "Humour"
+                }
+            ],
+            "@context": {
+                "types": {
+                    "@id": "http://www.ps7-wia2.com/groups#types"
+                },
+                "name": {
+                    "@id": "http://www.ps7-wia2.com/groups#name"
+                },
+                "members": {
+                    "@id": "http://www.ps7-wia2.com/groups#members"
+                },
+                "interests": {
+                    "@id": "http://www.ps7-wia2.com/groups#interests"
+                },
+                "description": {
+                    "@id": "http://www.ps7-wia2.com/groups#description"
+                },
+                "admin": {
+                    "@id": "http://www.ps7-wia2.com/groups#admin",
+                    "@type": "@id"
+                },
+                "groups": {
+                    "@id": "http://www.ps7-wia2.com/groups#groups",
+                    "@type": "@id"
+                },
+                "@vocab": "http://www.ps7-wia2.com/",
+                "u": "http://www.ps7-wia2.com/users/",
+                "g": "http://www.ps7-wia2.com/groups/",
+                "foaf": "http://www.ps7-wia2.com/"
+            }
+        }
+    ],
+    "required": [
+        "@graph",
+        "@context"
+    ],
+    "properties": {
+        "@graph": {
+            "$id": "#/properties/%40graph",
+            "type": "array",
+            "title": "The @graph schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "examples": [
+                [
+                    {
+                        "@id": "foaf:groups/",
+                        "@type": "http://www.ps7-wia2.com/groups#Groups",
+                        "groups": [
+                            "g:1",
+                            "g:2",
+                            "g:3",
+                            "g:4",
+                            "g:5",
+                            "g:6"
+                        ]
+                    },
+                    {
+                        "@id": "g:1",
+                        "@type": "groups#Group",
+                        "admin": "u:1",
+                        "description": "Vos oeuvres musicales",
+                        "interests": "Musique",
+                        "members": [
+                            "http://www.ps7-wia2.com/users/5",
+                            "http://www.ps7-wia2.com/users/1"
+                        ],
+                        "name": "Groupe1",
+                        "types": [
+                            "Information",
+                            "Partage"
+                        ]
+                    }
+                ]
+            ],
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/%40graph/items",
+                "anyOf": [
+                    {
+                        "$id": "#/properties/%40graph/items/anyOf/0",
+                        "type": "object",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
+                        "examples": [
+                            {
+                                "@id": "foaf:groups/",
+                                "@type": "http://www.ps7-wia2.com/groups#Groups",
+                                "groups": [
+                                    "g:1",
+                                    "g:2",
+                                    "g:3",
+                                    "g:4",
+                                    "g:5",
+                                    "g:6"
+                                ]
+                            }
+                        ],
+                        "required": [
+                            "@id",
+                            "@type",
+                            "groups"
+                        ],
+                        "properties": {
+                            "@id": {
+                                "$id": "#/properties/%40graph/items/anyOf/0/properties/%40id",
+                                "type": "string",
+                                "title": "The @id schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "foaf:groups/"
+                                ]
+                            },
+                            "@type": {
+                                "$id": "#/properties/%40graph/items/anyOf/0/properties/%40type",
+                                "type": "string",
+                                "title": "The @type schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "http://www.ps7-wia2.com/groups#Groups"
+                                ]
+                            },
+                            "groups": {
+                                "$id": "#/properties/%40graph/items/anyOf/0/properties/groups",
+                                "type": "array",
+                                "title": "The groups schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": [],
+                                "examples": [
+                                    [
+                                        "g:1",
+                                        "g:2"
+                                    ]
+                                ],
+                                "additionalItems": true,
+                                "items": {
+                                    "$id": "#/properties/%40graph/items/anyOf/0/properties/groups/items",
+                                    "anyOf": [
+                                        {
+                                            "$id": "#/properties/%40graph/items/anyOf/0/properties/groups/items/anyOf/0",
+                                            "type": "string",
+                                            "title": "The first anyOf schema",
+                                            "description": "An explanation about the purpose of this instance.",
+                                            "default": "",
+                                            "examples": [
+                                                "g:1",
+                                                "g:2"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "additionalProperties": true
+                    },
+                    {
+                        "$id": "#/properties/%40graph/items/anyOf/1",
+                        "type": "object",
+                        "title": "The second anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
+                        "examples": [
+                            {
+                                "@id": "g:1",
+                                "@type": "groups#Group",
+                                "admin": "u:1",
+                                "description": "Vos oeuvres musicales",
+                                "interests": "Musique",
+                                "members": [
+                                    "http://www.ps7-wia2.com/users/5",
+                                    "http://www.ps7-wia2.com/users/1"
+                                ],
+                                "name": "Groupe1",
+                                "types": [
+                                    "Information",
+                                    "Partage"
+                                ]
+                            }
+                        ],
+                        "required": [
+                            "@id",
+                            "@type",
+                            "admin",
+                            "description",
+                            "interests",
+                            "members",
+                            "name",
+                            "types"
+                        ],
+                        "properties": {
+                            "@id": {
+                                "$id": "#/properties/%40graph/items/anyOf/1/properties/%40id",
+                                "type": "string",
+                                "title": "The @id schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "g:1"
+                                ]
+                            },
+                            "@type": {
+                                "$id": "#/properties/%40graph/items/anyOf/1/properties/%40type",
+                                "type": "string",
+                                "title": "The @type schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "groups#Group"
+                                ]
+                            },
+                            "admin": {
+                                "$id": "#/properties/%40graph/items/anyOf/1/properties/admin",
+                                "type": "string",
+                                "title": "The admin schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "u:1"
+                                ]
+                            },
+                            "description": {
+                                "$id": "#/properties/%40graph/items/anyOf/1/properties/description",
+                                "type": "string",
+                                "title": "The description schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "Vos oeuvres musicales"
+                                ]
+                            },
+                            "interests": {
+                                "$id": "#/properties/%40graph/items/anyOf/1/properties/interests",
+                                "type": ["array", "string"],
+                                "title": "The interests schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "Musique"
+                                ]
+                            },
+                            "members": {
+                                "$id": "#/properties/%40graph/items/anyOf/1/properties/members",
+                                "type": "array",
+                                "title": "The members schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": [],
+                                "examples": [
+                                    [
+                                        "http://www.ps7-wia2.com/users/5",
+                                        "http://www.ps7-wia2.com/users/1"
+                                    ]
+                                ],
+                                "additionalItems": true,
+                                "items": {
+                                    "$id": "#/properties/%40graph/items/anyOf/1/properties/members/items",
+                                    "anyOf": [
+                                        {
+                                            "$id": "#/properties/%40graph/items/anyOf/1/properties/members/items/anyOf/0",
+                                            "type": "string",
+                                            "title": "The first anyOf schema",
+                                            "description": "An explanation about the purpose of this instance.",
+                                            "default": "",
+                                            "examples": [
+                                                "http://www.ps7-wia2.com/users/5",
+                                                "http://www.ps7-wia2.com/users/1"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            "name": {
+                                "$id": "#/properties/%40graph/items/anyOf/1/properties/name",
+                                "type": "string",
+                                "title": "The name schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "Groupe1"
+                                ]
+                            },
+                            "types": {
+                                "$id": "#/properties/%40graph/items/anyOf/1/properties/types",
+                                "type": ["array", "string"],
+                                "title": "The types schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": [],
+                                "examples": [
+                                    [
+                                        "Information",
+                                        "Partage"
+                                    ]
+                                ],
+                                "additionalItems": true,
+                                "items": {
+                                    "$id": "#/properties/%40graph/items/anyOf/1/properties/types/items",
+                                    "anyOf": [
+                                        {
+                                            "$id": "#/properties/%40graph/items/anyOf/1/properties/types/items/anyOf/0",
+                                            "type": "string",
+                                            "title": "The first anyOf schema",
+                                            "description": "An explanation about the purpose of this instance.",
+                                            "default": "",
+                                            "examples": [
+                                                "Information",
+                                                "Partage"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "additionalProperties": true
+                    }
+                ]
+            }
+        },
+        "@context": {
+            "$id": "#/properties/%40context",
+            "type": "object",
+            "title": "The @context schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+                {
+                    "types": {
+                        "@id": "http://www.ps7-wia2.com/groups#types"
+                    },
+                    "name": {
+                        "@id": "http://www.ps7-wia2.com/groups#name"
+                    },
+                    "members": {
+                        "@id": "http://www.ps7-wia2.com/groups#members"
+                    },
+                    "interests": {
+                        "@id": "http://www.ps7-wia2.com/groups#interests"
+                    },
+                    "description": {
+                        "@id": "http://www.ps7-wia2.com/groups#description"
+                    },
+                    "admin": {
+                        "@id": "http://www.ps7-wia2.com/groups#admin",
+                        "@type": "@id"
+                    },
+                    "groups": {
+                        "@id": "http://www.ps7-wia2.com/groups#groups",
+                        "@type": "@id"
+                    },
+                    "@vocab": "http://www.ps7-wia2.com/",
+                    "u": "http://www.ps7-wia2.com/users/",
+                    "g": "http://www.ps7-wia2.com/groups/",
+                    "foaf": "http://www.ps7-wia2.com/"
+                }
+            ],
+            "required": [
+                "types",
+                "name",
+                "members",
+                "interests",
+                "description",
+                "admin",
+                "groups",
+                "@vocab",
+                "u",
+                "g",
+                "foaf"
+            ],
+            "properties": {
+                "types": {
+                    "$id": "#/properties/%40context/properties/types",
+                    "type": "object",
+                    "title": "The types schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": {},
+                    "examples": [
+                        {
+                            "@id": "http://www.ps7-wia2.com/groups#types"
+                        }
+                    ],
+                    "required": [
+                        "@id"
+                    ],
+                    "properties": {
+                        "@id": {
+                            "$id": "#/properties/%40context/properties/types/properties/%40id",
+                            "type": "string",
+                            "title": "The @id schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "http://www.ps7-wia2.com/groups#types"
+                            ]
+                        }
+                    },
+                    "additionalProperties": true
+                },
+                "name": {
+                    "$id": "#/properties/%40context/properties/name",
+                    "type": "object",
+                    "title": "The name schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": {},
+                    "examples": [
+                        {
+                            "@id": "http://www.ps7-wia2.com/groups#name"
+                        }
+                    ],
+                    "required": [
+                        "@id"
+                    ],
+                    "properties": {
+                        "@id": {
+                            "$id": "#/properties/%40context/properties/name/properties/%40id",
+                            "type": "string",
+                            "title": "The @id schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "http://www.ps7-wia2.com/groups#name"
+                            ]
+                        }
+                    },
+                    "additionalProperties": true
+                },
+                "members": {
+                    "$id": "#/properties/%40context/properties/members",
+                    "type": "object",
+                    "title": "The members schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": {},
+                    "examples": [
+                        {
+                            "@id": "http://www.ps7-wia2.com/groups#members"
+                        }
+                    ],
+                    "required": [
+                        "@id"
+                    ],
+                    "properties": {
+                        "@id": {
+                            "$id": "#/properties/%40context/properties/members/properties/%40id",
+                            "type": "string",
+                            "title": "The @id schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "http://www.ps7-wia2.com/groups#members"
+                            ]
+                        }
+                    },
+                    "additionalProperties": true
+                },
+                "interests": {
+                    "$id": "#/properties/%40context/properties/interests",
+                    "type": "object",
+                    "title": "The interests schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": {},
+                    "examples": [
+                        {
+                            "@id": "http://www.ps7-wia2.com/groups#interests"
+                        }
+                    ],
+                    "required": [
+                        "@id"
+                    ],
+                    "properties": {
+                        "@id": {
+                            "$id": "#/properties/%40context/properties/interests/properties/%40id",
+                            "type": "string",
+                            "title": "The @id schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "http://www.ps7-wia2.com/groups#interests"
+                            ]
+                        }
+                    },
+                    "additionalProperties": true
+                },
+                "description": {
+                    "$id": "#/properties/%40context/properties/description",
+                    "type": "object",
+                    "title": "The description schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": {},
+                    "examples": [
+                        {
+                            "@id": "http://www.ps7-wia2.com/groups#description"
+                        }
+                    ],
+                    "required": [
+                        "@id"
+                    ],
+                    "properties": {
+                        "@id": {
+                            "$id": "#/properties/%40context/properties/description/properties/%40id",
+                            "type": "string",
+                            "title": "The @id schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "http://www.ps7-wia2.com/groups#description"
+                            ]
+                        }
+                    },
+                    "additionalProperties": true
+                },
+                "admin": {
+                    "$id": "#/properties/%40context/properties/admin",
+                    "type": "object",
+                    "title": "The admin schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": {},
+                    "examples": [
+                        {
+                            "@id": "http://www.ps7-wia2.com/groups#admin",
+                            "@type": "@id"
+                        }
+                    ],
+                    "required": [
+                        "@id",
+                        "@type"
+                    ],
+                    "properties": {
+                        "@id": {
+                            "$id": "#/properties/%40context/properties/admin/properties/%40id",
+                            "type": "string",
+                            "title": "The @id schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "http://www.ps7-wia2.com/groups#admin"
+                            ]
+                        },
+                        "@type": {
+                            "$id": "#/properties/%40context/properties/admin/properties/%40type",
+                            "type": "string",
+                            "title": "The @type schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "@id"
+                            ]
+                        }
+                    },
+                    "additionalProperties": true
+                },
+                "groups": {
+                    "$id": "#/properties/%40context/properties/groups",
+                    "type": "object",
+                    "title": "The groups schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": {},
+                    "examples": [
+                        {
+                            "@id": "http://www.ps7-wia2.com/groups#groups",
+                            "@type": "@id"
+                        }
+                    ],
+                    "required": [
+                        "@id",
+                        "@type"
+                    ],
+                    "properties": {
+                        "@id": {
+                            "$id": "#/properties/%40context/properties/groups/properties/%40id",
+                            "type": "string",
+                            "title": "The @id schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "http://www.ps7-wia2.com/groups#groups"
+                            ]
+                        },
+                        "@type": {
+                            "$id": "#/properties/%40context/properties/groups/properties/%40type",
+                            "type": "string",
+                            "title": "The @type schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "@id"
+                            ]
+                        }
+                    },
+                    "additionalProperties": true
+                },
+                "@vocab": {
+                    "$id": "#/properties/%40context/properties/%40vocab",
+                    "type": "string",
+                    "title": "The @vocab schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "http://www.ps7-wia2.com/"
+                    ]
+                },
+                "u": {
+                    "$id": "#/properties/%40context/properties/u",
+                    "type": "string",
+                    "title": "The u schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "http://www.ps7-wia2.com/users/"
+                    ]
+                },
+                "g": {
+                    "$id": "#/properties/%40context/properties/g",
+                    "type": "string",
+                    "title": "The g schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "http://www.ps7-wia2.com/groups/"
+                    ]
+                },
+                "foaf": {
+                    "$id": "#/properties/%40context/properties/foaf",
+                    "type": "string",
+                    "title": "The foaf schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "http://www.ps7-wia2.com/"
+                    ]
+                }
+            },
+            "additionalProperties": true
+        }
+    },
+    "additionalProperties": true
+}

@@ -700,26 +700,7 @@
 				"c:2",
 				"c:3"
 			],
-			"description": [
-				{
-					"language": "fr",
-					"cdata-section": "PALAIS NIKAIA"
-				},
-				{
-					"language": "en",
-					"cdata-section": "PALAIS NIKAIA"
-				},
-				{
-					"language": "fr",
-					"@type": "Horaires",
-					"cdata-section": "20:00"
-				},
-				{
-					"language": "en",
-					"@type": "Horaires",
-					"cdata-section": "20:00"
-				}
-			],
+			"description": "PALAIS NIKAIA",
 			"images": [
 				"https://www.nicetourisme.com/resources/ref/events/11997/christophe-mae_168.jpg"
 			],

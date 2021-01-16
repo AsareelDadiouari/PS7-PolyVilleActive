@@ -1,0 +1,343 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "default": {},
+    "examples": [
+        {
+            "@id": "http://www.ps7-wia2.com/Genres",
+            "@type": "Genres",
+            "genres": [
+                {
+                    "@id": "ge:1",
+                    "@type": "Genre",
+                    "name": "Professionnel",
+                    "categories": [
+                        "c:1",
+                        "c:11"
+                    ]
+                },
+                {
+                    "@id": "ge:2",
+                    "@type": "Genre",
+                    "name": "Musical",
+                    "categories": [
+                        "c:2",
+                        "c:3",
+                        "c:5"
+                    ]
+                },
+                {
+                    "@id": "ge:3",
+                    "@type": "Genre",
+                    "name": "Art",
+                    "categories": [
+                        "c:4",
+                        "c:6",
+                        "c:9",
+                        "c:14",
+                        "c:15"
+                    ]
+                },
+                {
+                    "@id": "ge:4",
+                    "@type": "Genre",
+                    "name": "Animations",
+                    "categories": [
+                        "c:7",
+                        "c:8",
+                        "c:10",
+                        "c:13",
+                        "c:15"
+                    ]
+                },
+                {
+                    "@id": "ge:5",
+                    "@type": "Genre",
+                    "name": "Sports",
+                    "categories": [
+                        "c:9",
+                        "c:12",
+                        "c:16"
+                    ]
+                }
+            ],
+            "@context": {
+                "Genres": "foaf:genres#Genres",
+                "Genre": "foaf:genres#Genre",
+                "genres": "foaf:genres#genres",
+                "name": "foaf:genres#name",
+                "categories": "foaf:genres#categories",
+                "foaf": "http://www.ps7-wia2.com/",
+                "ge": "http://www.ps7-wia2.com/genres/",
+                "c": "http://www.ps7-wia2.com/categories/"
+            }
+        }
+    ],
+    "required": [
+        "@id",
+        "@type",
+        "genres",
+        "@context"
+    ],
+    "properties": {
+        "@id": {
+            "$id": "#/properties/%40id",
+            "type": "string",
+            "title": "The @id schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "http://www.ps7-wia2.com/Genres"
+            ]
+        },
+        "@type": {
+            "$id": "#/properties/%40type",
+            "type": "string",
+            "title": "The @type schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "Genres"
+            ]
+        },
+        "genres": {
+            "$id": "#/properties/genres",
+            "type": "array",
+            "title": "The genres schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "examples": [
+                [
+                    {
+                        "@id": "ge:1",
+                        "@type": "Genre",
+                        "name": "Professionnel",
+                        "categories": [
+                            "c:1",
+                            "c:11"
+                        ]
+                    },
+                    {
+                        "@id": "ge:2",
+                        "@type": "Genre",
+                        "name": "Musical",
+                        "categories": [
+                            "c:2",
+                            "c:3",
+                            "c:5"
+                        ]
+                    }
+                ]
+            ],
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/genres/items",
+                "anyOf": [
+                    {
+                        "$id": "#/properties/genres/items/anyOf/0",
+                        "type": "object",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
+                        "examples": [
+                            {
+                                "@id": "ge:1",
+                                "@type": "Genre",
+                                "name": "Professionnel",
+                                "categories": [
+                                    "c:1",
+                                    "c:11"
+                                ]
+                            }
+                        ],
+                        "required": [
+                            "@id",
+                            "@type",
+                            "name",
+                            "categories"
+                        ],
+                        "properties": {
+                            "@id": {
+                                "$id": "#/properties/genres/items/anyOf/0/properties/%40id",
+                                "type": "string",
+                                "title": "The @id schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "ge:1"
+                                ]
+                            },
+                            "@type": {
+                                "$id": "#/properties/genres/items/anyOf/0/properties/%40type",
+                                "type": "string",
+                                "title": "The @type schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "Genre"
+                                ]
+                            },
+                            "name": {
+                                "$id": "#/properties/genres/items/anyOf/0/properties/name",
+                                "type": "string",
+                                "title": "The name schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "Professionnel"
+                                ]
+                            },
+                            "categories": {
+                                "$id": "#/properties/genres/items/anyOf/0/properties/categories",
+                                "type": "array",
+                                "title": "The categories schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": [],
+                                "examples": [
+                                    [
+                                        "c:1",
+                                        "c:11"
+                                    ]
+                                ],
+                                "additionalItems": true,
+                                "items": {
+                                    "$id": "#/properties/genres/items/anyOf/0/properties/categories/items",
+                                    "anyOf": [
+                                        {
+                                            "$id": "#/properties/genres/items/anyOf/0/properties/categories/items/anyOf/0",
+                                            "type": "string",
+                                            "title": "The first anyOf schema",
+                                            "description": "An explanation about the purpose of this instance.",
+                                            "default": "",
+                                            "examples": [
+                                                "c:1",
+                                                "c:11"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "additionalProperties": true
+                    }
+                ]
+            }
+        },
+        "@context": {
+            "$id": "#/properties/%40context",
+            "type": "object",
+            "title": "The @context schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+                {
+                    "Genres": "foaf:genres#Genres",
+                    "Genre": "foaf:genres#Genre",
+                    "genres": "foaf:genres#genres",
+                    "name": "foaf:genres#name",
+                    "categories": "foaf:genres#categories",
+                    "foaf": "http://www.ps7-wia2.com/",
+                    "ge": "http://www.ps7-wia2.com/genres/",
+                    "c": "http://www.ps7-wia2.com/categories/"
+                }
+            ],
+            "required": [
+                "Genres",
+                "Genre",
+                "genres",
+                "name",
+                "categories",
+                "foaf",
+                "ge",
+                "c"
+            ],
+            "properties": {
+                "Genres": {
+                    "$id": "#/properties/%40context/properties/Genres",
+                    "type": "string",
+                    "title": "The Genres schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:genres#Genres"
+                    ]
+                },
+                "Genre": {
+                    "$id": "#/properties/%40context/properties/Genre",
+                    "type": "string",
+                    "title": "The Genre schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:genres#Genre"
+                    ]
+                },
+                "genres": {
+                    "$id": "#/properties/%40context/properties/genres",
+                    "type": "string",
+                    "title": "The genres schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:genres#genres"
+                    ]
+                },
+                "name": {
+                    "$id": "#/properties/%40context/properties/name",
+                    "type": "string",
+                    "title": "The name schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:genres#name"
+                    ]
+                },
+                "categories": {
+                    "$id": "#/properties/%40context/properties/categories",
+                    "type": "string",
+                    "title": "The categories schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:genres#categories"
+                    ]
+                },
+                "foaf": {
+                    "$id": "#/properties/%40context/properties/foaf",
+                    "type": "string",
+                    "title": "The foaf schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "http://www.ps7-wia2.com/"
+                    ]
+                },
+                "ge": {
+                    "$id": "#/properties/%40context/properties/ge",
+                    "type": "string",
+                    "title": "The ge schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "http://www.ps7-wia2.com/genres/"
+                    ]
+                },
+                "c": {
+                    "$id": "#/properties/%40context/properties/c",
+                    "type": "string",
+                    "title": "The c schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "http://www.ps7-wia2.com/categories/"
+                    ]
+                }
+            },
+            "additionalProperties": true
+        }
+    },
+    "additionalProperties": true
+}

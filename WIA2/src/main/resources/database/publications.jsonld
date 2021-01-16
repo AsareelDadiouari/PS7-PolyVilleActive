@@ -19,7 +19,7 @@
             "author": "g:1",
             "description": "Une nouvelle oeuvre de cet artiste est superbe! ",
             "interests": ["Musique"],
-            "comment": [Quand la musique est bonne"],
+            "comment": ["Quand la musique est bonne"],
             "likes" : ["u:2", "u:4"]
 		},
 		{
@@ -29,7 +29,7 @@
             "author": "u:6",
             "description": "Bonjour tout le monde.",
             "interests": ["Divers"],
-            "comment": [Je teste les commentaires"],
+            "comment": ["Je teste les commentaires"],
             "likes" : []
 		},
 		{

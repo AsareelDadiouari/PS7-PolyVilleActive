@@ -1,0 +1,599 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "default": {},
+    "examples": [
+        {
+            "@id": "http://www.ps7-wia2.com/publications/",
+            "@type": "Publications",
+            "publications": [
+                {
+                    "@id": "p:1",
+                    "@type": "Publication",
+                    "title": "La première publication de la ville de Nice !",
+                    "author": "u:1",
+                    "description": "Nice vous souhaite la bienvenue sur son nouveau site web, vous y retrouverez tous les événements ainsi que de bonnes adresses.",
+                    "interests": [
+                        "Divers"
+                    ],
+                    "comment": [
+                        "Vive la ville!!",
+                        "Trop cool ce site"
+                    ],
+                    "likes": [
+                        "u:2",
+                        "u:5"
+                    ]
+                },
+                {
+                    "@id": "p:2",
+                    "@type": "Publication",
+                    "title": "Le chant des voitures",
+                    "author": "g:1",
+                    "description": "Une nouvelle oeuvre de cet artiste est superbe! ",
+                    "interests": [
+                        "Musique"
+                    ],
+                    "comment": [
+                        "Quand la musique est bonne"
+                    ],
+                    "likes": [
+                        "u:2",
+                        "u:4"
+                    ]
+                },
+                {
+                    "@id": "p:3",
+                    "@type": "Publication",
+                    "title": "Je teste les publications",
+                    "author": "u:6",
+                    "description": "Bonjour tout le monde.",
+                    "interests": [
+                        "Divers"
+                    ],
+                    "comment": [
+                        "Je teste les commentaires"
+                    ],
+                    "likes": []
+                },
+                {
+                    "@id": "p:4",
+                    "@type": "Publication",
+                    "title": "Bienvenue sur le nouveau groupe de musique ultra cool!",
+                    "author": "g:1",
+                    "description": "Rejoignez votre nouveau groupe de musique! Nous partagerons ici des oeuvres ainsi que des événements qui auront lieu dans votre ville.",
+                    "interests": [
+                        "Musique"
+                    ],
+                    "comment": [
+                        ""
+                    ],
+                    "likes": [
+                        "u:3",
+                        "u:2"
+                    ]
+                },
+                {
+                    "@id": "p:5",
+                    "@type": "Publication",
+                    "title": "Vive la nature, pas les déchets",
+                    "author": "u:3",
+                    "description": "Jetez vos déchets dans les poubelles prévus pour s'il vous plaît",
+                    "interests": [
+                        "Nature"
+                    ],
+                    "comment": [
+                        "Je jette même ce commentaire moi"
+                    ],
+                    "likes": [
+                        "u:2",
+                        "u:5",
+                        "u:1",
+                        "u:4"
+                    ]
+                },
+                {
+                    "@id": "p:6",
+                    "@type": "Publication",
+                    "title": "Nouveaux événements",
+                    "author": "u:1",
+                    "description": "De nouveaux événements sont à venir : regardez dans la liste de vos recommandations!",
+                    "interests": [
+                        "Divers"
+                    ],
+                    "comment": [
+                        ""
+                    ],
+                    "likes": [
+                        "u:6"
+                    ]
+                }
+            ],
+            "@context": {
+                "Publications": "foaf:publications#Publications",
+                "Publication": "foaf:publications#Publication",
+                "publications": "foaf:publications#publications",
+                "title": "foaf:publications#title",
+                "author": {
+                    "@id": "foaf:publications#author",
+                    "@type": "@id"
+                },
+                "description": "foaf:publications#description",
+                "like": "foaf:publications#like",
+                "interests": "foaf:publications#interests",
+                "comment": "foaf:publications#comment",
+                "foaf": "http://www.ps7-wia2.com/",
+                "p": "http://www.ps7-wia2.com/publications/",
+                "u": "http://www.ps7-wia2.com/users/",
+                "g": "http://www.ps7-wia2.com/groups/"
+            }
+        }
+    ],
+    "required": [
+        "@id",
+        "@type",
+        "publications",
+        "@context"
+    ],
+    "properties": {
+        "@id": {
+            "$id": "#/properties/%40id",
+            "type": "string",
+            "title": "The @id schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "http://www.ps7-wia2.com/publications/"
+            ]
+        },
+        "@type": {
+            "$id": "#/properties/%40type",
+            "type": "string",
+            "title": "The @type schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "Publications"
+            ]
+        },
+        "publications": {
+            "$id": "#/properties/publications",
+            "type": "array",
+            "title": "The publications schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "examples": [
+                [
+                    {
+                        "@id": "p:1",
+                        "@type": "Publication",
+                        "title": "La première publication de la ville de Nice !",
+                        "author": "u:1",
+                        "description": "Nice vous souhaite la bienvenue sur son nouveau site web, vous y retrouverez tous les événements ainsi que de bonnes adresses.",
+                        "interests": [
+                            "Divers"
+                        ],
+                        "comment": [
+                            "Vive la ville!!",
+                            "Trop cool ce site"
+                        ],
+                        "likes": [
+                            "u:2",
+                            "u:5"
+                        ]
+                    },
+                    {
+                        "@id": "p:2",
+                        "@type": "Publication",
+                        "title": "Le chant des voitures",
+                        "author": "g:1",
+                        "description": "Une nouvelle oeuvre de cet artiste est superbe! ",
+                        "interests": [
+                            "Musique"
+                        ],
+                        "comment": [
+                            "Quand la musique est bonne"
+                        ],
+                        "likes": [
+                            "u:2",
+                            "u:4"
+                        ]
+                    }
+                ]
+            ],
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/publications/items",
+                "anyOf": [
+                    {
+                        "$id": "#/properties/publications/items/anyOf/0",
+                        "type": "object",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
+                        "examples": [
+                            {
+                                "@id": "p:1",
+                                "@type": "Publication",
+                                "title": "La première publication de la ville de Nice !",
+                                "author": "u:1",
+                                "description": "Nice vous souhaite la bienvenue sur son nouveau site web, vous y retrouverez tous les événements ainsi que de bonnes adresses.",
+                                "interests": [
+                                    "Divers"
+                                ],
+                                "comment": [
+                                    "Vive la ville!!",
+                                    "Trop cool ce site"
+                                ],
+                                "likes": [
+                                    "u:2",
+                                    "u:5"
+                                ]
+                            }
+                        ],
+                        "required": [
+                            "@id",
+                            "@type",
+                            "title",
+                            "author",
+                            "description",
+                            "interests",
+                            "comment",
+                            "likes"
+                        ],
+                        "properties": {
+                            "@id": {
+                                "$id": "#/properties/publications/items/anyOf/0/properties/%40id",
+                                "type": "string",
+                                "title": "The @id schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "p:1"
+                                ]
+                            },
+                            "@type": {
+                                "$id": "#/properties/publications/items/anyOf/0/properties/%40type",
+                                "type": "string",
+                                "title": "The @type schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "Publication"
+                                ]
+                            },
+                            "title": {
+                                "$id": "#/properties/publications/items/anyOf/0/properties/title",
+                                "type": "string",
+                                "title": "The title schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "La première publication de la ville de Nice !"
+                                ]
+                            },
+                            "author": {
+                                "$id": "#/properties/publications/items/anyOf/0/properties/author",
+                                "type": "string",
+                                "title": "The author schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "u:1"
+                                ]
+                            },
+                            "description": {
+                                "$id": "#/properties/publications/items/anyOf/0/properties/description",
+                                "type": "string",
+                                "title": "The description schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "Nice vous souhaite la bienvenue sur son nouveau site web, vous y retrouverez tous les événements ainsi que de bonnes adresses."
+                                ]
+                            },
+                            "interests": {
+                                "$id": "#/properties/publications/items/anyOf/0/properties/interests",
+                                "type": "array",
+                                "title": "The interests schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": [],
+                                "examples": [
+                                    [
+                                        "Divers"
+                                    ]
+                                ],
+                                "additionalItems": true,
+                                "items": {
+                                    "$id": "#/properties/publications/items/anyOf/0/properties/interests/items",
+                                    "anyOf": [
+                                        {
+                                            "$id": "#/properties/publications/items/anyOf/0/properties/interests/items/anyOf/0",
+                                            "type": "string",
+                                            "title": "The first anyOf schema",
+                                            "description": "An explanation about the purpose of this instance.",
+                                            "default": "",
+                                            "examples": [
+                                                "Divers"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            "comment": {
+                                "$id": "#/properties/publications/items/anyOf/0/properties/comment",
+                                "type": "array",
+                                "title": "The comment schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": [],
+                                "examples": [
+                                    [
+                                        "Vive la ville!!",
+                                        "Trop cool ce site"
+                                    ]
+                                ],
+                                "additionalItems": true,
+                                "items": {
+                                    "$id": "#/properties/publications/items/anyOf/0/properties/comment/items",
+                                    "anyOf": [
+                                        {
+                                            "$id": "#/properties/publications/items/anyOf/0/properties/comment/items/anyOf/0",
+                                            "type": "string",
+                                            "title": "The first anyOf schema",
+                                            "description": "An explanation about the purpose of this instance.",
+                                            "default": "",
+                                            "examples": [
+                                                "Vive la ville!!",
+                                                "Trop cool ce site"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            "likes": {
+                                "$id": "#/properties/publications/items/anyOf/0/properties/likes",
+                                "type": "array",
+                                "title": "The likes schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": [],
+                                "examples": [
+                                    [
+                                        "u:2",
+                                        "u:5"
+                                    ]
+                                ],
+                                "additionalItems": true,
+                                "items": {
+                                    "$id": "#/properties/publications/items/anyOf/0/properties/likes/items",
+                                    "anyOf": [
+                                        {
+                                            "$id": "#/properties/publications/items/anyOf/0/properties/likes/items/anyOf/0",
+                                            "type": "string",
+                                            "title": "The first anyOf schema",
+                                            "description": "An explanation about the purpose of this instance.",
+                                            "default": "",
+                                            "examples": [
+                                                "u:2",
+                                                "u:5"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "additionalProperties": true
+                    }
+                ]
+            }
+        },
+        "@context": {
+            "$id": "#/properties/%40context",
+            "type": "object",
+            "title": "The @context schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+                {
+                    "Publications": "foaf:publications#Publications",
+                    "Publication": "foaf:publications#Publication",
+                    "publications": "foaf:publications#publications",
+                    "title": "foaf:publications#title",
+                    "author": {
+                        "@id": "foaf:publications#author",
+                        "@type": "@id"
+                    },
+                    "description": "foaf:publications#description",
+                    "like": "foaf:publications#like",
+                    "interests": "foaf:publications#interests",
+                    "comment": "foaf:publications#comment",
+                    "foaf": "http://www.ps7-wia2.com/",
+                    "p": "http://www.ps7-wia2.com/publications/",
+                    "u": "http://www.ps7-wia2.com/users/",
+                    "g": "http://www.ps7-wia2.com/groups/"
+                }
+            ],
+            "required": [
+                "Publications",
+                "Publication",
+                "publications",
+                "title",
+                "author",
+                "description",
+                "like",
+                "interests",
+                "comment",
+                "foaf",
+                "p",
+                "u",
+                "g"
+            ],
+            "properties": {
+                "Publications": {
+                    "$id": "#/properties/%40context/properties/Publications",
+                    "type": "string",
+                    "title": "The Publications schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:publications#Publications"
+                    ]
+                },
+                "Publication": {
+                    "$id": "#/properties/%40context/properties/Publication",
+                    "type": "string",
+                    "title": "The Publication schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:publications#Publication"
+                    ]
+                },
+                "publications": {
+                    "$id": "#/properties/%40context/properties/publications",
+                    "type": "string",
+                    "title": "The publications schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:publications#publications"
+                    ]
+                },
+                "title": {
+                    "$id": "#/properties/%40context/properties/title",
+                    "type": "string",
+                    "title": "The title schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:publications#title"
+                    ]
+                },
+                "author": {
+                    "$id": "#/properties/%40context/properties/author",
+                    "type": "object",
+                    "title": "The author schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": {},
+                    "examples": [
+                        {
+                            "@id": "foaf:publications#author",
+                            "@type": "@id"
+                        }
+                    ],
+                    "required": [
+                        "@id",
+                        "@type"
+                    ],
+                    "properties": {
+                        "@id": {
+                            "$id": "#/properties/%40context/properties/author/properties/%40id",
+                            "type": "string",
+                            "title": "The @id schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "foaf:publications#author"
+                            ]
+                        },
+                        "@type": {
+                            "$id": "#/properties/%40context/properties/author/properties/%40type",
+                            "type": "string",
+                            "title": "The @type schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "@id"
+                            ]
+                        }
+                    },
+                    "additionalProperties": true
+                },
+                "description": {
+                    "$id": "#/properties/%40context/properties/description",
+                    "type": "string",
+                    "title": "The description schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:publications#description"
+                    ]
+                },
+                "like": {
+                    "$id": "#/properties/%40context/properties/like",
+                    "type": "string",
+                    "title": "The like schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:publications#like"
+                    ]
+                },
+                "interests": {
+                    "$id": "#/properties/%40context/properties/interests",
+                    "type": "string",
+                    "title": "The interests schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:publications#interests"
+                    ]
+                },
+                "comment": {
+                    "$id": "#/properties/%40context/properties/comment",
+                    "type": "string",
+                    "title": "The comment schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:publications#comment"
+                    ]
+                },
+                "foaf": {
+                    "$id": "#/properties/%40context/properties/foaf",
+                    "type": "string",
+                    "title": "The foaf schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "http://www.ps7-wia2.com/"
+                    ]
+                },
+                "p": {
+                    "$id": "#/properties/%40context/properties/p",
+                    "type": "string",
+                    "title": "The p schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "http://www.ps7-wia2.com/publications/"
+                    ]
+                },
+                "u": {
+                    "$id": "#/properties/%40context/properties/u",
+                    "type": "string",
+                    "title": "The u schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "http://www.ps7-wia2.com/users/"
+                    ]
+                },
+                "g": {
+                    "$id": "#/properties/%40context/properties/g",
+                    "type": "string",
+                    "title": "The g schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "http://www.ps7-wia2.com/groups/"
+                    ]
+                }
+            },
+            "additionalProperties": true
+        }
+    },
+    "additionalProperties": true
+}

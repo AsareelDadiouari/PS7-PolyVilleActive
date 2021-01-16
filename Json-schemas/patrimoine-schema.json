@@ -1,0 +1,510 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "default": {},
+    "examples": [
+        {
+            "@id": "http://www.ps7-wia2.com/patrimoines",
+            "@type": "Patrimoines",
+            "patrimoines": [
+               
+                {
+                    "@id": "p:57",
+                    "@type": "Patrimoine",
+                    "name": "Palais_Hongran",
+                    "latitude": "43.695594",
+                    "longitude": "7.273047",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Palais_Hongran_01.jpg"
+                },
+                {
+                    "@id": "p:58",
+                    "@type": "Patrimoine",
+                    "name": "Palais_Lascaris",
+                    "latitude": "43.697672",
+                    "longitude": "7.277247",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Lascaris2.JPG"
+                },
+                {
+                    "@id": "p:59",
+                    "@type": "Patrimoine",
+                    "name": "Palais_Marbre",
+                    "latitude": "43.687703",
+                    "longitude": "7.234733",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Palais_de_marbre_nice.jpg"
+                },
+                {
+                    "@id": "p:60",
+                    "@type": "Patrimoine",
+                    "name": "Palais_Mediterranee",
+                    "latitude": "43.695239",
+                    "longitude": "7.263131",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/La_Mediterranee.jpg/800px-La_Mediterranee.jpg"
+                },
+                {
+                    "@id": "p:61",
+                    "@type": "Patrimoine",
+                    "name": "Palais_Meyerbeer",
+                    "latitude": "43.698201",
+                    "longitude": "7.259973",
+                    "image": ""
+                },
+                {
+                    "@id": "p:62",
+                    "@type": "Patrimoine",
+                    "name": "Palais_York",
+                    "latitude": "43.697033",
+                    "longitude": "7.273856",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Palais_d%27York_Nice_02.jpg/800px-Palais_d%27York_Nice_02.jpg"
+                },
+                {
+                    "@id": "p:63",
+                    "@type": "Patrimoine",
+                    "name": "Port_Lympia",
+                    "latitude": "43.698395",
+                    "longitude": "7.285116",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Eglise_Notre-Dame_du_Port_Nice.jpg/799px-Eglise_Notre-Dame_du_Port_Nice.jpg"
+                },
+                {
+                    "@id": "p:64",
+                    "@type": "Patrimoine",
+                    "name": "Synagogue",
+                    "latitude": "43.699811",
+                    "longitude": "7.269336",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Synagogue%2C_Nice.jpg/450px-Synagogue%2C_Nice.jpg"
+                },
+                {
+                    "@id": "p:65",
+                    "@type": "Patrimoine",
+                    "name": "Temple",
+                    "latitude": "43.6990722",
+                    "longitude": "7.2640916666667",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/NIKAIA-maccarani016_EglReformee.jpg/449px-NIKAIA-maccarani016_EglReformee.jpg"
+                },
+                {
+                    "@id": "p:66",
+                    "@type": "Patrimoine",
+                    "name": "Thermes_romains_Cimiez",
+                    "latitude": "43.719078",
+                    "longitude": "7.276725",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Thermes_romains_de_Cimiez.jpg/800px-Thermes_romains_de_Cimiez.jpg"
+                },
+                {
+                    "@id": "p:67",
+                    "@type": "Patrimoine",
+                    "name": "Vieux_mur_ligure",
+                    "latitude": "43.718823",
+                    "longitude": "7.278099",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Vieux_mur_ligure.jpg/800px-Vieux_mur_ligure.jpg"
+                },
+                {
+                    "@id": "p:68",
+                    "@type": "Patrimoine",
+                    "name": "Villa_Arson",
+                    "latitude": "43.721",
+                    "longitude": "7.253",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Villa_Arson_-_ancien_batiment.jpg/800px-Villa_Arson_-_ancien_batiment.jpg"
+                },
+                {
+                    "@id": "p:69",
+                    "@type": "Patrimoine",
+                    "name": "Villa_Beau_Site",
+                    "latitude": "43.689631",
+                    "longitude": "7.295777",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Villa_beau_site.jpg/800px-Villa_beau_site.jpg"
+                },
+                {
+                    "@id": "p:70",
+                    "@type": "Patrimoine",
+                    "name": "Villa_Chateauneuf",
+                    "latitude": "43.7310651",
+                    "longitude": "7.2626039",
+                    "image": ""
+                },
+                {
+                    "@id": "p:71",
+                    "@type": "Patrimoine",
+                    "name": "Villa_El_Patio",
+                    "latitude": "43.703498",
+                    "longitude": "7.252972",
+                    "image": ""
+                },
+                {
+                    "@id": "p:72",
+                    "@type": "Patrimoine",
+                    "name": "Villa_Furtado-Heine",
+                    "latitude": "43.693899",
+                    "longitude": "7.252409",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Villa_Furtado-Heine_03.jpg/800px-Villa_Furtado-Heine_03.jpg"
+                },
+                {
+                    "@id": "p:73",
+                    "@type": "Patrimoine",
+                    "name": "Villa_Belle_Epoque",
+                    "latitude": "43.697014",
+                    "longitude": "7.257805",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Villa_La_Belle_%C3%89poque_02.jpg/800px-Villa_La_Belle_%C3%89poque_02.jpg"
+                },
+                {
+                    "@id": "p:74",
+                    "@type": "Patrimoine",
+                    "name": "Villa_Schmitz",
+                    "latitude": "43.7217045",
+                    "longitude": "7.29717837",
+                    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Villa_Schmitz_Facade.JPG/800px-Villa_Schmitz_Facade.JPG"
+                }
+            ],
+            "@context": {
+                "Patrimoines": "foaf:patrimoines#Patrimoines",
+                "Patrimoine": "foaf:patrimoines#Patrimoine",
+                "patrimoines": "foaf:patrimoines#patrimoines",
+                "name": "foaf:patrimoines#name",
+                "latitude": "foaf:patrimoines#latitude",
+                "longitude": "foaf:patrimoines#longitude",
+                "image": "foaf:patrimoines#image",
+                "foaf": "http://www.ps7-wia2.com/",
+                "p": "http://www.ps7-wia2.com/patrimoines/"
+            }
+        }
+    ],
+    "required": [
+        "@id",
+        "@type",
+        "patrimoines",
+        "@context"
+    ],
+    "properties": {
+        "@id": {
+            "$id": "#/properties/%40id",
+            "type": "string",
+            "title": "The @id schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "http://www.ps7-wia2.com/patrimoines"
+            ]
+        },
+        "@type": {
+            "$id": "#/properties/%40type",
+            "type": "string",
+            "title": "The @type schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "Patrimoines"
+            ]
+        },
+        "patrimoines": {
+            "$id": "#/properties/patrimoines",
+            "type": "array",
+            "title": "The patrimoines schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "examples": [
+                [
+                    {
+                        "@id": "p:1",
+                        "@type": "Patrimoine",
+                        "name": "Abbaye_Roseland",
+                        "latitude": "43.689794",
+                        "longitude": "7.229538",
+                        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/DSC_mdifie-2448_modifi%C3%A9-1-sign%C3%A93.jpg/800px-DSC_mdifie-2448_modifi%C3%A9-1-sign%C3%A93.jpg"
+                    },
+                    {
+                        "@id": "p:2",
+                        "@type": "Patrimoine",
+                        "name": "Abbaye_Saint-Pons",
+                        "latitude": "43.725047",
+                        "longitude": "7.283158",
+                        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Abbaye_de_Saint_Pons.jpg/800px-Abbaye_de_Saint_Pons.jpg"
+                    }
+                ]
+            ],
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/patrimoines/items",
+                "anyOf": [
+                    {
+                        "$id": "#/properties/patrimoines/items/anyOf/0",
+                        "type": "object",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
+                        "examples": [
+                            {
+                                "@id": "p:1",
+                                "@type": "Patrimoine",
+                                "name": "Abbaye_Roseland",
+                                "latitude": "43.689794",
+                                "longitude": "7.229538",
+                                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/DSC_mdifie-2448_modifi%C3%A9-1-sign%C3%A93.jpg/800px-DSC_mdifie-2448_modifi%C3%A9-1-sign%C3%A93.jpg"
+                            }
+                        ],
+                        "required": [
+                            "@id",
+                            "@type",
+                            "name",
+                            "latitude",
+                            "longitude",
+                            "image"
+                        ],
+                        "properties": {
+                            "@id": {
+                                "$id": "#/properties/patrimoines/items/anyOf/0/properties/%40id",
+                                "type": "string",
+                                "title": "The @id schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "p:1"
+                                ]
+                            },
+                            "@type": {
+                                "$id": "#/properties/patrimoines/items/anyOf/0/properties/%40type",
+                                "type": "string",
+                                "title": "The @type schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "Patrimoine"
+                                ]
+                            },
+                            "name": {
+                                "$id": "#/properties/patrimoines/items/anyOf/0/properties/name",
+                                "type": "string",
+                                "title": "The name schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "Abbaye_Roseland"
+                                ]
+                            },
+                            "latitude": {
+                                "$id": "#/properties/patrimoines/items/anyOf/0/properties/latitude",
+                                "type": "string",
+                                "title": "The latitude schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "43.689794"
+                                ]
+                            },
+                            "longitude": {
+                                "$id": "#/properties/patrimoines/items/anyOf/0/properties/longitude",
+                                "type": "string",
+                                "title": "The longitude schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "7.229538"
+                                ]
+                            },
+                            "image": {
+                                "$id": "#/properties/patrimoines/items/anyOf/0/properties/image",
+                                "type": "string",
+                                "title": "The image schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/DSC_mdifie-2448_modifi%C3%A9-1-sign%C3%A93.jpg/800px-DSC_mdifie-2448_modifi%C3%A9-1-sign%C3%A93.jpg"
+                                ]
+                            }
+                        },
+                        "additionalProperties": true
+                    },
+                    {
+                        "$id": "#/properties/patrimoines/items/anyOf/1",
+                        "type": "object",
+                        "title": "The second anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
+                        "examples": [
+                            {
+                                "@id": "p:35",
+                                "@type": "Patrimoine",
+                                "name": "Grue_Applevage_n°_14",
+                                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/La_grue_1938.jpg/443px-La_grue_1938.jpg"
+                            }
+                        ],
+                        "required": [
+                            "@id",
+                            "@type",
+                            "name",
+                            "image"
+                        ],
+                        "properties": {
+                            "@id": {
+                                "$id": "#/properties/patrimoines/items/anyOf/1/properties/%40id",
+                                "type": "string",
+                                "title": "The @id schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "p:35"
+                                ]
+                            },
+                            "@type": {
+                                "$id": "#/properties/patrimoines/items/anyOf/1/properties/%40type",
+                                "type": "string",
+                                "title": "The @type schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "Patrimoine"
+                                ]
+                            },
+                            "name": {
+                                "$id": "#/properties/patrimoines/items/anyOf/1/properties/name",
+                                "type": "string",
+                                "title": "The name schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "Grue_Applevage_n°_14"
+                                ]
+                            },
+                            "image": {
+                                "$id": "#/properties/patrimoines/items/anyOf/1/properties/image",
+                                "type": "string",
+                                "title": "The image schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/La_grue_1938.jpg/443px-La_grue_1938.jpg"
+                                ]
+                            }
+                        },
+                        "additionalProperties": true
+                    }
+                ]
+            }
+        },
+        "@context": {
+            "$id": "#/properties/%40context",
+            "type": "object",
+            "title": "The @context schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+                {
+                    "Patrimoines": "foaf:patrimoines#Patrimoines",
+                    "Patrimoine": "foaf:patrimoines#Patrimoine",
+                    "patrimoines": "foaf:patrimoines#patrimoines",
+                    "name": "foaf:patrimoines#name",
+                    "latitude": "foaf:patrimoines#latitude",
+                    "longitude": "foaf:patrimoines#longitude",
+                    "image": "foaf:patrimoines#image",
+                    "foaf": "http://www.ps7-wia2.com/",
+                    "p": "http://www.ps7-wia2.com/patrimoines/"
+                }
+            ],
+            "required": [
+                "Patrimoines",
+                "Patrimoine",
+                "patrimoines",
+                "name",
+                "latitude",
+                "longitude",
+                "image",
+                "foaf",
+                "p"
+            ],
+            "properties": {
+                "Patrimoines": {
+                    "$id": "#/properties/%40context/properties/Patrimoines",
+                    "type": "string",
+                    "title": "The Patrimoines schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:patrimoines#Patrimoines"
+                    ]
+                },
+                "Patrimoine": {
+                    "$id": "#/properties/%40context/properties/Patrimoine",
+                    "type": "string",
+                    "title": "The Patrimoine schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:patrimoines#Patrimoine"
+                    ]
+                },
+                "patrimoines": {
+                    "$id": "#/properties/%40context/properties/patrimoines",
+                    "type": "string",
+                    "title": "The patrimoines schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:patrimoines#patrimoines"
+                    ]
+                },
+                "name": {
+                    "$id": "#/properties/%40context/properties/name",
+                    "type": "string",
+                    "title": "The name schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:patrimoines#name"
+                    ]
+                },
+                "latitude": {
+                    "$id": "#/properties/%40context/properties/latitude",
+                    "type": "string",
+                    "title": "The latitude schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:patrimoines#latitude"
+                    ]
+                },
+                "longitude": {
+                    "$id": "#/properties/%40context/properties/longitude",
+                    "type": "string",
+                    "title": "The longitude schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:patrimoines#longitude"
+                    ]
+                },
+                "image": {
+                    "$id": "#/properties/%40context/properties/image",
+                    "type": "string",
+                    "title": "The image schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:patrimoines#image"
+                    ]
+                },
+                "foaf": {
+                    "$id": "#/properties/%40context/properties/foaf",
+                    "type": "string",
+                    "title": "The foaf schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "http://www.ps7-wia2.com/"
+                    ]
+                },
+                "p": {
+                    "$id": "#/properties/%40context/properties/p",
+                    "type": "string",
+                    "title": "The p schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "http://www.ps7-wia2.com/patrimoines/"
+                    ]
+                }
+            },
+            "additionalProperties": true
+        }
+    },
+    "additionalProperties": true
+}

@@ -1,0 +1,288 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "examples": [
+    {
+      "@id": "http://www.ps7-wia2.com/arrets",
+      "@type": "Arrets",
+      "arrets": [
+        {
+          "@id": "b:21273",
+          "@type": "Arret",
+          "nom_arret": "RUE 10 / Avenue 1",
+          "latitude": 43.7903291586,
+          "longitude": 7.20952126
+        },
+        {
+          "@id": "b:21272",
+          "@type": "Arret",
+          "nom_arret": "RUE 11 / Avenue 1",
+          "latitude": 43.7932416397,
+          "longitude": 7.2061643681
+        }
+      ],
+      "@context": {
+        "Arrets": "foaf:arrets#Arrets",
+        "Arret": "foaf:arrets#Arret",
+        "arrets": "foaf:arrets#arrets",
+        "nom_arret": "foaf:arrets#nom_arret",
+        "latitude": "foaf:arrets#latitude",
+        "longitude": "foaf:arrets#longitude",
+        "foaf": "http://www.ps7-wia2.com/",
+        "b": "http://www.ps7-wia2.com/arrets/"
+      }
+    }
+  ],
+  "required": [
+    "@id",
+    "@type",
+    "arrets",
+    "@context"
+  ],
+  "properties": {
+    "@id": {
+      "$id": "#/properties/%40id",
+      "type": "string",
+      "title": "The @id schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "http://www.ps7-wia2.com/arrets"
+      ]
+    },
+    "@type": {
+      "$id": "#/properties/%40type",
+      "type": "string",
+      "title": "The @type schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "Arrets"
+      ]
+    },
+    "arrets": {
+      "$id": "#/properties/arrets",
+      "type": "array",
+      "title": "The arrets schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "examples": [
+        [
+          {
+            "@id": "b:21273",
+            "@type": "Arret",
+            "nom_arret": "RUE 10 / Avenue 1",
+            "latitude": 43.7903291586,
+            "longitude": 7.20952126
+          },
+          {
+            "@id": "b:21272",
+            "@type": "Arret",
+            "nom_arret": "RUE 11 / Avenue 1",
+            "latitude": 43.7932416397,
+            "longitude": 7.2061643681
+          }
+        ]
+      ],
+      "additionalItems": true,
+      "items": {
+        "$id": "#/properties/arrets/items",
+        "anyOf": [
+          {
+            "$id": "#/properties/arrets/items/anyOf/0",
+            "type": "object",
+            "title": "The first anyOf schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+              {
+                "@id": "b:21273",
+                "@type": "Arret",
+                "nom_arret": "RUE 10 / Avenue 1",
+                "latitude": 43.7903291586,
+                "longitude": 7.20952126
+              }
+            ],
+            "required": [
+              "@id",
+              "@type",
+              "nom_arret",
+              "latitude",
+              "longitude"
+            ],
+            "properties": {
+              "@id": {
+                "$id": "#/properties/arrets/items/anyOf/0/properties/%40id",
+                "type": "string",
+                "title": "The @id schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "b:21273"
+                ]
+              },
+              "@type": {
+                "$id": "#/properties/arrets/items/anyOf/0/properties/%40type",
+                "type": "string",
+                "title": "The @type schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "Arret"
+                ]
+              },
+              "nom_arret": {
+                "$id": "#/properties/arrets/items/anyOf/0/properties/nom_arret",
+                "type": "string",
+                "title": "The nom_arret schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "RUE 10 / Avenue 1"
+                ]
+              },
+              "latitude": {
+                "$id": "#/properties/arrets/items/anyOf/0/properties/latitude",
+                "type": "number",
+                "title": "The latitude schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0.0,
+                "examples": [
+                  43.7903291586
+                ]
+              },
+              "longitude": {
+                "$id": "#/properties/arrets/items/anyOf/0/properties/longitude",
+                "type": "number",
+                "title": "The longitude schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0.0,
+                "examples": [
+                  7.20952126
+                ]
+              }
+            },
+            "additionalProperties": true
+          }
+        ]
+      }
+    },
+    "@context": {
+      "$id": "#/properties/%40context",
+      "type": "object",
+      "title": "The @context schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "Arrets": "foaf:arrets#Arrets",
+          "Arret": "foaf:arrets#Arret",
+          "arrets": "foaf:arrets#arrets",
+          "nom_arret": "foaf:arrets#nom_arret",
+          "latitude": "foaf:arrets#latitude",
+          "longitude": "foaf:arrets#longitude",
+          "foaf": "http://www.ps7-wia2.com/",
+          "b": "http://www.ps7-wia2.com/arrets/"
+        }
+      ],
+      "required": [
+        "Arrets",
+        "Arret",
+        "arrets",
+        "nom_arret",
+        "latitude",
+        "longitude",
+        "foaf",
+        "b"
+      ],
+      "properties": {
+        "Arrets": {
+          "$id": "#/properties/%40context/properties/Arrets",
+          "type": "string",
+          "title": "The Arrets schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "foaf:arrets#Arrets"
+          ]
+        },
+        "Arret": {
+          "$id": "#/properties/%40context/properties/Arret",
+          "type": "string",
+          "title": "The Arret schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "foaf:arrets#Arret"
+          ]
+        },
+        "arrets": {
+          "$id": "#/properties/%40context/properties/arrets",
+          "type": "string",
+          "title": "The arrets schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "foaf:arrets#arrets"
+          ]
+        },
+        "nom_arret": {
+          "$id": "#/properties/%40context/properties/nom_arret",
+          "type": "string",
+          "title": "The nom_arret schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "foaf:arrets#nom_arret"
+          ]
+        },
+        "latitude": {
+          "$id": "#/properties/%40context/properties/latitude",
+          "type": "string",
+          "title": "The latitude schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "foaf:arrets#latitude"
+          ]
+        },
+        "longitude": {
+          "$id": "#/properties/%40context/properties/longitude",
+          "type": "string",
+          "title": "The longitude schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "foaf:arrets#longitude"
+          ]
+        },
+        "foaf": {
+          "$id": "#/properties/%40context/properties/foaf",
+          "type": "string",
+          "title": "The foaf schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "http://www.ps7-wia2.com/"
+          ]
+        },
+        "b": {
+          "$id": "#/properties/%40context/properties/b",
+          "type": "string",
+          "title": "The b schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "http://www.ps7-wia2.com/arrets/"
+          ]
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

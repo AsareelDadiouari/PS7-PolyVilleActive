@@ -1,0 +1,516 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "default": {},
+    "examples": [
+        {
+            "@id": "http://www.ps7-wia2.com/users",
+            "@type": "Users",
+            "users": [
+                {
+                    "@id": "u:1",
+                    "@type": "User",
+                    "firstname": "Elisa",
+                    "lastname": "Martin",
+                    "type": "Visiteur",
+                    "role": "",
+                    "interests": [
+                        "Musique",
+                        "Danse"
+                    ]
+                },
+                {
+                    "@id": "u:2",
+                    "@type": "User",
+                    "firstname": "Alexis",
+                    "lastname": "Braud",
+                    "type": "Non-habitant",
+                    "role": "Employé",
+                    "interests": [
+                        "Nature",
+                        "Oiseau"
+                    ]
+                },
+                {
+                    "@id": "u:3",
+                    "@type": "User",
+                    "firstname": "Camille",
+                    "lastname": "Roux",
+                    "type": "Habitant",
+                    "role": "Commerçant",
+                    "interests": [
+                        "Divers"
+                    ]
+                }
+            ],
+            "@context": {
+                "Users": "foaf:users#Users",
+                "User": "foaf:users#User",
+                "users": "foaf:users#users",
+                "firstname": "foaf:users#firstname",
+                "lastname": "foaf:users#lastname",
+                "type": "foaf:users#type",
+                "role": "foaf:users#role",
+                "events": {
+                    "@id": "foaf:users#events",
+                    "@type": "@id"
+                },
+                "groups": {
+                    "@id": "foaf:users#groups",
+                    "@type": "@id"
+                },
+                "interests": "foaf:users#interests",
+                "foaf": "http://www.ps7-wia2.com/",
+                "e": "http://www.ps7-wia2.com/events/",
+                "g": "http://www.ps7-wia2.com/groups/",
+                "u": "http://www.ps7-wia2.com/users/"
+            }
+        }
+    ],
+    "required": [
+        "@id",
+        "@type",
+        "users",
+        "@context"
+    ],
+    "properties": {
+        "@id": {
+            "$id": "#/properties/%40id",
+            "type": "string",
+            "title": "The @id schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "http://www.ps7-wia2.com/users"
+            ]
+        },
+        "@type": {
+            "$id": "#/properties/%40type",
+            "type": "string",
+            "title": "The @type schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "Users"
+            ]
+        },
+        "users": {
+            "$id": "#/properties/users",
+            "type": "array",
+            "title": "The users schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "examples": [
+                [
+                    {
+                        "@id": "u:1",
+                        "@type": "User",
+                        "firstname": "Elisa",
+                        "lastname": "Martin",
+                        "type": "Visiteur",
+                        "role": "",
+                        "interests": [
+                            "Musique",
+                            "Danse"
+                        ]
+                    },
+                    {
+                        "@id": "u:2",
+                        "@type": "User",
+                        "firstname": "Alexis",
+                        "lastname": "Braud",
+                        "type": "Non-habitant",
+                        "role": "Employé",
+                        "interests": [
+                            "Nature",
+                            "Oiseau"
+                        ]
+                    }
+                ]
+            ],
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/users/items",
+                "anyOf": [
+                    {
+                        "$id": "#/properties/users/items/anyOf/0",
+                        "type": "object",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
+                        "examples": [
+                            {
+                                "@id": "u:1",
+                                "@type": "User",
+                                "firstname": "Elisa",
+                                "lastname": "Martin",
+                                "type": "Visiteur",
+                                "role": "",
+                                "interests": [
+                                    "Musique",
+                                    "Danse"
+                                ]
+                            }
+                        ],
+                        "required": [
+                            "@id",
+                            "@type",
+                            "firstname",
+                            "lastname",
+                            "type",
+                            "role",
+                            "interests"
+                        ],
+                        "properties": {
+                            "@id": {
+                                "$id": "#/properties/users/items/anyOf/0/properties/%40id",
+                                "type": "string",
+                                "title": "The @id schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "u:1"
+                                ]
+                            },
+                            "@type": {
+                                "$id": "#/properties/users/items/anyOf/0/properties/%40type",
+                                "type": "string",
+                                "title": "The @type schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "User"
+                                ]
+                            },
+                            "firstname": {
+                                "$id": "#/properties/users/items/anyOf/0/properties/firstname",
+                                "type": "string",
+                                "title": "The firstname schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "Elisa"
+                                ]
+                            },
+                            "lastname": {
+                                "$id": "#/properties/users/items/anyOf/0/properties/lastname",
+                                "type": "string",
+                                "title": "The lastname schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "Martin"
+                                ]
+                            },
+                            "type": {
+                                "$id": "#/properties/users/items/anyOf/0/properties/type",
+                                "type": "string",
+                                "title": "The type schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "Visiteur"
+                                ]
+                            },
+                            "role": {
+                                "$id": "#/properties/users/items/anyOf/0/properties/role",
+                                "type": "string",
+                                "title": "The role schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    ""
+                                ]
+                            },
+                            "interests": {
+                                "$id": "#/properties/users/items/anyOf/0/properties/interests",
+                                "type": "array",
+                                "title": "The interests schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": [],
+                                "examples": [
+                                    [
+                                        "Musique",
+                                        "Danse"
+                                    ]
+                                ],
+                                "additionalItems": true,
+                                "items": {
+                                    "$id": "#/properties/users/items/anyOf/0/properties/interests/items",
+                                    "anyOf": [
+                                        {
+                                            "$id": "#/properties/users/items/anyOf/0/properties/interests/items/anyOf/0",
+                                            "type": "string",
+                                            "title": "The first anyOf schema",
+                                            "description": "An explanation about the purpose of this instance.",
+                                            "default": "",
+                                            "examples": [
+                                                "Musique",
+                                                "Danse"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "additionalProperties": true
+                    }
+                ]
+            }
+        },
+        "@context": {
+            "$id": "#/properties/%40context",
+            "type": "object",
+            "title": "The @context schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+                {
+                    "Users": "foaf:users#Users",
+                    "User": "foaf:users#User",
+                    "users": "foaf:users#users",
+                    "firstname": "foaf:users#firstname",
+                    "lastname": "foaf:users#lastname",
+                    "type": "foaf:users#type",
+                    "role": "foaf:users#role",
+                    "events": {
+                        "@id": "foaf:users#events",
+                        "@type": "@id"
+                    },
+                    "groups": {
+                        "@id": "foaf:users#groups",
+                        "@type": "@id"
+                    },
+                    "interests": "foaf:users#interests",
+                    "foaf": "http://www.ps7-wia2.com/",
+                    "e": "http://www.ps7-wia2.com/events/",
+                    "g": "http://www.ps7-wia2.com/groups/",
+                    "u": "http://www.ps7-wia2.com/users/"
+                }
+            ],
+            "required": [
+                "Users",
+                "User",
+                "users",
+                "firstname",
+                "lastname",
+                "type",
+                "role",
+                "events",
+                "groups",
+                "interests",
+                "foaf",
+                "e",
+                "g",
+                "u"
+            ],
+            "properties": {
+                "Users": {
+                    "$id": "#/properties/%40context/properties/Users",
+                    "type": "string",
+                    "title": "The Users schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:users#Users"
+                    ]
+                },
+                "User": {
+                    "$id": "#/properties/%40context/properties/User",
+                    "type": "string",
+                    "title": "The User schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:users#User"
+                    ]
+                },
+                "users": {
+                    "$id": "#/properties/%40context/properties/users",
+                    "type": "string",
+                    "title": "The users schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:users#users"
+                    ]
+                },
+                "firstname": {
+                    "$id": "#/properties/%40context/properties/firstname",
+                    "type": "string",
+                    "title": "The firstname schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:users#firstname"
+                    ]
+                },
+                "lastname": {
+                    "$id": "#/properties/%40context/properties/lastname",
+                    "type": "string",
+                    "title": "The lastname schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:users#lastname"
+                    ]
+                },
+                "type": {
+                    "$id": "#/properties/%40context/properties/type",
+                    "type": "string",
+                    "title": "The type schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:users#type"
+                    ]
+                },
+                "role": {
+                    "$id": "#/properties/%40context/properties/role",
+                    "type": "string",
+                    "title": "The role schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:users#role"
+                    ]
+                },
+                "events": {
+                    "$id": "#/properties/%40context/properties/events",
+                    "type": "object",
+                    "title": "The events schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": {},
+                    "examples": [
+                        {
+                            "@id": "foaf:users#events",
+                            "@type": "@id"
+                        }
+                    ],
+                    "required": [
+                        "@id",
+                        "@type"
+                    ],
+                    "properties": {
+                        "@id": {
+                            "$id": "#/properties/%40context/properties/events/properties/%40id",
+                            "type": "string",
+                            "title": "The @id schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "foaf:users#events"
+                            ]
+                        },
+                        "@type": {
+                            "$id": "#/properties/%40context/properties/events/properties/%40type",
+                            "type": "string",
+                            "title": "The @type schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "@id"
+                            ]
+                        }
+                    },
+                    "additionalProperties": true
+                },
+                "groups": {
+                    "$id": "#/properties/%40context/properties/groups",
+                    "type": "object",
+                    "title": "The groups schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": {},
+                    "examples": [
+                        {
+                            "@id": "foaf:users#groups",
+                            "@type": "@id"
+                        }
+                    ],
+                    "required": [
+                        "@id",
+                        "@type"
+                    ],
+                    "properties": {
+                        "@id": {
+                            "$id": "#/properties/%40context/properties/groups/properties/%40id",
+                            "type": "string",
+                            "title": "The @id schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "foaf:users#groups"
+                            ]
+                        },
+                        "@type": {
+                            "$id": "#/properties/%40context/properties/groups/properties/%40type",
+                            "type": "string",
+                            "title": "The @type schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "@id"
+                            ]
+                        }
+                    },
+                    "additionalProperties": true
+                },
+                "interests": {
+                    "$id": "#/properties/%40context/properties/interests",
+                    "type": "string",
+                    "title": "The interests schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:users#interests"
+                    ]
+                },
+                "foaf": {
+                    "$id": "#/properties/%40context/properties/foaf",
+                    "type": "string",
+                    "title": "The foaf schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "http://www.ps7-wia2.com/"
+                    ]
+                },
+                "e": {
+                    "$id": "#/properties/%40context/properties/e",
+                    "type": "string",
+                    "title": "The e schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "http://www.ps7-wia2.com/events/"
+                    ]
+                },
+                "g": {
+                    "$id": "#/properties/%40context/properties/g",
+                    "type": "string",
+                    "title": "The g schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "http://www.ps7-wia2.com/groups/"
+                    ]
+                },
+                "u": {
+                    "$id": "#/properties/%40context/properties/u",
+                    "type": "string",
+                    "title": "The u schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "http://www.ps7-wia2.com/users/"
+                    ]
+                }
+            },
+            "additionalProperties": true
+        }
+    },
+    "additionalProperties": true
+}

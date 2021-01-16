@@ -1,0 +1,230 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "default": {},
+    "examples": [
+        {
+            "@id": "http://www.ps7-wia2.com/Categories",
+            "@type": "Categories",
+            "categories": [
+                {
+                    "@id": "c:1",
+                    "@type": "Categorie",
+                    "name": "Salon professionnel"
+                },
+                {
+                    "@id": "c:2",
+                    "@type": "Categorie",
+                    "name": "Musique"
+                }
+            ],
+            "@context": {
+                "Categories": "foaf:categories#Categories",
+                "Categorie": "foaf:categories#Categorie",
+                "categories": "foaf:categories#categories",
+                "name": "foaf:categories#name",
+                "foaf": "http://www.ps7-wia2.com/",
+                "c": "http://www.ps7-wia2.com/categories/"
+            }
+        }
+    ],
+    "required": [
+        "@id",
+        "@type",
+        "categories",
+        "@context"
+    ],
+    "properties": {
+        "@id": {
+            "$id": "#/properties/%40id",
+            "type": "string",
+            "title": "The @id schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "http://www.ps7-wia2.com/Categories"
+            ]
+        },
+        "@type": {
+            "$id": "#/properties/%40type",
+            "type": "string",
+            "title": "The @type schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "Categories"
+            ]
+        },
+        "categories": {
+            "$id": "#/properties/categories",
+            "type": "array",
+            "title": "The categories schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "examples": [
+                [
+                    {
+                        "@id": "c:1",
+                        "@type": "Categorie",
+                        "name": "Salon professionnel"
+                    },
+                    {
+                        "@id": "c:2",
+                        "@type": "Categorie",
+                        "name": "Musique"
+                    }
+                ]
+            ],
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/categories/items",
+                "anyOf": [
+                    {
+                        "$id": "#/properties/categories/items/anyOf/0",
+                        "type": "object",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
+                        "examples": [
+                            {
+                                "@id": "c:1",
+                                "@type": "Categorie",
+                                "name": "Salon professionnel"
+                            }
+                        ],
+                        "required": [
+                            "@id",
+                            "@type",
+                            "name"
+                        ],
+                        "properties": {
+                            "@id": {
+                                "$id": "#/properties/categories/items/anyOf/0/properties/%40id",
+                                "type": "string",
+                                "title": "The @id schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "c:1"
+                                ]
+                            },
+                            "@type": {
+                                "$id": "#/properties/categories/items/anyOf/0/properties/%40type",
+                                "type": "string",
+                                "title": "The @type schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "Categorie"
+                                ]
+                            },
+                            "name": {
+                                "$id": "#/properties/categories/items/anyOf/0/properties/name",
+                                "type": "string",
+                                "title": "The name schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "Salon professionnel"
+                                ]
+                            }
+                        },
+                        "additionalProperties": true
+                    }
+                ]
+            }
+        },
+        "@context": {
+            "$id": "#/properties/%40context",
+            "type": "object",
+            "title": "The @context schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+                {
+                    "Categories": "foaf:categories#Categories",
+                    "Categorie": "foaf:categories#Categorie",
+                    "categories": "foaf:categories#categories",
+                    "name": "foaf:categories#name",
+                    "foaf": "http://www.ps7-wia2.com/",
+                    "c": "http://www.ps7-wia2.com/categories/"
+                }
+            ],
+            "required": [
+                "Categories",
+                "Categorie",
+                "categories",
+                "name",
+                "foaf",
+                "c"
+            ],
+            "properties": {
+                "Categories": {
+                    "$id": "#/properties/%40context/properties/Categories",
+                    "type": "string",
+                    "title": "The Categories schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:categories#Categories"
+                    ]
+                },
+                "Categorie": {
+                    "$id": "#/properties/%40context/properties/Categorie",
+                    "type": "string",
+                    "title": "The Categorie schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:categories#Categorie"
+                    ]
+                },
+                "categories": {
+                    "$id": "#/properties/%40context/properties/categories",
+                    "type": "string",
+                    "title": "The categories schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:categories#categories"
+                    ]
+                },
+                "name": {
+                    "$id": "#/properties/%40context/properties/name",
+                    "type": "string",
+                    "title": "The name schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "foaf:categories#name"
+                    ]
+                },
+                "foaf": {
+                    "$id": "#/properties/%40context/properties/foaf",
+                    "type": "string",
+                    "title": "The foaf schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "http://www.ps7-wia2.com/"
+                    ]
+                },
+                "c": {
+                    "$id": "#/properties/%40context/properties/c",
+                    "type": "string",
+                    "title": "The c schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "http://www.ps7-wia2.com/categories/"
+                    ]
+                }
+            },
+            "additionalProperties": true
+        }
+    },
+    "additionalProperties": true
+}
