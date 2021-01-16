@@ -2,7 +2,8 @@
 
 ## PolyVilleActive
 
-PolyVilleActive est à destination de la ville, de ses habitants et commerçants et a pour objectif de  mettre  en  relation  les  acteurs  de  la  ville.  L’essentiel  est  d’informer  des  activités,  des promotions, des dates à ne pas rater, de la création de nouveaux commerces de proximité, des places de stationnement et des transports en commun
+PolyVilleActive est à destination de la ville, de ses habitants et commerçants et a pour objectif de  mettre  en  relation  les  acteurs  de  la  ville.  L’essentiel  est  d’informer  des  activités,  des promotions, des dates à ne pas rater, de la création de nouveaux commerces de proximité, des places de stationnement et des transports en commun mais surtout de proposer des recommandations personnalisées et adaptées à l'utilisateur de notre application.
+
 ![demo](https://i.imgur.com/gFaonJH.gif)
 
 ## Sommaire
